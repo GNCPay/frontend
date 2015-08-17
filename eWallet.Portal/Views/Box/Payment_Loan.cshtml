@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Thanh toán hóa đơn";
+    Layout = null;
+}
+<ul class="breadcrumb">
+    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li>Thanh toán Vay trả góp, bảo hiểm</li>
+</ul>
+<div class="separator"></div>
+<div id="login-dp" class="content-dp col-md-10 col-md-offset-1">
+    <div class="form">
+        <div class="form-group">
+            <label class="sr-only" for="cb_services">Dịch vụ</label>
+            <select class="form-control" id="cb_services">
+                <option>--Chọn loại hình dịch vụ--</option>
+                <option value="ESSE">Dịch vụ điện, nước</option>
+                <option value="TELCO">Dịch vụ viễn thông, truyền hình cable</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="cb_providers">Nhà cung cấp</label>
+            <select class="form-control" id="cb_providers">
+                <option value="ESSE_EVNHN" data-service="ESSE">Hóa đơn điện - Tp Hà Nội</option>
+                <option value="ESSE_EVNHCM" data-service="ESSE">Hóa đơn điện - Tp Hồ Chí Minh</option>
+                <option value="TELCO_VTCC" data-service="TELCO">Truyền hình cable - VTC Cab</option>
+                <option value="TELCO_VNPT" data-service="TELCO">Internet ADSL - VNPT</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="txt_bill_code">Mã hợp đồng, khách hàng</label>
+            @*<input type="text" class="form-control" id="txt_bill_code" placeholder="Mã hóa đơn, khách hàng">*@
+            <div class="input-group">
+                <input type="text" class="form-control" id="txt_bill_code" placeholder="Mã hợp đồng, khách hàng">
+                <div class="input-group-addon btn" id="btn_check_bill">Check</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="txt_bill_customer">Họ tên Khách hàng</label>
+            <input class="form-control" id="txt_bill_customer" type="text" placeholder="Họ tên Khách hàng"  readonly/>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="txt_bill_amount">Số tiền còn nợ</label>
+            <input class="form-control" id="txt_bill_amount" type="text" placeholder="Số tiền còn nợ" readonly />
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="txt_bill_pay_amount">Số tiền thanh toán</label>
+            <input class="form-control" id="txt_bill_pay_amount" type="text" placeholder="Số tiền thanh toán"/>
+        </div>
+        <div class="form-group" id="payment_method">
+            <a class="btn btn-primary" data-toggle="modal" href="#myModal"><i class="glyphicon glyphicon-credit-card"></i> Thẻ ATM</a>
+            <a class="btn btn-primary" data-toggle="modal" href="#paybyeWalletModal"><i class="glyphicon glyphicon-piggy-bank"></i> Ví GNC</a>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //$('#payment_method').hide();
+        $('#cb_providers').hide();
+        $('#cb_providers option').hide();
+
+        $('#cb_services').change(function () {
+            $('#cb_providers').show();
+            var $selected_service = $('#cb_services').val();
+            $('#cb_providers option').hide();
+            if ($selected_service) {
+                $('#cb_providers option[data-service="' + $selected_service + '"]').show();
+                $('#btn_check_bill').show();
+            }
+        });
+        $('#btn_check_bill').click(function () {
+            var $billNo = $('#txt_bill_code').val();
+            var $service = $('#cb_services').val();
+            var $provider = $('#cb_providers').val();
+            if ($billNo) {
+                $.ajax({
+                    url: '@Url.Action("CheckBill", "Payment")',
+                    contentType: 'application/json; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { service: $service, provider: $provider, bill_code: $billNo }
+                })
+               .success(function (result) {
+                   if (result.error_code == "00") {
+                       //var resp = result.response;
+                       $('#txt_bill_amount').val("123232");
+                       $('#txt_bill_customer').val(result.response);
+                       $('#payment_method').show();
+                   }
+                   else {
+                       alert(result.error_message);
+                   }
+               })
+               .error(function (xhr, status) {
+                   //alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
+               });
+            }
+            else {
+                alert('Bạn cần nhập vào mã hóa đơn/mã khách hàng');
+            }
+        });
+    });
+</script>

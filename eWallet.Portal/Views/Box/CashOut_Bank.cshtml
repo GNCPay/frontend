@@ -1,0 +1,69 @@
+﻿@{
+    Layout = null;
+}
+<ul class="breadcrumb">
+    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li>Yêu cầu rút tiền</li>
+</ul>
+<div class="separator"></div>
+<div id="login-dp" class="content-dp col-md-7">
+    <form class="form">
+        <fieldset>
+            <div class="form-group">
+                <label for="account_name" class="sr-only">Tài khoản nhận*</label>
+                <select name="account_name" id="account_name" class="form-control">
+                    <option value="">-- Chọn tài khoản nhận tiền --</option>
+                    <option value="1232">123535565 - NGUYEN QUANG HUY - VCB</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amount" class="sr-only">Số tiền muốn rút*</label>
+                <input class="form-control" id="amount" type="text" placeholder="Số tiền muốn rút" />
+            </div>
+            <div class="form-group">
+                <label for="note" class="sr-only">Nội dung</label>
+                <input class="form-control" id="note" type="text" placeholder="Nội dung" />
+            </div>
+            <div class="form-group" id="payment_method">
+                <a class="btn btn-success make_transaction" id="btn_confirm">Xác nhận</a>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div id="login-dp" class="content-dp col-md-5">
+    Hướng dẫn dịch vụ
+</div>
+<script>
+    $("#account_bank").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("ListBank","Proxy",null,null)',
+                dataType: "json",
+                data: {
+                    q: request.term
+                },
+                success: function (result) {
+                    response(result);
+                    //response($.map(data.d, function (item) {
+                    //    return { label: item.Names, id: item.Guardian_Id }
+                    //}))
+                },
+                error: function (xhr, status) {
+                    alert("Không thể load dữ liệu. Vui lòng thử lại sau!" + xhr + status);
+                }
+            });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+            //log(ui.item ?
+            //  "Selected: " + ui.item.label :
+            //  "Nothing selected, input was " + this.value);
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+</script>

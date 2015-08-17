@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Thông tin cá nhân";
+    Layout = null;
+}
+<ul class="breadcrumb">
+    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li>Thông tin cá nhân</li>
+</ul>
+<div class="separator"></div>
+<div id="login-dp" class="content-dp">
+    <div class="col-md-6">
+        <div class="form" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="full_name">Họ và tên</label>
+                <input type="text" class="form-control" id="full_name" value="@(((dynamic)Session["user_profile"]).full_name)" placeholder="Họ và tên" readonly>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="email">Địa chỉ email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email address" value="@(((dynamic)Session["user_profile"]).user_name)" readonly>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="mobile">Số điện thoại di động</label>
+                <input type="text" class="form-control" id="mobile" placeholder="Số điện thoại di động" value="@(((dynamic)Session["user_profile"]).mobile)" readonly>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="password">Mật khẩu truy cập</label>
+                <input type="password" class="form-control" id="password" placeholder="Mật khẩu truy cập" value="@(((dynamic)Session["user_profile"]).password)" required>
+            </div>
+            <div class="form-group">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="address">Địa chỉ</label>
+                <input type="text" class="form-control" id="address" placeholder="Địa chỉ" value="@(((dynamic)Session["user_profile"]).email)" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="personal_id">Số CMND</label>
+                <input type="email" class="form-control" id="personal_id" placeholder="Số CMND" value="@(((dynamic)Session["user_profile"]).email)" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="personal_id_issued_date">Ngày cấp</label>
+                <input type="text" class="form-control" id="personal_id_issued_date" placeholder="Ngày cấp" value="@(((dynamic)Session["user_profile"]).email)" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="personal_id_issued_by">Nơi cấp</label>
+                <input type="password" class="form-control" id="personal_id_issued_by" placeholder="Nơi cấp" value="@(((dynamic)Session["user_profile"]).email)" required>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary btn-block">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>

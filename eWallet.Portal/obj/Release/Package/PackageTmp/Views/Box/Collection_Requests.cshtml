@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null;
+}
+<ul class="breadcrumb">
+    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li>Danh sách Yêu cầu thu hộ</li>
+</ul>
+<div class="separator"></div>
+<div id="login-dp" class="content-dp col-md-12">
+    <div id="no-more-tables">
+        <table id="myDataTable" class="col-md-12 table-bordered table-striped table-condensed cf">
+            <thead class="cf">
+                <tr>
+                    <th>Mã thu</th>
+                    <th>Họ và tên</th>
+                    <th>Số điện thoại</th>
+                    <th>Số tiền</th>
+                    <th>Ghi chú</th>
+                    <th>Trạng thái</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-title="Mã thu">0123456789</td>
+                    <td data-title="Họ và tên">NGUYÊN QUANG HUY</td>
+                    <td data-title="Số điện thoại">0909989986</td>
+                    <td data-title="Số tiền">
+                        1.000.000
+                    </td>
+                    <td data-title="Ghi chú">
+                        PHÍ CHUNG CƯ THÁNG 8
+                    </td>
+                    <td data-title="Trạng thái">
+                        NEW
+                    </td>
+                    <td>
+                        <a class="btn btn-default" data-toggle="modal" href="#update_request_info"><i class="glyphicon glyphicon-remove"> </i></a>
+                        <a class="btn btn-default" data-toggle="modal" href="#update_request_info"><i class="glyphicon glyphicon-edit"> </i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a class="btn btn-default" data-toggle="modal" href="#update_request_info"><i class="glyphicon glyphicon-new-window"></i> Tạo mới</a>
+    <div class="alert alert-success" role="alert">
+        Trong trường hợp bạn muốn upload file dữ liệu, vui lòng liên hệ với support@@bigpay.vn để được hỗ trợ
+    </div>
+</div>
+<div id="update_request_info" class="modal fade">
+    <div id="bank-overlay" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Cập nhật yêu cầu thu hộ</h4>
+            </div>
+            <div class="modal-body bank_content">
+                <div id="login-dp">
+                    <form class="form" role="form">
+                        <div class="form-group">
+                            <label for="account_name" class="sr-only">Mã thu*</label>
+                            <input type="text" name="account_name" id="account_name" class="form-control" placeholder="Mã thu">
+                        </div>
+                        <div class="form-group">
+                            <label for="account_number" class="sr-only">Họ và tên*</label>
+                            <input type="text" name="account_number" id="account_number" class="form-control" placeholder="Họ và tên">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="account_bank" class="sr-only">Số điện thoại*</label>
+                            <input type="text" id="account_bank" name="account_bank" class="form-control" placeholder="Số điện thoại">
+                        </div>
+                        <div class="form-group">
+                            <label for="account_branch" class="sr-only">Số tiền cần thu</label>
+                            <input type="text" id="account_branch" name="account_branch" class="form-control" placeholder="Số tiền cần thu">
+                        </div>
+                        <div class="form-group">
+                            <label for="note" class="sr-only">Số tiền cần thu</label>
+                            <input type="text" id="note" name="note" class="form-control" placeholder="Ghi chú">
+                        </div>
+                        <div class="form-group" id="payment_method">
+                            <div class="col-lg-8 col-lg-offset-4">
+                                <a class="btn btn-success make_transaction" id="btn_confirm">Xác nhận</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Thông tin cá nhân";
+    Layout = null;
+}
+<ul class="breadcrumb">
+    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li>Thông tin doanh nghiệp</li>
+</ul>
+<div class="separator"></div>
+<div id="login-dp" class="content-dp">
+    <div class="col-md-6">
+        <div class="form" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="login_email">Tên doanh nghiệp</label>
+                <input type="text" class="form-control" id="login_email" placeholder="Tên doanh nghiệp" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="login_email">Địa chỉ email</label>
+                <input type="email" class="form-control" id="login_email" placeholder="Email address" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="login_email">Số điện thoại di động</label>
+                <input type="text" class="form-control" id="login_email" placeholder="Số điện thoại di động" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="login_password">Mật khẩu truy cập</label>
+                <input type="password" class="form-control" id="login_password" placeholder="Mật khẩu truy cập" required>
+            </div>
+            <div class="form-group">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="login_email">Địa chỉ</label>
+                <input type="text" class="form-control" id="login_email" placeholder="Địa chỉ" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="login_email">Số GP ĐKKD</label>
+                <input type="email" class="form-control" id="login_email" placeholder="Số GP ĐKKD" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="login_email">Ngày cấp</label>
+                <input type="text" class="form-control" id="login_email" placeholder="Ngày cấp" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="login_password">Nơi cấp</label>
+                <input type="password" class="form-control" id="login_password" placeholder="Nơi cấp" required>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary btn-block">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Thông tin tài khoản";
+    Layout = null;
+}
+<style>
+    .profile {
+        min-height: 200px;
+        display: inline-block;
+    }
+</style>
+<ul class="breadcrumb">
+    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li>Thông tin tài khoản</li>
+</ul>
+<div class="separator"></div>
+<!-- - - - - - - - - end Breadcrumbs - - - - - - - - - - - -->
+<div class="col-md-offset-1 col-md-10">
+    <div class="well profile">
+        <div class="col-sm-12">
+            <div class="col-xs-12 col-sm-8">
+                <h2>@(((dynamic)Session["user_profile"]).full_name)</h2>
+                <strong>Tên truy cập: </strong> @(((dynamic)Session["user_profile"]).user_name). <br/>
+                <strong>Số tài khoản: </strong> @(((dynamic)Session["user_profile"])._id). <br />
+                <strong>Loại tài khoản: </strong>Tài khoản cá nhân
+            </div>
+        </div>
+        <div class="col-xs-12 divider text-center">
+            <div class="col-xs-12 col-sm-4 emphasis">
+                <h3><strong> @(((dynamic)ViewBag.accounts)[0].balance.ToString("N0")) đ</strong></h3>
+                Số dư<br />
+                <a class="btn btn-success btn-block" href=@Url.Content("/topup")><span class="fa fa-plus-circle"></span> Nạp tiền </a>
+            </div>
+            <div class="col-xs-12 col-sm-4 emphasis">
+                <h3><strong>@(((dynamic)ViewBag.accounts)[0].available_balance.ToString("N0")) đ</strong></h3>
+                Số dư khả dụng<br />
+                <a class="btn btn-info btn-block" href=@Url.Content("/transfer")><span class="fa fa-user"></span> Rút tiền</a>
+            </div>
+            <div class="col-xs-12 col-sm-4 emphasis">
+                <h3><strong> @(((dynamic)ViewBag.accounts)[3].balance.ToString("N0")) đ</strong></h3>
+                Điểm thưởng<br/>
+                <a class="btn btn-primary btn-block" href=@Url.Content("/account/transaction")><span class="fa fa-plus-circle"></span> Lịch sử Giao dịch </a>
+            </div>
+        </div>
+    </div>
+</div>

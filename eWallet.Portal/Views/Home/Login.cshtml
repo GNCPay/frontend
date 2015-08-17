@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập hệ thống";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div id="login-dp" class="col-md-6 col-md-offset-3">
+        Đăng nhập qua
+        <div class="social-buttons">
+            <div class="fb-login-button btn col-sm-12" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+            @*<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>*@
+            @*<a href="#" class="btn btn-tw"><i class="fa fa-google"></i> Google</a>*@
+        </div>
+        hoặc
+        <form class="form" role="form" id="login-nav">
+            <div class="form-group">
+                <label class="sr-only" for="login_email">Địa chỉ email</label>
+                <input type="email" class="form-control" id="login_email" placeholder="Email address" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="login_password">Mật khẩu</label>
+                <input type="password" class="form-control" id="login_password" placeholder="Password" required>
+                <div class="help-block text-right"><a href="">Quên mật khẩu ?</a></div>
+            </div>
+            <div class="form-group">
+                <button type="button" id="btn-login" class="btn btn-primary btn-block">Đăng nhập</button>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="login_remember"> lưu thông tin đăng nhập
+                </label>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $('#btn-login').click(function () {
+        if ($('#login-nav').valid()) /*if valid then call to server*/ {
+            NProgress.start();
+            $email = $('#login_email').val();
+            $pasword = $('#login_password').val();
+            $remember = $('#login_remember').val() == "on";
+            $.ajax({
+                url: '/Account/PostLogin',
+                contentType: 'application/json',
+                type: 'GET',
+                dataType: 'json',
+                data: { email: $email, password:$pasword, is_remember:$remember}
+            })
+                           .success(function (result) {
+                               NProgress.done();
+                               alert(result.error_message);
+                               if (result.error_code == "00") {
+                                   window.location = "eWallet";
+                               }
+                               else {
+                                   alert(result.error_message);
+                               }
+                           })
+
+                           .error(function (jqXHR, textStatus, errorThrown) {
+                               NProgress.done();
+                               alert('Cos')
+                           });
+        }
+    });
+</script>

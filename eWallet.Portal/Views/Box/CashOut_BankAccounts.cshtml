@@ -1,0 +1,121 @@
+﻿@{
+    Layout = null;
+}
+<ul class="breadcrumb">
+    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li>Danh sách tài khoản nhận tiền</li>
+</ul>
+<div class="separator"></div>
+<div id="login-dp" class="content-dp col-md-12">
+    <div id="no-more-tables">
+        <table id="myDataTable" class="col-md-12 table-bordered table-striped table-condensed cf">
+            <thead class="cf">
+                <tr>
+                    <th>Ngân hàng</th>
+                    <th>Chi nhánh</th>
+                    <th>Số tài khoản</th>
+                    <th>Chủ tài khoản</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Vietcombank - Ngân hàng TMCP Ngoại Thương Việt Nam (VCB)</td>
+                    <td>Sai Gon</td>
+                    <td>
+                        0123456789
+                    </td>
+                    <td>
+                        NGUYÊN QUANG HUY
+                    </td>
+                    <td>
+                        <a class="btn btn-default" data-toggle="modal" href="#update_bank_account_info"><i class="glyphicon glyphicon-remove"> </i></a>
+                        <a class="btn btn-default" data-toggle="modal" href="#update_bank_account_info"><i class="glyphicon glyphicon-edit"> </i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a class="btn btn-default" data-toggle="modal" href="#update_bank_account_info"><i class="glyphicon glyphicon-new-window"></i> Tạo mới</a>
+</div>
+
+<div id="update_bank_account_info" class="modal fade">
+    <div id="bank-overlay" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Cập nhật tài khoản</h4>
+            </div>
+            <div class="modal-body bank_content">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-lg-4 control-label">Chủ tài khoản*</label>
+                            <div class="col-lg-8">
+                                <input type="text" name="account_name" id="account_name" class="form-control" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="account_number" class="col-lg-4 control-label">Số tài khoản*</label>
+                            <div class="col-lg-8">
+                                <input type="text" name="account_number" id="account_number" class="form-control" placeholder="Số tài khoản">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-lg-4 control-label">Ngân hàng*</label>
+                            <div class="col-lg-8">
+                                <input type="text" id="account_bank" name="account_bank" class="form-control" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-lg-4 control-label">Chi nhánh</label>
+                            <div class="col-lg-8">
+                                <input type="text" id="account_branch" name="account_branch" class="form-control" placeholder="Chi nhánh">
+                            </div>
+                        </div>
+                        <div class="form-group" id="payment_method">
+                            <div class="col-lg-8 col-lg-offset-4">
+                                <a class="btn btn-success make_transaction" id="btn_confirm">Xác nhận</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#account_bank").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("ListBank","Proxy",null,null)',
+                dataType: "json",
+                data: {
+                    q: request.term
+                },
+                success: function (result) {
+                    response(result);
+                    //response($.map(data.d, function (item) {
+                    //    return { label: item.Names, id: item.Guardian_Id }
+                    //}))
+                },
+                error: function (xhr, status) {
+                    alert("Không thể load dữ liệu. Vui lòng thử lại sau!" + xhr + status);
+                }
+            });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+            //log(ui.item ?
+            //  "Selected: " + ui.item.label :
+            //  "Nothing selected, input was " + this.value);
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+</script>

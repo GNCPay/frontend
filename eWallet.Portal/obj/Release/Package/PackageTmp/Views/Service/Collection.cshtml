@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Dịch vụ Thu hộ";
+}
+<div class="row">
+    <div class="col-md-3 ">
+        <ul class="bg nav nav-pills nav-stacked nav-pills-stacked-example">
+            <li class="active"><a href="#" class="nav_link" data-href='@Url.Action("CollectionRequest", "Service", null, null)'>Danh sách cần thu Khách hàng</a></li>
+            <li><a href="#" class="nav_link" data-href='@Url.Action("List","Transaction",null,null)'>Tra soát giao dịch</a></li>
+        </ul>
+    </div>
+    <div class="col-md-9 bg" id="main_content">
+        @*@Html.Action("List", "Transaction", null);*@
+    </div>
+    <div id="error"></div>
+</div>
+<script>
+    var $func = window.location.hash.substr(1);
+    if ($func) {
+        switch ($func) {
+            case 'request':
+                loadPage('@Url.Action("CollectionRequest", "Service", null, null)');
+                break;
+            case 'transaction':
+                loadPage('@Url.Action("List", "Transaction", null, null)');
+                break;
+            default:
+                loadPage('@Url.Action("CollectionRequest", "Service", null, null)');
+                break;
+        }
+    } else {
+        loadPage('@Url.Action("CollectionRequest", "Service", null, null)');
+    };
+    $('.nav_link').click(function () {
+        $('.nav_link').parent().removeClass("active");
+        $(this).parent().addClass("active");
+        loadPage($(this).data("href"));
+    });
+</script>

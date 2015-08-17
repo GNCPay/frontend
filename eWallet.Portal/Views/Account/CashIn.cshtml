@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Nạp tiền vào ví";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-3 ">
+        <ul class="bg nav nav-pills nav-stacked nav-pills-stacked-example">
+            <li class="active"><a href="#" class="nav_link" data-href='@Url.Action("CashInATM", "Account", null, null)'>Nạp tiền từ thẻ ATM</a></li>
+            <li><a href="#" class="nav_link" data-href='@Url.Action("CashInBankAccount","Account",null,null)'>Nạp tiền từ Chuyển khoản ngân hàng</a></li>
+            <li><a href="#" class="nav_link" data-href='@Url.Action("CashInOthers","Account",null,null)'>Hướng dẫn nạp tiền khác</a></li>
+            <li><a href="#" class="nav_link" data-href='@Url.Action("List","Transaction",null,null)'>Tra soát giao dịch Nạp tiền</a></li>
+        </ul>
+    </div>
+    <div class="col-md-9 bg" id="main_content">
+        @*@Html.Action("List", "Transaction", null);*@
+    </div>
+    <div id="error"></div>
+</div>
+<script>
+
+    $('.nav_link').click(function () {
+        $('.nav_link').parent().removeClass("active");
+        $(this).parent().addClass("active");
+        loadPage($(this).data("href"));
+    });
+</script>

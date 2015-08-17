@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Thanh toán điện tử";
+}
+<div class="row">
+    <div class="col-md-3 ">
+        <ul class="bg nav nav-pills nav-stacked nav-pills-stacked-example">
+            <li class="active"><a href="#" class="nav_link" data-href='@Url.Action("PaymentBilling", "Service", null, null)'>Thanh toán hóa đơn</a></li>
+            <li><a href="#" class="nav_link" data-href='@Url.Action("PaymentLoan", "Service", null, null)'>Thanh toán phí bảo hiểm, trả góp</a></li>
+            <li><a href="#" class="nav_link" data-href='@Url.Action("PaymentCommerce", "Service", null, null)'>Thanh toán hóa đơn thương mại điện tử</a></li>
+@if(User.Identity.IsAuthenticated){
+            <li><a href="#" class="nav_link" data-href='@Url.Action("List","Transaction",null,null)'>Tra soát giao dịch Thanh toán</a></li>
+}
+        </ul>
+    </div>
+    <div class="col-md-9 bg" id="main_content">
+        @*@Html.Action("List", "Transaction", null);*@
+    </div>
+    <div id="error"></div>
+</div>
+<script>
+    var $func = window.location.hash.substr(1);
+    if ($func) {
+        switch ($func) {
+            case 'billing':
+                loadPage('@Url.Action("PaymentBilling", "Service", null, null)');
+                break;
+            case 'loan':
+                loadPage('@Url.Action("PaymentLoan", "Service", null, null)');
+                break;
+            case 'commerce':
+                loadPage('@Url.Action("PaymentCommerce", "Service", null, null)');
+                break;
+            default:
+                loadPage('@Url.Action("PaymentBilling", "Service", null, null)');
+                break;
+        }
+    } else {
+        loadPage('@Url.Action("PaymentBilling", "Service", null, null)');
+    };
+    $('.nav_link').click(function () {
+        $('.nav_link').parent().removeClass("active");
+        $(this).parent().addClass("active");
+        loadPage($(this).data("href"));
+    });
+</script>
