@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -75,7 +76,7 @@ namespace eWallet.Portal.Controllers
         }
         #endregion
 
-        #region "PROCESS"
+        #region "CASHIN PROCESS"
         [Authorize]
         public JsonResult CashIn_ATM(string amount, string bank)
         {
@@ -89,7 +90,21 @@ namespace eWallet.Portal.Controllers
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
             return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect }, JsonRequestBehavior.AllowGet);
         }
-        #endregion "PROCESS"
+        #endregion "CASHIN PROCESS"
 
+        #region "PAYMENT PROCESS"
+        public JObject Payment_CheckBill(string service, string provider, string bill_code)
+        {
+            Session["current_bill"] = null;
+            string request = @"{system:'web_frontend', module:'billing',type:'two_way', function:'check_bill',request:{service:'" + service
+                + "', provider:'" + provider
+                + "', bill_code:'" + bill_code
+                + "'}}";
+            string _bill = Helper.RequestToServer(request);
+            JObject result = JObject.Parse(_bill);
+            Session["current_bill"] = _bill;
+            return result;
+        }
+        #endregion
     }
 }
