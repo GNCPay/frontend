@@ -105,6 +105,21 @@ namespace eWallet.Portal.Controllers
             Session["current_bill"] = _bill;
             return result;
         }
+
+        public JsonResult Payment_PayBill(string service, string provider, string bill_code, long amount, string payment_provider, string bank)
+        {
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'payment',request:{channel:'web', profile:"
+                + ((dynamic)Session["user_profile"])._id
+               + ", product_code: '" + bill_code
+               + "', service: '" + service
+               + "', provider: '" + provider
+               + "', amount: " + amount
+               + ", payment_provider: '" + payment_provider
+               + "', bank: '" + bank +
+           "'}}";
+            dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
+            return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+        }
         #endregion
     }
 }
