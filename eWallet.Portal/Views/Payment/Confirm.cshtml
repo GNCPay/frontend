@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Xác nhận giao dịch";
+}
+<div id="bank-overlay" class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Thanh toán qua tài khoản ví</h4>
+        </div>
+        <div class="modal-body bank_content">
+            <p>Vui lòng nhập mã xác nhận được gửi tới điện thoại của bạn để hoàn tất giao dịch</p>
+            <form class="form-horizontal" method="post" action="ConfirmWithOTP">
+                <fieldset>
+                    <input type="hidden" value="@ViewBag.transaction_type" id="transaction_type" name="transaction_type" />
+                    <input type="hidden" value="@ViewBag.trans_id" id="trans_id" name="trans_id" />
+                    <input type="hidden" value="@ViewBag.amount" id="amount" name="amount" />
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-lg-4 control-label">Mã xác nhận</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" id="otp" name="otp" type="text" />
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="button" id="resend_otp" name="resend_otp" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i> Gửi lại</button>
+                        </div>
+                    </div>
+                    <div class="form-group" id="payment_method">
+                        <div class="col-lg-8 col-lg-offset-4">
+                            <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-calendar"></i> Đồng ý</button>
+                            <button type="reset" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i> Hủy</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+

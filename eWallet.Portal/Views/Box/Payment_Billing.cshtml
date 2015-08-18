@@ -423,7 +423,7 @@
             })
                .success(function (result) {
                    if (result.error_code == "00") {
-                       window.location = result.url_redirect;
+                       window.location =  window.location.protocol + "//" + window.location.host + "/" + result.url_redirect;
                        return;
                    }
                    else {

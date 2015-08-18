@@ -577,6 +577,7 @@
     </None>
     <Content Include="Views\Home\eWallet.cshtml" />
     <Content Include="Views\Payment\Result.cshtml" />
+    <Content Include="Views\Payment\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
