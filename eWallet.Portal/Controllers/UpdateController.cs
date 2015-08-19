@@ -9,6 +9,7 @@ namespace eWallet.Portal.Controllers
 {
     public class UpdateController : Controller
     {
+        //
         public static Data.MongoHelper DataHelper = new Data.MongoHelper("mongodb://127.0.0.1:27017/ewallet_business", "ewallet_business");
         public JsonResult profile(string password, string diachi, string cmnd, string ngaycap, string noicap)
         {
