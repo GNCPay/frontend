@@ -68,7 +68,7 @@
     });
     $('.make_topup').click(function () {
         //if (!$('#login-nav').valid()) return;
-        //NProgress.start();
+        NProgress.start();
         var $bank = $('#bank').val();
         var $amount = $('#amount').val();
         
@@ -81,7 +81,7 @@
             timeout: 30000
         })
            .success(function (result) {
-               //NProgress.done();
+               NProgress.done();
                alert(result.error_message);
                if (result.error_code == "00") {
                    
@@ -93,7 +93,7 @@
                }
            })
            .error(function (xhr, status) {
-               //NProgress.done();
+               NProgress.done();
                alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
            });
     });
