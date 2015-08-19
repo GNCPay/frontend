@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ProxyController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\UpdateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
