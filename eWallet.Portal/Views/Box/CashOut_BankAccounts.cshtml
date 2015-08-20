@@ -30,7 +30,7 @@
                     <td>@account.name</td>
                     <td>
                         <a class="btn btn-default btn-remove" data-id="@account._id"><i class="glyphicon glyphicon-remove"> </i></a>
-                        <a class="btn btn-default btn-edit" data-id="@account._id" data-bank="@account.bank" data-branch="@account.branch" data-number="@account.number" data-name="@account.name" data-toggle="modal" href="#update_bank_account_info"><i class="glyphicon glyphicon-edit"> </i></a>
+                        <a class="btn btn-default btn-edit" data-code="@account.code" data-id="@account._id" data-bank="@account.bank" data-branch="@account.branch" data-number="@account.number" data-name="@account.name" data-toggle="modal" href="#update_bank_account_info"><i class="glyphicon glyphicon-edit"> </i></a>
                     </td>
                 </tr>
                 }
@@ -41,14 +41,14 @@
 </div>
 
 <div id="update_bank_account_info" class="modal fade">
-    <div id="login-dp" class="modal-dialog">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="myModalLabel">Cập nhật tài khoản</h4>
             </div>
             <div class="modal-body bank_content">
-                <form class="form" role="form" id="login-nav">
+                <form class="form" role="form">
                     <input type="text" id="account_id" name="account_id" hidden />
                     <div class="form-group">
                         <label for="account_name" class="sr-only">Tên gợi nhớ</label>
@@ -72,9 +72,7 @@
                         <input type="text" id="account_branch" name="account_branch" class="form-control" placeholder="Chi nhánh">
                     </div>
                     <div class="form-group" id="payment_method">
-                        <div class="col-lg-8 col-lg-offset-4">
                             <a class="btn btn-success save_account" id="btn_confirm">Xác nhận</a>
-                        </div>
                     </div>
                 </form>
             </div>

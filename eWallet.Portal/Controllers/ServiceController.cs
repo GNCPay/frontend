@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using MongoDB.Driver.Builders;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,7 +85,7 @@ namespace eWallet.Portal.Controllers
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:"
                  + ((dynamic)Session["user_profile"])._id
                 + ",service:'GNCP', provider:'BANKNET', payment_provider:'BANKNET', amount: " + amount +
-            ", note: '" + "CASH IN ACCOUNT " + ((dynamic)Session["user_profile"])._id  + ", AMOUNT " + amount +
+            ", note: '" + "CASH IN ACCOUNT " + ((dynamic)Session["user_profile"])._id + ", AMOUNT " + amount +
             "', bank:'" + bank +
             "'}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
@@ -92,6 +93,24 @@ namespace eWallet.Portal.Controllers
         }
         #endregion "CASHIN PROCESS"
 
+        #region "CASHOUT PROCESS"
+        public JsonResult CashOut_Bank(string account_id, string amount, string note)
+        {
+            dynamic account = Helper.DataHelper.Get("cashout_bank_account",
+                Query.EQ("_id", account_id));
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHOUT',request:{channel:'WEB', profile:"
+               + ((dynamic)Session["user_profile"])._id + ",service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + amount +
+         ", note: '" + note +
+         "', receiver:{account_bank:'" + account.bank +
+         "', account_branch:'" + account.branch + "',account_number:'" + account.number +
+         "',account_name:'" + account.name + "'}}}";
+            dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
+            if (response.error_code == "00")
+                return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { error_code = response.error_code, error_message = response.error_message}, JsonRequestBehavior.AllowGet);
+        }
+        #endregion "CASHOUT PROCESS"
         #region "PAYMENT PROCESS"
         public JObject Payment_CheckBill(string service, string provider, string bill_code)
         {

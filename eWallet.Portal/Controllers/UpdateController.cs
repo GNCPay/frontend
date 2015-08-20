@@ -23,7 +23,7 @@ namespace eWallet.Portal.Controllers
                 response.personalid_issueddate = personalid_issueddate;
                 response.personalid_issuedby = personalid_issuedby;
                 Helper.DataHelper.Save("profile", response);
-                //return Json(new { error_code = response.error_code.ToString(), error_message = response.error_message.ToString() }, JsonRequestBehavior.AllowGet);
+                return Json(new { error_code = response.error_code.ToString(), error_message = response.error_message.ToString() }, JsonRequestBehavior.AllowGet);
            }
     }
 }
