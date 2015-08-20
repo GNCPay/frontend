@@ -8,10 +8,10 @@ namespace eWallet.Portal
 {
     public class Helper
     {
-        static eWallet.Data.MongoHelper data;
+        public static eWallet.Data.MongoHelper DataHelper;
         public static void Init()
         {
-            data = new Data.MongoHelper(
+            DataHelper = new Data.MongoHelper(
                 ConfigurationManager.AppSettings["FrontEndDb_Server"],
                 ConfigurationManager.AppSettings["FrontEndDb_Database"]
                 );

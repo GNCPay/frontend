@@ -7,6 +7,7 @@
     <li>Thông tin cá nhân</li>
 </ul>
 <div class="separator"></div>
+
 <div id="login-dp" class="content-dp">
     <div class="col-md-6">
         <div class="form" role="form">
@@ -34,23 +35,58 @@
         <div class="form" role="form">
             <div class="form-group">
                 <label class="sr-only" for="address">Địa chỉ</label>
-                <input type="text" class="form-control" id="address" placeholder="Địa chỉ" value="@(((dynamic)Session["user_profile"]).email)" required>
+                <input type="text" class="form-control" id="address" placeholder="Địa chỉ" value="@(((dynamic)Session["user_profile"]).diachi)" required>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="personal_id">Số CMND</label>
-                <input type="email" class="form-control" id="personal_id" placeholder="Số CMND" value="@(((dynamic)Session["user_profile"]).email)" required>
+                <input type="email" class="form-control" id="personal_id" placeholder="Số CMND" value="@(((dynamic)Session["user_profile"]).cmnd)" required>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="personal_id_issued_date">Ngày cấp</label>
-                <input type="text" class="form-control" id="personal_id_issued_date" placeholder="Ngày cấp" value="@(((dynamic)Session["user_profile"]).email)" required>
+                <input type="date" class="form-control" id="personal_id_issued_date" placeholder="Ngày cấp" value="@(((dynamic)Session["user_profile"]).ngaycap)" required>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="personal_id_issued_by">Nơi cấp</label>
-                <input type="password" class="form-control" id="personal_id_issued_by" placeholder="Nơi cấp" value="@(((dynamic)Session["user_profile"]).email)" required>
+                <input type="text" class="form-control" id="personal_id_issued_by" placeholder="Nơi cấp" value="@(((dynamic)Session["user_profile"]).noicap)" required>
             </div>
             <div class="form-group">
-                <button type="button" class="btn btn-primary btn-block">Cập nhật</button>
+                <button type="button" id="btn-update" class="btn btn-primary btn-block">Cập nhật</button>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $('#btn-update').click(function () {
+        NProgress.start();
+        $password = $('#password').val();
+        $diachi = $('#address').val();
+        $cmnd = $('#personal_id').val();
+        $ngaycap = $('#personal_id_issued_date').val();
+        $noicap = $('#personal_id_issued_by').val();
+
+        $.ajax({
+            url: '/Update/profile',
+            contentType: 'application/json',
+            type: 'GET',
+            dataType: 'json',
+            data: { password: $password, diachi: $diachi, cmnd:$cmnd, ngaycap: $ngaycap, noicap: $noicap }
+        })
+                           .success(function (result) {
+                               alert(result.error_message);
+
+                               if (result.error_code == "00") {
+                                   window.location = "eWallet";
+                                   return;
+                               }
+                               else {
+                                   alert(result.error_message);
+                                   return;
+                               }
+                           })
+
+                           .error(function (jqXHR, textStatus, errorThrown) {
+                               return;
+                           });
+    });
+</script>
+

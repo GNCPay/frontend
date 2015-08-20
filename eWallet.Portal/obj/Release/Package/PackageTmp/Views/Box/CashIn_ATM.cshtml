@@ -1,13 +1,21 @@
 ﻿@{
     Layout = null;
 }
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <ul class="breadcrumb">
     <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
     <li>Nạp tiền vào từ thẻ ATM Online</li>
 </ul>
 <div class="separator"></div>
 <div id="login-dp" class="content-dp col-md-7">
-    <form class="form" role="form" method="post" id="login-nav">
+    <div class="form"  id="login-nav">
         <div class="form-group">
             <label class="sr-only" for="amount">Số tiền</label>
             <input type="text" class="form-control" id="amount" placeholder="Số tiền nạp" required>
@@ -19,11 +27,12 @@
         <div class="form-group">
             <button class="btn btn-primary btn-block make_topup">Xác nhận</button>
         </div>
-    </form>
+    </div>
 </div>
 <div id="login-dp" class="content-dp col-md-5">
     Hướng dẫn dịch vụ
 </div>
+
 <script>
     $("#bank").autocomplete({
         source: function (request, response) {
@@ -59,7 +68,7 @@
     });
     $('.make_topup').click(function () {
         //if (!$('#login-nav').valid()) return;
-        //NProgress.start();
+        NProgress.start();
         var $bank = $('#bank').val();
         var $amount = $('#amount').val();
         
@@ -72,8 +81,10 @@
             timeout: 30000
         })
            .success(function (result) {
-               //NProgress.done();
+               NProgress.done();
+               alert(result.error_message);
                if (result.error_code == "00") {
+                   
                    window.location = result.url_redirect;
                    return;
                }
@@ -82,7 +93,7 @@
                }
            })
            .error(function (xhr, status) {
-               //NProgress.done();
+               NProgress.done();
                alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
            });
     });
