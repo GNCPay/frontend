@@ -58,7 +58,7 @@
 <script>
     $('#btn-update').click(function () {
         //NProgress.start();
-        $Password = $('#password').val();
+        $password = $('#password').val();
         $Address = $('#address').val();
         $personalid = $('#personal_id').val();
         $personalid_issueddate = $('#personal_id_issued_date').val();
@@ -69,7 +69,7 @@
             contentType: 'application/json',
             type: 'GET',
             dataType: 'json',
-            data: { Password: $Password, Address: $Address, personalid: $personalid, personalid_issueddate: $personalid_issueddate, personalid_issuedby: $personalid_issuedby }
+            data: { password: $password, Address: $Address, personalid: $personalid, personalid_issueddate: $personalid_issueddate, personalid_issuedby: $personalid_issuedby }
         })
                            .success(function (result) {
                                alert(result.error_message);
