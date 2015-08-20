@@ -78,6 +78,8 @@ namespace eWallet.Portal.Controllers
 
         public ActionResult CashOutBank()
         {
+            ViewBag.accounts = Helper.DataHelper.List("cashout_bank_account",
+               Query.EQ("profile", ((dynamic)Session["user_profile"])._id));
             return View(Url.Content("/Views/Box/CashOut_Bank.cshtml"));
         }
         public ActionResult CashOutBankAccounts()
@@ -130,11 +132,12 @@ namespace eWallet.Portal.Controllers
             Helper.DataHelper.Delete("cashout_bank_account",id);
             return Json(new { error_code = "00", error_message = "Cập nhật thành công" }, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult CashOut_SaveBankAccount(string id, string bank, string branch, string number, string name)
+        public JsonResult CashOut_SaveBankAccount(string id, string code, string bank, string branch, string number, string name)
         {
             dynamic account = new Data.DynamicObj();
             if (String.IsNullOrEmpty(id)) id = Guid.NewGuid().ToString();
             account._id = id;
+            account.code = code;
             account.bank = bank;
             account.branch = branch;
             account.number = number;

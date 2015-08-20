@@ -13,7 +13,10 @@
                 <label for="account_name" class="sr-only">Tài khoản nhận*</label>
                 <select name="account_name" id="account_name" class="form-control">
                     <option value="">-- Chọn tài khoản nhận tiền --</option>
-                    <option value="1232">123535565 - NGUYEN QUANG HUY - VCB</option>
+                    @foreach (dynamic account in ViewBag.accounts)
+                    {
+                        <option value="@account._id">@account.number/@account.name - @account.bank</option>
+                    }
                 </select>
             </div>
             <div class="form-group">
