@@ -247,7 +247,7 @@
     <Content Include="css\owl.transitions.css" />
     <Content Include="css\prettyPhoto.css" />
     <Content Include="css\responsive.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="Views\favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
