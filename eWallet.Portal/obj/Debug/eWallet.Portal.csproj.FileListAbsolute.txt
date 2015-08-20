@@ -173,6 +173,6 @@ C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\System.Net.Http.Forma
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\System.Web.Http.xml
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\System.Web.Http.WebHost.xml
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\Microsoft.Web.Infrastructure.xml
-C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.csprojResolveAssemblyReference.cache
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.dll
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.pdb
+C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.csprojResolveAssemblyReference.cache
