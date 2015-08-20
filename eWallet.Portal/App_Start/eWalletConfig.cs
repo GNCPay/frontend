@@ -10,6 +10,7 @@ namespace eWallet.Portal.App_Start
         public static Data.MongoHelper BusinessDataHelper, CoreDataHelper;
         public static void Config()
         {
+            Helper.Init();
             BusinessDataHelper = new Data.MongoHelper("mongodb://127.0.0.1:27017/ewallet_business", "ewallet_business");
             CoreDataHelper = new Data.MongoHelper("mongodb://127.0.0.1:27017/ewallet_core", "ewallet_core");
         }

@@ -44,7 +44,6 @@ namespace eWallet.Portal.Controllers
             dynamic result = new eWallet.Data.DynamicObj(Helper.RequestToServer(_request));
             ViewBag.accounts = result.response;
             return View();
-            return View();
         }
 
         public ActionResult Profile()
@@ -83,6 +82,9 @@ namespace eWallet.Portal.Controllers
         }
         public ActionResult CashOutBankAccounts()
         {
+            //Lay danh sach cac tai khoan Cashout da khai bao
+            ViewBag.accounts = Helper.DataHelper.List("cashout_bank_account",
+                Query.EQ("profile", ((dynamic)Session["user_profile"])._id));
             return View(Url.Content("/Views/Box/CashOut_BankAccounts.cshtml"));
         }
 
@@ -120,5 +122,28 @@ namespace eWallet.Portal.Controllers
             return Json(new { error_code = result.error_code.ToString(), error_message = result.error_message.ToString() }, JsonRequestBehavior.AllowGet);
         }
         #endregion "Process to server"
+
+        #region "Process to database"
+
+        public JsonResult CashOut_RemoveBankAccount(string id)
+        {
+            Helper.DataHelper.Delete("cashout_bank_account",id);
+            return Json(new { error_code = "00", error_message = "Cập nhật thành công" }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult CashOut_SaveBankAccount(string id, string bank, string branch, string number, string name)
+        {
+            dynamic account = new Data.DynamicObj();
+            if (String.IsNullOrEmpty(id)) id = Guid.NewGuid().ToString();
+            account._id = id;
+            account.bank = bank;
+            account.branch = branch;
+            account.number = number;
+            account.name = name;
+            account.profile = ((dynamic)Session["user_profile"])._id;
+            Helper.DataHelper.Save("cashout_bank_account",account);
+
+            return Json(new { error_code = "00",error_message="Cập nhật thành công"},JsonRequestBehavior.AllowGet);
+        }
+        #endregion "Process to database"
     }
 }
