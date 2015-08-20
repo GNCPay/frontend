@@ -19,13 +19,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/29/2015 00:18:59</publishTime>
     </File>
     <File Include="bin/eWallet.Common.dll">
-      <publishTime>08/05/2015 09:16:44</publishTime>
+      <publishTime>08/12/2015 22:16:23</publishTime>
     </File>
     <File Include="bin/eWallet.Data.dll">
-      <publishTime>08/05/2015 09:16:45</publishTime>
+      <publishTime>08/12/2015 22:16:24</publishTime>
     </File>
     <File Include="bin/eWallet.Portal.dll">
-      <publishTime>08/14/2015 23:06:56</publishTime>
+      <publishTime>08/19/2015 21:15:29</publishTime>
     </File>
     <File Include="bin/eWallet.SMS.dll">
       <publishTime>08/05/2015 09:16:48</publishTime>
@@ -67,7 +67,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/29/2015 00:19:10</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>03/29/2015 00:18:50</publishTime>
+      <publishTime>07/08/2013 15:15:08</publishTime>
     </File>
     <File Include="bin/MongoDB.Bson.dll">
       <publishTime>03/27/2015 20:15:03</publishTime>
@@ -76,22 +76,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/27/2015 20:15:03</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>10/02/2013 12:10:10</publishTime>
+      <publishTime>08/17/2015 14:48:52</publishTime>
     </File>
     <File Include="bin/Owin.dll">
       <publishTime>03/29/2015 00:19:06</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>04/02/2015 01:30:33</publishTime>
+      <publishTime>08/17/2015 14:48:53</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>07/31/2015 23:39:26</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>04/02/2015 01:30:34</publishTime>
+      <publishTime>08/17/2015 14:48:53</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>04/02/2015 01:30:35</publishTime>
+      <publishTime>08/17/2015 14:48:53</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
       <publishTime>07/31/2015 23:39:26</publishTime>
@@ -526,7 +526,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/09/2014 15:01:28</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>08/09/2015 22:06:13</publishTime>
+      <publishTime>08/17/2015 14:49:04</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>05/03/2015 14:30:29</publishTime>
@@ -568,7 +568,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/03/2015 14:30:45</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>08/12/2015 20:53:31</publishTime>
+      <publishTime>08/19/2015 15:10:50</publishTime>
     </File>
     <File Include="theme/css/glyphicons.css">
       <publishTime>02/21/2013 14:05:17</publishTime>
@@ -1027,13 +1027,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/02/2015 23:57:44</publishTime>
     </File>
     <File Include="Views/Account/Profile.cshtml">
-      <publishTime>08/13/2015 10:04:45</publishTime>
+      <publishTime>08/19/2015 14:38:18</publishTime>
     </File>
     <File Include="Views/Box/Business_Profile.cshtml">
       <publishTime>08/04/2015 15:05:17</publishTime>
     </File>
     <File Include="Views/Box/CashIn_ATM.cshtml">
-      <publishTime>08/14/2015 22:43:24</publishTime>
+      <publishTime>08/19/2015 13:30:11</publishTime>
     </File>
     <File Include="Views/Box/CashIn_BankAccount.cshtml">
       <publishTime>08/03/2015 23:15:12</publishTime>
@@ -1051,13 +1051,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/08/2015 12:09:26</publishTime>
     </File>
     <File Include="Views/Box/Payment_Billing.cshtml">
-      <publishTime>08/03/2015 23:25:51</publishTime>
+      <publishTime>08/19/2015 14:27:46</publishTime>
     </File>
     <File Include="Views/Box/Payment_Commerce.cshtml">
       <publishTime>08/03/2015 23:28:54</publishTime>
     </File>
     <File Include="Views/Box/Payment_Loan.cshtml">
-      <publishTime>08/08/2015 10:30:04</publishTime>
+      <publishTime>08/19/2015 14:13:14</publishTime>
     </File>
     <File Include="Views/Box/Topup_Mobile.cshtml">
       <publishTime>08/03/2015 23:35:11</publishTime>
@@ -1084,13 +1084,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/12/2015 20:24:28</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>08/12/2015 15:52:59</publishTime>
+      <publishTime>08/18/2015 10:58:52</publishTime>
     </File>
     <File Include="Views/Home/Login.cshtml">
       <publishTime>08/13/2015 14:33:04</publishTime>
     </File>
     <File Include="Views/Home/Register.cshtml">
       <publishTime>08/12/2015 22:51:15</publishTime>
+    </File>
+    <File Include="Views/Payment/Confirm.cshtml">
+      <publishTime>08/18/2015 16:20:05</publishTime>
     </File>
     <File Include="Views/Payment/Result.cshtml">
       <publishTime>08/14/2015 23:01:22</publishTime>
@@ -1102,7 +1105,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/12/2015 20:27:08</publishTime>
     </File>
     <File Include="Views/Service/Payment.cshtml">
-      <publishTime>08/12/2015 20:26:58</publishTime>
+      <publishTime>08/19/2015 14:12:52</publishTime>
     </File>
     <File Include="Views/Service/Topup.cshtml">
       <publishTime>08/12/2015 20:26:48</publishTime>
@@ -1114,7 +1117,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/03/2015 14:30:46</publishTime>
     </File>
     <File Include="Views/Shared/_FrontEndLayout.cshtml">
-      <publishTime>08/12/2015 10:21:26</publishTime>
+      <publishTime>08/18/2015 11:01:06</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>08/13/2015 00:05:00</publishTime>
@@ -1138,7 +1141,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/04/2015 21:20:59</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/13/2015 00:10:01</publishTime>
+      <publishTime>08/19/2015 21:15:38</publishTime>
     </File>
   </ItemGroup>
 </Project>

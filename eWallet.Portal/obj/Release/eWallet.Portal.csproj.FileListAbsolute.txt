@@ -68,3 +68,22 @@ C:\Data\Projects\GNC\eWallet Solution\eWallet.Portal\bin\Microsoft.Owin.Security
 C:\Data\Projects\GNC\eWallet Solution\eWallet.Portal\obj\Release\eWallet.Portal.csprojResolveAssemblyReference.cache
 C:\Data\Projects\GNC\eWallet Solution\eWallet.Portal\obj\Release\eWallet.Portal.dll
 C:\Data\Projects\GNC\eWallet Solution\eWallet.Portal\obj\Release\eWallet.Portal.pdb
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\eWallet.Portal.dll.config
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\eWallet.Portal.dll
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\eWallet.Portal.pdb
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\eWallet.Common.dll
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\eWallet.Data.dll
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\eWallet.SMS.dll
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\Newtonsoft.Json.dll
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\System.Net.Http.Formatting.dll
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\System.Web.Http.dll
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\System.Web.Http.WebHost.dll
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\Newtonsoft.Json.xml
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\System.Net.Http.Formatting.xml
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\System.Web.Http.xml
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\System.Web.Http.WebHost.xml
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\Microsoft.Web.Infrastructure.xml
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\obj\Release\eWallet.Portal.csprojResolveAssemblyReference.cache
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\obj\Release\eWallet.Portal.dll
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\obj\Release\eWallet.Portal.pdb

@@ -2,12 +2,14 @@
     ViewBag.Title = "Thanh toán hóa đơn";
     Layout = null;
 }
+
+
 <ul class="breadcrumb">
     <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
     <li>Thanh toán hóa đơn</li>
 </ul>
 <div class="separator"></div>
-<div id="login-dp" class="content-dp col-md-10 col-md-offset-1">
+<div id="login-dp" class="content-dp col-md-7">
     <div class="form">
         <div class="form-group">
             <label class="sr-only" for="cb_services">Dịch vụ</label>
@@ -43,17 +45,61 @@
             <input class="form-control" id="txt_bill_customer" type="text" placeholder="Họ và tên khách hàng" readonly />
         </div>
         <div class="form-group" id="payment_method">
-            <a class="btn btn-primary" data-toggle="modal" href="#myModal"><i class="glyphicon glyphicon-credit-card"></i> Thẻ ATM</a>
-            <a class="btn btn-primary" data-toggle="modal" href="#paybyeWalletModal"><i class="glyphicon glyphicon-piggy-bank"></i> Ví GNC</a>
+            <a class="btn btn-primary" data-toggle="modal" href="#bankModal"><i class="glyphicon glyphicon-credit-card"></i> Thẻ ATM</a>
+            <a class="btn btn-primary" id="pay_with_ewallet"><i class="glyphicon glyphicon-piggy-bank"></i> Ví GNC</a>
+        </div>
+        <div class="form-group payment-method-content payment-method-atm" >
+            <label class="sr-only" for="bank">Ngân hàng</label>
+            <input type="text" id="bank" name="bank" class="form-control" placeholder="Ngân hàng phát hành thẻ" required>
         </div>
     </div>
 </div>
+<div id="login-dp2" class="content-dp col-md-5">
+    Hướng dẫn dịch vụ
+</div>
+
 <script>
+
+    $("#bank").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("ListBank","Proxy",null,null)',
+                dataType: "json",
+                data: {
+                    q: request.term
+                },
+                success: function (result) {
+                    response(result);
+                    //response($.map(data.d, function (item) {
+                    //    return { label: item.Names, id: item.Guardian_Id }
+                    //}))
+                },
+                error: function (xhr, status) {
+                    alert("Không thể load dữ liệu. Vui lòng thử lại sau!" + xhr + status);
+                }
+            });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+            //log(ui.item ?
+            //  "Selected: " + ui.item.label :
+            //  "Nothing selected, input was " + this.value);
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
     $(document).ready(function () {
-        //$('#payment_method').hide();
+        $('.payment-method-content').hide();
         $('#cb_providers').hide();
         $('#cb_providers option').hide();
-
+        $('#btn-pay-by-atm').click(function () {
+            $('.payment-method-content').hide();
+            $('.payment-method-atm').show();
+        })
         $('#cb_services').change(function () {
             $('#cb_providers').show();
             var $selected_service = $('#cb_services').val();
@@ -68,18 +114,20 @@
             var $service = $('#cb_services').val();
             var $provider = $('#cb_providers').val();
             if ($billNo) {
+                NProgress.start();
                 $.ajax({
-                    url: '@Url.Action("CheckBill", "Payment")',
+                    url: '@Url.Action("Payment_CheckBill", "Service")',
                     contentType: 'application/json; charset=utf-8',
                     type: 'GET',
                     dataType: 'json',
                     data: { service: $service, provider: $provider, bill_code: $billNo }
                 })
                .success(function (result) {
+                   NProgress.done();
                    if (result.error_code == "00") {
                        //var resp = result.response;
-                       $('#txt_bill_amount').val("123232");
-                       $('#txt_bill_customer').val(result.response);
+                       $('#txt_bill_amount').val(result.response.amount);
+                       $('#txt_bill_customer').val(result.response.customer_name);
                        $('#payment_method').show();
                    }
                    else {
@@ -87,12 +135,78 @@
                    }
                })
                .error(function (xhr, status) {
-                   //alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
+                   NProgress.done();
+                   alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
                });
+                
             }
             else {
                 alert('Bạn cần nhập vào mã hóa đơn/mã khách hàng');
             }
+        });
+
+        $('.PayBillWithATM').click(function () {
+            NProgress.start();
+            var $bank = $(this).data("bank");
+
+            var $billNo = $('#txt_bill_code').val();
+            var $service = $('#cb_services').val();
+            var $provider = $('#cb_providers').val();
+            var $amount = $('#txt_bill_amount').val();
+            var $customer_name = $('#txt_bill_customer').val();
+            $.ajax({
+                url: '@Url.Action("Payment_PayBill", "Service")',
+                contentType: 'application/json; charset=utf-8',
+                type: 'GET',
+                dataType: 'json',
+                data: { service: $service, provider: $provider, bill_code: $billNo, amount: $amount, payment_provider: "BANKNET", bank: $bank }
+            })
+               .success(function (result) {
+                   NProgress.done();
+                   if (result.error_code == "00") {
+                       window.location = result.url_redirect;
+                       return;
+                   }
+                   else {
+                       alert(result.error_message);
+                   }
+               })
+               .error(function (xhr, status) {
+                   NProgress.done();
+                   alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
+               });
+        });
+
+        $('#pay_with_ewallet').click(function () {
+            NProgress.start();
+            var $bank = $(this).data("bank");
+
+            var $billNo = $('#txt_bill_code').val();
+            var $service = $('#cb_services').val();
+            var $provider = $('#cb_providers').val();
+            var $amount = $('#txt_bill_amount').val();
+            var $customer_name = $('#txt_bill_customer').val();
+            $.ajax({
+                url: '@Url.Action("Payment_PayBill", "Service")',
+                contentType: 'application/json; charset=utf-8',
+                type: 'GET',
+                dataType: 'json',
+                data: { service: $service, provider: $provider, bill_code: $billNo, amount: $amount, payment_provider: "GNCE", bank: "" }
+            })
+               .success(function (result) {
+                   NProgress.done();
+                   if (result.error_code == "00") {
+                       window.location =  window.location.protocol + "//" + window.location.host + "/" + result.url_redirect;
+                       return;
+                   }
+                   else {
+                       alert(result.error_message);
+                   }
+               })
+               .error(function (xhr, status) {
+                   NProgress.done();
+                   alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
+               });
         });
     });
 </script>
