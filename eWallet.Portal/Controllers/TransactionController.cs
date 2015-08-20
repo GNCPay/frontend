@@ -12,7 +12,7 @@ namespace eWallet.Portal.Controllers
     public class TransactionController : Controller
     {
 
-        // GET: /Transaction/
+        // GET: /Transaction
         public ActionResult List(string id)
         {
           if (Session["user_profile"] != null)
