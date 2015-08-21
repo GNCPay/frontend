@@ -11,6 +11,7 @@
         <table id="myDataTable" class="col-md-12 table-bordered table-striped table-condensed cf">
             <thead class="cf">
                 <tr>
+                    <th>Tên gợi nhớ</th>
                     <th>Ngân hàng</th>
                     <th>Chi nhánh</th>
                     <th>Số tài khoản</th>
@@ -19,20 +20,20 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach(dynamic account in ViewBag.accounts){
                 <tr>
-                    <td>Vietcombank - Ngân hàng TMCP Ngoại Thương Việt Nam (VCB)</td>
-                    <td>Sai Gon</td>
-                    <td>
-                        0123456789
+                    <td>@account.code</td>
+                    <td>@account.bank</td>
+                    <td>@account.branch</td>
+                    <td>@account.number
                     </td>
+                    <td>@account.name</td>
                     <td>
-                        NGUYÊN QUANG HUY
-                    </td>
-                    <td>
-                        <a class="btn btn-default" data-toggle="modal" href="#update_bank_account_info"><i class="glyphicon glyphicon-remove"> </i></a>
-                        <a class="btn btn-default" data-toggle="modal" href="#update_bank_account_info"><i class="glyphicon glyphicon-edit"> </i></a>
+                        <a class="btn btn-default btn-remove" data-id="@account._id"><i class="glyphicon glyphicon-remove"> </i></a>
+                        <a class="btn btn-default btn-edit" data-code="@account.code" data-id="@account._id" data-bank="@account.bank" data-branch="@account.branch" data-number="@account.number" data-name="@account.name" data-toggle="modal" href="#update_bank_account_info"><i class="glyphicon glyphicon-edit"> </i></a>
                     </td>
                 </tr>
+                }
             </tbody>
         </table>
     </div>
@@ -40,46 +41,39 @@
 </div>
 
 <div id="update_bank_account_info" class="modal fade">
-    <div id="bank-overlay" class="modal-dialog">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="myModalLabel">Cập nhật tài khoản</h4>
             </div>
             <div class="modal-body bank_content">
-                <form class="form-horizontal">
-                    <fieldset>
-                        <div class="form-group">
-                            <label for="inputEmail" class="col-lg-4 control-label">Chủ tài khoản*</label>
-                            <div class="col-lg-8">
-                                <input type="text" name="account_name" id="account_name" class="form-control" value="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="account_number" class="col-lg-4 control-label">Số tài khoản*</label>
-                            <div class="col-lg-8">
-                                <input type="text" name="account_number" id="account_number" class="form-control" placeholder="Số tài khoản">
-                            </div>
-                        </div>
+                <form class="form" role="form">
+                    <input type="text" id="account_id" name="account_id" hidden />
+                    <div class="form-group">
+                        <label for="account_name" class="sr-only">Tên gợi nhớ</label>
+                        <input type="text" name="account_name" id="account_code" placeholder="Tên gợi nhớ" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="account_name" class="sr-only">Chủ tài khoản*</label>
+                        <input type="text" name="account_name" id="account_name" placeholder="Tên chủ tài khoản" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="account_number" class="sr-only">Số tài khoản*</label>
+                        <input type="text" name="account_number" id="account_number" class="form-control" placeholder="Số tài khoản">
+                    </div>
 
-                        <div class="form-group">
-                            <label for="inputEmail" class="col-lg-4 control-label">Ngân hàng*</label>
-                            <div class="col-lg-8">
-                                <input type="text" id="account_bank" name="account_bank" class="form-control" value="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail" class="col-lg-4 control-label">Chi nhánh</label>
-                            <div class="col-lg-8">
-                                <input type="text" id="account_branch" name="account_branch" class="form-control" placeholder="Chi nhánh">
-                            </div>
-                        </div>
-                        <div class="form-group" id="payment_method">
-                            <div class="col-lg-8 col-lg-offset-4">
-                                <a class="btn btn-success make_transaction" id="btn_confirm">Xác nhận</a>
-                            </div>
-                        </div>
-                    </fieldset>
+                    <div class="form-group">
+                        <label for="account_bank" class="sr-only">Ngân hàng*</label>
+                        <input type="text" id="account_bank" name="account_bank" placeholder="Tên ngân hàng" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="account_branch" class="sr-only">Chi nhánh</label>
+                        <input type="text" id="account_branch" name="account_branch" class="form-control" placeholder="Chi nhánh">
+                    </div>
+                    <div class="form-group" id="payment_method">
+                            <a class="btn btn-success save_account" id="btn_confirm">Xác nhận</a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -118,4 +112,52 @@
             $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
         }
     });
+    $('.btn-edit').click(function () {
+        $('#account_bank').val($(this).data("bank"));
+        $('#account_branch').val($(this).data("branch"));
+        $('#account_number').val($(this).data("number"));
+        $('#account_name').val($(this).data("name"));
+        $('#account_id').val($(this).data("id"));
+        $('#account_code').val($(this).data("code"));
+        //$('#update_bank_account_info').modal('show');
+    });
+    $('.btn-remove').click(function () {
+        $id = $(this).data("id");
+       
+        $.ajax({
+            url: '@Url.Action("CashOut_RemoveBankAccount", "Account", null, null)',
+            dataType: "json",
+            data: {
+                id: $id
+            },
+            success: function (result) {
+                loadPage("CashOutBankAccounts");
+            },
+            error: function (xhr, status) {
+                alert("Không thể load dữ liệu. Vui lòng thử lại sau!" + xhr + status);
+            }
+        });
+    });
+    $('#btn_confirm').click(function () {
+        $code = $('#account_code').val();
+        $bank = $('#account_bank').val();
+        $branch = $('#account_branch').val();
+        $number = $('#account_number').val();
+        $name = $('#account_name').val();
+        $id = $('#account_id').val();
+        $.ajax({
+            url: '@Url.Action("CashOut_SaveBankAccount", "Account", null, null)',
+            dataType: "json",
+            data: {
+                id:$id, code:$code, bank: $bank, branch:$branch, number:$number,name:$name
+            },
+            success: function (result) {
+                $('#update_bank_account_info').modal('hide');
+                loadPage("CashOutBankAccounts");
+            },
+            error: function (xhr, status) {
+                alert("Không thể load dữ liệu. Vui lòng thử lại sau!" + xhr + status);
+            }
+        });
+    })
 </script>

@@ -15,17 +15,12 @@ namespace eWallet.Portal.Controllers
         // GET: /Transaction
         public ActionResult List(string id)
         {
-          if (Session["user_profile"] != null)
+            //id: transaction_type
+            if (Session["user_profile"] != null)
             {
-                if (String.IsNullOrEmpty(id))
-                {
-                    id = "Personal";
-                }
-                //dynamic[] list_profile = App_Start.eWalletConfig.BusinessDataHelper.List("transactions", null, SortBy.Descending("system_created_time"));
-                //ViewBag.Type = id;
-                //ViewBag.List = list_profile;
-                //return View();
-                dynamic trans= (dynamic)Session["user_profile"];
+                //Nếu id = empty -> lay all giao dich cua user
+                //Neu id <> empty -> lay giao dich cua user ma co transaction_type = id
+                dynamic trans = (dynamic)Session["user_profile"];
                 dynamic[] list_profile = Helper.DataHelper.List("transactions", Query.EQ("created_by", trans._id), SortBy.Descending("system_created_time"));
                 ViewBag.Type = id;
                 ViewBag.List = list_profile;

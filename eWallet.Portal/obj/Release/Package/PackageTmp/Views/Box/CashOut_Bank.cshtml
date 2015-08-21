@@ -10,10 +10,13 @@
     <form class="form">
         <fieldset>
             <div class="form-group">
-                <label for="account_name" class="sr-only">Tài khoản nhận*</label>
-                <select name="account_name" id="account_name" class="form-control">
+                <label for="bank" class="sr-only">Tài khoản nhận*</label>
+                <select name="bank" id="bank" class="form-control">
                     <option value="">-- Chọn tài khoản nhận tiền --</option>
-                    <option value="1232">123535565 - NGUYEN QUANG HUY - VCB</option>
+                    @foreach (dynamic account in ViewBag.accounts)
+                    {
+                        <option value="@account._id">@account.code/@account.name - @account.number</option>
+                    }
                 </select>
             </div>
             <div class="form-group">
@@ -65,5 +68,32 @@
         close: function () {
             $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
         }
+    });
+    $('#btn_confirm').click(function () {
+        NProgress.start();
+        var $amount = $('#amount').val();
+        var $note = $('#note').val();
+        var $bank = $('#bank').val();
+        $.ajax({
+            url: '@Url.Action("CashOut_Bank", "Service")',
+            contentType: 'application/json; charset=utf-8',
+            type: 'GET',
+            dataType: 'json',
+            data: { account_id:$bank, amount:$amount,note:$note }
+        })
+           .success(function (result) {
+               NProgress.done();
+               if (result.error_code == "00") {
+                   window.location = window.location.protocol + "//" + window.location.host + "/" + result.url_redirect;
+                   return;
+               }
+               else {
+                   alert(result.error_message);
+               }
+           })
+           .error(function (xhr, status) {
+               NProgress.done();
+               alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
+           });
     });
 </script>

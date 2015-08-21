@@ -6,9 +6,9 @@
     <div id="login-dp" class="col-md-6 col-md-offset-3">
         Đăng nhập qua
         <div class="social-buttons">
-            <div class="fb-login-button btn col-sm-12" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
-            @*<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>*@
-            @*<a href="#" class="btn btn-tw"><i class="fa fa-google"></i> Google</a>*@
+            @*<div class="fb-login-button btn col-sm-12" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>*@
+            <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+            <a href="#" class="btn btn-tw"><i class="fa fa-google"></i> Google</a>
         </div>
         hoặc
         <form class="form" role="form" id="login-nav">
@@ -48,7 +48,6 @@
             })
                            .success(function (result) {
                                NProgress.done();
-                               alert(result.error_message);
                                if (result.error_code == "00") {
                                    window.location = "eWallet";
                                }
@@ -59,7 +58,7 @@
 
                            .error(function (jqXHR, textStatus, errorThrown) {
                                NProgress.done();
-                               alert('Cos')
+                               alert('Có lỗi trong quá trình xử lý. Xin vui lòng thử lại sau!')
                            });
         }
     });
