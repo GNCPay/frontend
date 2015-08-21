@@ -111,6 +111,7 @@ namespace eWallet.Portal.Controllers
                 return Json(new { error_code = response.error_code, error_message = response.error_message}, JsonRequestBehavior.AllowGet);
         }
         #endregion "CASHOUT PROCESS"
+
         #region "PAYMENT PROCESS"
         public JObject Payment_CheckBill(string service, string provider, string bill_code)
         {
@@ -140,5 +141,39 @@ namespace eWallet.Portal.Controllers
             return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
         }
         #endregion
+
+        #region "TOPUP PROCESS"
+        public JsonResult Topup_Mobile(string mobile,string service, string provider, string price, string payment_provider, string bank)
+        {
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'TOPUP',request:{channel:'WEB', profile:"
+                + ((dynamic)Session["user_profile"])._id
+               + ", service:'" + service
+               + "', provider:'" + provider
+               + "', ref_id: '" + mobile
+               + "', amount: " + price
+               + ", quantity: 1"
+               + ", payment_provider: '" + payment_provider
+               + "', bank: '" + bank +
+           "'}}";
+            dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
+            return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Topup_Online(string accoount_id, string service, string provider, string price, string payment_provider, string bank)
+        {
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'TOPUP',request:{channel:'WEB', profile:"
+                + ((dynamic)Session["user_profile"])._id
+               + ", service:'" + service
+               + "', provider:'" + provider
+               + "', ref_id: '" + accoount_id
+               + "', amount: " + price
+               + ", quantity: 1"
+               + ", payment_provider: '" + payment_provider
+               + "', bank: '" + bank +
+           "'}}";
+            dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
+            return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion "TOPUP PROCESS"
     }
 }

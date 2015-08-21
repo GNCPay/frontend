@@ -15,7 +15,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Created Time</th>
-                        <th>@*<input type="checkbox" id="checkall" />*@Customer ID</th>
+                        @*<th>Customer ID</th>*@
                         <th>Type</th>
                         <th>Service</th>
                         <th>Provider</th>
@@ -25,14 +25,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (dynamic p in ViewBag.List)
+                    @for (int i = 0; i < ViewBag.List.Length;i++ )
                     {
-
-
+                        var p = ViewBag.List[i];
                         <tr>
                             <td data-title="ID"><a href="#" data-id="@p._id" title="@p.note">@p._id.Split('-')[0]</a> </td>
                             <td data-title="CreatedTime">@DateTime.ParseExact(p.system_created_time, "yyyyMMddHHmmss", null).ToString("dd/MM/yyyy HH:mm:ss") </td>
-                            <td data-title="Customer">@p.created_by</td>
+                            @*<td data-title="Customer">@p.created_by</td>*@
                             <td data-title="Type">@p.transaction_type</td>
                             <td data-title="Service">@p.service</td>
                             <td data-title="Provider">@p.provider</td>
