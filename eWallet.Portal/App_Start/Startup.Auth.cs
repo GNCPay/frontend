@@ -32,7 +32,12 @@ namespace eWallet.Portal
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication();
+            Microsoft.Owin.Security.Google.GoogleOAuth2AuthenticationOptions option = new Microsoft.Owin.Security.Google.GoogleOAuth2AuthenticationOptions();
+            option.CallbackPath = new PathString("/signin-google");
+            option.ClientId = "151452439229-0jk3ndrakujq0kho3v5ctcd070ktia17.apps.googleusercontent.com";
+            option.ClientSecret = "aNQFeT1BfjWeSmz3t2Z__gND";
+
+            app.UseGoogleAuthentication(option);
         }
     }
 }
