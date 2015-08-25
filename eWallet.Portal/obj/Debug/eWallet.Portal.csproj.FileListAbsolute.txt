@@ -180,4 +180,9 @@ C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\MongoDB.AspNet.Identi
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\Facebook.dll
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\Facebook.xml
+<<<<<<< HEAD
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.csprojResolveAssemblyReference.cache
+=======
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\Facebook.dll
+C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\Facebook.xml
+>>>>>>> origin/open_authentication

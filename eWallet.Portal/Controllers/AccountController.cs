@@ -109,16 +109,18 @@ namespace eWallet.Portal.Controllers
         {
             return View();
         }
+        [Authorize]
         public ActionResult Me()
         {
-            if (Session["user_profile"] == null)
-                return RedirectToAction("Login", "Home");
-            string _request = @"{system:'web_frontend', module:'finance', type:'two_way', function:'list_account_profile', request:{profile_id:"
-            + ((dynamic)Session["user_profile"])._id +
-            "}}";
+            //if (Session["user_profile"] == null)
+            //    return RedirectToAction("Login", "Home");
+            //string _request = @"{system:'web_frontend', module:'finance', type:'two_way', function:'list_account_profile', request:{profile_id:"
+            //+ ((dynamic)Session["user_profile"])._id +
+            //"}}";
+            //User.Identity.GetUserId();
+            //dynamic result = new eWallet.Data.DynamicObj(Helper.RequestToServer(_request));
 
-            dynamic result = new eWallet.Data.DynamicObj(Helper.RequestToServer(_request));
-            ViewBag.accounts = result.response;
+            ViewBag.accounts = null;//Helper.DataHelper.List("finance_account",Query.EQ("profile_user_id result.response;
             return View();
         }
 
@@ -263,11 +265,14 @@ namespace eWallet.Portal.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser() { UserName = model.UserName };
+                
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //Goi ham dang ky tren server de tao finance_account
+
                     await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("eWallet", "Home");
                 }
                 else
                 {
@@ -456,6 +461,7 @@ namespace eWallet.Portal.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        //Goi sang server de tao tai khoan
                         await SignInAsync(user, isPersistent: false);
                         return RedirectToLocal(returnUrl);
                     }
@@ -474,7 +480,7 @@ namespace eWallet.Portal.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("eWallet", "Home");
         }
 
         //
@@ -556,7 +562,7 @@ namespace eWallet.Portal.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("eWallet", "Home");
             }
         }
 

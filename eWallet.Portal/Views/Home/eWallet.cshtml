@@ -202,7 +202,7 @@
                 <div class="portfolio-info">
                     <h3>Thanh toán điện tử</h3>
                     Thanh toán hóa đơn, bảo hiểm, trả góp...
-                    <a class="preview" href="@Url.Action("Payment","Service",null,null)" rel="prettyPhoto"><i class="fa fa-money"></i></a>
+                    <a class="preview no_service" href="@Url.Action("Payment","Service",null,null)" rel="prettyPhoto"><i class="fa fa-money"></i></a>
                 </div>
             </div>
         </div><!--/.portfolio-item-->
@@ -212,7 +212,7 @@
                 <div class="portfolio-info">
                     <h3>Đặt vé trực tuyến</h3>
                     Đặt vé máy bay, xem phim,...
-                    <a class="preview" href="/images/portfolio/full.jpg" rel="prettyPhoto"><i class="fa fa-plane"></i></a>
+                    <a class="preview no_service" href="@Url.Action("Booking","Service",null,null)" rel="prettyPhoto"><i class="fa fa-plane"></i></a>
                 </div>
             </div>
         </div><!--/.portfolio-item-->
@@ -222,7 +222,7 @@
                 <div class="portfolio-info">
                     <h3>Nạp tiền điện tử</h3>
                     Nạp tiền điện thoại, tài khoản game...
-                    <a class="preview" href="@Url.Action("Topup","Service",null,null)" rel="prettyPhoto"><i class="fa fa-mobile"></i></a>
+                    <a class="preview no_service" href="@Url.Action("Topup","Service",null,null)" rel="prettyPhoto"><i class="fa fa-mobile"></i></a>
                 </div>
             </div>
         </div><!--/.portfolio-item-->
@@ -232,7 +232,7 @@
                 <div class="portfolio-info">
                     <h3>Chuyển khoản</h3>
                     Chuyển khoản tới tài khoản ví, ngân hàng...
-                    <a class="preview" href="@Url.Action("Transfer","Service",null,null)" rel="prettyPhoto"><i class="fa fa-usd"></i></a>
+                    <a class="preview no_service" href="@Url.Action("Transfer","Service",null,null)" rel="prettyPhoto"><i class="fa fa-usd"></i></a>
                 </div>
             </div>
         </div><!--/.portfolio-item-->
@@ -244,7 +244,7 @@
                     <div class="portfolio-info">
                         <h3>Dịch vụ Doanh nghiệp</h3>
                         Dịch vụ Thu, chi hộ dành cho doanh nghiệp
-                        <a class="preview" href="@Url.Action("Collection","Service",null,null)" rel="prettyPhoto"><i class="fa fa-building-o"></i></a>
+                        <a class="preview no_service" href="@Url.Action("Collection","Service",null,null)" rel="prettyPhoto"><i class="fa fa-building-o"></i></a>
                     </div>
                 </div>
             </div><!--/.portfolio-item-->
@@ -252,3 +252,9 @@
     </div>
     @*</div>*@
 </div>
+<script>
+    $('.no_service').attr("href",'#');
+    $('.no_service').click(function () {
+        alert("Dịch vụ đang được bảo trì. Vui lòng quay lại sau!");
+    })
+</script>

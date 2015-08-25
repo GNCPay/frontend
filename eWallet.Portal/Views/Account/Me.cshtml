@@ -28,17 +28,17 @@
             <div class="col-xs-12 col-sm-4 emphasis">
                 <h3><strong> @(((dynamic)ViewBag.accounts)[0].balance.ToString("N0")) đ</strong></h3>
                 Số dư<br />
-                <a class="btn btn-success btn-block" href=@Url.Content("/topup")><span class="fa fa-plus-circle"></span> Nạp tiền </a>
+                <a class="btn btn-success btn-block" href=@Url.Action("CashIn","Account",null,null)><span class="fa fa-plus-circle"></span> Nạp tiền </a>
             </div>
             <div class="col-xs-12 col-sm-4 emphasis">
                 <h3><strong>@(((dynamic)ViewBag.accounts)[0].available_balance.ToString("N0")) đ</strong></h3>
                 Số dư khả dụng<br />
-                <a class="btn btn-info btn-block" href=@Url.Content("/transfer")><span class="fa fa-user"></span> Rút tiền</a>
+                <a class="btn btn-info btn-block" href = @Url.Action("CashOut", "Account", null, null)><span class="fa fa-user"></span> Rút tiền</a>
             </div>
             <div class="col-xs-12 col-sm-4 emphasis">
                 <h3><strong> @(((dynamic)ViewBag.accounts)[3].balance.ToString("N0")) đ</strong></h3>
                 Điểm thưởng<br/>
-                <a class="btn btn-primary btn-block" href=@Url.Content("/account/transaction")><span class="fa fa-plus-circle"></span> Lịch sử Giao dịch </a>
+                <a class="btn btn-primary btn-block" href = @Url.Action("Index", "Transaction", null, null)><span class="fa fa-plus-circle"></span> Lịch sử Giao dịch </a>
             </div>
         </div>
     </div>
