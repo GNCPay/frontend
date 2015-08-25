@@ -20,16 +20,23 @@
             </p>
             <div class="form-group">
                 @Html.LabelFor(m => m.UserName, new { @class = "sr-only" })
-                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.UserName)
             </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Fullname, new { @class = "sr-only" })
+                @Html.TextBoxFor(m => m.Fullname, new { @class = "form-control", placeholder = "Nhập họ tên của bạn" })
+                @Html.ValidationMessageFor(m => m.Fullname)
+            </div>
+
             <div class="form-group">
                 @Html.LabelFor(m => m.Mobile, new { @class = "sr-only" })
-                    @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Mobile)
+                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Nhập số điện thoại của bạn" })
+                @Html.ValidationMessageFor(m => m.Mobile)
             </div>
+
             <div class="form-group">
-                    <input type="submit" class="btn btn-default " value="Register" />
+                <input type="submit" class="btn btn-default " value="Register" />
             </div>
         }
     </div>
