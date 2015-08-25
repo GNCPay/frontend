@@ -266,9 +266,6 @@ namespace eWallet.Portal.Controllers
             {
                 var user = new ApplicationUser() { UserName = model.UserName };
                 
-                //Bo sung phan tao id khi dang ky
-                string _prefix = DateTime.Today.ToString("yy") + DateTime.Today.DayOfYear.ToString().PadLeft(3, '0');
-                user.Profile = long.Parse(String.Concat(_prefix, Helper.DataHelper.GetNextSquence("account_" + _prefix).ToString().PadLeft(5, '0')));
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -458,10 +455,6 @@ namespace eWallet.Portal.Controllers
                     return View("ExternalLoginFailure");
                 }
                 var user = new ApplicationUser() { UserName = model.UserName };
-                //Bo sung phan tao id khi dang ky
-                string _prefix = DateTime.Today.ToString("yy") + DateTime.Today.DayOfYear.ToString().PadLeft(3, '0');
-                user.Profile = long.Parse(String.Concat(_prefix, Helper.DataHelper.GetNextSquence("account_" + _prefix).ToString().PadLeft(5, '0')));
-
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
