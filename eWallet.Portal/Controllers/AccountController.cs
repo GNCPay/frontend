@@ -294,10 +294,10 @@ namespace eWallet.Portal.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser() { UserName = model.Email };
-                PostRegister(model.Fullname, model.Email, model.Mobile);
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    PostRegister(model.Fullname, model.Email, model.Mobile);
                     //Goi ham dang ky tren server de tao finance_account
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("eWallet", "Home");
