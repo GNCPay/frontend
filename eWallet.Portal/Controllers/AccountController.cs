@@ -267,7 +267,7 @@ namespace eWallet.Portal.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("eWallet", "Home");
                 }
                 else
                 {
@@ -474,7 +474,7 @@ namespace eWallet.Portal.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("eWallet", "Home");
         }
 
         //
@@ -556,7 +556,7 @@ namespace eWallet.Portal.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("eWallet", "Home");
             }
         }
 
