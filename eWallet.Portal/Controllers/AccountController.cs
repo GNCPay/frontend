@@ -11,11 +11,82 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Web.Security;
+using Facebook;
 namespace eWallet.Portal.Controllers
 {
     public class AccountController : Controller
     {
+        //#region "Facebook"
+        ////GET Facebook User
+        //private Uri RedirectUri
+        //{
+        //    get
+        //    {
+        //        var uriBuilder = new UriBuilder(Request.Url);
+        //        uriBuilder.Query = null;
+        //        uriBuilder.Fragment = null;
+        //        uriBuilder.Path = Url.Action("FacebookCallback");
+        //        return uriBuilder.Uri;
+        //    }
+        //}
+
+        //[AllowAnonymous]
+        //public ActionResult loginf()
+        //{
+        //    return View();
+        //}
+
+        //public ActionResult logout()
+        //{
+        //    FormsAuthentication.SignOut();
+        //    return View("Login");
+        //}
+
+        //[AllowAnonymous]
+        //public ActionResult Facebook()
+        //{
+        //    var fb = new FacebookClient();
+        //    var loginUrl = fb.GetLoginUrl(new
+        //    {
+        //        client_id = "207429956074584",
+        //        client_secret = "bce03ed2eac12f52cba2e20b5e2b20a0",
+        //        redirect_uri = RedirectUri.AbsoluteUri,
+        //        response_type = "code",
+        //        scope = "email"
+        //    });
+
+        //    return Redirect(loginUrl.AbsoluteUri);
+        //}
+
+        //public ActionResult FacebookCallback(string code)
+        //{
+        //    var fb = new FacebookClient();
+        //    dynamic result = fb.Post("oauth/access_token", new
+        //    {
+        //        client_id = "207429956074584",
+        //        client_secret = "bce03ed2eac12f52cba2e20b5e2b20a0",
+        //        redirect_uri = RedirectUri.AbsoluteUri,
+        //        code = code
+        //    });
+
+        //    var accessToken = result.access_token;
+
+
+        //    Session["AccessToken"] = accessToken;
+
+        //    fb.AccessToken = accessToken;
+
+        //    // Lay thong tin user
+        //    dynamic me = fb.Get("me?fields=id,name,email");
+        //    string emailf = me.email;
+        //    string namef = me.name;
+
+        //    FormsAuthentication.SetAuthCookie(emailf, false);
+        //    return RedirectToAction("", "Account");
+        //}
+        //#endregion
+
         //
         // GET: /Account/
         public ActionResult List(string id)
@@ -24,7 +95,7 @@ namespace eWallet.Portal.Controllers
             {
                 id = "Personal";
             }
-            dynamic[] list_profile = App_Start.eWalletConfig.BusinessDataHelper.List("finance_account", Query.NE("type","P"), SortBy.Ascending("profile"));
+            dynamic[] list_profile = App_Start.eWalletConfig.BusinessDataHelper.List("finance_account", Query.NE("type", "P"), SortBy.Ascending("profile"));
             ViewBag.Type = id;
             ViewBag.List = list_profile;
             return View();
@@ -105,7 +176,7 @@ namespace eWallet.Portal.Controllers
 
         public JsonResult CashOut_RemoveBankAccount(string id)
         {
-            Helper.DataHelper.Delete("cashout_bank_account",id);
+            Helper.DataHelper.Delete("cashout_bank_account", id);
             return Json(new { error_code = "00", error_message = "Cập nhật thành công" }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult CashOut_SaveBankAccount(string id, string code, string bank, string branch, string number, string name)
@@ -119,9 +190,9 @@ namespace eWallet.Portal.Controllers
             account.number = number;
             account.name = name;
             account.profile = ((dynamic)Session["user_profile"])._id;
-            Helper.DataHelper.Save("cashout_bank_account",account);
+            Helper.DataHelper.Save("cashout_bank_account", account);
 
-            return Json(new { error_code = "00",error_message="Cập nhật thành công"},JsonRequestBehavior.AllowGet);
+            return Json(new { error_code = "00", error_message = "Cập nhật thành công" }, JsonRequestBehavior.AllowGet);
         }
         #endregion "Process to database"
         public AccountController()

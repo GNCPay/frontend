@@ -11,6 +11,7 @@ namespace eWallet.Portal.Models
         [Required]
         [Display(Name = "Mobile")]
         public string Mobile { get; set; }
+
     }
 
     public class ManageUserViewModel
