@@ -201,20 +201,28 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li><a href="@Url.Action("Personal","Account",null,null)">@User.Identity.Name</a></li>
-                        <li><a href="@Url.Action("SignOut","Home",null,null)">Thoát</a></li>
-                    }
-                    else
-                    {
+                @if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
 
-                        <li><a href="@Url.Action("Login","Home",null,null)">Đăng nhập</a></li>
-                        <li><a href="@Url.Action("Register","Home",null,null)">Đăng ký</a></li>
-                    }
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.Name + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
 
-                </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
