@@ -11,12 +11,18 @@
             <hr />
             @Html.ValidationSummary()
             <div class="form-group">
-                @Html.LabelFor(m => m.UserName, new { @class = "sr-only" })
+                @Html.LabelFor(m => m.Email, new { @class = "sr-only" })
 
-                @Html.TextBoxFor(m => m.UserName, new {placeholder="Tên đăng nhập", @class = "form-control" })
+                @Html.TextBoxFor(m => m.Email, new { placeholder = "Email đăng nhập", @class = "form-control" })
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.Mobile, new {  @class = "sr-only" })
+                @Html.LabelFor(m => m.Fullname, new { @class = "sr-only" })
+
+                @Html.TextBoxFor(m => m.Fullname, new { placeholder = "Họ tên của bạn", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Fullname)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Mobile, new { @class = "sr-only" })
 
                 @Html.TextBoxFor(m => m.Mobile, new { placeholder = "Số điện thoại", @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Mobile)
@@ -32,7 +38,7 @@
                 @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Xác nhận mật khẩu", @class = "form-control" })
             </div>
             <div class="form-group">
-                    <input type="submit" class="btn btn-primary btn-block" value="Đăng ký" />
+                <input type="submit" class="btn btn-primary btn-block" value="Đăng ký" />
             </div>
         }
     </div>

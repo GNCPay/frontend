@@ -292,13 +292,12 @@ namespace eWallet.Portal.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
-                
+                var user = new ApplicationUser() { UserName = model.Email };
+                PostRegister(model.Fullname, model.Email, model.Mobile);
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     //Goi ham dang ky tren server de tao finance_account
-
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("eWallet", "Home");
                 }
@@ -482,14 +481,15 @@ namespace eWallet.Portal.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { UserName = model.UserName};
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    PostRegister(model.Fullname, model.UserName, model.Mobile);
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
-                        //Goi sang server de tao tai khoan
+                       //Goi sang server de tao tai khoan
                         await SignInAsync(user, isPersistent: false);
                         return RedirectToLocal(returnUrl);
                     }
