@@ -174,6 +174,34 @@ namespace eWallet.Portal.Controllers
         }
         #endregion
 
+        #region "Process to server"
+
+        public JsonResult PostRegister(string full_name, string email, string mobile)
+        {
+            string request = @"{system:'web_frontend', module:'profile', function:'register', type:'two_way', request:{full_name:'" + full_name + "', id:'" + email + "', mobile:'" + mobile + "'}}";
+            dynamic response = JObject.Parse(Helper.RequestToServer(request));
+            return Json(new { error_code = response.error_code.ToString(), error_message = response.error_message.ToString() }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult PostLogin(string email, string password, bool is_remember)
+        {
+            string _srequest = @"{system:'web_frontend', module:'security',type:'two_way', function:'login',request:{id:'" + email + "', password:'" + password + "'}}";
+            dynamic result = new eWallet.Data.DynamicObj(Helper.RequestToServer(_srequest));
+            if (result.error_code.ToString() == "00")
+            {
+                FormsAuthentication.SetAuthCookie(email, false);
+                Session["user_profile"] = result.response;
+                //if (!String.IsNullOrEmpty(ReturnUrl)) return Redirect(ReturnUrl);
+                //return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                //ModelState.AddModelError("login_error", result.error_message.ToString());
+                //return View();
+            }
+            return Json(new { error_code = result.error_code.ToString(), error_message = result.error_message.ToString() }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion "Process to server"
         #region "Process to database"
 
         public JsonResult CashOut_RemoveBankAccount(string id)
