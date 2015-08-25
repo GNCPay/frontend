@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
 using Owin;
 
 namespace eWallet.Portal
@@ -28,9 +29,23 @@ namespace eWallet.Portal
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            var options = new FacebookAuthenticationOptions
+            {
+                AppId = "207429956074584",
+                AppSecret = "bce03ed2eac12f52cba2e20b5e2b20a0",
+                Provider = new FacebookAuthenticationProvider
+                {
+                    OnAuthenticated = async context =>
+                    {
+                        string accessToken = context.AccessToken;
+                        string facebookUserName = context.UserName;
+                        string facebookName = context.Name;
+                        var serializedUser = context.User;
+                    }
+                }
+            };
+
+            app.UseFacebookAuthentication(options);
 
             Microsoft.Owin.Security.Google.GoogleOAuth2AuthenticationOptions option = new Microsoft.Owin.Security.Google.GoogleOAuth2AuthenticationOptions();
             option.CallbackPath = new PathString("/signin-google");

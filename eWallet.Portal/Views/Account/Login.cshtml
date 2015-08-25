@@ -9,7 +9,8 @@
     <div id="login-dp" class="col-md-6 col-md-offset-3">
         Đăng nhập qua
         <div class="social-buttons">
-            @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+            @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl})
+            @*@Html.ActionLink("Facebook", "Facebook", "Account", new object { }, new { @class = "btn btn-fb" })*@
         </div>
         hoặc
         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "login-nav", @class = "form", role = "form" }))
