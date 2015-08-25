@@ -9,6 +9,10 @@ namespace eWallet.Portal.Models
         public string UserName { get; set; }
 
         [Required]
+        [Display(Name = "Full name")]
+        public string Fullname { get; set; }
+
+        [Required]
         [Display(Name = "Mobile")]
         public string Mobile { get; set; }
 

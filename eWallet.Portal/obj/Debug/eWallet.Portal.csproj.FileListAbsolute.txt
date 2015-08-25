@@ -167,7 +167,6 @@ C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\System.Net.Http.Forma
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\System.Web.Http.xml
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\System.Web.Http.WebHost.xml
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\Microsoft.Web.Infrastructure.xml
-C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.csprojResolveAssemblyReference.cache
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.dll
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.pdb
 C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\Microsoft.AspNet.Identity.Core.dll
@@ -181,5 +180,9 @@ C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\MongoDB.AspNet.Identi
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\Facebook.dll
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\Facebook.xml
+<<<<<<< HEAD
+C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.csprojResolveAssemblyReference.cache
+=======
 C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\Facebook.dll
 C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\Facebook.xml
+>>>>>>> origin/open_authentication
