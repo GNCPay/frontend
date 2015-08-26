@@ -3,12 +3,8 @@
 @{
     ViewBag.Title = "Manage Account";
 }
-
-<h2>@ViewBag.Title.</h2>
-
-<p class="text-success">@ViewBag.StatusMessage</p>
 <div class="row">
-    <div class="col-md-12">
+    <div id="login-dp" class="col-md-6 col-md-offset-3">
         @if (ViewBag.HasLocalPassword)
         {
             @Html.Partial("_ChangePasswordPartial")
