@@ -36,8 +36,8 @@ namespace eWallet.Portal.Controllers
 
         public ActionResult Fail(string transaction_type, string trans_id, string amount)
         {
-            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'cancel',request:{transaction_type:'" + transaction_type + "', user_id:" + User.Identity.Name
-                + ",trans_id:'"
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'cancel',request:{transaction_type:'" + transaction_type + "', user_id:'" + User.Identity.Name
+                + "',trans_id:'"
             + trans_id +
             "', amount: " + amount +
             "}}";
@@ -62,8 +62,8 @@ namespace eWallet.Portal.Controllers
 
         public ActionResult ConfirmWithOTP(string transaction_type, string trans_id, long amount, string otp)
         {
-            string request = @"{system:'web_frontend', module:'transaction',type:'two_way',function:'confirm_otp',request:{user_id:" + User.Identity.Name
-                + ",transaction_type:'" + transaction_type + "', trans_id:'" + trans_id + "', amount: " + amount + ", otp:'" + otp + "'}}";
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way',function:'confirm_otp',request:{user_id:'" + User.Identity.Name
+                + "',transaction_type:'" + transaction_type + "', trans_id:'" + trans_id + "', amount: " + amount + ", otp:'" + otp + "'}}";
             dynamic result = JObject.Parse(Helper.RequestToServer(request));
             if (result.error_code != "00")
             {

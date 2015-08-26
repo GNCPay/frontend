@@ -259,6 +259,7 @@
     <Content Include="images\portfolio\07.jpg" />
     <Content Include="images\portfolio\08.jpg" />
     <Content Include="images\portfolio\bg.jpg" />
+    <Content Include="images\portfolio\logo.png" />
     <Content Include="Views\favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
