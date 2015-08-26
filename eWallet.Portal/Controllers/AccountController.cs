@@ -158,14 +158,14 @@ namespace eWallet.Portal.Controllers
         public ActionResult CashOutBank()
         {
             ViewBag.accounts = Helper.DataHelper.List("cashout_bank_account",
-               Query.EQ("profile", ((dynamic)Session["user_profile"])._id));
+               Query.EQ("profile", User.Identity.Name));
             return View(Url.Content("/Views/Box/CashOut_Bank.cshtml"));
         }
         public ActionResult CashOutBankAccounts()
         {
             //Lay danh sach cac tai khoan Cashout da khai bao
             ViewBag.accounts = Helper.DataHelper.List("cashout_bank_account",
-                Query.EQ("profile", ((dynamic)Session["user_profile"])._id));
+                Query.EQ("profile", User.Identity.Name));
             return View(Url.Content("/Views/Box/CashOut_BankAccounts.cshtml"));
         }
 
@@ -220,7 +220,7 @@ namespace eWallet.Portal.Controllers
             account.branch = branch;
             account.number = number;
             account.name = name;
-            account.profile = ((dynamic)Session["user_profile"])._id;
+            account.profile = User.Identity.Name;
             Helper.DataHelper.Save("cashout_bank_account", account);
 
             return Json(new { error_code = "00", error_message = "Cập nhật thành công" }, JsonRequestBehavior.AllowGet);

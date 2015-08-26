@@ -83,9 +83,9 @@ namespace eWallet.Portal.Controllers
         {
             bank = ProxyController.GetBankCode(bank);
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:"
-                 + ((dynamic)Session["user_profile"])._id
+                 + User.Identity.Name
                 + ",service:'GNCP', provider:'BANKNET', payment_provider:'BANKNET', amount: " + amount +
-            ", note: '" + "CASH IN ACCOUNT " + ((dynamic)Session["user_profile"])._id + ", AMOUNT " + amount +
+            ", note: '" + "CASH IN ACCOUNT " + User.Identity.Name + ", AMOUNT " + amount +
             "', bank:'" + bank +
             "'}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
@@ -99,7 +99,7 @@ namespace eWallet.Portal.Controllers
             dynamic account = Helper.DataHelper.Get("cashout_bank_account",
                 Query.EQ("_id", account_id));
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHOUT',request:{channel:'WEB', profile:"
-               + ((dynamic)Session["user_profile"])._id + ",service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + amount +
+               + User.Identity.Name + ",service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + amount +
          ", note: '" + note +
          "', receiver:{account_bank:'" + account.bank +
          "', account_branch:'" + account.branch + "',account_number:'" + account.number +
@@ -129,7 +129,7 @@ namespace eWallet.Portal.Controllers
         public JsonResult Payment_PayBill(string service, string provider, string bill_code, long amount, string payment_provider, string bank)
         {
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'payment',request:{channel:'web', profile:"
-                + ((dynamic)Session["user_profile"])._id
+                + User.Identity.Name
                + ", product_code: '" + bill_code
                + "', service: '" + service
                + "', provider: '" + provider
@@ -146,7 +146,7 @@ namespace eWallet.Portal.Controllers
         public JsonResult Topup_Mobile(string mobile,string service, string provider, string price, string payment_provider, string bank)
         {
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'TOPUP',request:{channel:'WEB', profile:"
-                + ((dynamic)Session["user_profile"])._id
+                + User.Identity.Name
                + ", service:'" + service
                + "', provider:'" + provider
                + "', ref_id: '" + mobile
@@ -162,7 +162,7 @@ namespace eWallet.Portal.Controllers
         public JsonResult Topup_Online(string accoount_id, string service, string provider, string price, string payment_provider, string bank)
         {
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'TOPUP',request:{channel:'WEB', profile:"
-                + ((dynamic)Session["user_profile"])._id
+                + User.Identity.Name
                + ", service:'" + service
                + "', provider:'" + provider
                + "', ref_id: '" + accoount_id
