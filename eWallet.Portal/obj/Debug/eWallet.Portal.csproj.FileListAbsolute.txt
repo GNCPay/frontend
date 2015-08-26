@@ -17,6 +17,7 @@ C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\System.Web.Http.WebHo
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\Microsoft.Web.Infrastructure.xml
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.dll
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.pdb
+<<<<<<< HEAD
 C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\eWallet.Portal.dll.config
 C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\eWallet.Portal.dll
 C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\eWallet.Portal.pdb
@@ -40,3 +41,6 @@ C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\bin\Microsoft.Web.Infrastr
 C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.csprojResolveAssemblyReference.cache
 C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.dll
 C:\Users\Huy\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.pdb
+=======
+C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.csprojResolveAssemblyReference.cache
+>>>>>>> origin/open_authentication
