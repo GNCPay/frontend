@@ -113,20 +113,21 @@ namespace eWallet.Portal.Controllers
         [Authorize]
         public ActionResult Me()
         {
-            //if (Session["user_profile"] == null)
-            //    return RedirectToAction("Login", "Home");
-            //string _request = @"{system:'web_frontend', module:'finance', type:'two_way', function:'list_account_profile', request:{profile_id:"
-            //+ ((dynamic)Session["user_profile"])._id +
-            //"}}";
-            //User.Identity.GetUserId();
-            //dynamic result = new eWallet.Data.DynamicObj(Helper.RequestToServer(_request));
+            dynamic profile = Helper.DataHelper.Get("profile", Query.EQ("user_name", User.Identity.Name));
+            dynamic[] accounts = Helper.DataHelper.List("finance_account", Query.EQ("profile", profile._id));
+            dynamic model = new Data.DynamicObj();
+            model.Profile = profile;
+            model.Accounts = accounts;
 
             ViewBag.accounts = null;//Helper.DataHelper.List("finance_account",Query.EQ("profile_user_id result.response;
-            return View();
+            return View(model);
         }
 
         public ActionResult Profile()
         {
+            bool hasPassword = HasPassword();
+            ViewBag.HasLocalPassword = hasPassword;
+            ViewBag.profile = Helper.DataHelper.Get("profile", Query.EQ("user_name", User.Identity.Name));
             return View();
         }
 
