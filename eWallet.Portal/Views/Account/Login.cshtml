@@ -28,9 +28,10 @@
                 @Html.PasswordFor(m => m.Password, new { placeholder = "Mật khẩu truy cập", @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Password)
             </div>
-            <div class="checkbox">
+            <div>
                         @Html.CheckBoxFor(m => m.RememberMe)
-                        @Html.LabelFor(m => m.RememberMe)
+                        <span>Remember me?</span>
+                        @*@Html.LabelFor(m => m.RememberMe)*@
             </div>
             <div class="form-group">
                 <input id="btn-login" type="submit" value="Đăng nhập" class="btn btn-primary btn-block" />
