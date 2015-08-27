@@ -42,10 +42,10 @@ namespace eWallet.Portal.Controllers
             "', amount: " + amount +
             "}}";
             dynamic result = JObject.Parse(Helper.RequestToServer(request));
-            ViewBag.Result = "không thành công";
+            ViewBag.Result = "hủy không thành công";
             if (result.error_code == "00")
             {
-                ViewBag.Result = "thành công";
+                ViewBag.Result = "hủy thành công";
 
             }
             return View("Result");

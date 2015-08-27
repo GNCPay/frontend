@@ -85,15 +85,13 @@ namespace eWallet.Portal.Controllers
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:'"
                  + User.Identity.Name
                 + "',service:'GNCP', provider:'BANKNET', payment_provider:'BANKNET', amount: " + amount +
-            ", note: '" + "CASH IN ACCOUNT '" + User.Identity.Name + "', AMOUNT " + amount +
+            ", note: '" + "CASH IN ACCOUNT " + User.Identity.Name + ", AMOUNT " + amount +
             "', bank:'" + bank +
             "'}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
             return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect }, JsonRequestBehavior.AllowGet);
         }
-        #endregion "CASHIN PROCESS"
 
-        #region "CASHOUT PROCESS"
         public JsonResult CashOut_Bank(string account_id, string amount, string note)
         {
             dynamic account = Helper.DataHelper.Get("cashout_bank_account",
@@ -104,6 +102,24 @@ namespace eWallet.Portal.Controllers
          "', receiver:{account_bank:'" + account.bank +
          "', account_branch:'" + account.branch + "',account_number:'" + account.number +
          "',account_name:'" + account.name + "'}}}";
+            dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
+            if (response.error_code == "00")
+                return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { error_code = response.error_code, error_message = response.error_message }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion "CASHIN PROCESS"
+
+        #region "CASHOUT PROCESS"
+        public JsonResult CashIn_Bank
+            (string trans_date, string account_bank,string account_number,long amount, string note)
+        {
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:'"
+               + User.Identity.Name + "',service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + amount +
+         ", note: '" + note +
+         "', sender:{account_bank:'" + account_bank +
+         "', account_number:'" + account_number +
+         "',transfer_date:'" + trans_date + "'}}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
             if (response.error_code == "00")
                 return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
