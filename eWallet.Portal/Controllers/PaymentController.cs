@@ -59,25 +59,38 @@ namespace eWallet.Portal.Controllers
             ViewBag.amount = amount;
             return View();
         }
-
-        public ActionResult ConfirmWithOTP(string transaction_type, string trans_id, long amount, string otp)
+        public ActionResult Result(string result)
+        {
+            ViewBag.Result = "không thành công";
+            
+            if (result.ToLower() == "ok")
+                ViewBag.Result = "thành công";
+            
+            return View();
+        }
+        public JsonResult ConfirmWithOTP(string transaction_type, string trans_id, long amount, string otp)
         {
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way',function:'confirm_otp',request:{user_id:'" + User.Identity.Name
                 + "',transaction_type:'" + transaction_type + "', trans_id:'" + trans_id + "', amount: " + amount + ", otp:'" + otp + "'}}";
             dynamic result = JObject.Parse(Helper.RequestToServer(request));
-            if (result.error_code != "00")
-            {
-                ViewBag.Result = "không thành công";
-                if (result.response.url_redirect != null) return Redirect(result.response.url_redirect.ToString());
-                return View("Result");
-            }
-            else
-            {
-                ViewBag.Result = "thành công";
-                if (result.response.url_redirect != null) return Redirect(result.response.url_redirect.ToString());
-                ViewBag.Trans = result.response;
-                return View("Result");
-            }
+            return Json(new { error_code = result.error_code.ToString(), error_message = result.error_message.ToString(), response = result.response }, JsonRequestBehavior.AllowGet);
+            //if (result.error_code != "00")
+            //{
+            //    if (result.response.url_redirect != null) return Redirect(result.response.url_redirect.ToString());
+            //    return View("Result");
+            //}
+            //else
+            //{
+            //    ViewBag.Result = "thành công";
+            //    if (result.response.url_redirect != null) return Redirect(result.response.url_redirect.ToString());
+            //    ViewBag.Trans = result.response;
+            //    return View("Result");
+            //}
+        }
+        public JsonResult ResendOTP()
+        {
+            Helper.SendRequestOTP(User.Identity.Name);
+            return Json(new { error_code = "00", error_message = "Mã xác thực đã được gửi thành công tới điện thoại của bạn. Vui lòng kiểm tra và tiếp tục xác nhận giao dịch" }, JsonRequestBehavior.AllowGet);
         }
 	}
 }

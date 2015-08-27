@@ -20,13 +20,13 @@
                             <input class="form-control" id="otp" name="otp" type="text" />
                         </div>
                         <div class="col-lg-3">
-                            <button type="button" id="resend_otp" name="resend_otp" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i> Gửi lại</button>
+                            <button type="button" id="btn-resend" name="btn-resend" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i> Gửi lại</button>
                         </div>
                     </div>
                     <div class="form-group" id="payment_method">
                         <div class="col-lg-8 col-lg-offset-4">
-                            <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-calendar"></i> Đồng ý</button>
-                            <button type="reset" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i> Hủy</button>
+                            <button type="button" id="btn-confirm" class="btn btn-success"><i class="glyphicon glyphicon-calendar"></i> Đồng ý</button>
+                            <a href=@Url.Action("Fail", "Payment", new { transaction_type = ViewBag.transaction_type ,trans_id=ViewBag.trans_id, amount=ViewBag.amount}, null) class="btn btn-default" id="btn-cancel"><i class="glyphicon glyphicon-calendar"></i> Hủy</a>
                         </div>
                     </div>
                 </fieldset>
@@ -34,4 +34,52 @@
         </div>
     </div>
 </div>
+<script>
+    $('#btn-confirm').click(function () {
+        $.ajax({
+            url: '@Url.Action("ConfirmWithOTP", "Payment")',
+            contentType: 'application/json; charset=utf-8',
+            type: 'GET',
+            dataType: 'json',
+            data: { transaction_type: $('#transaction_type').val(), trans_id: $('#trans_id').val(), amount: $('#amount').val(), otp: $('#otp').val() },
+            timeout: 30000
+        })
+           .success(function (result) {
+               NProgress.done();
+               alert(result.error_message);
+               if (result.error_code == "00") {
+                   if (result.response.url_redirect) {
+                       window.location = result.response.url_redirect;
+                   } else {
+                       window.location = "Result?result=ok";
+                   }
+                   return;
+               }
+               else {
+               }
+           })
+           .error(function (xhr, status) {
+               NProgress.done();
+               alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
+           });
+    })
 
+    $('#btn-resend').click(function () {
+        $.ajax({
+            url: '@Url.Action("ResendOTP", "Payment")',
+            contentType: 'application/json; charset=utf-8',
+            type: 'GET',
+            dataType: 'json',
+            data: { },
+            timeout: 30000
+        })
+           .success(function (result) {
+               NProgress.done();
+               alert(result.error_message);
+           })
+           .error(function (xhr, status) {
+               NProgress.done();
+               alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
+           });
+    })
+</script>
