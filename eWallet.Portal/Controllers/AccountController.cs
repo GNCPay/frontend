@@ -114,7 +114,7 @@ namespace eWallet.Portal.Controllers
         public ActionResult Me()
         {
             dynamic profile = Helper.DataHelper.Get("profile", Query.EQ("user_name", User.Identity.Name));
-            dynamic[] accounts = Helper.DataHelper.List("finance_account", Query.EQ("profile", profile._id));
+            dynamic[] accounts = Helper.DataHelper.List("finance_account", Query.EQ("profile",profile._id));
             dynamic model = new Data.DynamicObj();
             model.Profile = profile;
             model.Accounts = accounts;
@@ -298,8 +298,8 @@ namespace eWallet.Portal.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                  //Goi ham dang ky tren server de tao finance_account
                     PostRegister(model.Fullname, model.Email, model.Mobile);
-                    //Goi ham dang ky tren server de tao finance_account
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("eWallet", "Home");
                 }
@@ -487,11 +487,11 @@ namespace eWallet.Portal.Controllers
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    PostRegister(model.Fullname, model.UserName, model.Mobile);
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                   result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
                        //Goi sang server de tao tai khoan
+                        PostRegister(model.Fullname, model.UserName, model.Mobile);
                         await SignInAsync(user, isPersistent: false);
                         return RedirectToLocal(returnUrl);
                     }
