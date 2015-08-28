@@ -112,7 +112,7 @@ namespace eWallet.Portal.Controllers
 
         #region "CASHOUT PROCESS"
         public JsonResult CashIn_Bank
-            (string trans_date, string account_bank,string account_number,long amount, string note)
+            (string trans_date, string account_bank, string account_number, long amount, string note)
         {
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:'"
                + User.Identity.Name + "',service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + amount +
@@ -124,7 +124,7 @@ namespace eWallet.Portal.Controllers
             if (response.error_code == "00")
                 return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
             else
-                return Json(new { error_code = response.error_code, error_message = response.error_message}, JsonRequestBehavior.AllowGet);
+                return Json(new { error_code = response.error_code, error_message = response.error_message }, JsonRequestBehavior.AllowGet);
         }
         #endregion "CASHOUT PROCESS"
 
@@ -154,12 +154,16 @@ namespace eWallet.Portal.Controllers
                + "', bank: '" + bank +
            "'}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
-            return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            if (response.error_code == "00")
+                return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { error_code = response.error_code, error_message = response.error_message }, JsonRequestBehavior.AllowGet);
+
         }
         #endregion
 
         #region "TOPUP PROCESS"
-        public JsonResult Topup_Mobile(string mobile,string service, string provider, string price, string payment_provider, string bank)
+        public JsonResult Topup_Mobile(string mobile, string service, string provider, string price, string payment_provider, string bank)
         {
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'TOPUP',request:{channel:'WEB', profile:'"
                 + User.Identity.Name

@@ -25,13 +25,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/12/2015 22:16:24</publishTime>
     </File>
     <File Include="bin/eWallet.Portal.dll">
-      <publishTime>08/20/2015 16:18:26</publishTime>
+      <publishTime>08/27/2015 16:58:57</publishTime>
     </File>
     <File Include="bin/eWallet.SMS.dll">
       <publishTime>08/05/2015 09:16:48</publishTime>
     </File>
+    <File Include="bin/Facebook.dll">
+      <publishTime>08/25/2015 12:03:30</publishTime>
+    </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
-      <publishTime>03/29/2015 00:19:05</publishTime>
+      <publishTime>08/24/2015 22:46:15</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
       <publishTime>03/29/2015 00:19:06</publishTime>
@@ -69,6 +72,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>07/08/2013 15:15:08</publishTime>
     </File>
+    <File Include="bin/MongoDB.AspNet.Identity.dll">
+      <publishTime>08/25/2015 14:36:19</publishTime>
+    </File>
     <File Include="bin/MongoDB.Bson.dll">
       <publishTime>03/27/2015 20:15:03</publishTime>
     </File>
@@ -76,7 +82,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/27/2015 20:15:03</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>08/17/2015 14:48:52</publishTime>
+      <publishTime>08/25/2015 00:18:16</publishTime>
     </File>
     <File Include="bin/Owin.dll">
       <publishTime>03/29/2015 00:19:06</publishTime>
@@ -307,31 +313,37 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/12/2015 15:48:19</publishTime>
     </File>
     <File Include="images/portfolio/01.jpg">
-      <publishTime>11/30/2014 23:33:50</publishTime>
+      <publishTime>08/26/2015 16:08:55</publishTime>
     </File>
     <File Include="images/portfolio/02.jpg">
-      <publishTime>11/30/2014 23:35:08</publishTime>
+      <publishTime>08/26/2015 16:08:55</publishTime>
     </File>
     <File Include="images/portfolio/03.jpg">
-      <publishTime>11/30/2014 23:35:36</publishTime>
+      <publishTime>08/26/2015 16:08:55</publishTime>
     </File>
     <File Include="images/portfolio/04.jpg">
-      <publishTime>11/30/2014 23:34:24</publishTime>
+      <publishTime>08/26/2015 16:08:55</publishTime>
     </File>
     <File Include="images/portfolio/05.jpg">
-      <publishTime>11/30/2014 23:38:22</publishTime>
+      <publishTime>08/26/2015 16:08:55</publishTime>
     </File>
     <File Include="images/portfolio/06.jpg">
-      <publishTime>11/30/2014 23:38:12</publishTime>
+      <publishTime>08/26/2015 16:08:55</publishTime>
     </File>
     <File Include="images/portfolio/07.jpg">
-      <publishTime>11/30/2014 23:37:56</publishTime>
+      <publishTime>08/26/2015 16:08:55</publishTime>
     </File>
     <File Include="images/portfolio/08.jpg">
-      <publishTime>11/30/2014 23:37:40</publishTime>
+      <publishTime>08/26/2015 16:08:55</publishTime>
+    </File>
+    <File Include="images/portfolio/bg.jpg">
+      <publishTime>08/27/2015 11:05:58</publishTime>
     </File>
     <File Include="images/portfolio/full.jpg">
       <publishTime>11/30/2014 23:37:00</publishTime>
+    </File>
+    <File Include="images/portfolio/logo.png">
+      <publishTime>08/26/2015 20:57:28</publishTime>
     </File>
     <File Include="images/portfolio/partner_banknet.jpg">
       <publishTime>08/12/2015 10:00:00</publishTime>
@@ -526,7 +538,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/09/2014 15:01:28</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>08/17/2015 14:49:04</publishTime>
+      <publishTime>08/25/2015 14:37:12</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>05/03/2015 14:30:29</publishTime>
@@ -568,7 +580,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/03/2015 14:30:45</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>08/19/2015 15:10:50</publishTime>
+      <publishTime>08/24/2015 23:27:23</publishTime>
     </File>
     <File Include="theme/css/glyphicons.css">
       <publishTime>02/21/2013 14:05:17</publishTime>
@@ -1017,26 +1029,53 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Account/CashOut.cshtml">
       <publishTime>08/03/2015 00:04:52</publishTime>
     </File>
+    <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
+      <publishTime>08/25/2015 14:56:16</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginFailure.cshtml">
+      <publishTime>08/21/2015 09:15:41</publishTime>
+    </File>
     <File Include="Views/Account/List.cshtml">
       <publishTime>07/31/2015 20:40:42</publishTime>
     </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>08/27/2015 08:49:13</publishTime>
+    </File>
+    <File Include="Views/Account/Manage.cshtml">
+      <publishTime>08/26/2015 13:35:59</publishTime>
+    </File>
     <File Include="Views/Account/Me.cshtml">
-      <publishTime>08/12/2015 23:51:29</publishTime>
+      <publishTime>08/26/2015 13:03:01</publishTime>
     </File>
     <File Include="Views/Account/Personal.cshtml">
       <publishTime>08/02/2015 23:57:44</publishTime>
     </File>
     <File Include="Views/Account/Profile.cshtml">
-      <publishTime>08/20/2015 15:30:59</publishTime>
+      <publishTime>08/27/2015 14:18:46</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>08/25/2015 17:33:46</publishTime>
+    </File>
+    <File Include="Views/Account/_ChangePasswordPartial.cshtml">
+      <publishTime>08/26/2015 13:40:13</publishTime>
+    </File>
+    <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
+      <publishTime>08/25/2015 12:02:56</publishTime>
+    </File>
+    <File Include="Views/Account/_RemoveAccountPartial.cshtml">
+      <publishTime>08/21/2015 09:15:40</publishTime>
+    </File>
+    <File Include="Views/Account/_SetPasswordPartial.cshtml">
+      <publishTime>08/26/2015 13:40:40</publishTime>
     </File>
     <File Include="Views/Box/Business_Profile.cshtml">
       <publishTime>08/04/2015 15:05:17</publishTime>
     </File>
     <File Include="Views/Box/CashIn_ATM.cshtml">
-      <publishTime>08/19/2015 13:30:11</publishTime>
+      <publishTime>08/26/2015 22:02:47</publishTime>
     </File>
     <File Include="Views/Box/CashIn_BankAccount.cshtml">
-      <publishTime>08/03/2015 23:15:12</publishTime>
+      <publishTime>08/26/2015 22:11:00</publishTime>
     </File>
     <File Include="Views/Box/CashIn_Others.cshtml">
       <publishTime>08/02/2015 08:53:13</publishTime>
@@ -1060,13 +1099,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/19/2015 14:13:14</publishTime>
     </File>
     <File Include="Views/Box/Topup_Mobile.cshtml">
-      <publishTime>08/03/2015 23:35:11</publishTime>
+      <publishTime>08/20/2015 22:41:13</publishTime>
     </File>
     <File Include="Views/Box/Topup_Online.cshtml">
-      <publishTime>08/03/2015 23:35:05</publishTime>
+      <publishTime>08/20/2015 23:19:22</publishTime>
     </File>
     <File Include="Views/Box/Transfer_Bank.cshtml">
-      <publishTime>08/03/2015 11:12:23</publishTime>
+      <publishTime>08/27/2015 16:39:45</publishTime>
     </File>
     <File Include="Views/Box/Transfer_Mobile.cshtml">
       <publishTime>08/03/2015 23:42:57</publishTime>
@@ -1084,22 +1123,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/03/2015 14:30:26</publishTime>
     </File>
     <File Include="Views/Home/eWallet.cshtml">
-      <publishTime>08/12/2015 20:24:28</publishTime>
+      <publishTime>08/27/2015 16:22:24</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>08/18/2015 10:58:52</publishTime>
     </File>
     <File Include="Views/Home/Login.cshtml">
-      <publishTime>08/20/2015 09:15:55</publishTime>
+      <publishTime>08/25/2015 12:02:56</publishTime>
     </File>
     <File Include="Views/Home/Register.cshtml">
       <publishTime>08/12/2015 22:51:15</publishTime>
     </File>
     <File Include="Views/Payment/Confirm.cshtml">
-      <publishTime>08/18/2015 16:20:05</publishTime>
+      <publishTime>08/27/2015 16:02:21</publishTime>
     </File>
     <File Include="Views/Payment/Result.cshtml">
-      <publishTime>08/14/2015 23:01:22</publishTime>
+      <publishTime>08/27/2015 14:51:10</publishTime>
     </File>
     <File Include="Views/Profile/List.cshtml">
       <publishTime>07/30/2015 21:18:08</publishTime>
@@ -1111,7 +1150,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/19/2015 14:12:52</publishTime>
     </File>
     <File Include="Views/Service/Topup.cshtml">
-      <publishTime>08/12/2015 20:26:48</publishTime>
+      <publishTime>08/20/2015 22:24:46</publishTime>
     </File>
     <File Include="Views/Service/Transfer.cshtml">
       <publishTime>08/12/2015 20:26:38</publishTime>
@@ -1123,19 +1162,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/18/2015 11:01:06</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/13/2015 00:05:00</publishTime>
+      <publishTime>08/27/2015 08:48:34</publishTime>
     </File>
     <File Include="Views/Shared/_LessLayout.cshtml">
       <publishTime>07/17/2015 21:57:18</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>05/03/2015 14:30:46</publishTime>
+      <publishTime>08/25/2015 14:28:22</publishTime>
     </File>
     <File Include="Views/Transaction/Index.cshtml">
       <publishTime>08/02/2015 09:24:08</publishTime>
     </File>
     <File Include="Views/Transaction/List.cshtml">
-      <publishTime>08/08/2015 11:42:57</publishTime>
+      <publishTime>08/20/2015 21:43:40</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>05/03/2015 14:30:26</publishTime>
@@ -1144,7 +1183,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/04/2015 21:20:59</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/20/2015 16:18:29</publishTime>
+      <publishTime>08/27/2015 16:59:00</publishTime>
     </File>
   </ItemGroup>
 </Project>
