@@ -3,6 +3,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Owin;
+using System.Configuration;
 
 namespace eWallet.Portal
 {
@@ -31,8 +32,8 @@ namespace eWallet.Portal
 
             var options = new FacebookAuthenticationOptions
             {
-                AppId = "207429956074584",
-                AppSecret = "bce03ed2eac12f52cba2e20b5e2b20a0",
+                AppId = ConfigurationSettings.AppSettings["Facebook_AppId"], //"207429956074584",
+                AppSecret = ConfigurationSettings.AppSettings["Facebook_Secret"],
                 Provider = new FacebookAuthenticationProvider
                 {
                     OnAuthenticated = async context =>
@@ -49,8 +50,8 @@ namespace eWallet.Portal
 
             Microsoft.Owin.Security.Google.GoogleOAuth2AuthenticationOptions option = new Microsoft.Owin.Security.Google.GoogleOAuth2AuthenticationOptions();
             option.CallbackPath = new PathString("/signin-google");
-            option.ClientId = "151452439229-0jk3ndrakujq0kho3v5ctcd070ktia17.apps.googleusercontent.com";
-            option.ClientSecret = "aNQFeT1BfjWeSmz3t2Z__gND";
+            option.ClientId = ConfigurationSettings.AppSettings["Google_ClientId"];
+            option.ClientSecret = ConfigurationSettings.AppSettings["Google_ClientSecret"];
 
             app.UseGoogleAuthentication(option);
         }

@@ -1,10 +1,10 @@
 ﻿@{
-    ViewBag.Title = "Thanh toán hóa đơn";
+    ViewBag.Title = "Chuyển khoản tới TK ngân hàng";
     Layout = null;
 }
 <ul class="breadcrumb">
     <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
-    <li>Thanh toán hóa đơn</li>
+    <li>@ViewBag.Title</li>
 </ul>
 <div class="separator"></div>
 <div id="login-dp" class="content-dp col-md-10 col-md-offset-1">
@@ -63,53 +63,5 @@
         close: function () {
             $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
         }
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        //$('#payment_method').hide();
-        $('#cb_providers').hide();
-        $('#cb_providers option').hide();
-
-        $('#cb_services').change(function () {
-            $('#cb_providers').show();
-            var $selected_service = $('#cb_services').val();
-            $('#cb_providers option').hide();
-            if ($selected_service) {
-                $('#cb_providers option[data-service="' + $selected_service + '"]').show();
-                $('#btn_check_bill').show();
-            }
-        });
-        $('#btn_check_bill').click(function () {
-            var $billNo = $('#txt_bill_code').val();
-            var $service = $('#cb_services').val();
-            var $provider = $('#cb_providers').val();
-            if ($billNo) {
-                $.ajax({
-                    url: '@Url.Action("CheckBill", "Payment")',
-                    contentType: 'application/json; charset=utf-8',
-                    type: 'GET',
-                    dataType: 'json',
-                    data: { service: $service, provider: $provider, bill_code: $billNo }
-                })
-               .success(function (result) {
-                   if (result.error_code == "00") {
-                       //var resp = result.response;
-                       $('#txt_bill_amount').val("123232");
-                       $('#txt_bill_customer').val(result.response);
-                       $('#payment_method').show();
-                   }
-                   else {
-                       alert(result.error_message);
-                   }
-               })
-               .error(function (xhr, status) {
-                   //alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
-               });
-            }
-            else {
-                alert('Bạn cần nhập vào mã hóa đơn/mã khách hàng');
-            }
-        });
     });
 </script>
