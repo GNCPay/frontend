@@ -40,7 +40,7 @@ C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\System.Web.Http.WebHo
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\Microsoft.Web.Infrastructure.xml
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.dll
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.pdb
-C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.csprojResolveAssemblyReference.cache
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\MongoDB.AspNet.Identity.dll
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\MongoDB.Bson.dll
 C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\bin\MongoDB.Driver.dll
+C:\Users\Home\Documents\GitHub\frontend\eWallet.Portal\obj\Debug\eWallet.Portal.csprojResolveAssemblyReference.cache
