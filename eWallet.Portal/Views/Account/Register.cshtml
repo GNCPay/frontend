@@ -24,7 +24,7 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Mobile, new { @class = "sr-only" })
 
-                @Html.TextBoxFor(m => m.Mobile, new { placeholder = "Số điện thoại", @class = "form-control" })
+                @Html.TextBoxFor(m => m.Mobile, new { placeholder = "Số điện thoại", @class = "form-control", onkeypress="validate(event)"})
                 @Html.ValidationMessageFor(m => m.Mobile)
             </div>
             <div class="form-group">
@@ -46,3 +46,16 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+@*kiểm tra kiểu số khi nhập*@
+<script>
+function validate(evt) {
+    var theEvent = evt || window.event;
+    var key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode(key);
+    var regex = /[0-9]|\./;
+    if (!regex.test(key)) {
+        theEvent.returnValue = false;
+        if (theEvent.preventDefault) theEvent.preventDefault();
+    }
+}
+</script>
