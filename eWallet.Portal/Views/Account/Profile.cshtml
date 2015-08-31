@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label class="sr-only" for="personal_id">Số CMND</label>
-                <input type="email" class="form-control" id="personal_id" placeholder="Số CMND" value="@ViewBag.profile.personal_id" required>
+                <input type="text" class="form-control" id="personal_id" onkeypress='validate(event)' placeholder="Số CMND" value="@ViewBag.profile.personal_id" required>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="personal_id_issued_date">Ngày cấp</label>
@@ -52,7 +52,7 @@
             <a href='@Url.Action("Manage","Account",null,null)' class="btn btn-primary">Thiết lập mật khẩu</a>
         </div>
     </div>
-    
+
 </div>
 <script>
     $('#btn-update').click(function () {
@@ -85,4 +85,18 @@
                                return;
                            });
     });
+</script>
+
+@*kiểm tra kiểu số khi nhập*@
+<script>
+function validate(evt) {
+    var theEvent = evt || window.event;
+    var key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode(key);
+    var regex = /[0-9]|\./;
+    if (!regex.test(key)) {
+        theEvent.returnValue = false;
+        if (theEvent.preventDefault) theEvent.preventDefault();
+    }
+}
 </script>
