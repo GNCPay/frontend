@@ -33,7 +33,7 @@ namespace eWallet.Portal
             var options = new FacebookAuthenticationOptions
             {
                 AppId = ConfigurationSettings.AppSettings["Facebook_AppId"], //"207429956074584",
-                AppSecret = ConfigurationSettings.AppSettings["Facebook_Secret"],
+                AppSecret = ConfigurationSettings.AppSettings["Facebook_AppSecret"],
                 Provider = new FacebookAuthenticationProvider
                 {
                     OnAuthenticated = async context =>
