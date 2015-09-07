@@ -526,13 +526,19 @@ namespace eWallet.Portal.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.Name };
+                var user = new ApplicationUser() { UserName = model.UserName };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        var claimsIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+                        foreach (var claim in claimsIdentity.Claims)
+                            if(claim.Type == "FacebookAccessToken")
+                        {
+                            UserManager.AddClaim(user.Id, claim);
+                        }
                         //Goi sang server de tao tai khoan
                         PostRegister(model.Name, model.UserName, model.Mobile);
                         await SignInAsync(user, isPersistent: false);
