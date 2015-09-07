@@ -18,14 +18,14 @@
                 Vui lòng bổ sung thông tin, chọn "Register" để hoàn tất việc đăng ký tài khoản.
             </p>
             <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { @class = "sr-only" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "nhập User name của bạn" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.UserName, new { @class = "sr-only" })
                 @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.UserName)
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Fullname, new { @class = "sr-only" })
-                @Html.TextBoxFor(m => m.Fullname, new { @class = "form-control", placeholder = "Nhập họ tên của bạn" })
-                @Html.ValidationMessageFor(m => m.Fullname)
             </div>
 
             <div class="form-group">

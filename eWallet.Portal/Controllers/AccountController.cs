@@ -526,7 +526,7 @@ namespace eWallet.Portal.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { UserName = model.Name };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -534,7 +534,7 @@ namespace eWallet.Portal.Controllers
                     if (result.Succeeded)
                     {
                         //Goi sang server de tao tai khoan
-                        PostRegister(model.Fullname, model.UserName, model.Mobile);
+                        PostRegister(model.Name, model.UserName, model.Mobile);
                         await SignInAsync(user, isPersistent: false);
                         return RedirectToLocal(returnUrl);
                     }

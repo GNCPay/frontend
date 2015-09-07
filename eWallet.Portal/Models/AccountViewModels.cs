@@ -6,12 +6,12 @@ namespace eWallet.Portal.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Full name")]
         public string UserName { get; set; }
 
         [Required]
-        [Display(Name = "Full name")]
-        public string Fullname { get; set; }
+        [Display(Name = "User name")]
+        public string Name { get; set; }
 
         [Required]
         [Display(Name = "Mobile")]
