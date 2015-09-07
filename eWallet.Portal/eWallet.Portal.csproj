@@ -518,7 +518,9 @@
     <Content Include="theme\scripts\plupload\js\plupload.silverlight.xap" />
     <Content Include="theme\scripts\plupload\license.txt" />
     <Content Include="theme\scripts\themer.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -593,6 +595,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\FacebookFriend.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
