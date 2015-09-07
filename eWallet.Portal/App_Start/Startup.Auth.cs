@@ -4,6 +4,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Owin;
 using System.Configuration;
+using System.Threading.Tasks;
 
 namespace eWallet.Portal
 {
@@ -32,7 +33,7 @@ namespace eWallet.Portal
 
             var options = new FacebookAuthenticationOptions
             {
-                AppId = ConfigurationSettings.AppSettings["Facebook_AppId"], //"207429956074584",
+                AppId = ConfigurationSettings.AppSettings["Facebook_AppId"],
                 AppSecret = ConfigurationSettings.AppSettings["Facebook_AppSecret"],
                 Provider = new FacebookAuthenticationProvider
                 {
@@ -41,11 +42,12 @@ namespace eWallet.Portal
                         string accessToken = context.AccessToken;
                         string facebookUserName = context.UserName;
                         string facebookName = context.Name;
-                        var serializedUser = context.User;
+                        var serializedUser = context.User; 
+                        context.Identity.AddClaim(new System.Security.Claims.Claim("FacebookAccessToken", context.AccessToken));
                     }
                 }
             };
-
+            options.SignInAsAuthenticationType = DefaultAuthenticationTypes.ExternalCookie;
             app.UseFacebookAuthentication(options);
 
             Microsoft.Owin.Security.Google.GoogleOAuth2AuthenticationOptions option = new Microsoft.Owin.Security.Google.GoogleOAuth2AuthenticationOptions();

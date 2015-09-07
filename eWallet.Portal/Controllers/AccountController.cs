@@ -13,6 +13,12 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Facebook;
+using Newtonsoft.Json;
+using Microsoft.Owin.Security.Facebook;
+using System.Configuration;
+using Microsoft.Owin.Host.SystemWeb;
+using System.Net;
+using System.Dynamic;
 namespace eWallet.Portal.Controllers
 {
     public class AccountController : Controller
@@ -102,6 +108,22 @@ namespace eWallet.Portal.Controllers
             return View();
         }
 
+        //get friend facebook
+        public ActionResult FacebookFriend()
+        {
+           FacebookFriendsModel friends = new FacebookFriendsModel();
+           var identity = (ClaimsIdentity)User.Identity;
+           var facebookClaim = identity.Claims.FirstOrDefault(c => c.Type == "FacebookAccessToken");
+            if(facebookClaim!=null)
+            {
+                var client = new FacebookClient(facebookClaim.Value);
+                dynamic friendlist = client.Get("me/taggable_friends?fields=name");
+                var data = friendlist["data"].ToString();
+                friends.friendsListing = JsonConvert.DeserializeObject<List<FacebookFriend>>(data);
+                
+            }           
+           return View(friends);
+        }
         public ActionResult Personal()
         {
             return View();
@@ -114,7 +136,7 @@ namespace eWallet.Portal.Controllers
         public ActionResult Me()
         {
             dynamic profile = Helper.DataHelper.Get("profile", Query.EQ("user_name", User.Identity.Name));
-            dynamic[] accounts = Helper.DataHelper.List("finance_account", Query.EQ("profile",profile._id));
+            dynamic[] accounts = Helper.DataHelper.List("finance_account", Query.EQ("profile", profile._id));
             dynamic model = new Data.DynamicObj();
             model.Profile = profile;
             model.Accounts = accounts;
@@ -298,7 +320,7 @@ namespace eWallet.Portal.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                  //Goi ham dang ky tren server de tao finance_account
+                    //Goi ham dang ky tren server de tao finance_account
                     PostRegister(model.Fullname, model.Email, model.Mobile);
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("eWallet", "Home");
@@ -419,11 +441,13 @@ namespace eWallet.Portal.Controllers
             {
                 return RedirectToAction("Login");
             }
-
-            // Sign in the user with this external login provider if the user already has a login
+           // Sign in the user with this external login provider if the user already has a login
             var user = await UserManager.FindAsync(loginInfo.Login);
+            var claimsIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
             if (user != null)
             {
+            
+                //await StoreFacebookAuthToken(user);
                 await SignInAsync(user, isPersistent: false);
                 return RedirectToLocal(returnUrl);
             }
@@ -432,10 +456,29 @@ namespace eWallet.Portal.Controllers
                 // If the user does not have an account, then prompt the user to create an account
                 ViewBag.ReturnUrl = returnUrl;
                 ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName });
+                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName });    
             }
         }
 
+        //private async Task StoreFacebookAuthToken(ApplicationUser user)
+        //{
+        //    var claimsIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+        //    if(claimsIdentity!=null)
+        //    {
+        //        var currentClaims = await UserManager.GetClaimsAsync(user.Id);
+        //        var facebookAccessToken = claimsIdentity.FindAll("FacebookAccessToken").First();
+        //        if(currentClaims.Count()<=0)
+        //        {
+        //            await UserManager.AddClaimAsync(user.Id, facebookAccessToken);
+        //        }
+        //        else
+        //        {
+        //            await UserManager.RemoveClaimAsync(user.Id, currentClaims[0]);
+        //            await UserManager.AddClaimAsync(user.Id, facebookAccessToken);
+        //            //Session["FacebookAccessToken"] = facebookAccessToken;
+        //        }
+        //    }
+        //}
         //
         // POST: /Account/LinkLogin
         [HttpPost]
@@ -483,15 +526,15 @@ namespace eWallet.Portal.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.UserName};
+                var user = new ApplicationUser() { UserName = model.Name };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                   result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
-                       //Goi sang server de tao tai khoan
-                        PostRegister(model.Fullname, model.UserName, model.Mobile);
+                        //Goi sang server de tao tai khoan
+                        PostRegister(model.Name, model.UserName, model.Mobile);
                         await SignInAsync(user, isPersistent: false);
                         return RedirectToLocal(returnUrl);
                     }
