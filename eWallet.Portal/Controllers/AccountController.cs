@@ -111,18 +111,17 @@ namespace eWallet.Portal.Controllers
         //get friend facebook
         public ActionResult FacebookFriend()
         {
-           FacebookFriendsModel friends = new FacebookFriendsModel();
            var identity = (ClaimsIdentity)User.Identity;
            var facebookClaim = identity.Claims.FirstOrDefault(c => c.Type == "FacebookAccessToken");
+            ViewBag.data = null;
             if(facebookClaim!=null)
             {
                 var client = new FacebookClient(facebookClaim.Value);
                 dynamic friendlist = client.Get("me/taggable_friends?fields=name");
                 var data = friendlist["data"].ToString();
-                friends.friendsListing = JsonConvert.DeserializeObject<List<FacebookFriend>>(data);
-                
+                ViewBag.data = friendlist.data;
             }           
-           return View(friends);
+           return View();
         }
         public ActionResult Personal()
         {
@@ -456,7 +455,7 @@ namespace eWallet.Portal.Controllers
                 // If the user does not have an account, then prompt the user to create an account
                 ViewBag.ReturnUrl = returnUrl;
                 ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName });    
+                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Name = loginInfo.DefaultUserName });    
             }
         }
 
@@ -526,13 +525,19 @@ namespace eWallet.Portal.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.Name };
+                var user = new ApplicationUser() { UserName = model.UserName };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        var claimsIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+                        foreach (var claim in claimsIdentity.Claims)
+                            if(claim.Type == "FacebookAccessToken")
+                        {
+                            UserManager.AddClaim(user.Id, claim);
+                        }
                         //Goi sang server de tao tai khoan
                         PostRegister(model.Name, model.UserName, model.Mobile);
                         await SignInAsync(user, isPersistent: false);
