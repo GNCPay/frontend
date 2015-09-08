@@ -18,6 +18,21 @@ namespace eWallet.Portal.Models
         public string Mobile { get; set; }
 
     }
+
+    public class Wallet
+    {
+        public string full_name { get; set; }
+    }
+    public class FacebookFriendsModel
+    {
+        public List<FacebookFriend> friendsListing { get; set; }
+    }
+
+    public class FacebookFriend
+    {
+        public string name { get; set; }
+        public string id { get; set; }
+    }
     public class ManageUserViewModel
     {
         [Required]
