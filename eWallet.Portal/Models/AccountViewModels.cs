@@ -19,6 +19,10 @@ namespace eWallet.Portal.Models
 
     }
 
+    public class Wallet
+    {
+        public string full_name { get; set; }
+    }
     public class FacebookFriendsModel
     {
         public List<FacebookFriend> friendsListing { get; set; }

@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver.Builders;
+﻿using eWallet.Portal.Models;
+using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -60,7 +62,7 @@ namespace eWallet.Portal.Controllers
 
         public ActionResult TransferWallet()
         {
-            return View(Url.Content("/Views/Box/Transfer_Wallet.cshtml"));
+           return View(Url.Content("/Views/Box/Transfer_Wallet.cshtml"));
         }
         public ActionResult TransferBank()
         {
@@ -76,7 +78,38 @@ namespace eWallet.Portal.Controllers
             return View(Url.Content("/Views/Box/Collection_Requests.cshtml"));
         }
         #endregion
+        public JsonResult UserWallet(string userwallet, int? page, int? page_size)
+        {
+            IMongoQuery query = Query.NE("type", "P");
+            if (!string.IsNullOrEmpty(userwallet))
+                query = Query.And(
+                         query,
+                      Query.EQ("user_name", userwallet)
+                      );
+            if (userwallet == User.Identity.Name)
+            {
+                return Json(new { error_code = "00", error_message = "tài khoản nhận tiền phải khác tài khoản đang đăng nhâp!", list = "" }, JsonRequestBehavior.AllowGet);
 
+            }
+            
+            if (page == null) page = 1;
+            if (page_size == null) page_size = 25;
+            long total_page = 0;
+            var _list = Helper.DataHelper.ListPagging("profile",
+            query,
+            SortBy.Ascending("_id"),
+            (int)page_size,
+            (int)page,
+            out total_page
+            );
+            var list_accounts = (from e in _list select e).Select(p => new
+            {
+                _id = p._id,
+                full_name = p.full_name,
+                user_name = p.user_name              
+            }).ToArray();
+            return Json(new { error_code = "00", error_message = "Sussess!", list = list_accounts }, JsonRequestBehavior.AllowGet);
+        }
         #region "CASHIN PROCESS"
         [Authorize]
         public JsonResult CashIn_ATM(string amount, string bank)
