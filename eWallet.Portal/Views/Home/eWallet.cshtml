@@ -195,7 +195,6 @@
                     </div>
                 </div>
             </div><!--/.portfolio-item-->
-        }
         <div class="portfolio-item corporate col-sm-3 ">
             <div class="portfolio-item-inner">
                 <img class="img-responsive" src="~/images/portfolio/04.jpg" alt="">
@@ -236,8 +235,6 @@
                 </div>
             </div>
         </div><!--/.portfolio-item-->
-        @if (User.Identity.IsAuthenticated)
-        {
             <div class="portfolio-item corporate col-sm-3 ">
                 <div class="portfolio-item-inner">
                     <img class="img-responsive" src="~/images/portfolio/08.jpg" alt="">
@@ -252,9 +249,16 @@
     </div>
     @*</div>*@
 </div>
-<script>
-    //$('.no_service').attr("href",'#');
-    $('.no_service').click(function () {
-        alert("Dịch vụ đang được bảo trì. Vui lòng quay lại sau!");
-    })
-</script>
+
+
+@if (!Helper.IsModeTest)
+{
+    <script>
+        $('.no_service').attr("href", '#');
+
+        $('.no_service').click(function () {
+            alert("Dịch vụ đang được bảo trì. Vui lòng quay lại sau!");
+        })
+    </script>
+}
+
