@@ -111,18 +111,17 @@ namespace eWallet.Portal.Controllers
         //get friend facebook
         public ActionResult FacebookFriend()
         {
-           FacebookFriendsModel friends = new FacebookFriendsModel();
            var identity = (ClaimsIdentity)User.Identity;
            var facebookClaim = identity.Claims.FirstOrDefault(c => c.Type == "FacebookAccessToken");
+            ViewBag.data = null;
             if(facebookClaim!=null)
             {
                 var client = new FacebookClient(facebookClaim.Value);
                 dynamic friendlist = client.Get("me/taggable_friends?fields=name");
                 var data = friendlist["data"].ToString();
-                friends.friendsListing = JsonConvert.DeserializeObject<List<FacebookFriend>>(data);
-                
+                ViewBag.data = friendlist.data;
             }           
-           return View(friends);
+           return View();
         }
         public ActionResult Personal()
         {
@@ -456,7 +455,7 @@ namespace eWallet.Portal.Controllers
                 // If the user does not have an account, then prompt the user to create an account
                 ViewBag.ReturnUrl = returnUrl;
                 ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName });    
+                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Name = loginInfo.DefaultUserName });    
             }
         }
 
