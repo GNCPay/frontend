@@ -108,7 +108,7 @@ namespace eWallet.Portal.Controllers
                 full_name = p.full_name,
                 user_name = p.user_name              
             }).ToArray();
-            return Json(new { error_code = "00", error_message = "Sussess!", list = list_accounts }, JsonRequestBehavior.AllowGet);
+            return Json(new { error_code = "00", error_message = "Sussess!", list = list_accounts }, JsonRequestBehavior.AllowGet);//
         }
         #region "CASHIN PROCESS"
         [Authorize]
