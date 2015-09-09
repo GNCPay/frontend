@@ -41,17 +41,17 @@ namespace eWallet.Portal.Controllers
         //get friend facebook
         public ActionResult FacebookFriend()
         {
-           var identity = (ClaimsIdentity)User.Identity;
-           var facebookClaim = identity.Claims.FirstOrDefault(c => c.Type == "FacebookAccessToken");
+            var identity = (ClaimsIdentity)User.Identity;
+            var facebookClaim = identity.Claims.FirstOrDefault(c => c.Type == "FacebookAccessToken");
             ViewBag.data = null;
-            if(facebookClaim!=null)
+            if (facebookClaim != null)
             {
                 var client = new FacebookClient(facebookClaim.Value);
                 dynamic friendlist = client.Get("me/taggable_friends?fields=name");
                 var data = friendlist["data"].ToString();
                 ViewBag.data = friendlist.data;
-            }           
-           return View();
+            }
+            return View();
         }
         public ActionResult Personal()
         {
