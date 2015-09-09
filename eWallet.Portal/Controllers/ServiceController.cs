@@ -86,6 +86,7 @@ namespace eWallet.Portal.Controllers
                          query,
                       Query.EQ("user_name", userwallet)
                       );
+
             if (userwallet == User.Identity.Name)
             {
                 return Json(new { error_code = "00", error_message = "tài khoản nhận tiền phải khác tài khoản đang đăng nhâp!", list = "" }, JsonRequestBehavior.AllowGet);
@@ -108,7 +109,7 @@ namespace eWallet.Portal.Controllers
                 full_name = p.full_name,
                 user_name = p.user_name              
             }).ToArray();
-            return Json(new { error_code = "00", error_message = "Sussess!", list = list_accounts }, JsonRequestBehavior.AllowGet);//
+            return Json(new { error_code = "00", error_message = "Sussess!", list = list_accounts }, JsonRequestBehavior.AllowGet);
         }
         #region "CASHIN PROCESS"
         [Authorize]
