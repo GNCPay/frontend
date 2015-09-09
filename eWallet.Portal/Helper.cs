@@ -8,9 +8,11 @@ namespace eWallet.Portal
 {
     public class Helper
     {
+        public static bool IsModeTest = true;
         public static eWallet.Data.MongoHelper DataHelper;
         public static void Init()
         {
+            IsModeTest = ConfigurationManager.AppSettings["Mode"] == "Test";
             DataHelper = new Data.MongoHelper(
                 ConfigurationManager.AppSettings["FrontEndDb_Server"],
                 ConfigurationManager.AppSettings["FrontEndDb_Database"]
@@ -52,6 +54,7 @@ namespace eWallet.Portal
             try
             {
                 response = client.Process(request);
+                if(String.IsNullOrEmpty(response)) response = @"{error_code:'96',error_message:'Có lỗi trong quá trình xử lý. Vui lòng thử lại sau'}";
             }
             catch
             {
