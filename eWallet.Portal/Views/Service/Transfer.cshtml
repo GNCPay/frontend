@@ -88,7 +88,7 @@
     <div class="col-md-3 ">
         <ul class="bg nav nav-pills nav-stacked nav-pills-stacked-example">
             <li class="active"><a href="#" class="nav_link nav_wallet" data-href='@Url.Action("TransferWallet", "Service", null, null)'>Tới Tài khoản ví</a></li>
-            @*<li><a href="#" class="nav_link nav_bank" data-href='@Url.Action("TransferBank", "Service", null, null)'>Tới Tài khoản ngân hàng</a></li>*@
+            <li><a href="#" class="nav_link nav_bank" data-href='@Url.Action("TransferBank", "Service", null, null)'>Tới Tài khoản ngân hàng</a></li>
             <li><a href="#" class="nav_link nav_mobile" data-href='@Url.Action("TransferMobile", "Service", null, null)'>Tới Người nhận qua Số di động</a></li>
 @if(User.Identity.IsAuthenticated){
             <li><a href="#" class="nav_link nav_trans" data-href='@Url.Action("List", "Transaction", null, null)'>Tra soát giao dịch Chuyển khoản</a></li>
