@@ -54,7 +54,6 @@ namespace eWallet.Portal
             try
             {
                 response = client.Process(request);
-                if(String.IsNullOrEmpty(response)) response = @"{error_code:'96',error_message:'Có lỗi trong quá trình xử lý. Vui lòng thử lại sau'}";
             }
             catch
             {
