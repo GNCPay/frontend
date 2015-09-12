@@ -87,7 +87,10 @@ namespace eWallet.Portal.Controllers
                       Query.EQ("user_name", userwallet)
                       );
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 9edd547... Finish transfert to ewallet
 =======
 >>>>>>> parent of 9edd547... Finish transfert to ewallet
             if (userwallet == User.Identity.Name)
@@ -113,7 +116,11 @@ namespace eWallet.Portal.Controllers
                 user_name = p.user_name              
             }).ToArray();
 <<<<<<< HEAD
+<<<<<<< HEAD
             return Json(new { error_code = "00", error_message = "Sussess!", list = list_accounts }, JsonRequestBehavior.AllowGet);
+=======
+            return Json(new { error_code = "00", error_message = "Sussess!", list = list_accounts }, JsonRequestBehavior.AllowGet);//
+>>>>>>> parent of 9edd547... Finish transfert to ewallet
 =======
             return Json(new { error_code = "00", error_message = "Sussess!", list = list_accounts }, JsonRequestBehavior.AllowGet);//
 >>>>>>> parent of 9edd547... Finish transfert to ewallet
