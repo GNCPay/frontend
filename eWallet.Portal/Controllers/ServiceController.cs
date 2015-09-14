@@ -37,7 +37,7 @@ namespace eWallet.Portal.Controllers
         {
             return View();
         }
-        #region "Service Box"
+        #region "SERVICE BOX"
         public ActionResult PaymentBilling()
         {
             return View(Url.Content("/Views/Box/Payment_Billing.cshtml"));
@@ -77,54 +77,8 @@ namespace eWallet.Portal.Controllers
         {
             return View(Url.Content("/Views/Box/Collection_Requests.cshtml"));
         }
-        #endregion
-        public JsonResult UserWallet(string userwallet, int? page, int? page_size)
-        {
-            IMongoQuery query = Query.NE("type", "P");
-            if (!string.IsNullOrEmpty(userwallet))
-                query = Query.And(
-                         query,
-                      Query.EQ("user_name", userwallet)
-                      );
-<<<<<<< HEAD
-<<<<<<< HEAD
+        #endregion "SERVICE BOX"
 
-=======
->>>>>>> parent of 9edd547... Finish transfert to ewallet
-=======
->>>>>>> parent of 9edd547... Finish transfert to ewallet
-            if (userwallet == User.Identity.Name)
-            {
-                return Json(new { error_code = "00", error_message = "tài khoản nhận tiền phải khác tài khoản đang đăng nhâp!", list = "" }, JsonRequestBehavior.AllowGet);
-
-            }
-            
-            if (page == null) page = 1;
-            if (page_size == null) page_size = 25;
-            long total_page = 0;
-            var _list = Helper.DataHelper.ListPagging("profile",
-            query,
-            SortBy.Ascending("_id"),
-            (int)page_size,
-            (int)page,
-            out total_page
-            );
-            var list_accounts = (from e in _list select e).Select(p => new
-            {
-                _id = p._id,
-                full_name = p.full_name,
-                user_name = p.user_name              
-            }).ToArray();
-<<<<<<< HEAD
-<<<<<<< HEAD
-            return Json(new { error_code = "00", error_message = "Sussess!", list = list_accounts }, JsonRequestBehavior.AllowGet);
-=======
-            return Json(new { error_code = "00", error_message = "Sussess!", list = list_accounts }, JsonRequestBehavior.AllowGet);//
->>>>>>> parent of 9edd547... Finish transfert to ewallet
-=======
-            return Json(new { error_code = "00", error_message = "Sussess!", list = list_accounts }, JsonRequestBehavior.AllowGet);//
->>>>>>> parent of 9edd547... Finish transfert to ewallet
-        }
         #region "CASHIN PROCESS"
         [Authorize]
         public JsonResult CashIn_ATM(string amount, string bank)
@@ -243,5 +197,35 @@ namespace eWallet.Portal.Controllers
             return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
         }
         #endregion "TOPUP PROCESS"
+
+
+        #region "TRANSFER PROCESS"
+        public JsonResult TransferWallet_CheckUser(string user_name)
+        {
+            dynamic profile = Helper.DataHelper.Get("profile", Query.EQ("user_name", user_name));
+            if(profile == null)
+            {
+                return Json(new { error_code = "96", error_message = "Thông tin không hợp lệ. Vui lòng kiểm tra và thử lại" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Json(new { error_code = "00", error_message = "Thông tin hợp lệ.", full_name = profile.full_name.ToString(), id=profile._id }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult TransferWallet_MakeTransaction(string account, string account_id, string account_name,string amount, string note)
+        {
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'transfer',request:{channel:'WEB', profile:'" + User.Identity.Name
+                   + "',service:'GNCP',provider:'GNCE'"
+                   + ", amount: " + amount
+                   + ", note: '" + note
+                   + "', payment_provider:'GNCE"
+                   + "', receiver:{user_name:'" + account
+                       + "', id:" + account_id
+                       + ",full_name:'" + account_name +
+                   "'}}}";
+            dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
+            return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+
+        }
+        #endregion "TRANSFER PROCESS"
     }
 }

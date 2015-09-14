@@ -1,203 +1,303 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="thanh toán online,giao dịch trực tuyến,bigpay,cổng thanh toán trực tuyến,nạp tiền điện thoại,tích hợp thanh toán" />
+    <meta name="description" content="BigPay là cổng thanh toán trực tuyến được xây dựng theo mô hình hệ thống thanh toán Paypal, Moneybookers, ... phục vụ thanh toán trực tuyến tại Việt Nam. BigPay đóng vai trò là cầu nối giữa người mua và người bán hỗ trợ Thanh toán trực tuyến và Chuyển tiền trực tuyến giữa hai bên." />
+    @*<meta name="google-site-verification" content="7ISuH0lUfBoddMNgR0vFRsYmEbOF2Esn90eKMCK7Scc" />*@
+    <meta name="revisit-after" content="1 days" />
+    <meta name="robots" content="FOLLOW,INDEX" />
+    @*<meta property="og:image" content="https://azpay.vn/templates/images/v2/logo.png" />*@
+    <meta property="og:title" content="Ví điện tử BigPay" />
+    <meta property="og:description" content="BigPay là cổng thanh toán trực tuyến được xây dựng theo mô hình hệ thống thanh toán Paypal, Moneybookers, ... phục vụ thanh toán trực tuyến tại Việt Nam. BigPay đóng vai trò là cầu nối giữa người mua và người bán hỗ trợ Thanh toán trực tuyến và Chuyển tiền trực tuyến giữa hai bên." />
+    <link rel="image_src" href="/images/logo.png" / >
+    @*<base href="https://azpay.vn" />*@
     <title>Cổng thanh toán BigPay</title>
-    <!-- core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/animate.min.css" rel="stylesheet">
-    <link href="/css/owl.carousel.css" rel="stylesheet">
-    <link href="/css/owl.transitions.css" rel="stylesheet">
-    <link href="/css/prettyPhoto.css" rel="stylesheet">
-    <link href="/css/main.css" rel="stylesheet">
-    <link href="/css/responsive.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+    <link href="https://azpay.vn/templates/css/reset.css" rel="stylesheet">
+
+    <link href="https://azpay.vn/templates/css/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/azstyle.css" rel="stylesheet" />
+    <link href="~/Content/menu.css" rel="stylesheet" />
+    <link href="~/Content/slider.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://azpay.vn/templates/javascript/v2/jquery-2.0.0.js"></script>
+
+
+    @*<script type="text/javascript" src="https://azpay.vn/templates/javascript/azpay_scripts.js"></script>*@
+    @*<script type="text/javascript" src="https://azpay.vn/public/js/js_global.js"></script>*@
+    @*<script type="text/javascript" src="https://azpay.vn/public/js/js_php.js"></script>*@
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
+    <!--
+    <script type="text/javascript" src="https://azpay.vn/templates/javascript/jquery.min.js"></script>
+    <script type="text/javascript" src="https://azpay.vn/templates/javascript/azpay_slides_min.js"></script>
+    <script type="text/javascript" src="https://azpay.vn/templates/javascript/jquery-ui.js"></script>
+    -->
+</head>
 
-    
-    <!-- MiniColors -->
-    @*<link rel="stylesheet" media="screen" href="/theme/scripts/jquery-miniColors/jquery.miniColors.css" />*@
+<body>
+    <header>
 
-    <!-- Theme -->
-    @*<link rel="stylesheet" href="/theme/css/style.min.css?1361377732" />*@
-    <style>
-        body {
-            /*background: url('http://www.wallpaperup.com/uploads/wallpapers/2012/10/21/20181/cad2441dd3252cf53f12154412286ba0.jpg');*/
-            /*background: url('http://thongcaobaochi.com.vn/public/media/media/picture/Ha%20Noi%20mua%20thu.jpg');*/
-            /*background-size: 100%;*/
-            /*padding: 10px;*/
-        }
-        #main-menu.navbar-default .dropdown-menu {
-            min-width: 250px;
-            padding: 14px 14px 0;
-            overflow: hidden;
-            background-color: rgba(255,255,255,.8);
-        }
-            .bg {
-                overflow: hidden;
-                background-color: rgba(255,255,255,.8);
-            }
+        <!--end azpay-topheader-->
 
-            .content-dp {
-                margin-bottom: 14px;
-            }
-
-            #login-dp {
-                min-width: 250px;
-                padding: 14px 14px 0;
-                overflow: hidden;
-                background-color: rgba(255,255,255,.8);
-            }
-
-                #login-dp .help-block {
-                    font-size: 12px;
-                }
-
-                #login-dp .bottom {
-                    background-color: rgba(255,255,255,.8);
-                    border-top: 1px solid #ddd;
-                    clear: both;
-                    padding: 14px;
-                }
-
-                #login-dp .social-buttons {
-                    margin: 12px 0;
-                }
-
-                    #login-dp .social-buttons a {
-                        width: 49%;
-                    }
-
-                #login-dp .form-group {
-                    margin-bottom: 10px;
-                }
-
-            .btn-fb {
-                color: #fff;
-                background-color: #3b5998;
-            }
-
-                .btn-fb:hover {
-                    color: #fff;
-                    background-color: #496ebc;
-                }
-
-            .btn-tw {
-                color: #fff;
-                background-color: #55acee;
-            }
-
-                .btn-tw:hover {
-                    color: #fff;
-                    background-color: #59b5fa;
-                }
-
-            .mega-dropdown {
-                position: static !important;
-            }
-
-            .mega-dropdown-menu {
-                padding: 20px 0px;
-                width: 100%;
-                box-shadow: none;
-                -webkit-box-shadow: none;
-            }
-
-                .mega-dropdown-menu > li > ul {
-                    padding: 0;
-                    margin: 0;
-                }
-
-                    .mega-dropdown-menu > li > ul > li {
-                        list-style: none;
-                    }
-
-                        .mega-dropdown-menu > li > ul > li > a {
-                            display: block;
-                            color: #222;
-                            padding: 3px 5px;
-                        }
-
-                .mega-dropdown-menu > li ul > li > a:hover,
-                .mega-dropdown-menu > li ul > li > a:focus {
-                    text-decoration: none;
-                }
-
-                .mega-dropdown-menu .dropdown-header {
-                    font-size: 18px;
-                    color: #ff3546;
-                    padding: 5px 60px 5px 5px;
-                    line-height: 30px;
-                }
-    </style>
-   
-</head><!--/head-->
-<body id="home" class="homepage">
-    <header id="header">
-        <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
+        <section id="azpay-header" class="clr">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href='@Url.Action("Index","Home",null,null)'><img src="/images/logo.png" alt="logo"></a>
-                </div>
-
-                <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li class="scroll active"><a href="#home">Trang chủ</a></li>
-                        <li class="scroll"><a href="#features">Tính năng</a></li>
-                        <li class="scroll"><a href="#services">Dịch vụ</a></li>
-                        <li class="scroll"><a href="#portfolio">Đối tác</a></li>
-                        <li class="scroll"><a href="#about">Về BigPay</a></li>
-                        <li class="scroll"><a href="#contact">Liên hệ</a></li>
-                        <li class="scroll"><a href='@Url.Action("eWallet","Home",null,null)'>Ví điện tử</a></li>
-                    </ul>
-                </div>
-            </div><!--/.container-->
-        </nav><!--/nav-->
-    </header><!--/header-->
-    @RenderBody()
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    &copy; 2015 GNC Pay. Designed by <a target="_blank" href="#" title="Payflow Solution">Payflow Solution</a>
-                </div>
-                <div class="col-sm-6">
-                    <ul class="social-icons">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
+                <div class="row">
+                    <h1 class="logo col-lg-12">
+                        <a href="#" title="Cổng thanh toán BigPay">
+                            <img src="/images/logo.png" alt="" />
+                        </a>
+                    </h1>
                 </div>
             </div>
+        </section><!--end azpay-header-->
+
+    </header> <!--end header-->
+
+    <section id="menu">
+        <div class="container">
+            <ul class="slimmenu">
+                <li>
+                    <a icon="fa fa-home" href="#">&nbsp;Trang chủ</a>
+                </li>
+                <li>
+                    <a icon="fa fa-user" href="#">&nbsp;Về BigPay</a>
+                    <ul>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="#">&nbsp;Giới thiệu BigPay</a>
+                        </li>
+                        <!--
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="">&nbsp;Thông cáo báo chí</a>
+                        </li>
+                        -->
+                    </ul>
+                </li>
+                <li>
+                    <a icon="fa fa-user" href="/home/ewallet">&nbsp;Tài khoản</a>
+                </li>
+
+                <li>
+                    <a icon="fa fa-random" href="#">&nbsp;Giao dịch</a>
+                    <ul>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/Account/CashIn">&nbsp;Nạp tiền tài khoản BigPay</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/Service/Payment">&nbsp;Thanh toán dịch vụ</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/Serice/Transfer">&nbsp;Chuyển tiền</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/Account/CashOut">&nbsp;Rút tiền</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a icon="fa fa-male" href="#">&nbsp;Cá nhân</a>
+                    <ul>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/Service/Topup">&nbsp;Nạp tiền điện tử</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a icon="fa fa-building-o" href="/integrate.html">&nbsp;Doanh nghiệp</a>
+                    <ul>
+                        <!--
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="">&nbsp;Hợp tác cùng BigPay</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="">&nbsp;Doanh nghiệp đã tích hợp BigPay</a>
+                        </li>
+                        -->
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/integrate.html">&nbsp;Tích hợp thanh toán</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--
+                <li>
+                    <a icon="fa fa-map-marker" href="/merchant.html">&nbsp;Điểm giao dịch</a>
+                    <ul>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="">&nbsp;Các điểm giao dịch</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="">&nbsp;Đăng ký trở thành điểm giao dịch</a>
+                        </li>
+                    </ul>
+                </li>
+                -->
+                <li>
+                    <a icon="fa fa-bullhorn" href="/news.html">&nbsp;Tin tức</a>
+                    <ul>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/news/category/khuyen-mai-nha-mang-di-dong.html">&nbsp;Tin khuyến mãi</a>
+                        </li>
+                        <!--
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="">&nbsp;Tin từ Nhân Hòa</a>
+                        </li>
+                        -->
+                    </ul>
+                </li>
+                <li>
+                    <a icon="fa fa-life-bouy" href="/faq.html">&nbsp;Hỗ trợ</a>
+                    <!--
+                    <ul>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="">&nbsp;Các thuật ngữ sử dụng</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="">&nbsp;Thông tin trợ giúp</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="">&nbsp;Khiếu nại</a>
+                        </li>
+                    </ul>
+                    -->
+                </li>
+            </ul>
         </div>
-    </footer><!--/#footer-->
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/mousescroll.js"></script>
-    <script src="/js/smoothscroll.js"></script>
-    <script src="/js/jquery.prettyPhoto.js"></script>
-    <script src="/js/jquery.isotope.min.js"></script>
-    <script src="/js/jquery.inview.min.js"></script>
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/main.js"></script>
+    </section>
+
+    @RenderBody()
+
+
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <article class="footer">
+                    <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h5>Hỗ trợ</h5>
+                        <ul>
+                            <li><a href="../privacy-policy.html"><i class="fa fa-angle-right"></i> Chính sách quyền riêng tư</a></li>
+                            <li><a href="../user-agreements.html"><i class="fa fa-angle-right"></i> Thỏa thuận người dùng</a></li>
+                            <li><a href="../guide.html"><i class="fa fa-angle-right"></i> Hướng dẫn</a></li>
+                        </ul>
+                    </article>
+                    <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h5>Hợp tác</h5>
+                        <ul>
+                            <li><a href="../contact-cooperation.html"><i class="fa fa-angle-right"></i> Liên hệ hợp tác</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i> Dành cho đối tác</a></li>
+                        </ul>
+                    </article>
+                    <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h5>Về BigPay</h5>
+                        <ul>
+                            <li><a href="../recruitment.html"><i class="fa fa-angle-right"></i> Tuyển dụng</a></li>
+                            <li><a href="../contact.html"><i class="fa fa-angle-right"></i> Liên hệ</a></li>
+                        </ul>
+                    </article>
+                    <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h5>Nhận bản tin</h5>
+                        <div class="newsletter"><input id="reemail" placeholder="Nhập Email của bạn" type="email" /> <input id="submit_register_email" value="Đăng ký" type="submit" /></div>
+                    </article>
+                </article>
+                <article class="footer-bottom col-lg-12">Copyright ® Công ty Cổ Phần GNC Pay. All Rights Reserved.</article>
+            </div> <!--end row-->
+        </div> <!--end container-->
+    </footer>
+    <script src="https://azpay.vn/templates/javascript/v2/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            var owl = $("#doitac");
+
+            owl.owlCarousel({
+                items: 3,
+                itemsDesktop: [1000, 4],
+                itemsDesktopSmall: [900, 4],
+                itemsTablet: [640, 3],
+                autoPlay: 5000,
+            });
+            $(".bank-navigation .next").click(function () {
+                owl.trigger('owl.next');
+            })
+            $(".bank-navigation .prev").click(function () {
+                owl.trigger('owl.prev');
+            })
+        });
+
+        $(document).ready(function () {
+
+            var owl = $("#thanhtoan");
+
+            owl.owlCarousel({
+                items: 3,
+                itemsDesktop: [1000, 4],
+                itemsDesktopSmall: [900, 4],
+                itemsTablet: [640, 3],
+                autoPlay: 5000,
+            });
+            $(".navigation .next").click(function () {
+                owl.trigger('owl.next');
+            })
+            $(".navigation .prev").click(function () {
+                owl.trigger('owl.prev');
+            })
+        });
+
+        $(document).ready(function () {
+            $("#slider").owlCarousel({
+                navigation: false,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true,
+            });
+        });
+
+
+    </script>
+    <script src="https://azpay.vn/templates/javascript/v2/jquery.slimmenu.js"></script>
+    <script src="https://azpay.vn/templates/javascript/v2/jquery.easing.min.js"></script>
+
+    <script>
+        $('ul.slimmenu').slimmenu(
+        {
+            resizeWidth: '980',
+            collapserTitle: '',
+            easingEffect: 'easeInOutQuint',
+            animSpeed: 'medium',
+            indentChildren: true,
+            childrenIndenter: ''
+        });
+
+        function load_menu_icon() {
+            var menu_items = $(".slimmenu a[icon]");
+            $(".slimmenu a[icon] i").remove();
+            menu_items.each(function (index) {
+                var menu_class = $(this).attr("icon");
+                $(this).html("<i class='" + menu_class + "'></i>" + $(this).html());
+            });
+        }
+        $(window).resize(function () {
+            load_menu_icon();
+        });
+        load_menu_icon();
+
+        $(document).ready(function () {
+            $("#block_page ul").addClass("pagination").addClass("pull-right");
+        });
+    </script>
 </body>
 </html>

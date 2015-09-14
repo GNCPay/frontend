@@ -1,309 +1,193 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@{ 
     Layout = "~/Views/Shared/_FrontEndLayout.cshtml";
 }
-<section id="main-slider">
-    <div class="owl-carousel">
-        <div class="item" style="background-image: url(http://www.enflexion.com.au/images/slider1.jpg); ">
-            <div class="slider-inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-6">
-                            <div class="carousel-content">
-                                <h2><span>BigPay</span> cổng thanh toán đa dịch vụ</h2>
-                                <h3>An toàn - nhanh chóng - chính xác</h3>
-                                <a class="btn btn-primary btn-lg" href="#">Đăng ký</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.item-->
-        <div class="item" style="background-image: url(http://www.mblsolutions.co.uk/media/home/slider1[5].jpg);">
-            <div class="slider-inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="carousel-content">
-                                <h2>Giải pháp <span>thương mại điện tử</span> chuyên nghiệp </h2>
-                                <h3>Thêm tiện ích - tăng lợi nhuận </h3>
-                                <a class="btn btn-primary btn-lg" href="#">Tìm hiểu</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.item-->
-    </div><!--/.owl-carousel-->
-</section><!--/#main-slider-->
-<!--/#cta-->
-<section id="features">
+<section id="azpay-slider">
+    <article id="slider" class="owl-carousel">
+        <div class="item bg-slider" style="width:100%; height:100%; background:url(https://azpay.vn/uploads/logo/1406602102_bg_slide1.jpg) no-repeat center center">
+            <a href='/' target='_self'><img src='https://azpay.vn/uploads/logo/1406602102_slide1.png' width='1400' height='420' border='0'></a>
+        </div>                <div class="item bg-slider" style="width:100%; height:100%; background:url(https://azpay.vn/uploads/logo/1406602177_bg_slide2.jpg) no-repeat center center">
+            <a href='/' target='_self'><img src='https://azpay.vn/uploads/logo/1406602177_slide2.png' width='1400' height='420' border='0'></a>
+        </div>                <div class="item bg-slider" style="width:100%; height:100%; background:url(https://azpay.vn/uploads/logo/1406602217_bg_slide3.jpg) no-repeat center center">
+            <a href='/' target='_self'><img src='https://azpay.vn/uploads/logo/1406602217_slide3.png' width='1399' height='420' border='0'></a>
+        </div>                <div class="item bg-slider" style="width:100%; height:100%; background:url(https://azpay.vn/uploads/logo/1406602246_bg_slide4.jpg) no-repeat center center">
+            <a href='/' target='_self'><img src='https://azpay.vn/uploads/logo/1406602246_slide4.png' width='1400' height='420' border='0'></a>
+        </div>
+    </article>
+    <img src="https://azpay.vn/templates/images/v2/shadow.png" />
+</section> <!--end slider-->
+
+<section id="azpay-featured">
     <div class="container">
-        <div class="section-header">
-            <h2 class="section-title text-center wow fadeInDown">Tính năng nổi bật</h2>
-            <p class="text-center wow fadeInDown">Giải pháp thanh toán toàn diện đa kênh, đa dịch vụ, mọi lúc mọi nơi</p>
-        </div>
         <div class="row">
-            <div class="col-sm-6 wow fadeInLeft">
-                <img class="img-responsive" src="/images/main-feature.png" alt="">
-            </div>
-            <div class="col-sm-6">
-                <div class="media service-box wow fadeInRight">
-                    <div class="pull-left">
-                        <i class="fa fa-lock"></i>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Bảo mật tuyệt đối</h4>
-                        <p>Các giao dịch được mã hóa SHA-256 bit, xác thực bằng mã OTP và các phương thức chống giả mạo tiên tiến</p>
-                    </div>
+            <h3>Tiết kiệm thời gian với ví điện tử BigPay</h3>
+            <article class="block col-lg-4 col-md-4 col-xs-12">
+                <img src="https://azpay.vn/templates/images/v2/1.jpg" alt="" />
+                <div class="icon"><img src="https://azpay.vn/templates/images/v2/icon1.png" alt="" /></div>
+                <div class="box">
+                    <h4>BigPay là gì</h4>
+                    <p>BigPay là cổng thanh toán trực tuyến được xây dựng theo mô hình hệ thống thanh toán Paypal, phục vụ thanh toán trực tuyến tại Việt Nam. BigPay đóng vai trò là cầu nối giữa người mua và người bán hỗ trợ Thanh toán và Chuyển tiền trực tuyến giữa hai bên.</p>
+
                 </div>
-                <div class="media service-box wow fadeInRight">
-                    <div class="pull-left">
-                        <i class="fa fa-pie-chart"></i>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Xử lý nhanh chóng</h4>
-                        <p>Khả năng xử lý giao dịch nhanh chóng và đáp ứng hàng triệu giao dịch trong ngày</p>
-                    </div>
+            </article>
+            <article class="block col-lg-4 col-md-4 col-xs-12">
+                <img src="https://azpay.vn/templates/images/v2/2.jpg" alt="" />
+                <div class="icon"><img src="https://azpay.vn/templates/images/v2/icon2.png" alt="" /></div>
+                <div class="box">
+                    <h4>MUA HÀNG AN TOÀN, TIỆN LỢI</h4>
+                    <ul>
+                        <li><i class="fa fa-check blue"></i> Giá chiết khấu cao, lên đến 8% mỗi giao dịch</li>
+                        <li><i class="fa fa-check blue"></i> Thanh toán tạm giữ an toàn</li>
+                        <li><i class="fa fa-check blue"></i> Đảm bảo hoàn tiền 100% khi phát sinh khiếu nại</li>
+                        <li><i class="fa fa-check blue"></i> Chứng nhận bảo mật online bởi GlobalSign</li>
+                        <li><i class="fa fa-check blue"></i> Bảo vệ chủ thẻ bởi Verified by Visa và 3D-Secure</li>
+                    </ul>
+
                 </div>
-                <div class="media service-box wow fadeInRight">
-                    <div class="pull-left">
-                        <i class="fa fa-cubes"></i>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Hỗ trợ Đa nền tảng</h4>
-                        <p>Hệ thống BigPay được phát triển trên nền tảng công nghệ tiên tiến, tương thích với tất cả các loại thiết bị</p>
-                    </div>
+            </article>
+            <article class="block col-lg-4 col-md-4 col-xs-12">
+                <img src="https://azpay.vn/templates/images/v2/3.jpg" alt="" />
+                <div class="icon"><img src="https://azpay.vn/templates/images/v2/icon3.png" alt="" /></div>
+                <div class="box">
+                    <h4>NHIỀU ƯU ĐÃI, nhiều TIỆN ÍCH</h4>
+                    <ul>
+                        <li><i class="fa fa-check blue"></i> Tích điểm để tiếp tục tiêu dùng </li>
+                        <li><i class="fa fa-check blue"></i> Liên tục các chương trình khuyến mại</li>
+                        <li><i class="fa fa-check blue"></i> Thanh toán hóa đơn điện thoại, điện nước dễ dàng</li>
+                        <li><i class="fa fa-check blue"></i> Tích hợp nhiều phương thức thanh toán trên website</li>
+                        <li><i class="fa fa-check blue"></i> Giao dịch đa nền tảng PC, Mobile mọi lúc mọi nơi</li>
+                    </ul>
+
                 </div>
-                <div class="media service-box wow fadeInRight">
-                    <div class="pull-left">
-                        <i class="fa fa-phone"></i>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Trợ giúp 24/7</h4>
-                        <p>Chúng tôi có đội ngũ hỗ trợ chuyên nghiệp, tận tình 24/7, sẵn sàng lắng nghe và đáp ứng yêu cầu của Khách hàng</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            </article>
+        </div> <!--end row-->
+    </div> <!--end container-->
 </section>
 
-<section id="services">
+<section id="azpay-signup">
     <div class="container">
-        <div class="section-header">
-            <h2 class="section-title text-center wow fadeInDown">Dịch vụ</h2>
-        </div>
         <div class="row">
-            <div class="features">
-                <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms">
-                    <div class="media service-box">
-                        <div class="pull-left">
-                            <i class="fa fa-bookmark"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Thanh toán hóa đơn</h4>
-                            <p>Thanh toán hóa đơn, dịch vụ: Điện, Nước, Internet, Viễn thông...</p>
-                        </div>
-                    </div>
-                </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms">
-                    <div class="media service-box">
-                        <div class="pull-left">
-                            <i class="fa fa-shopping-cart"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Mua sắm trực tuyến</h4>
-                            <p>Dễ dàng thanh toán khi mua sắm trực tuyến thông qua tài khoản BigPay</p>
-                        </div>
-                    </div>
-                </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="200ms">
-                    <div class="media service-box">
-                        <div class="pull-left">
-                            <i class="fa fa-money"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Chuyển tiền nhanh</h4>
-                            <p>Chuyển tiền nhanh chóng, thuận tiện tới người nhận qua tài khoản ngân hàng, số điện thoại và mạng xã hội</p>
-                        </div>
-                    </div>
-                </div><!--/.col-md-4-->
+            <h3>Cuộc sống dễ dàng hơn với ví điện tử BigPay</h3>
+            <p>Cuộc sống bận rộn, bạn sẽ dễ dàng thanh toán các hóa đơn: điện thoại, điện, nước, internet,... thật nhanh chóng và dễ dàng. Hơn thế nữa, bạn có thể mua hàng online và thanh toán ngay, mua thẻ chơi game,... Còn chờ gì nữa, bạn hãy đăng ký ngay 1 tài khoản trên BigPay.vn nào!</p>
+            <article class="utility col-xs-12">
+                <a href="/Account/CashIn" class="button naptien">Nạp tiền</a>
+                <a href="/Service/Transfer" class="button chuyentien">Chuyển tiền</a>
+                <a href="/Service/Payment" class="button topup">Thanh toán online</a>
+                <a href="/Service/Topup" class="button hoadon">Nạp tiền điện tử</a>
+                <a href="/Account/Login" class="signup">Đăng ký ngay</a>
 
-                <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
-                    <div class="media service-box">
-                        <div class="pull-left">
-                            <i class="fa fa-plane"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Đặt vé điện tử</h4>
-                            <p>Đặt vé máy bay, xem phim, tour du lịch... không thể dễ dàng hơn</p>
-                        </div>
-                    </div>
-                </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">
-                    <div class="media service-box">
-                        <div class="pull-left">
-                            <i class="fa fa-mobile"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Nạp tiền di động</h4>
-                            <p>Nạp tiền điện thoại di động trả trước, trả sau; nạp tiền cho tài khoản game online, học trực tuyến...</p>
-                        </div>
-                    </div>
-                </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="500ms">
-                    <div class="media service-box">
-                        <div class="pull-left">
-                            <i class="fa fa-map-marker"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Dịch vụ tại quầy</h4>
-                            <p>Dễ dàng sử dụng dịch vụ tại các điểm đại lý ủy quyền của BigPay trên toàn quốc</p>
-                        </div>
-                    </div>
-                </div><!--/.col-md-4-->
-            </div>
-        </div><!--/.row-->
-    </div><!--/.container-->
-</section><!--/#services-->
-<section id="portfolio">
+            </article>
+        </div> <!--end row-->
+    </div> <!--end container-->
+</section>
+
+<section id="azpay-news">
     <div class="container">
-        <div class="section-header">
-            <h2 class="section-title text-center wow fadeInDown">Đối tác chiến lược</h2>
-        </div>
-        <div class="text-center">
-            <ul class="portfolio-filter">
-                <li><a class="active" href="#" data-filter="*">Tất cả</a></li>
-                <li><a href="#" data-filter=".finance">Ngân hàng, tài chính</a></li>
-                <li><a href="#" data-filter=".service">Dịch vụ</a></li>
-                <li><a href="#" data-filter=".commerce">Thương mại điện tử</a></li>
-            </ul><!--/#portfolio-filter-->
-        </div>
-        <div class="portfolio-items">
-            <div class="portfolio-item finance">
-                <div class="portfolio-item-inner">
-                    <img class="img-responsive" width="600" height="400" src="/images/portfolio/partner_banknet.jpg" alt="">
-                    <div class="portfolio-info">
-                        <h3>BankNet</h3>
-                        Mạng chuyển mạch quốc gia
-                        <a class="preview" href="#" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-                    </div>
-                </div>
-            </div><!--/.portfolio-item-->
-            <div class="portfolio-item finance">
-                <div class="portfolio-item-inner">
-                    <img class="img-responsive" src="/images/portfolio/partner_ocb.jpg" alt="">
-                    <div class="portfolio-info">
-                        <h3>OCB Bank</h3>
-                        Ngân hàng TMCP Phương Đông
-                        <a class="preview" href="/images/portfolio/full.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-                    </div>
-                </div>
-            </div><!--/.portfolio-item-->
-            <div class="portfolio-item finance">
-                <div class="portfolio-item-inner">
-                    <img class="img-responsive" src="/images/portfolio/partner_ncb.jpg" alt="">
-                    <div class="portfolio-info">
-                        <h3>NCB Bank</h3>
-                        Ngân hàng TMCP Quốc dân
-                        <a class="preview" href="/images/portfolio/full.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-                    </div>
-                </div>
-            </div><!--/.portfolio-item-->
-            <div class="portfolio-item commerce">
-                <div class="portfolio-item-inner">
-                    <img class="img-responsive" src="/images/portfolio/partner_fpts.jpg" alt="">
-                    <div class="portfolio-info">
-                        <h3>FPT Shop</h3>
-                        Chuỗi bán lẻ thiết bị số FPT Shop
-                        <a class="preview" href="/images/portfolio/full.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-                    </div>
-                </div>
-            </div><!--/.portfolio-item-->
-            <div class="portfolio-item service">
-                <div class="portfolio-item-inner">
-                    <img class="img-responsive" src="/images/portfolio/partner_evn.jpg" alt="">
-                    <div class="portfolio-info">
-                        <h3>EVN Việt Nam</h3>
-                        Tập đoàn điện lực Việt Nam
-                        <a class="preview" href="/images/portfolio/full.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--/.container-->
-</section><!--/#portfolio-->
-<section id="about">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title text-center wow fadeInDown">Về BigPay</h2>
-            <p class="text-center wow fadeInDown">BigPay là cổng thanh toán điện tử được phát triển bởi <a href="http://gncpay.vn">Công ty Cổ phần giải pháp Thanh toán GNC Pay</a></p>
-        </div>
         <div class="row">
-            <div class="col-sm-6 wow fadeInLeft">
-                <h3 class="column-title">Giới thiệu về BigPay</h3>
-                <!-- 16:9 aspect ratio -->
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe src="//player.vimeo.com/video/58093852?title=0&amp;byline=0&amp;portrait=0&amp;color=e79b39" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <article class="news col-lg-6 col-md-6 col-xs-12">
+                <div class="heading">
+                    <h3>Tin tức</h3>
                 </div>
-            </div>
-            <div class="col-sm-6 wow fadeInRight">
-                <h3 class="column-title">Công ty CP giải pháp thanh toán GNC Pay</h3>
-                <p>GNCPAY.,JSC được thành lập vào năm 2010. Trải qua thời gian hoạt động trong các lĩnh vực ICT, chúng tôi phấn đấu trở thành nhà cung ứng dịch vụ ICT có uy tín trên thị trường mà dịch vụ chính là trung gian thanh toán, cung cấp giải pháp, dịch vụ thanh toán cho ngành kinh tế trọng yếu, mang tính cộng đồng cao như Điện lực, Giáo dục, Viễn thông, Y tế … 
-                Dịch vụ được xây dựng trên cơ sở hệ thống đa kênh, đa phương tiện, kết nối với các ngân hàng và các đơn vị cung ứng hàng hóa dịch vụ, mang đến các dịch vụ thanh toán chất lượng và hiện đại cho khách hàng, góp phần thúc đẩy sự phát triển của hệ thống thanh toán phi tiền mặt tại Việt Nam</p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul class="nostyle">
-                            <li><i class="fa fa-check-square"></i> BigPay - Giải pháp ví điện tử</li>
-                            <li><i class="fa fa-check-square"></i> TapPay - Giải pháp thanh toán thẻ</li>
-                        </ul>
+                <ul>
+                    @*<li><a href="/news/22/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA MOBIFONE NGÀY 22 - 23/05/2014</a></li>
+                        <li><a href="/news/21/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA VINAPHONE NGÀY 21 - 22/05/2014</a></li>
+                        <li><a href="/news/20/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA VIETTEL NGÀY 09/05 - 10/05/2014</a></li>
+                        <li><a href="/news/19/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA VINAPHONE NGÀY 09/05/2014</a></li>
+                        <li><a href="/news/18/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA MOBIFONE NGÀY 08/05 - 09/05/2014</a></li>*@
+                </ul>
+            </article>
+
+            <section class="cus col-lg-6 col-md-6 col-xs-12">
+                <article class="group">
+                    <div class="heading">
+                        <h3>Hỗ trợ thanh toán</h3>
                     </div>
-                    <div class="col-sm-6">
-                        <ul class="nostyle">
-                            <li><i class="fa fa-check-square"></i> Social Commerce - Giải pháp TMĐT mạng xã hội</li>
-                            <li><i class="fa fa-check-square"></i> Payment Gateway - Cổng thanh toán trung gian</li>
-                        </ul>
+                    <div class="navigation">
+                        <a class="prev"><i class="fa fa-angle-double-left"></i></a>
+                        <a class="next"><i class="fa fa-angle-double-right"></i></a>
                     </div>
-                </div>
-                <a class="btn btn-primary" href="http://www.gncpay.vn">Tìm hiểu thêm</a>
-            </div>
-        </div>
-    </div>
-</section><!--/#about-->
-<section id="contact">
-    <div id="google-map" style="height:650px" data-latitude="21.0083744" data-longitude="105.7974893"></div>
-    <div class="container-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 col-sm-offset-8">
-                    <div class="contact-form">
-                        <h3>Liên hệ với chúng tôi</h3>
-                        <address>
-                            <strong>501, Tòa nhà Charmvit</strong><br>
-                            117 Trần Duy Hưng<br>
-                            Cầu Giấy, Hà Nội<br>
-                            <abbr title="Phone">P:</abbr> (84) 904 861 615
-                        </address>
-                        <form id="main-contact-form" name="contact-form" method="post" action="#">
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Name" required>
+                    <div id="thanhtoan" class="owl-carousel">
+                        <div class="item">
+                            <div class="border">
+                                <a href="http://http://www.vietcombank.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401520456_vietcombank.gif" alt="" /></a>
+                            </div>            <div class="border">
+                                <a href="http://www.techcombank.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401520420_techcombank.gif" alt="" /></a>
                             </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                        </div><div class="item">
+                            <div class="border">
+                                <a href="http://tpb.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401520406_tienphongbank.gif" alt="" /></a>
+                            </div>            <div class="border">
+                                <a href="http://http://www.vietinbank.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401647698_vietinbank.gif" alt="" /></a>
                             </div>
-                            <div class="form-group">
-                                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                        </div><div class="item">
+                            <div class="border">
+                                <a href="http://vib.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401520388_vib.gif" alt="" /></a>
+                            </div>            <div class="border">
+                                <a href="http://www.dongabank.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401520373_dongabank.gif" alt="" /></a>
                             </div>
-                            <div class="form-group">
-                                <textarea name="message" class="form-control" rows="8" placeholder="Message" required></textarea>
+                        </div><div class="item">
+                            <div class="border">
+                                <a href="http://www.hdbank.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401520359_hdbank.gif" alt="" /></a>
+                            </div>            <div class="border">
+                                <a href="http://www.mbbank.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401520344_mbbank.gif" alt="" /></a>
                             </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
+                        </div><div class="item">
+                            <div class="border">
+                                <a href="http://www.vietabank.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401520329_vietabank.gif" alt="" /></a>
+                            </div>            <div class="border">
+                                <a href="http://www.msb.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401520311_maritimebank.gif" alt="" /></a>
+                            </div>
+                        </div><div class="item">
+                            <div class="border">
+                                <a href="http://www.eximbank.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401519133_eximbank.gif" alt="" /></a>
+                            </div>            <div class="border">
+                                <a href="http://www.habubank.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401519121_shbbank.gif" alt="" /></a>
+                            </div>
+                        </div><div class="item">
+                            <div class="border">
+                                <a href="http://www.vpb.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401519108_vpbank.gif" alt="" /></a>
+                            </div>            <div class="border">
+                                <a href="http://www.abbank.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401518743_abbank.gif" alt="" /></a>
+                            </div>
+                        </div><div class="item">
+                            <div class="border">
+                                <a href="http://www.sacombank.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401518733_sacombank.gif" alt="" /></a>
+                            </div>            <div class="border">
+                                <a href="http://www.namabank.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401518720_namabank.gif" alt="" /></a>
+                            </div>
+                        </div><div class="item">
+                            <div class="border">
+                                <a href="http://www.oceanbank.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401518710_ocenbank.gif" alt="" /></a>
+                            </div>            <div class="border">
+                                <a href="http://www.bidv.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401518695_bidvbank.gif" alt="" /></a>
+                            </div>
+                        </div><div class="item">
+                            <div class="border">
+                                <a href="http://www.seabank.com.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401518680_seabank.gif" alt="" /></a>
+                            </div>            <div class="border">
+                                <a href="http://www.baca-bank.vn/" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401518669_bacabank.gif" alt="" /></a>
+                            </div>
+                        </div><div class="item">
+                            <div class="border">
+                                <a href="http://http://www.agribank.com.vn" target="_blank_" title=""><img src="https://azpay.vn/uploads/logo/1401518655_agribank.gif" alt="" /></a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!--/#bottom-->
+                </article>
+
+                <article>
+                    <div class="heading">
+                        <h3>Đối tác BigPay</h3>
+                    </div>
+                    <div class="bank-navigation">
+                        <a class="prev"><i class="fa fa-angle-double-left"></i></a>
+                        <a class="next"><i class="fa fa-angle-double-right"></i></a>
+                    </div>
+                    <div id="doitac" class="owl-carousel">
+                        <div class="item"><a href="http://evnhanoi.vn" target="_blank_" title=""><img src="data:image/jpeg;base64,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" alt="" /></a></div>
+                        <div class="item"><a href="http://bigapps.vn/" target="_blank_" title=""><img src="http://store.bigapps.vn//cloud-storage/images/20150316152645082_bigappsx78.jpg" alt="" /></a></div>
+                    </div>
+                </article>
+            </section>
+        </div> <!--end row-->
+    </div> <!--end container-->
+</section>

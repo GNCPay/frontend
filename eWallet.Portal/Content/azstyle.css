@@ -1,0 +1,695 @@
+﻿body{font-family:Arial, Helvetica, sans-serif;color:#000;font-size:15px;line-height:21px; font-weight:normal; background:#fff}
+h1,h2,h3,h4,h5,h6{color:#3a3a3a;font-family:Arial, Helvetica, sans-serif;font-weight:400;text-rendering:auto;margin-top:0;line-height:1.25em}
+h4,h5,h6{line-height:1.4em}
+h1{font-size:36px}
+h2{font-size:30px}
+h3{font-size:24px}
+h4{font-size:18px}
+h5{font-size:15px;font-weight:700}
+h6{font-size:13px}
+ul{list-style:none;margin:0}
+a{text-decoration:none}
+a:hover{color:#ff6600}
+a:focus{outline:none}
+.blue{color:#047a86}
+.green, .green a{color:#b5b5b5; padding:0px 1px}
+.red, .red a{color:#F00;padding:0px 1px}
+.linePT20{border-top:1px solid #ddd; padding-top:20px}
+img{border:0 none;height:auto;max-width:100%;vertical-align:middle}
+
+/*INPUT*/
+[type=text],[type=password], [type=email],textarea, select{
+	color:#000;font-family:Arial, Helvetica, sans-serif;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;border:1px solid #d8d8d8;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;margin:0px 5px 0px 0px;padding:8px 5px; font-size:12px; outline:none}	
+
+[type=text]:focus,[type=password]:focus, [type=email]:focus,textarea:focus, select:focus{border:1px solid #ff6600}
+[type=submit], [type=button]{
+	display:inline-block;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;border:0;color:#fff;cursor:pointer;background:#ff7d27;padding:10px 20px; font-size:13px; border:1px solid #ff6600;transition:background-color .5s ease-out;-o-transition:background-color .5s ease-out;-moz-transition:background-color .5s ease-out;-webkit-transition:background-color .5s ease-out; outline:none}
+
+[type=submit]:hover, [type=button]:hover{
+	background:#f36100; border:1px solid #ff7d27}
+
+/*TOP-HEADER*/
+#azpay-topheader{
+	background:#f9f9f9;color:#fff;font-size:12px;padding:0px;margin:0px;border-bottom:1px solid #e4e4e4}
+#azpay-topheader .support{
+	color:#333;text-decoration:none;}
+	
+/*HEADER*/	
+#azpay-header{
+	padding:20px 0 5px}
+#azpay-topheader .function{
+	float:right; color:#333; text-align:right; margin:5px 0px}
+#azpay-topheader .function a{
+	color:#333}
+#azpay-topheader .function a:hover{
+	color:#ff6600}
+#azpay-topheader .function form{
+	float:right}
+#azpay-topheader .function form [type=text], .function form [type=password]{
+	padding:3px 5px; width:27%}	
+#azpay-topheader .function form [type=submit]{
+	background:#ff7d27;padding:3px 5px; margin-right:5px; border:none; font-size:12px}
+#azpay-topheader .function p{
+	color:#565656; margin-top:5px; margin-bottom:3px}
+#azpay-topheader .function p a{
+	text-decoration:none;color:#565656;}
+#azpay-topheader .function a span{
+	color:#0096ff; font-weight:bold}
+		
+/*SUPPORT*/
+ul.support, ul.support ul.link-sp {
+    padding:0;
+    margin: 0}
+ul.support li, ul.support ul.link-sp li {
+    list-style-type: none;
+    display: inline-block}
+ul.support li a {
+    text-decoration: none;
+    display:inline-block; 
+	padding:5px;
+	background:#ff8b3e;
+	padding:9px;
+	color:#fff}
+ul.support li ul.link-sp li{
+	border-bottom:1px dotted #ddd;
+	padding:10px}
+ul.support li ul.link-sp li a {
+    text-decoration: none;
+    color: #333;
+    background: #fff;
+    padding: 5px;
+    display:inline-block}
+ul.support li {
+    position: relative}
+ul.support li ul.link-sp {
+    display:none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 300px;
+	z-index:99;
+    background: #fff;
+	border-bottom:2px solid #ff6600;
+	box-shadow: 0px 1px 5px #ccc}
+ul.support li:hover ul.link-sp {
+    display:block}
+ul.support li ul.link-sp li div span{
+	font-weight:bold; font-size:16px; color:#ff6600}
+ul.support li ul.link-sp li div p{
+	padding:0px; margin:0px; line-height:25px;font-size:14px}
+	
+/*SLIDER*/
+#azpay-slider{
+	text-align:center}
+
+/*BREACUM*/
+#azpay-breacum{
+	background:#f9f9f9; padding:15px 0px; font-size:13px}
+#azpay-breacum a{
+	color:#333333; text-decoration:none}
+#azpay-breacum a:hover{
+	color:#ff6600}
+#azpay-breacum span{
+	color:#757575; padding:0px 0px 0px 10px}
+.clr:before, .clr:after {
+	display:table; content: ""}
+.clr:after { 
+	clear: both}
+* html .clr
+	{height: 1%}
+.clr
+	{display: block}
+html[xmlns] .clr 
+	{display:block}
+
+/*FEATURE*/
+#azpay-featured{
+	margin:10px 0px}
+#azpay-featured h3{
+	font-family:'avo';Arial, Helvetica, sans-serif; text-align:center; font-size:29px; text-transform:uppercase; color:#047a86; margin:10px 0px 30px 0px}
+#azpay-featured .block{
+	position:relative}
+#azpay-featured .block .icon{
+	margin:0 auto; display:block; text-align:center;margin-top: -35px;margin-bottom: -30px}
+#azpay-featured .block .box{
+	border:1px solid #ddd; padding:10px 15px; background:#fff}
+#azpay-featured .block .box:hover{
+	box-shadow:0 0 5px #E1E0DD}
+#azpay-featured .block:before{
+	content: '';position: absolute;display: block;height: 16px;bottom: -5px;left: 25px;right: 25px;background-color: #fff;border: 1px solid #ddd;z-index: -1}
+#azpay-featured .block .box h4{
+	text-align:center; font-weight:bold; color:#4a4a4a; text-transform:uppercase; font-family:Arial, Helvetica, sans-serif; font-size:20px; margin-top:30px}
+#azpay-featured .block .box p{
+	margin:0px}
+#azpay-featured .block .box p, #azpay-featured .block .box ul li{
+	font-size:13px; color:#757575;font-family:Arial, Helvetica; text-align:justify; line-height:25px}
+
+/*READMORE*/
+a.readmore{
+	background:#fff; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px; border:2px solid #ff6600; padding:10px 30px; text-decoration:none; color:#ff6600; transition:background-color .5s ease-out;-o-transition:background-color .5s ease-out;-moz-transition:background-color .5s ease-out;-webkit-transition:background-color .5s ease-out;display:table; margin:10px auto 5px auto}
+a.readmore:hover{
+	background:#ff7d27; color:#fff}
+
+/*SIGNUP*/	
+a.signup{
+	background:#fff; font-size:20px; -webkit-border-radius: 4px;
+-moz-border-radius: 4px;border-radius: 4px; border:2px solid #ff6600; padding:20px 50px; text-decoration:none; color:#ff6600; transition:background-color .5s ease-out;-o-transition:background-color .5s ease-out;-moz-transition:background-color .5s ease-out;-webkit-transition:background-color .5s ease-out;display:table; margin:10px auto 5px auto; text-transform:uppercase; margin-top:240px}
+a.signup:hover{
+	background:#ff7d27; color:#fff}
+#azpay-signup{
+	background:#f9f9f9 url(../images/v2/map.png) no-repeat center center; border:1px solid #ececec; border-left:none; border-right:none; margin:50px 0px}
+#azpay-signup h3{
+	font-family:'avo';Arial, Helvetica, sans-serif; text-align:center; font-size:29px; text-transform:uppercase; color:#047a86; margin:30px 0px}
+#azpay-signup p{
+	text-align:center; color:#757575; font-family:Arial, Helvetica, sans-serif; width:85%; margin:0 auto}
+#azpay-signup .utility{
+	background:url(../images/v2/network.png) no-repeat center bottom; padding:20px 0px; height:375px; position:relative}
+
+
+#azpay-signup .button{
+	text-transform:uppercase; color:#fff; text-decoration:none; font-weight:bold; padding:10px 15px; font-size:15px}
+#azpay-signup a.naptien{
+	background:#1abc9c;position: absolute;top: 9%;left: 18.5%;}
+#azpay-signup a.chuyentien{
+	background:#f39c12;position: absolute;top: 36%;left: 36%}
+#azpay-signup a.topup{
+	background:#e74c3c;position: absolute;top: 17%;left: 42.5%}	
+#azpay-signup a.hoadon{
+	background:#34495e;position: absolute;top: 2%;left: 63%}
+#azpay-signup a.naptien:after, #azpay-signup a.naptien:before{
+	top: 100%;left: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none}
+#azpay-signup a.naptien:before{
+	border-top-color: #1abc9c;border-width: 15px;margin-left: -15px}
+#azpay-signup a.chuyentien:after, #azpay-signup a.chuyentien:before {
+	top: 100%;left: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none}
+#azpay-signup a.chuyentien:before {
+	border-top-color: #f39c12;border-width: 15px;margin-left: -15px}
+#azpay-signup a.topup:after, #azpay-signup a.topup:before {
+	top: 100%;left: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none}
+#azpay-signup a.topup:before {
+	border-top-color: #e74c3c;border-width: 15px;margin-left: -15px}
+#azpay-signup a.hoadon:after, #azpay-signup a.hoadon:before {
+	top: 100%;left: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none}
+#azpay-signup a.hoadon:before {
+	border-top-color: #34495e;border-width: 15px;margin-left: -15px}
+
+/*NEWS - HOME*/
+.news .heading, .cus .heading{
+	border-bottom:1px solid #d9d9d9;float: left;width: 100%}
+.news .heading h3, .cus .heading h3{
+	font-size:22px; color:#047a86; border-bottom:1px solid #047a86; font-weight:700; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; float:left; margin-bottom:0px; padding-bottom:10px}
+.news ul{
+	overflow:hidden; clear:both}
+.news ul li{
+	color:#5d5d5d; line-height:25px; font-size:13px; border-bottom:1px dotted #d6d6d6; padding:10px 0px}
+.news ul li a{
+	color:#5d5d5d; text-decoration:none}
+.news ul li a:hover{
+	color:#ff6600}
+
+/*FOOTER*/
+footer{
+	background:#047a86}
+.footer{
+	border-bottom:1px solid #005760; overflow:hidden}
+.footer-box{
+	margin:25px 0px 20px 0px}
+.footer-box h5{
+	color:#fff; font-weight:bold; text-transform:uppercase; font-size:16px; border-bottom:1px solid #005760; padding-bottom:10px; margin:0px; font-family:Arial, Helvetica, sans-serif}
+.footer-box ul{
+	padding:0; margin:0}
+.footer-box ul li{
+	color:#fff; line-height:25px; font-size:13px; padding:5px 0px}
+.footer-box ul li:first-child{
+	border-top:1px solid #00a7b8}
+.footer-box ul li a{
+	color:#fff; text-decoration:none}
+.footer-bottom{
+	border-top:1px solid #00a7b8; padding:10px 0px; text-align:center; color:#fff;font-size:12px}
+.footer-bottom a{
+	color:#fff; text-decoration:none}
+
+/*NEWSLETTER*/
+.newsletter{
+	border-top:1px solid #00a7b8; padding-top:15px}
+.newsletter [type=email]{
+	float:left; border:none; padding:6px 5px !important}
+.newsletter [type=submit]{
+	padding:5px; float:left; font-size:13px}
+
+/*LEFT*/
+#azpay-main{
+	margin:15px 0px}
+.transaction-info-module{
+	border-right:1px solid #ddd; padding-right:10px; padding-bottom:20px;margin-bottom:20px}
+.acc-module, .utility-module, .send-mail-module{
+	border-right:1px solid #ddd;padding-bottom:20px; margin-bottom:20px}
+.transaction-info-module .heading, 
+.acc-module .heading, 
+.utility-module .heading, 
+.send-mail-module .heading{
+	border-bottom:1px solid #ddd; overflow:hidden}
+.transaction-info-module .heading h3, 
+.acc-module .heading h3, 
+.utility-module .heading h3, 
+.send-mail-module .heading h3{
+	color:#047a86; text-transform:uppercase; border-bottom:1px solid #047a86; float:left; font-size:13px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;padding-bottom: 10px;margin-bottom: 0px}
+.transaction-info-module .heading span a{
+	color:#F00; float:right; font-size:13px}
+.transaction-info-module ul{
+	overflow:hidden; font-size:13px; color:#333}
+.transaction-info-module ul li{
+
+	padding:10px 0px; border-bottom:1px solid #ddd}
+
+.utility-module ul li{
+	background:#fff;border-bottom:1px solid #ddd; padding:10px 15px 10px 0px;color: #333;font-size: 13px;border-bottom:1px solid #ddd}
+.utility-module ul li a{ 
+	font-weight:normal;text-decoration: none;color: #333}
+.utility-module ul li a.active, .utility-module ul li a:hover{
+	color:#ff6600}
+
+.acc-module ul li{
+	border-bottom:1px solid #ddd; list-style:none}
+.acc-module ul li a{
+	background:#f9f9f9;padding:10px 15px;display:block; font-weight:bold; text-decoration:none; color:#333; font-size:13px;border-left:5px solid #1abc9c}
+.acc-module ul.sub{
+	margin-left:15px}
+.acc-module ul ul.sub li a{
+	background:#fff; padding-left:0px !important;border-left:none; font-weight:normal}
+.acc-module ul ul.sub li a:hover{
+	color:#ff6600}
+
+.block-info h3, 
+.table-info h3, 
+.form-info h3, 
+.signup-info h3, 
+.select-payment h3, 
+.network h3,
+.payment h3,
+.atm-transfer h3{
+	color:#333; text-transform:uppercase; border-bottom:1px solid #ddd; font-size:15px; font-weight:bold; padding-bottom:10px}
+
+.block-info ul
+	{background:#f5fcff; color:#484848; margin-bottom:15px}
+.block-info ul li{
+	border-bottom:1px solid #e0f4ff; font-size:13px; padding:10px; overflow:hidden; clear:both}
+.block-info ul li:last-child{
+	border-bottom:none}
+.block-info ul li label{
+	font-weight:normal; width:40%; display:block; float:left; margin-right:15px}
+.block-info ul li strong{
+	float:left; width:50%}
+.block-info ul li span a{
+	float:right;font-weight:bold; color:#0096ff; text-decoration:none; font-size:14px}
+
+.form-info {overflow:hidden; clear:both}
+.form-info p{font-size:13px}
+.form-info ul li, .paybill-info ul li {padding-bottom:15px}
+.form-info [type=text], .form-info [type=password], .form-info select, .form-info textarea{width:30%}
+.paybill-info [type=text], .paybill-info [type=password], .paybill-info select, .paybill-info textarea{width:70%}
+.form-info textarea{resize:vertical}
+.form-info ul li label{font-weight:normal; width:20%; font-size:13px}
+.paybill-info ul li label{font-weight:normal; width:25%; font-size:13px}
+.table-info ul.filter {background:#1abc9c; overflow:hidden}
+.table-info ul.filter li{float:left; display:block;padding:10px}
+.table-info ul.filter li a{color:#fff;}
+.table-info ul.filter li.active a{background:#fff; color:#1abc9c;padding:5px 10px 11px 10px; font-weight:bold}
+.table-info select.filter{display:none}
+.table-info ul.filter-input{overflow:hidden; margin:15px 0px 20px 0px}
+.table-info ul.filter-input li label{font-size:13px; font-weight:normal}
+.table-info ul.filter-input li{float:left; margin-right:10px; font-size:13px; margin-bottom:15px}
+.table-info ul.filter-input li [type=submit]{padding:7px 20px}
+.table-info p{text-align:justify; font-size:13px}
+.table-detail {width:100%; border:1px solid #e6e9ed; margin-bottom:15px}
+.table-detail th {background: #f6f8f9;font-family:  Arial, Helvetica, sans-serif;color: #757575;
+text-align: right;font-weight: 700;font-size: 13px;border-bottom:1px solid #e6e9ed;padding: 10px}
+.table-detail tr td{padding:10px;font-size:13px; border-bottom:1px solid #e6e9ed}
+.table-detail .total{background:#eee}
+.table-detail span a{color:#0096ff; font-weight:bold}
+.table-detail span a:hover{color:#ff6600}
+.table-detail tr td a{color:#0096ff; font-weight:bold}
+.signup-info .group{background:#f2faff; padding:10px; overflow:hidden}
+.signup-info .group .number{-webkit-border-radius: 50px;-moz-border-radius: 50px;border-radius: 50px;width:50px; height:50px; background:#047a86; text-align:center; float:left; margin-right:15px}
+.signup-info .group .number span{color: #fff;font-size: 32px;font-weight: bold;padding-top: 13px;display: block;}
+.signup-info .group .info{display: inline-block;float: left;width: 90%}
+.signup-info .group .info h5{font-size:14px}
+.signup-info .group .info p{text-align:justify; font-size:13px; color:#757575}
+.signup-input, .topup-input{margin:10px 0px; overflow:hidden;}
+.signup-input figure, .topup-input figure{margin-bottom:10px; font-size:13px}
+.signup-input figure .input-append{display:inline-block}
+.signup-input label{font-size:13px; width:27%; font-weight:normal;display:inline-block}
+.topup-input label{font-size:13px; width:100%; font-weight:normal;display:inline-block}
+.signup-input label.error{background-color: #f2dede;color: #a94442;padding: 5px 10px;border: 1px solid #ebccd1; margin-top:10px;position: absolute;top: -7px;width: auto;right: 23px}
+.signup-input [type=text], .signup-input [type=email], .signup-input [type=password], .signup-input select{width:72%}
+.topup-input [type=text], .topup-input [type=email], .topup-input [type=password], .topup-input select{width:100%}
+.signup-input [type=radio]{margin:10px 0px}
+.signup-input select.birthday{width:15%}
+.signup-input select, .topup-input select{padding-bottom:10px}
+
+@-moz-document url-prefix() { 
+  .signup-input [type=text], .signup-input [type=email], .signup-input [type=password], .signup-input select{padding-bottom:12px}
+}
+
+@-moz-document url-prefix() { 
+  .signup-input select{padding-bottom:10px}
+}
+
+@-moz-document url-prefix() { 
+ #azpay-topheader .function form [type=text], .function form [type=password]{
+	padding:5px 5px}	
+}
+
+	
+[type=submit].cancel{display:inline-block;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;border:0;color:#000;cursor:pointer;background:#eaeaea;padding:10px 20px; font-size:13px; border:1px solid #9e9e9e;transition:background-color .5s ease-out;-o-transition:background-color .5s ease-out;-moz-transition:background-color .5s ease-out;-webkit-transition:background-color .5s ease-out}
+
+[type=submit].cancel:hover{background:#cdcdcd}
+
+#cssmenu{font-family:Arial, Helvetica, sans-serif; color:#fff}
+#cssmenu,#cssmenu ul,#cssmenu ul li,#cssmenu ul li a{border:0;list-style:none;line-height:1;display:block;position:relative;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0}
+#cssmenu ul ul{display:none}
+.align-right{float:right}
+#cssmenu > ul > li > a{cursor:pointer;z-index:2;font-size:13px;text-decoration:none;color:#000;border-bottom:1px solid #ddd;border-left: 5px solid #1abc9c;background:#f9f9f9;padding:15px; font-weight:bold}
+#cssmenu > ul > li > a:hover,#cssmenu > ul > li.active > a,#cssmenu > ul > li.open > a{color:#000;border-bottom:1px solid #ddd; font-weight:bold}
+.holder{width:0;height:0;position:absolute;top:0;right:0}
+.holder::after,.holder::before{display:block;position:absolute;content:'';width:6px;height:6px;right:20px;z-index:10;-webkit-transform:rotate(-135deg);-moz-transform:rotate(-135deg);-ms-transform:rotate(-135deg);-o-transform:rotate(-135deg);transform:rotate(-135deg)}
+.holder::after{top:17px;border-top:1px solid #333;border-left:1px solid #333}
+.holder::before{top:18px;border-top:1px solid;border-left:1px solid;border-top-color:inherit;border-left-color:inherit}
+#cssmenu ul ul li a{cursor:pointer;border-bottom:1px solid #ddd;z-index:1;text-decoration:none;font-size:13px;color:#000;padding:15px 20px 15px 15px}
+#cssmenu ul ul li:hover > a,#cssmenu ul ul li.open > a,#cssmenu ul ul li.active > a{color:#ff6600}
+#cssmenu ul ul li:first-child > a{box-shadow:none}
+#cssmenu ul ul ul li a{padding-left:60px}
+#cssmenu ul ul li.active > a::after,#cssmenu ul ul li.open > a::after,#cssmenu ul ul li > a:hover::after{border-color:#fff}
+#cssmenu > ul > li.open > a,#cssmenu > ul > li:last-child > a,#cssmenu > ul > li.last > a{border-bottom:1px solid #dddede}
+#cssmenu > ul > li > ul > li:last-child > a,#cssmenu > ul > li > ul > li.last > a,#cssmenu > ul > li > ul > li.open:last-child > ul > li:last-child > a{border-bottom:0; line-height:25px}
+
+.paragraph-info h3{font-weight:bold; font-size:14px}
+.paragraph-info p, .paragraph-info ul li{color:#757575; text-align:justify; font-size:13px;}
+.paragraph-info ul li{list-style:circle; margin-left:30px}
+.paragraph-info figure{margin-bottom:40px}
+.paragraph-info figure a.see-more{
+	color:#fff;font-family:Arial, Helvetica, sans-serif;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;border:1px solid #d8d8d8;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;margin:0px 5px 0px 0px;padding:5px 8px; font-size:12px;background: #ff7d27;border: 1px solid #ff6600}
+.paragraph-info img{border:1px solid #ececef; padding:3px; background:#f7f7f7; display:block; margin:0px auto}
+.paragraph-info h2{margin:0px; padding:0px;font-size:16px;font-weight:bold; line-height:25px}
+.paragraph-info h2 a{color:#047a86}
+.paragraph-info h2 a:hover{text-decoration:underline}
+.paragraph-info figure .row time{color:#757575; font-size:13px;  width:100%; padding-bottom:5px; display:block; border-bottom:1px solid #ddd; padding:5px 0px; margin-bottom:5px}
+
+.news_aricle_list h3{color:#047a86; border-bottom:1px solid #ddd; font-size:20px !important; font-weight:bold; padding-bottom:10px}
+.news_aricle_list ul li{color:#333; list-style:none; margin-left:0px}
+.news_aricle_list ul li a{font-size:13px; color:#333; line-height:30px}
+.news_aricle_list ul li a:hover{color:#ff6600}
+.news_aricle_list ul li span{color:#757575; font-size:12px}
+
+.cart-page {
+	background: #f6f8f9;overflow:hidden;border:1px solid #e6e9ed;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;padding:10px 0px;margin-bottom:25px}
+.cart-page ul.steps {
+    margin: 0px auto;padding: 14px 60px 50px 60px;width: 100%;overflow: hidden}
+.cart-page ul.steps li {
+    float: left;width: 47%;text-align: left;border-bottom: 3px solid #d9d9d9;position: relative;height: 22px;
+    list-style:none}
+.cart-page ul.steps li a {
+    display: inline-block;color: #fff;width: 40px;height:30px;position: absolute;color: #fff}
+.cart-page ul.steps li.current .numbers{
+    background:#ff8b3e;border:3px solid #d9d9d9;color:#fff;line-height:31px}
+.cart-page ul.steps li.current .text-page{
+    color:#333}
+.numbers{
+    display:inline-block;font-size: 24px !important;line-height:38px;font-weight: bold;text-align: center;
+	background:#d9d9d9;color:#838383; width:40px; height:40px;-webkit-border-radius: 50px;-moz-border-radius: 50px;
+	border-radius: 50px;}
+.text-page {position: absolute;top: 43px;width: 123px;left: -29px;font-weight: bold;font-size: 12px !important;	color:#d9d9d9}
+.cart-page ul.steps li:last-child {
+	width: 0%;}
+.payment-box{
+	border:3px solid #e6e9ed;padding: 0px;margin: 0px 0px 30px 0px}
+.payment-box h4{
+	padding:10px;color:#333; font-weight:bold; text-transform:uppercase; font-size:12px; background:#e6e9ed; margin:0px}
+.payment-box span{
+	font-size:25px; float:left; margin-right:10px; color:#d6d6d6}
+.payment-box p{
+	padding-top:6px}
+.payment-box .info{padding:20px; overflow:hidden}
+.payment-box .info img{float:left; margin: 8px 25px 0px 0px;max-height: 150px}
+.payment-box .info ul{color:#5e5e5e; font-size:13px; text-align:left}
+.payment-box:hover, .payment-box.active{border:3px solid #1abc9c; cursor:pointer}
+.payment-box:hover h4, .payment-box.active h4{background:#1abc9c}
+.payment-box:hover p, .payment-box:hover span, .payment-box.active p, .payment-box.active span{color:#fff}
+
+.network div.label{color:#333}
+.network ul{overflow:hidden}
+.network ul li{margin: 10px 20px 15px 0px;border: 1px solid #e3e3e3;background: #fff;-webkit-border-radius: 4px;
+-moz-border-radius: 4px;border-radius: 4px;padding: 2px 15px;text-align: center;float:left; cursor:pointer}
+.network ul li img{width:142px}
+.network ul li:hover, .network ul li.active{border:1px solid #ff6600}
+.network select{display:none}
+
+.logo-network{position:absolute;top: 20px;left: 20px}
+
+.price{border:1px solid #ddd;padding:10px;-webkit-border-bottom-right-radius: 5px;-webkit-border-bottom-left-radius: 5px;-moz-border-radius-bottomright: 5px;-moz-border-radius-bottomleft: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;}
+
+.card:hover .price{border:1px solid #1abc9c}
+.price.active{background:#1abc9c;border:1px solid #1abc9c; color:#fff}
+.card:hover{background:#1abc9c;cursor:pointer; color:#fff;border:none}
+.card{-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;margin:15px 0px}
+
+select.cbox-card{display:none}
+.select-payment ul{font-size:13px}
+.select-payment ul li{padding:5px 0px}
+.select-payment ul li label{font-weight: normal;width: 17%;font-size: 13px; font-weight:bold}
+.select-payment ul li [type=text]{width:30%}
+
+.embed{text-align: left;overflow: hidden;margin: 20px 0px;}
+
+span.add-on {
+display: inline-block;position: absolute;background: #ff7d27;color: #fff;padding: 11px;cursor: pointer;-webkit-border-top-left-radius: 2px;-webkit-border-bottom-left-radius: 2px;-moz-border-radius-topleft: 2px;
+-moz-border-radius-bottomleft: 2px;border-top-left-radius: 2px;border-bottom-left-radius: 2px}
+
+.signup-input [type=text].span2{ padding-left: 40px;text-align: left;width:auto}
+.send-mail-module div{padding-right:10px}
+.send-mail-module div p{padding:10px 0px; font-size:13px; margin:0px}
+.send-mail-module div input[type=text], .send-mail-module div textarea{width:100%; margin-bottom:10px}
+.send-mail-module div input[type=submit]{margin:0 auto; display:block}
+.send-mail-module div textarea{resize:vertical}
+
+.switch ul{margin-top:15px}
+.switch ul li{width:50%; float:left; display:block}
+.switch ul li div{text-align:center; clear:both; overflow:hidden}
+.switch ul li img{text-align: center;padding: 10px 0px;display: block;margin: 0 auto}
+.switch ul li span{text-align:center; display:block}
+.switch ul li span a{color: #0096ff;font-weight: bold}
+
+.complaints-info p{text-align:justify; font-size:13px}
+.comment h4{color: #047a86;border-bottom: 1px solid #047a86;float:left}
+.comment time{float:right; color:#757575; font-size:13px}
+.comment p{overflow:hidden; clear:both}
+
+.intro{font-size:14px; text-align:justify; color:#333; margin:10px 0px}
+.intro h2{font-weight:bold;font-size:20px}
+.intro h3{font-weight:bold; color:#ff8839; font-size:16px}
+.intro ul li{line-height:25px; list-style:circle; margin-left:30px}
+
+.topup_error{  color: #fff;background-color: #ff9090;border-color: #ebccd1;padding:8px;margin:10px 0px}
+.topup_error p{margin:0px; padding:0px; font-size:13px}
+
+.otp{padding:7px}
+
+.popup_bg{top: 0;left: 0;width: 100%;height: 100%;z-index: 9;overflow: hidden;position: fixed;background: #0b0b0b;
+opacity: 0.95;filter: alpha(opacity=95)} 
+.board_notice_alert{position: relative;display: block;margin:0 auto;overflow:hidden;z-index: 999;top:20%;width: 50%;text-align: center;padding: 10px 0px;background: #FFF;color: #000}  
+
+.confirm_tran{font-size:13px; text-align:left}
+.confirm_tran h3{color:#F90; font-weight:bold; border-bottom:1px solid #ddd; padding-bottom:10px; font-size:18px}
+.confirm_tran h3 i{float:right}
+.confirm_tran span.note{background: #f9f9b9;padding: 10px;display: block;margin-bottom: 15px}
+.confirm_tran ul li{line-height:25px}
+.confirm_tran ul li label{width:200px; font-weight:normal}
+.confirm_tran ul li input[type=text]{padding:5px;margin-bottom:10px; width:35%}
+.bgerror{background:url(../images/v2/bg-404.jpg) no-repeat center center; padding:100px 0px; font-family: Arial, Helvetica, sans-serif}
+
+.bgerror img{display:block; margin:0 auto; text-align:center}
+.bgerror p{text-align:center; font-size:20px; color:#1abc9c; font-weight:bold}
+
+/*COMPLETE*/
+.complete_msg{background-color: #d9edf7;border: 1px solid #bce8f1; padding:10px}
+.complete_msg p{margin: 0px;font-size: 13px; color:#31708f}
+ul.topup_complete_list{margin:25px 0px 0px 0px}
+ul.topup_complete_list li label {font-weight: normal;width: 15%;font-size: 13px}
+
+/*ADDRESS*/
+.address{border-left:5px solid #1abc9c; padding-left:20px; font:Arial, Helvetica, sans-serif; margin:20px 0px 30px 0px}
+.address h3{font-weight:bold; font-size:16px; text-transform:uppercase}
+.address ul li{line-height:25px; font-size:13px}
+
+/*PAYMENT*/
+.payment h3 a.return_false{float:right; color:#F00; font-size:13px}
+.payment label a{color:#0096ff}
+.payment button{display: inline-block-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;border: 0;color: #fff;cursor: pointer;background: #ff7d27;padding: 10px 20px;font-size: 13px;border: 1px solid #ff6600;
+transition: background-color .5s ease-out;-o-transition: background-color .5s ease-out;-moz-transition: background-color .5s ease-out;-webkit-transition: background-color .5s ease-out; margin-top:15px}
+.payment button:hover{
+	background:#f36100; border:1px solid #ff7d27}
+.payment span{font-size:13px; padding:10px 0px; display:block; border-radius:5px;}
+.payment span input { cursor:pointer}
+.payment p{font-size:13px}
+.payment .top-select {margin: 10px 0;
+  background-color: #ededed;
+  }
+.payment .top-select.active-select {}
+.payment .top-select.active-select label { margin-right:10px;line-height: 38px;  margin-right: 10px; margin-bottom: 0; background-position:5px 5px;}
+.payment .top-select.active-select .btn-radio input[type=radio]:checked + label {  background-position: 5px -25px;}
+.payment .top-select.active-select label.active{ background-color:#0096ff; color:#fff}
+.btn-radio input[type=radio] { width: 20px; margin: 0; padding: 0; opacity: 0; cursor: pointer; }
+.btn-radio input[type=radio] + label { display: inline-block; margin-left: -28px; padding-left: 35px; background: url(../images/v2/radio.png) no-repeat 0 0; line-height: 30px; padding-right: 20px; }
+.btn-radio input[type=radio]:checked + label { background-position: 0 -30px; }
+.btn-radio label { font-weight: normal; cursor: pointer; font-size: 13px; }
+/*ERROR*/
+.head_alert{position:relative; right:-55%; width:300px}
+
+/*ATM-transfer*/
+.atm-transfer{padding:0px}
+.atm-info{background: #fffbe3;border: 1px solid #ffe329;font-size: 13px; padding:15px; margin-bottom:15px}
+.atm-info h4{color:#393; font-weight:bold; font-size:15px}
+.atm-info p{padding:0px; margin:0px; font-size:13px}
+.atm-info ul{overflow:hidden;padding:10px 0px 0px 0px}
+.atm-info ul li{line-height:25px}
+.atm-info ul li label{width:25%; font-weight:normal}
+.atm-info ul li span{font-weight:bold}
+
+/*PAGE-EMAIL*/
+.page-email{margin:50px 0px; padding:0px 100px}
+.page-email h3{font-size:18px; color:#F63; font-weight:bold}
+.page-email p{font-size:13px; text-align:justify}
+
+/*TUYENDUNG*/
+.recruitment-info{font-size:13px; color:#494949}
+.recruitment-info h3{
+	margin: 0px;padding: 0px;font-size: 18px;font-weight: bold;line-height: 25px; color:#F90; text-align:center; text-transform:uppercase; padding:0px 0px 20px 0px}
+.recruitment-info p{
+	color: #494949;text-align: justify;font-size: 13px}
+.recruitment-info h4{font-size:16px; font-weight:bold}
+.recruitment-info span{font-size:16px; font-weight:bold; padding-right:10px}
+.recruitment-info ul li{line-height:25px}
+.recruitment-info ul li:last-child{padding-bottom:15px}
+.recruitment-info .form{float:left}
+.recruitment-info .form span{font-size:12px; font-weight:normal;line-height: 40px;padding-left: 20px}
+a.link-download{display: inline-block;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;border: 0;color: #fff;cursor: pointer;background: #ff7d27;float:left;padding: 10px 20px;font-size: 13px;border: 1px solid #ff6600;transition: background-color .5s ease-out;-o-transition: background-color .5s ease-out;-moz-transition: background-color .5s ease-out;-webkit-transition: background-color .5s ease-out}
+//img.news_image {text-align: center;display: block;margin: 0 auto; width:350px}
+.send_recru{float: left;padding: 4px;border: 1px solid #efefef;margin: 5px 0px 0px 20px}
+.send_recru input[type=submit]{padding:0px 10px}
+
+/*CONTACT*/
+#azpay-contact{margin-top:10px;}
+#azpay-contact .map{margin-bottom:15px;}
+#azpay-contact .contact .heading, #azpay-contact .support .heading{border-bottom: 1px solid #047a86;overflow: hidden;}
+#azpay-contact .contact .heading h3, #azpay-contact .support .heading h3{color: #047a86;	text-transform: uppercase;float: left;font-size: 13px;font-weight: bold;font-family: Arial, Helvetica, sans-serif;padding-bottom: 10px;margin-bottom: 0px;}
+#azpay-contact .contact ul,#azpay-contact .support ul{margin:10px 0px;}
+#azpay-contact .contact ul li, #azpay-contact .support ul li{font-size:13px;}
+#azpay-contact .contact ul li i, #azpay-contact .support ul li i{padding-right:10px;line-height:28px;}
+#azpay-contact .contact-form{margin-bottom:15px;}
+#azpay-contact .contact-form input[type=text],#azpay-contact .contact-form input[type=email],#azpay-contact .contact-form textarea{width:100%; margin-bottom:10px;}
+#azpay-contact .contact-form textarea{resize:vertical;}
+@media screen and (max-width: 360px){
+	.payment-box .info img{display:none}
+	.alert-danger span, .alert-info span{display:none}}
+	
+@media screen and (max-width: 480px){
+	.form-info [type=text], .form-info [type=password], .form-info select, .form-info textarea{width:90% !important}
+	.form-info ul li label{ width:100% !important}
+	.table-info ul.filter-input li{width:100%}
+	.table-info ul.filter-input li label{width:25%}
+	.switch ul li{width:100%;padding-bottom:15px}
+	.cart-page ul.steps li.current .text-page, .text-page{display:none}
+	.cart-page ul.steps{padding: 14px 60px 33px 50px}
+	.cart-page ul.steps li{left:-10px !important}
+	.atm-info ul li label{display:block; width:100% !important}}
+	
+@media screen and (max-width: 540px){
+	.function form .lostpass{display:block; clear:both; padding:10px 0px}
+	.logo{margin:0 auto; display:block; text-align:center}}
+
+@media screen and (max-width: 640px){
+	#azpay-topheader .support{display:none}
+	.logo{margin:0 auto; display:block; text-align:center}
+	.function form{float:none !important; text-align:center}
+	.footer-box{height:auto !important}
+	#azpay-signup a.naptien, #azpay-signup a.chuyentien, #azpay-signup a.topup, #azpay-signup a.hoadon{width:50%; margin:10px auto; display:block; position:relative; text-align:center; top:0 !important; left:0 !important}
+	#azpay-signup a.naptien:after, 
+	#azpay-signup a.naptien:before, 
+	#azpay-signup a.chuyentien:after, 
+	#azpay-signup a.chuyentien:before, 
+	#azpay-signup a.topup:after, 
+	#azpay-signup a.topup:before, 
+	#azpay-signup a.hoadon:after, 
+	#azpay-signup a.hoadon:before{
+		display:none}
+	a.signup{margin-top:40px}
+	.form-info [type=text], .form-info [type=password], .form-info select, .form-info textarea{width:45%}
+	.form-info ul li label{ width:30%;}
+	.signup-info .group .number{display:none}
+	.signup-info .group .info{width:100% !important}
+	.table-info select.filter, .network select{display:block}
+	.network select{margin:15px 0px}
+	.table-info ul.filter, .network ul li, .network div.label{display:none}
+	.card{display:none}
+	select.cbox-card{display:block; /*margin:15px 0px*/}
+	.select-payment ul li label{width:30%}
+	.embed{text-align:left; border-bottom:1px solid #ddd}
+	.embed:last-child{border-bottom:none;}
+	.signup-input label{width:100%}
+	.signup-input [type="text"], 
+	.signup-input [type="email"], 
+	.signup-input [type="password"], 
+	.signup-input select{width:100% !important}
+	.signup-input label.error {top: 19px;right: 18px !important}
+	.cart-page ul.steps li{left:-14px}
+	.select-payment ul li label{width:100% !important}
+	.select-payment ul li [type=text]{width:90% !important}
+	.otp{margin-top:10px}
+	.paragraph-info img{width:100%}
+	.signup-input select.birthday{width:30% !important}
+	ul.topup_complete_list li label {width: 35% !important}
+	.atm-info ul li label{width:35%}
+	.recruitment-info .form {display: block;margin: 0 auto;text-align: center; width:100%}
+	a.link-download{width:100%}
+	.recruitment-info .form span {display: block;margin: 0 auto;text-align: center;width: 100%}
+	.send_recru {clear: both;overflow: hidden;padding: 4px;text-align: center; float:none !important;margin:0px; width:100%}
+	.paybill-info [type=text], .paybill-info [type=password], .paybill-info select, .paybill-info textarea{width:100%}
+	.paybill-info ul li label{width:100%}}
+	
+@media screen and (max-width: 768px){
+	.row{margin-left:0px !important; margin-right:0px !important}
+	.signup-info .row, .paragraph-info .row{margin-left:-15px !important; margin-right:-15px !important}
+	.page-email{padding:0px 0px}}
+
+@media screen and (max-width: 992px){
+	.owl-carousel .owl-item .item .quote{display:none}
+	.function form [type="text"], .function form [type="password"]{width:26%}
+	#azpay-featured .block{margin:40px 0px}
+	#azpay-featured .block img{display:none}
+	#azpay-featured .block .icon img{display:block; margin:0 auto}
+	#azpay-signup{margin-top:0px}
+	#azpay-signup a.naptien{left:1.5%}
+	#azpay-signup a.chuyentien{left:29%}
+	#azpay-signup a.topup{left:39%}
+	#azpay-signup a.hoadon{left:71.5%}
+	.newsletter [type=email]{width:70%}
+	.news{margin-bottom:15px}
+	.footer-box{height:120px}
+	.signup-input [type=text], .signup-input [type=email], .signup-input [type=password], .signup-input select{width:70%}
+	.signup-input label.error{right: 36px;}
+	.select-payment ul li label{width:25%}
+	.select-payment ul li [type="text"]{width:50%}}
+	
+@media screen and (min-width: 1000px) and (max-width: 1199px){
+	ul.slimmenu li a{font-size:14px !important}
+	.owl-carousel .owl-item .item .quote{width:50%}
+	#azpay-signup a.naptien{left:12.5% !important}
+	#azpay-signup a.chuyentien{left:33.5% !important}
+	#azpay-signup a.topup{left:41.5% !important}
+	#azpay-signup a.hoadon{left:66.5% !important}
+	.newsletter [type=email]{width:70% !important}
+	.signup-input [type=text], .signup-input [type=email], .signup-input [type=password], .signup-input select{width:70%}
+	.signup-input label.error{right: 36px;}}
+
+@media screen and (min-width: 1200px){
+	.owl-carousel .owl-item .item .quote{width:40%}}

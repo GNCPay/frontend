@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -238,9 +239,12 @@
     <Content Include="bootstrap\img\glyphicons-halflings-white.png" />
     <Content Include="bootstrap\img\glyphicons-halflings.png" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\azstyle.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\menu.css" />
     <Content Include="Content\nprogress.css" />
+    <Content Include="Content\slider.css" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\font-awesome.css" />
@@ -250,6 +254,7 @@
     <Content Include="css\owl.transitions.css" />
     <Content Include="css\prettyPhoto.css" />
     <Content Include="css\responsive.css" />
+    <Content Include="favicon.ico" />
     <Content Include="images\portfolio\01.jpg" />
     <Content Include="images\portfolio\02.jpg" />
     <Content Include="images\portfolio\03.jpg" />
@@ -596,6 +601,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\FacebookFriend.cshtml" />
+    <Content Include="Views\Home\Index - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

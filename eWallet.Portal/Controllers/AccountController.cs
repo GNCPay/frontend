@@ -558,7 +558,7 @@ namespace eWallet.Portal.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("eWallet", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         //
