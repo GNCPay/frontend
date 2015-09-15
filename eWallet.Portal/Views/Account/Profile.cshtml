@@ -4,11 +4,6 @@
     ViewBag.Title = "Thông tin cá nhân";
     Layout = null;
 }
-<ul class="breadcrumb">
-    <li><a href='@Url.Content("/Home/eWallet")' class="glyphicons home"><i></i> eWallet</a></li>
-    <li>Thông tin cá nhân</li>
-</ul>
-<div class="separator"></div>
 <div id="login-dp" class="content-dp">
     <div class="col-md-6">
         <div class="form" role="form">
@@ -48,7 +43,7 @@
     </div>
     <div class="col-md-12">
         <div class="form-group">
-            <button type="button" id="btn-update" class="btn btn-primary">Cập nhật</button>
+            <a  id="btn-update" class="btn btn-primary">Cập nhật</a>
             <a href='@Url.Action("Manage","Account",null,null)' class="btn btn-primary">Thiết lập mật khẩu</a>
         </div>
     </div>

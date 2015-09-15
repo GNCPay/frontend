@@ -22,14 +22,18 @@
     <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico" />
     <link href="~/css/font-awesome.css" rel="stylesheet" />
     @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
-    <link href="https://azpay.vn/templates/css/reset.css" rel="stylesheet">
+    <link href="~/css/reset.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-    <link href="https://azpay.vn/templates/css/bootstrap.css" rel="stylesheet">
+    <!-- Glyphicons -->
+    <link rel="stylesheet" href="/theme/css/glyphicons.css" />
     <link href="~/Content/azstyle.css" rel="stylesheet" />
     <link href="~/Content/menu.css" rel="stylesheet" />
     <link href="~/Content/slider.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://azpay.vn/templates/javascript/v2/jquery-2.0.0.js"></script>
-
+    @*<script type="text/javascript" src="https://azpay.vn/templates/javascript/v2/jquery-2.0.0.js"></script>*@
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
     @*<script type="text/javascript" src="https://azpay.vn/templates/javascript/azpay_scripts.js"></script>*@
     @*<script type="text/javascript" src="https://azpay.vn/public/js/js_global.js"></script>*@
@@ -49,6 +53,21 @@
 </head>
 
 <body>
+
+    <script src="/Scripts/nprogress.js"></script>
+    <script>
+        function loadPage(href) {
+            NProgress.start();
+            $("#main_content").html('');
+            $("#main_content").load(href, function (response, status, xhr) {
+                NProgress.done();
+                if (status == "error") {
+                    var msg = "Sorry but there was an error: ";
+                    $("#error").html('');
+                }
+            });
+        }
+    </script>
     <header>
 
         <!--end azpay-topheader-->
@@ -56,11 +75,14 @@
         <section id="azpay-header" class="clr">
             <div class="container">
                 <div class="row">
-                    <h1 class="logo col-lg-12">
-                        <a href="#" title="Cổng thanh toán BigPay">
-                            <img src="/images/logo.png" alt="" />
-                        </a>
-                    </h1>
+                    <div class="navbar-header">
+                        <h1 class="logo col-lg-12">
+                            <a href="#" title="Cổng thanh toán BigPay">
+                                <img src="/images/logo.png" alt="" />
+                            </a>
+                        </h1>
+                    </div>
+                    @Html.Partial("_LoginPartial")
                 </div>
             </div>
         </section><!--end azpay-header-->
@@ -71,7 +93,7 @@
         <div class="container">
             <ul class="slimmenu">
                 <li>
-                    <a icon="fa fa-home" href="#">&nbsp;Trang chủ</a>
+                    <a icon="fa fa-home" href="/">&nbsp;Trang chủ</a>
                 </li>
                 <li>
                     <a icon="fa fa-user" href="#">&nbsp;Về BigPay</a>
@@ -87,7 +109,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a icon="fa fa-user" href="/home/ewallet">&nbsp;Tài khoản</a>
+                    <a icon="fa fa-user" href="/account/personal">&nbsp;Tài khoản</a>
                 </li>
 
                 <li>
@@ -100,7 +122,7 @@
                             <a icon="fa fa-angle-double-right" href="/Service/Payment">&nbsp;Thanh toán dịch vụ</a>
                         </li>
                         <li>
-                            <a icon="fa fa-angle-double-right" href="/Serice/Transfer">&nbsp;Chuyển tiền</a>
+                            <a icon="fa fa-angle-double-right" href="/Service/Transfer">&nbsp;Chuyển tiền</a>
                         </li>
                         <li>
                             <a icon="fa fa-angle-double-right" href="/Account/CashOut">&nbsp;Rút tiền</a>
@@ -299,5 +321,56 @@
             $("#block_page ul").addClass("pagination").addClass("pull-right");
         });
     </script>
+    @RenderSection("scripts", required: false)
+    <!-- JQueryUI v1.9.2 -->
+    <script src="/theme/scripts/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
+
+    <!-- JQueryUI Touch Punch -->
+    <!-- small hack that enables the use of touch events on sites using the jQuery UI user interface library -->
+    <script src="/theme/scripts/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- MiniColors -->
+    <script src="/theme/scripts/jquery-miniColors/jquery.miniColors.js"></script>
+
+    <!-- Themer -->
+    <script>
+        var themerPrimaryColor = '#71c39a';
+    </script>
+    <script src="/theme/scripts/jquery.cookie.js"></script>
+    <script src="/theme/scripts/themer.js"></script>
+
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <!--  Flot (Charts) JS -->
+    @*<script src="/theme/scripts/flot/jquery.flot.js" type="text/javascript"></script>
+        <script src="/theme/scripts/flot/jquery.flot.pie.js" type="text/javascript"></script>
+        <script src="/theme/scripts/flot/jquery.flot.tooltip.js" type="text/javascript"></script>
+        <script src="/theme/scripts/flot/jquery.flot.selection.js"></script>
+        <script src="/theme/scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
+        <script src="/theme/scripts/flot/jquery.flot.orderBars.js" type="text/javascript"></script>*@
+
+    <!-- Resize Script -->
+    <script src="/theme/scripts/jquery.ba-resize.js"></script>
+
+    <!-- Uniform -->
+    <script src="/theme/scripts/pixelmatrix-uniform/jquery.uniform.min.js"></script>
+
+    @*<script src="/theme/scripts/DataTables/media/js/jquery.dataTables.min.js"></script>*@
+    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    @*<script src="/theme/scripts/DataTables/media/js/DT_bootstrap.js"></script>*@
+    <script src="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+    <!-- Bootstrap Script -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Extended -->
+    <script src="/bootstrap/extend/bootstrap-select/bootstrap-select.js"></script>
+    <script src="/bootstrap/extend/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
+    <script src="/bootstrap/extend/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
+    <script src="/bootstrap/extend/jasny-bootstrap/js/jasny-bootstrap.min.js" type="text/javascript"></script>
+    <script src="/bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js" type="text/javascript"></script>
+    <script src="/bootstrap/extend/bootbox.js" type="text/javascript"></script>
+    <script src="/bootstrap/extend/bootstrap-wysihtml5/js/wysihtml5-0.3.0_rc2.min.js" type="text/javascript"></script>
+    <script src="/bootstrap/extend/bootstrap-wysihtml5/js/bootstrap-wysihtml5-0.0.2.js" type="text/javascript"></script>
 </body>
 </html>

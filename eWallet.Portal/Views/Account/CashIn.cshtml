@@ -1,22 +1,40 @@
 ﻿
 @{
     ViewBag.Title = "Nạp tiền vào ví";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="row">
-    <div class="col-md-3 ">
-        <ul class="bg nav nav-pills nav-stacked nav-pills-stacked-example">
-            <li class="active"><a href="#" class="nav_link" data-href='@Url.Action("CashInATM", "Account", null, null)'>Nạp tiền từ thẻ ATM</a></li>
-            <li><a href="#" class="nav_link" data-href='@Url.Action("CashInBankAccount","Account",null,null)'>Nạp tiền từ Chuyển khoản ngân hàng</a></li>
-            <li><a href="#" class="nav_link" data-href='@Url.Action("CashInOthers","Account",null,null)'>Hướng dẫn nạp tiền khác</a></li>
-            <li><a href="#" class="nav_link" data-href='@Url.Action("List","Transaction",null,null)'>Tra soát giao dịch Nạp tiền</a></li>
-        </ul>
+<section id="azpay-breacum">
+    <div class="container">
+        <div class="row">
+            <article class="col-lg-12">
+                <a href="/">Trang chủ</a><span><i class="fa fa-angle-right"></i></span><span>@ViewBag.Title</span>
+            </article>
+        </div>
     </div>
-    <div class="col-md-9 bg" id="main_content">
-        @*@Html.Action("List", "Transaction", null);*@
+</section> <!--end breacum-->
+<section id="azpay-main">
+    <div class="container">
+        <div class="row">
+            <aside class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <article class="utility-module">
+                    <div class="heading">
+                        <h3>@ViewBag.Title</h3>
+                    </div>
+                    <ul>
+                        <li class="active"><a href="#" class="nav_link" data-href='@Url.Action("CashInATM", "Account", null, null)'>Nạp tiền từ thẻ ATM</a></li>
+                        <li><a href="#" class="nav_link" data-href='@Url.Action("CashInBankAccount","Account",null,null)'>Nạp tiền từ Chuyển khoản ngân hàng</a></li>
+                        <li><a href="#" class="nav_link" data-href='@Url.Action("CashInOthers","Account",null,null)'>Hướng dẫn nạp tiền khác</a></li>
+                        <li><a href="#" class="nav_link" data-href='@Url.Action("List","Transaction",null,null)'>Tra soát giao dịch Nạp tiền</a></li>
+                    </ul>
+                </article>
+                <script src="https://azpay.vn/templates/javascript/v2/owl.carousel.js"></script>
+            </aside>
+            <section class="col-lg-9 col-md-9 col-sm-12 col-xs-12" id="main_content"></section>
+        </div>
     </div>
+</section>
+
     <div id="error"></div>
-</div>
 <script>
 
     $('.nav_link').click(function () {

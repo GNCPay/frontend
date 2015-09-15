@@ -23,79 +23,11 @@ namespace eWallet.Portal.Controllers
 {
     public class AccountController : Controller
     {
-        //
-        //#region "Facebook"
-        ////GET Facebook User
-        //private Uri RedirectUri
-        //{
-        //    get
-        //    {
-        //        var uriBuilder = new UriBuilder(Request.Url);
-        //        uriBuilder.Query = null;
-        //        uriBuilder.Fragment = null;
-        //        uriBuilder.Path = Url.Action("FacebookCallback");
-        //        return uriBuilder.Uri;
-        //    }
-        //}
-
-        //[AllowAnonymous]
-        //public ActionResult loginf()
-        //{
-        //    return View();
-        //}
-
-        //public ActionResult logout()
-        //{
-        //    FormsAuthentication.SignOut();
-        //    return View("Login");
-        //}
-
-        //[AllowAnonymous]
-        //public ActionResult Facebook()
-        //{
-        //    var fb = new FacebookClient();
-        //    var loginUrl = fb.GetLoginUrl(new
-        //    {
-        //        client_id = "207429956074584",
-        //        client_secret = "bce03ed2eac12f52cba2e20b5e2b20a0",
-        //        redirect_uri = RedirectUri.AbsoluteUri,
-        //        response_type = "code",
-        //        scope = "email"
-        //    });
-
-        //    return Redirect(loginUrl.AbsoluteUri);
-        //}
-
-        //public ActionResult FacebookCallback(string code)
-        //{
-        //    var fb = new FacebookClient();
-        //    dynamic result = fb.Post("oauth/access_token", new
-        //    {
-        //        client_id = "207429956074584",
-        //        client_secret = "bce03ed2eac12f52cba2e20b5e2b20a0",
-        //        redirect_uri = RedirectUri.AbsoluteUri,
-        //        code = code
-        //    });
-
-        //    var accessToken = result.access_token;
-
-
-        //    Session["AccessToken"] = accessToken;
-
-        //    fb.AccessToken = accessToken;
-
-        //    // Lay thong tin user
-        //    dynamic me = fb.Get("me?fields=id,name,email");
-        //    string emailf = me.email;
-        //    string namef = me.name;
-
-        //    FormsAuthentication.SetAuthCookie(emailf, false);
-        //    return RedirectToAction("", "Account");
-        //}
-        //#endregion
-
+       
+        
         //
         // GET: /Account/
+        [Authorize]
         public ActionResult List(string id)
         {
             if (String.IsNullOrEmpty(id))
@@ -123,6 +55,7 @@ namespace eWallet.Portal.Controllers
             }
             return View();
         }
+        [Authorize]
         public ActionResult Personal()
         {
             return View();
@@ -143,7 +76,7 @@ namespace eWallet.Portal.Controllers
             ViewBag.accounts = null;//Helper.DataHelper.List("finance_account",Query.EQ("profile_user_id result.response;
             return View(model);
         }
-
+        [Authorize]
         public ActionResult Profile()
         {
             bool hasPassword = HasPassword();
@@ -151,12 +84,12 @@ namespace eWallet.Portal.Controllers
             ViewBag.profile = Helper.DataHelper.Get("profile", Query.EQ("user_name", User.Identity.Name));
             return View();
         }
-
+        
         public ActionResult CashIn()
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult CashOut()
         {
             return View();
@@ -322,7 +255,7 @@ namespace eWallet.Portal.Controllers
                     //Goi ham dang ky tren server de tao finance_account
                     PostRegister(model.Fullname, model.Email, model.Mobile);
                     await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("eWallet", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -640,7 +573,7 @@ namespace eWallet.Portal.Controllers
             }
             else
             {
-                return RedirectToAction("eWallet", "Home");
+                return RedirectToAction("Index", "Home");
             }
         }
 

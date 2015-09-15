@@ -178,7 +178,11 @@ namespace eWallet.Portal.Controllers
                + "', bank: '" + bank +
            "'}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
-            return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            if (response.error_code == "00")
+                return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { error_code = response.error_code, error_message = response.error_message }, JsonRequestBehavior.AllowGet);
+            //return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Topup_Online(string accoount_id, string service, string provider, string price, string payment_provider, string bank)
@@ -194,7 +198,10 @@ namespace eWallet.Portal.Controllers
                + "', bank: '" + bank +
            "'}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
-            return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            if (response.error_code == "00")
+                return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { error_code = response.error_code, error_message = response.error_message }, JsonRequestBehavior.AllowGet);
         }
         #endregion "TOPUP PROCESS"
 
