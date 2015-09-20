@@ -284,25 +284,46 @@ namespace eWallet.Portal.Controllers
 
         public static bool CheckPhoneSupport(string phone_number)
         {
-            const int networkLength = 4;
             const int RegionConuntryCode = 84;
-            if (phone_number.StartsWith("+"))
-            {
-                phone_number = phone_number.Replace("+", "0");
-            }
 
-            if (phone_number.StartsWith("0" + RegionConuntryCode))
+            if(phone_number.Length==10)
             {
-                phone_number = phone_number.Replace("0" + RegionConuntryCode, "0");
-            }
+                if (phone_number.StartsWith("+"))
+                {
+                    phone_number = phone_number.Replace("+", "0");
+                }
 
-            string[] networkSupport = { "096", "097", "098","0162", "0163", "0164", "0165", "0166", "0167", "0168", "0169",
-            "090", "093","0120", "0121", "0122","0126","0128",
-            "091", "094","0123","0124","0125","0127","0129",
-            "092", "0188", "0186",
-            "099","0199"};
-            var startphone_number = phone_number.Substring(0, networkLength);
-            return networkSupport.Any(startphone_number.Equals);
+                if (phone_number.StartsWith("0" + RegionConuntryCode))
+                {
+                    phone_number = phone_number.Replace("0" + RegionConuntryCode, "0");
+                }
+
+                string[] networkSupport_2 = { "096", "097", "098", "090", "093", "091", "094", "092", "099" };
+                const int networkLength = 3;
+                var startphone_number = phone_number.Substring(0, networkLength);
+                return networkSupport_2.Any(startphone_number.Equals);
+            }
+            if(phone_number.Length==11)
+            {
+                if (phone_number.StartsWith("+"))
+                {
+                    phone_number = phone_number.Replace("+", "0");
+                }
+
+                if (phone_number.StartsWith("0" + RegionConuntryCode))
+                {
+                    phone_number = phone_number.Replace("0" + RegionConuntryCode, "0");
+                }
+                string[] networkSupport_1 = {"0162", "0163", "0164", "0165", "0166", "0167", "0168", "0169",
+            "0120", "0121", "0122","0126","0128",
+            "0123","0124","0125","0127","0129",
+            "0188", "0186",
+            "0199"};
+                const int networkLength_2 = 4;
+                var startphone_number_2 = phone_number.Substring(0, networkLength_2);
+                return networkSupport_1.Any(startphone_number_2.Equals);
+            }
+            return false;
         }
 
         static Regex ValidEmailRegex = CreateValidEmailRegex();
