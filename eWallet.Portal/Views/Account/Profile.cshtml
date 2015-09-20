@@ -19,10 +19,28 @@
                 <label class="sr-only" for="mobile">Số điện thoại di động</label>
                 <input type="text" class="form-control" id="mobile" placeholder="Số điện thoại di động" value="@ViewBag.profile.mobile" readonly>
             </div>
+            <div class="form-group">
+                <label class="sr-only" for="sex">Giới tính</label>
+                <input type="text" class="form-control" id="sex" placeholder="Giới tính (nam hoặc nữ)" value="@ViewBag.profile.sex" required>
+            </div>
+            @*<div class="form-group">
+                    <label class="sr-only" for="sex">Giới tính</label>
+                    <div class="form-control">
+                        <select id="confirm-type" class="form-control">
+                            <option value="@ViewBag.profile.sex">Nam</option>
+                            <option value="@ViewBag.profile.sex">Nữ</option>
+                        </select>
+                    </div>
+                </div>*@
         </div>
     </div>
+    @*onfocus="(this.type='date')" onblur="(this.type='text')"*@
     <div class="col-md-6">
         <div class="form" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="birthday">Ngày sinh</label>
+                <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" id="birthday" placeholder="Ngày sinh" value="@ViewBag.profile.birthday" required>
+            </div>
             <div class="form-group">
                 <label class="sr-only" for="address">Địa chỉ</label>
                 <input type="text" class="form-control" id="address" placeholder="Địa chỉ" value="@ViewBag.profile.address" required>
@@ -31,11 +49,11 @@
                 <label class="sr-only" for="personal_id">Số CMND</label>
                 <input type="text" class="form-control" id="personal_id" onkeypress='validate(event)' placeholder="Số CMND" value="@ViewBag.profile.personal_id" required>
             </div>
-            <div class="form-group">
+            <div class="form-group float-label-control">
                 <label class="sr-only" for="personal_id_issued_date">Ngày cấp</label>
                 <input type="date" class="form-control" id="personal_id_issued_date" placeholder="Ngày cấp" value="@ViewBag.profile.personal_id_issued_date" required>
             </div>
-            <div class="form-group">
+            <div class="form-group ">
                 <label class="sr-only" for="personal_id_issued_by">Nơi cấp</label>
                 <input type="text" class="form-control" id="personal_id_issued_by" placeholder="Nơi cấp" value="@ViewBag.profile.personal_id_issued_by" required>
             </div>
@@ -43,7 +61,7 @@
     </div>
     <div class="col-md-12">
         <div class="form-group">
-            <a  id="btn-update" class="btn btn-primary">Cập nhật</a>
+            <a id="btn-update" class="btn btn-primary">Cập nhật</a>
             <a href='@Url.Action("Manage","Account",null,null)' class="btn btn-primary">Thiết lập mật khẩu</a>
         </div>
     </div>
@@ -57,13 +75,14 @@
         $personalid = $('#personal_id').val();
         $personalid_issueddate = $('#personal_id_issued_date').val();
         $personalid_issuedby = $('#personal_id_issued_by').val();
-
+        $Birthday = $('#birthday').val();
+        $Sex = $('#sex').val();
         $.ajax({
             url: '/Update/profile',
             contentType: 'application/json',
             type: 'GET',
             dataType: 'json',
-            data: { password: $password, address: $Address, personalid: $personalid, personalid_issueddate: $personalid_issueddate, personalid_issuedby: $personalid_issuedby }
+            data: { password: $password, birthday: $Birthday,sex:$Sex, address: $Address, personalid: $personalid, personalid_issueddate: $personalid_issueddate, personalid_issuedby: $personalid_issuedby }
         })
                            .success(function (result) {
                                alert(result.error_message);
@@ -73,6 +92,7 @@
                                }
                                else {
                                    alert(result.error_message);
+                                   window.location = "Personal#profile";
                                    return;
                                }
                            })
@@ -95,3 +115,4 @@ function validate(evt) {
     }
 }
 </script>
+

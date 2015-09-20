@@ -19,12 +19,13 @@ using System.Configuration;
 using Microsoft.Owin.Host.SystemWeb;
 using System.Net;
 using System.Dynamic;
+using System.Text.RegularExpressions;
 namespace eWallet.Portal.Controllers
 {
     public class AccountController : Controller
     {
-       
-        
+
+
         //
         // GET: /Account/
         [Authorize]
@@ -84,7 +85,7 @@ namespace eWallet.Portal.Controllers
             ViewBag.profile = Helper.DataHelper.Get("profile", Query.EQ("user_name", User.Identity.Name));
             return View();
         }
-        
+
         public ActionResult CashIn()
         {
             return View();
@@ -248,25 +249,77 @@ namespace eWallet.Portal.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                if (IsValidEmail(model.Email) == true)
                 {
-                    //Goi ham dang ky tren server de tao finance_account
-                    PostRegister(model.Fullname, model.Email, model.Mobile);
-                    await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    if (CheckPhoneSupport(model.Mobile) == true)
+                    {
+                        var user = new ApplicationUser() { UserName = model.Email };
+                        var result = await UserManager.CreateAsync(user, model.Password);
+                        if (result.Succeeded)
+                        {
+                            //Goi ham dang ky tren server de tao finance_account
+                            PostRegister(model.Fullname, model.Email, model.Mobile);
+                            await SignInAsync(user, isPersistent: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            AddErrors(result);
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Invalid mobile !");
+                    }
                 }
                 else
                 {
-                    AddErrors(result);
+                    ModelState.AddModelError("", "Invalid email !");
                 }
-            }
 
+            }
             // If we got this far, something failed, redisplay form
             return View(model);
         }
 
+        public static bool CheckPhoneSupport(string phone_number)
+        {
+            const int networkLength = 4;
+            const int RegionConuntryCode = 84;
+            if (phone_number.StartsWith("+"))
+            {
+                phone_number = phone_number.Replace("+", "0");
+            }
+
+            if (phone_number.StartsWith("0" + RegionConuntryCode))
+            {
+                phone_number = phone_number.Replace("0" + RegionConuntryCode, "0");
+            }
+
+            string[] networkSupport = { "096", "097", "098","0162", "0163", "0164", "0165", "0166", "0167", "0168", "0169",
+            "090", "093","0120", "0121", "0122","0126","0128",
+            "091", "094","0123","0124","0125","0127","0129",
+            "092", "0188", "0186",
+            "099","0199"};
+            var startphone_number = phone_number.Substring(0, networkLength);
+            return networkSupport.Any(startphone_number.Equals);
+        }
+
+        static Regex ValidEmailRegex = CreateValidEmailRegex();
+        private static Regex CreateValidEmailRegex()
+        {
+            string validEmailPattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
+                + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
+                + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+
+            return new Regex(validEmailPattern, RegexOptions.IgnoreCase);
+        }
+
+        internal bool IsValidEmail(string email)
+        {
+            bool isValid = ValidEmailRegex.IsMatch(email);
+            return isValid;
+        }
         //
         // POST: /Account/Disassociate
         [HttpPost]
@@ -373,12 +426,12 @@ namespace eWallet.Portal.Controllers
             {
                 return RedirectToAction("Login");
             }
-           // Sign in the user with this external login provider if the user already has a login
+            // Sign in the user with this external login provider if the user already has a login
             var user = await UserManager.FindAsync(loginInfo.Login);
             var claimsIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
             if (user != null)
             {
-            
+
                 //await StoreFacebookAuthToken(user);
                 await SignInAsync(user, isPersistent: false);
                 return RedirectToLocal(returnUrl);
@@ -388,7 +441,7 @@ namespace eWallet.Portal.Controllers
                 // If the user does not have an account, then prompt the user to create an account
                 ViewBag.ReturnUrl = returnUrl;
                 ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Name = loginInfo.DefaultUserName });    
+                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Name = loginInfo.DefaultUserName });
             }
         }
 
@@ -467,10 +520,10 @@ namespace eWallet.Portal.Controllers
                     {
                         var claimsIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
                         foreach (var claim in claimsIdentity.Claims)
-                            if(claim.Type == "FacebookAccessToken")
-                        {
-                            UserManager.AddClaim(user.Id, claim);
-                        }
+                            if (claim.Type == "FacebookAccessToken")
+                            {
+                                UserManager.AddClaim(user.Id, claim);
+                            }
                         //Goi sang server de tao tai khoan
                         PostRegister(model.Name, model.UserName, model.Mobile);
                         await SignInAsync(user, isPersistent: false);
