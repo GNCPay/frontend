@@ -16,10 +16,23 @@ namespace eWallet.Portal.Controllers
         public ActionResult List(string id)
         {
             //id: transaction_type
-           
-                //Nếu id = empty -> lay all giao dich cua user
-                //Neu id <> empty -> lay giao dich cua user ma co transaction_type = id
-                dynamic[] list_profile = Helper.DataHelper.List("transactions", Query.EQ("created_by", User.Identity.Name), SortBy.Descending("system_created_time"));
+            IMongoQuery query = null;
+            string userName = User.Identity.Name.ToString();
+            string transaction_type = "CASHOUT";
+
+            if (!string.IsNullOrEmpty(userName))
+                query = (query == null) ? Query.EQ("created_by", userName) : Query.And(
+                    query,
+                    Query.EQ("created_by", userName)
+                    );
+          
+               query = (query == null) ? Query.EQ("transaction_type", transaction_type) : Query.And(
+                    query,
+                    Query.EQ("transaction_type", transaction_type)
+                    );
+            //Nếu id = empty -> lay all giao dich cua user
+            //Neu id <> empty -> lay giao dich cua user ma co transaction_type = id
+            dynamic[] list_profile = Helper.DataHelper.List("transactions",query, SortBy.Descending("system_created_time"));
                 ViewBag.Type = id;
                 ViewBag.List = list_profile;
             return View();

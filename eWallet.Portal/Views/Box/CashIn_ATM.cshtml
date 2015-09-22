@@ -18,11 +18,13 @@
     <div class="form"  id="login-nav">
         <div class="form-group">
             <label class="sr-only" for="amount">Số tiền</label>
-            <input type="text" class="form-control" id="amount" placeholder="Số tiền nạp" required>
+            <input type="number" id="display" hidden/>
+            <input type="text" pattern="[0-9]*" class="form-control" id="amount" onkeypress = "validate()" placeholder="Số tiền nạp" required>
         </div>
+
         <div class="form-group">
             <label class="sr-only" for="bank">Ngân hàng</label>
-            <input type="text" id="bank" name="bank" class="form-control" placeholder="Ngân hàng phát hành thẻ" required>
+            <input type="text" id="bank" name="bank" class="form-control" onkeypress = "validate()" placeholder="Ngân hàng phát hành thẻ" required>
         </div>
         <div class="form-group">
             <button class="btn btn-primary btn-block make_topup">Xác nhận</button>
@@ -97,4 +99,28 @@
                alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
            });
     });
+</script>
+
+@*kiểm tra kiểu số khi nhập*@
+<script language="javascript">
+    function validate(evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+        var regex = /[0-9]|\./;
+        if (!regex.test(key)) {
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+
+    //format money input
+    document.getElementById("amount").onblur = function () {
+        this.value = parseFloat(this.value.replace(/,/g, ""))
+                        .toFixed()
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        document.getElementById("display").value = this.value.replace(/,/g, "")
+
+    }
 </script>

@@ -286,7 +286,7 @@ namespace eWallet.Portal.Controllers
         {
             const int RegionConuntryCode = 84;
 
-            if(phone_number.Length==10)
+            if (phone_number.Length == 10)
             {
                 if (phone_number.StartsWith("+"))
                 {
@@ -303,7 +303,7 @@ namespace eWallet.Portal.Controllers
                 var startphone_number = phone_number.Substring(0, networkLength);
                 return networkSupport_2.Any(startphone_number.Equals);
             }
-            if(phone_number.Length==11)
+            if (phone_number.Length == 11)
             {
                 if (phone_number.StartsWith("+"))
                 {

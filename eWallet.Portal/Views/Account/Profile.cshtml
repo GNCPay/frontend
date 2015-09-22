@@ -21,17 +21,17 @@
             </div>
             <div class="form-group">
                 <label class="sr-only" for="sex">Giới tính</label>
-                <input type="text" class="form-control" id="sex" placeholder="Giới tính (nam hoặc nữ)" value="@ViewBag.profile.sex" required>
+                <input type="text" class="form-control" id="sex" placeholder="Giới tính (nam hoặc nữ)" value="@ViewBag.profile.sex"  required>
             </div>
             @*<div class="form-group">
-                    <label class="sr-only" for="sex">Giới tính</label>
-                    <div class="form-control">
-                        <select id="confirm-type" class="form-control">
-                            <option value="@ViewBag.profile.sex">Nam</option>
-                            <option value="@ViewBag.profile.sex">Nữ</option>
-                        </select>
-                    </div>
-                </div>*@
+                <label class="sr-only" for="sex">Giới tính</label>
+                <div class="form-control">
+                    <select id="confirm-type" class="form-control">
+                        <option value="@ViewBag.profile.sex">Nam</option>
+                        <option value="@ViewBag.profile.sex">Nữ</option>
+                    </select>
+                </div>               
+            </div>*@
         </div>
     </div>
     @*onfocus="(this.type='date')" onblur="(this.type='text')"*@
@@ -56,12 +56,12 @@
             <div class="form-group ">
                 <label class="sr-only" for="personal_id_issued_by">Nơi cấp</label>
                 <input type="text" class="form-control" id="personal_id_issued_by" placeholder="Nơi cấp" value="@ViewBag.profile.personal_id_issued_by" required>
-            </div>
-        </div>
+            </div>           
+</div>
     </div>
     <div class="col-md-12">
         <div class="form-group">
-            <a id="btn-update" class="btn btn-primary">Cập nhật</a>
+            <a  id="btn-update" class="btn btn-primary">Cập nhật</a>
             <a href='@Url.Action("Manage","Account",null,null)' class="btn btn-primary">Thiết lập mật khẩu</a>
         </div>
     </div>

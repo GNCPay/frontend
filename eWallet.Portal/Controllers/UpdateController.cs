@@ -12,18 +12,18 @@ namespace eWallet.Portal.Controllers
     public class UpdateController : Controller
     {
 
-        public JsonResult profile(string password, string birthday, string sex, string address, string personalid, string personalid_issueddate, string personalid_issuedby)
+        public JsonResult profile(string password,string birthday, string sex, string address, string personalid, string personalid_issueddate, string personalid_issuedby)
         {
-            string a = "nam";
-            string b = "nu";
-            string c = "nữ";
+            string a="nam";
+            string b="nu";
+            string c="nữ";
             dynamic profile = Helper.DataHelper.Get("profile", Query.EQ("user_name", User.Identity.Name));
             profile.password = Common.Security.GenPasswordHash(profile.user_name, password);
             profile.address = address;
             profile.personal_id = personalid;
             profile.personal_id_issued_date = personalid_issueddate;
             profile.birthday = birthday;
-            if (sex.Length != 0)
+            if(sex.Length!=0)
             {
                 if (sex.Length <= 4)
                 {
