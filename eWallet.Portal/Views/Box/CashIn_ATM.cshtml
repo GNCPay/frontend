@@ -19,12 +19,12 @@
         <div class="form-group">
             <label class="sr-only" for="amount">Số tiền</label>
             <input type="number" id="display" hidden/>
-            <input type="text" pattern="[0-9]*" class="form-control" id="amount" onkeypress = "validate()" placeholder="Số tiền nạp" required>
+            <input type="text" class="form-control" id="amount" onkeypress="validate()" placeholder="Số tiền nạp" required>
         </div>
 
         <div class="form-group">
             <label class="sr-only" for="bank">Ngân hàng</label>
-            <input type="text" id="bank" name="bank" class="form-control" onkeypress = "validate()" placeholder="Ngân hàng phát hành thẻ" required>
+            <input type="text" id="bank" name="bank" class="form-control" placeholder="Ngân hàng phát hành thẻ" required>
         </div>
         <div class="form-group">
             <button class="btn btn-primary btn-block make_topup">Xác nhận</button>
@@ -115,12 +115,12 @@
     }
 
     //format money input
-    document.getElementById("amount").onblur = function () {
-        this.value = parseFloat(this.value.replace(/,/g, ""))
-                        .toFixed()
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        document.getElementById("display").value = this.value.replace(/,/g, "")
+    //document.getElementById("amount").onblur = function () {
+    //    this.value = parseFloat(this.value.replace(/,/g, ""))
+    //                    .toFixed()
+    //                    .toString()
+    //                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    //    document.getElementById("display").value = this.value.replace(/,/g, "")
 
-    }
+    //}
 </script>
