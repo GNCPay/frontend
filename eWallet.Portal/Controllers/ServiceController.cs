@@ -113,10 +113,9 @@ namespace eWallet.Portal.Controllers
         #endregion "CASHIN PROCESS"
 
         #region "CASHOUT PROCESS"
-        public JsonResult CashIn_Bank
-            (string trans_date, string account_bank, string account_number, long amount, string note)
+        public JsonResult CashIn_Bank(string trans_date, string account_bank, string account_number, long amount, string note)
         {
-            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:'"
+         string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:'"
                + User.Identity.Name + "',service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + amount +
          ", note: '" + note +
          "', sender:{account_bank:'" + account_bank +

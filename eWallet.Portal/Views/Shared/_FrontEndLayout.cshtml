@@ -50,10 +50,163 @@
     <script type="text/javascript" src="https://azpay.vn/templates/javascript/azpay_slides_min.js"></script>
     <script type="text/javascript" src="https://azpay.vn/templates/javascript/jquery-ui.js"></script>
     -->
+    <style>
+        div#page {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
+
+        .back-to-top {
+            display: block;
+            width: 31px;
+            height: 31px;
+            position: fixed;
+            background-color: black;
+            bottom: 15px;
+            right: 15px;
+            display: none;
+        }
+
+            .back-to-top:before {
+                content: "";
+                position: Absolute;
+                width: 0;
+                height: 0;
+                border: 11px solid transparent;
+                border-bottom: 11px solid white;
+                left: 5px;
+                top: -8px;
+            }
+
+
+            .back-to-top:after {
+                content: "";
+                position: Absolute;
+                width: 10px;
+                height: 17px;
+                background-color: white;
+                left: 11px;
+                top: 14px;
+            }
+
+            .back-to-top:hover {
+                background-color: rgba(135, 135, 135, 0.50);
+                text-decoration: none;
+            }
+        
+        .footer-bottom {
+        }
+
+            .footer-bottom .logo {
+                float: left;
+            }
+
+            .footer-bottom .grid_1020 {
+                width: 1020px;
+                margin: 0px auto;
+            }
+
+            .footer-bottom .copyright {
+                float: left;
+                margin-top: 8px;
+                margin-left: 30px;
+                margin-right:30px;
+                font-size: 12px;
+                color: #999;
+                line-height: 1.9;
+                text-align: left;
+            }
+
+        a {
+            color: #000;
+            outline: none;
+        }
+
+        a {
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .social-list {
+            overflow: hidden;
+        }
+
+        .social-block h5 {
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 16px;
+            padding-bottom: 10px;
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .social-list a {
+            display: block;
+            width: 35px;
+            height: 35px;
+            border: 1px solid #fff;
+            background: #fff;
+            font-size: 18px;
+            line-height: 36px;
+            text-align: center;
+            border-radius: 3px;
+            -o-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            -webkit-transition: background .25s ease-in-out;
+            -moz-transition: background .25s ease-in-out;
+            -ms-transition: background .25s ease-in-out;
+            -o-transition: background .25s ease-in-out;
+            transition: background .25s ease-in-out;
+        }
+
+        .social-list ul {
+            display: block;
+            list-style-type: disc;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            -webkit-padding-start: 40px;
+        }
+
+        .social-list li {
+            margin-left: 5px;
+            float: left;
+        }
+    </style>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 </head>
 
 <body>
+    <a class="back-to-top" href="#"></a>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var offset = 220;
+            var duration = 500;
+            jQuery(window).scroll(function () {
+                if (jQuery(this).scrollTop() > offset) {
+                    jQuery('.back-to-top').fadeIn(duration);
+                } else {
+                    jQuery('.back-to-top').fadeOut(duration);
+                }
+            });
 
+            jQuery('.back-to-top').click(function (event) {
+                event.preventDefault();
+                jQuery('html, body').animate({ scrollTop: 0 }, duration);
+                return false;
+            })
+        });
+    </script>	
     <script src="/Scripts/nprogress.js"></script>
     <script>
         function loadPage(href) {
@@ -109,11 +262,11 @@
                     </ul>
                 </li>
                 <li>
-                    <a icon="fa fa-user" href="/account/personal">&nbsp;Tài khoản</a>
+                    <a icon="fa fa-user" href="/account/personal">&nbsp;Ví Điện Tử</a>
                 </li>
 
                 <li>
-                    <a icon="fa fa-random" href="#">&nbsp;Giao dịch</a>
+                    <a icon="fa fa-random" href="#">&nbsp;Dịch Vụ</a>
                     <ul>
                         <li>
                             <a icon="fa fa-angle-double-right" href="/Account/CashIn">&nbsp;Nạp tiền tài khoản BigPay</a>
@@ -195,16 +348,14 @@
                     </ul>
                     -->
                 </li>
-            </ul>
+                <li>
+                    <a icon="fa fa-lìe-bouy" href="#">&nbsp;Liên Hệ</a>
+                </li>
+             </ul>
         </div>
     </section>
-
     @RenderBody()
-
-
-
-
-    <footer>
+    <footer style="background-color:#0F0F0F">
         <div class="container">
             <div class="row">
                 <article class="footer">
@@ -235,7 +386,32 @@
                         <div class="newsletter"><input id="reemail" placeholder="Nhập Email của bạn" type="email" /> <input id="submit_register_email" value="Đăng ký" type="submit" /></div>
                     </article>
                 </article>
-                <article class="footer-bottom col-lg-12">Copyright ® Công ty Cổ Phần GNC Pay. All Rights Reserved.</article>
+                <section class="footer-bottom" style="border:none">
+                    <div class="grid_1020">
+                        <a href="/" class="logo" title=""><img alt="" src="~/images/biglogo.png"></a>
+                        <div class="copyright">
+                            <p>Công ty cổ phần giải pháp thanh toán GNC  Hà Nội: F512, CharmVit Tower,117 Trần Duy Hưng  </p>
+                            <p>Email: contact@gnc.vn</p>
+                            <p>Giấy phép số  </p>
+                            <p>Copyrights © 2015 BigPay.vn .  All Rights Reserved</p>
+                        </div>
+                   </div>
+                </section>
+                <section class="grid_496">
+                    <section class="social-block">
+                        <h5>Social Network</h5>
+                        <div class="content">
+                            <ul class="social-list">
+                                <li><a href="#" class="facebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="google_plus" title="google plus"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#" class="twitter" title="twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="youtube" title="youtube"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="#" class="zing">z</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+                @*<article class="footer-bottom col-lg-12">Copyright ® Công ty Cổ Phần GNC Pay. All Rights Reserved.</article>*@
             </div> <!--end row-->
         </div> <!--end container-->
     </footer>

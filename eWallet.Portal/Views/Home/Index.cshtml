@@ -2,70 +2,239 @@
     Layout = "~/Views/Shared/_FrontEndLayout.cshtml";
 }
  <!--end azpay-topheader-->
+<style>
+    #kaka {
+    background: url('../../images/seprator.png')repeat-x scroll center bottom rgba(0, 0, 0, 0);
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 8px 40px;
+    text-align: center;
+    text-transform: uppercase;
+    }
 
+     #portfolio {
+        /*padding: 100px 0;*/
+        background: #f5f5f5;
+    }
+
+        #portfolio .portfolio-filter {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 50px;
+            display: inline-block;
+        }
+
+            #portfolio .portfolio-filter > li {
+                float: left;
+                display: block;
+            }
+
+                #portfolio .portfolio-filter > li a {
+                    display: block;
+                    padding: 7px 15px;
+                    background: #e5e5e5;
+                    color: #64686d;
+                    position: relative;
+                }
+
+                    #portfolio .portfolio-filter > li a:hover,
+                    #portfolio .portfolio-filter > li a.active {
+                        background: #45aed6;
+                        color: #fff;
+                        box-shadow: 0 -3px 0 0 #318daf inset;
+                        -webkit-box-shadow: 0 -3px 0 0 #318daf inset;
+                    }
+
+                        #portfolio .portfolio-filter > li a.active:after {
+                            content: " ";
+                            position: absolute;
+                            bottom: -17px;
+                            left: 50%;
+                            margin-left: -10px;
+                            border-width: 10px;
+                            border-style: solid;
+                            border-color: #318daf transparent transparent transparent;
+                        }
+
+                #portfolio .portfolio-filter > li:first-child a {
+                    border-radius: 4px 0 0 4px;
+                }
+
+                #portfolio .portfolio-filter > li:last-child a {
+                    border-radius: 0 4px 4px 0;
+                }
+
+        #portfolio .portfolio-items {
+            margin: -15px;
+        }
+
+        #portfolio .portfolio-item {
+            /*width: 24.9%;*/
+            float: left;
+            padding: 15px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+            #portfolio .portfolio-item .portfolio-item-inner {
+                position: relative;
+            }
+
+                #portfolio .portfolio-item .portfolio-item-inner .portfolio-info {
+                    opacity: 1;
+                    transition: opacity 400ms;
+                    -webkit-transition: opacity 400ms;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 10px;
+                    background: rgba(0, 0, 0, 0.5);
+                    color: #fff;
+                }
+
+                    #portfolio .portfolio-item .portfolio-item-inner .portfolio-info h3 {
+                        font-size: 16px;
+                        line-height: 1;
+                        margin: 0;
+                        color: #fff;
+                    }
+
+                    #portfolio .portfolio-item .portfolio-item-inner .portfolio-info .preview {
+                        position: absolute;
+                        top: -18px;
+                        right: 12px;
+                        border-radius: 50%;
+                        background-image: -moz-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%);
+                        background-image: -webkit-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%);
+                        background-image: -ms-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%);
+                        width: 36px;
+                        height: 36px;
+                        line-height: 36px;
+                        text-align: center;
+                        color: #fff;
+                        box-shadow: 0 0 0 2px #fff;
+                        -webkit-box-shadow: 0 0 0 2px #fff;
+                    }
+
+            #portfolio .portfolio-item:hover .portfolio-info {
+                opacity: 1;
+            }
+    /* Start: Recommended Isotope styles */
+    /**** Isotope Filtering ****/
+    .isotope-item {
+        z-index: 2;
+    }
+
+    .isotope-hidden.isotope-item {
+        pointer-events: none;
+        z-index: 1;
+    }
+    /**** Isotope CSS3 transitions ****/
+    .isotope,
+    .isotope .isotope-item {
+        -webkit-transition-duration: 0.8s;
+        -moz-transition-duration: 0.8s;
+        -ms-transition-duration: 0.8s;
+        -o-transition-duration: 0.8s;
+        transition-duration: 0.8s;
+    }
+
+    .isotope {
+        -webkit-transition-property: height, width;
+        -moz-transition-property: height, width;
+        -ms-transition-property: height, width;
+        -o-transition-property: height, width;
+        transition-property: height, width;
+    }
+
+        .isotope .isotope-item {
+            -webkit-transition-property: -webkit-transform, opacity;
+            -moz-transition-property: -moz-transform, opacity;
+            -ms-transition-property: -ms-transform, opacity;
+            -o-transition-property: -o-transform, opacity;
+            transition-property: transform, opacity;
+        }
+            /**** disabling Isotope CSS3 transitions ****/
+            .isotope.no-transition,
+            .isotope.no-transition .isotope-item,
+            .isotope .isotope-item.no-transition {
+                -webkit-transition-duration: 0s;
+                -moz-transition-duration: 0s;
+                -ms-transition-duration: 0s;
+                -o-transition-duration: 0s;
+                transition-duration: 0s;
+            }
+</style>
 <section id="azpay-slider">
     <article id="slider" class="owl-carousel">
-        <div class="item bg-slider" style="width:100%; height:100%; background:url(https://azpay.vn/uploads/logo/1406602102_bg_slide1.jpg) no-repeat center center">
-            <a href='/' target='_self'><img src='https://azpay.vn/uploads/logo/1406602102_slide1.png' width='1400' height='420' border='0'></a>
-        </div>                <div class="item bg-slider" style="width:100%; height:100%; background:url(https://azpay.vn/uploads/logo/1406602177_bg_slide2.jpg) no-repeat center center">
-            <a href='/' target='_self'><img src='https://azpay.vn/uploads/logo/1406602177_slide2.png' width='1400' height='420' border='0'></a>
-        </div>                <div class="item bg-slider" style="width:100%; height:100%; background:url(https://azpay.vn/uploads/logo/1406602217_bg_slide3.jpg) no-repeat center center">
-            <a href='/' target='_self'><img src='https://azpay.vn/uploads/logo/1406602217_slide3.png' width='1399' height='420' border='0'></a>
-        </div>                <div class="item bg-slider" style="width:100%; height:100%; background:url(https://azpay.vn/uploads/logo/1406602246_bg_slide4.jpg) no-repeat center center">
-            <a href='/' target='_self'><img src='https://azpay.vn/uploads/logo/1406602246_slide4.png' width='1400' height='420' border='0'></a>
+        <div class="item bg-slider" style="width:100%; height:100%; background:url(../../images/slider/1.png)">
+            <a href='/' target='_self'><img src="~/images/slider/1.png" width='1400' height='420' border='0'></a>
+        </div>                <div class="item bg-slider" style="width:100%; height:100%; background:url(../../images/slider/2.jpg) no-repeat center center">
+            <a href='/' target='_self'><img src="~/images/slider/2.jpg" width='1400' height='420' border='0'></a>
+        </div>                <div class="item bg-slider" style="width:100%; height:100%; background:url(../../images/slider/3.jpg) no-repeat center center">
+            <a href='/' target='_self'><img src="~/images/slider/3.jpg" width='1399' height='420' border='0'></a>
+        </div>                <div class="item bg-slider" style="width:100%; height:100%; background:url(../../images/slider/4.jpg) no-repeat center center">
+            <a href='/' target='_self'><img src="~/images/slider/4.jpg" width='1400' height='420' border='0'></a>
         </div>
     </article>
     <img src="https://azpay.vn/templates/images/v2/shadow.png" />
 </section> <!--end slider-->
 
-<section id="azpay-featured">
+<section id="azpay-featured" style="margin-bottom:60px;">
     <div class="container">
         <div class="row">
-            <h3>Tiết kiệm thời gian với ví điện tử BigPay</h3>
-            <article class="block col-lg-4 col-md-4 col-xs-12">
-                <img src="https://azpay.vn/templates/images/v2/1.jpg" alt="" />
-                <div class="icon"><img src="https://azpay.vn/templates/images/v2/icon1.png" alt="" /></div>
-                <div class="box">
-                    <h4>BigPay là gì</h4>
-                    <p>BigPay là cổng thanh toán trực tuyến được xây dựng theo mô hình hệ thống thanh toán Paypal, phục vụ thanh toán trực tuyến tại Việt Nam. BigPay đóng vai trò là cầu nối giữa người mua và người bán hỗ trợ Thanh toán và Chuyển tiền trực tuyến giữa hai bên.</p>
-
+            <h3 id="kaka">dịch vụ</h3>
+            <div id="portfolio">
+                <div class="portfolio-items">                   
+                    <div class="portfolio-item col-md-3  col-sm-4 col-xs-6 corporate portfolio">
+                        <div class="portfolio-item-inner">
+                            <img class="img-responsive" src="~/images/portfolio/02.jpg" alt="">
+                            <div class="portfolio-info">
+                                <h3>Nạp tiền</h3>
+                                <a class="preview" href="/Account/CashIn"rel="prettyPhoto"><i class="fa fa-sign-in"></i></a>
+                            </div>
+                        </div>
+                    </div><!--/.portfolio-item-->
+                    <div class="portfolio-item corporate col-md-3  col-sm-4 col-xs-6">
+                        <div class="portfolio-item-inner">
+                            <img class="img-responsive" src="~/images/portfolio/04.jpg" alt="">
+                            <div class="portfolio-info">
+                                <h3>Thanh toán online</h3>
+                                <a class="preview no_service" href="/Service/Payment" rel="prettyPhoto"><i class="fa fa-money"></i></a>
+                            </div>
+                        </div>
+                    </div><!--/.portfolio-item-->
+                    <div class="portfolio-item corporate col-md-3  col-sm-4 col-xs-6">
+                        <div class="portfolio-item-inner">
+                            <img class="img-responsive" src="~/images/portfolio/06.jpg" alt="">
+                            <div class="portfolio-info">
+                                <h3>Nạp tiền điện tử</h3>
+                                <a class="preview no_service" href="/Service/Topup" rel="prettyPhoto"><i class="fa fa-mobile"></i></a>
+                            </div>
+                        </div>
+                    </div><!--/.portfolio-item-->
+                    <div class="portfolio-item creative portfolio col-md-3  col-sm-4 col-xs-6">
+                        <div class="portfolio-item-inner">
+                            <img class="img-responsive" src="~/images/portfolio/07.jpg" alt="">
+                            <div class="portfolio-info">
+                                <h3>Chuyển tiền</h3>
+                                <a class="preview no_service" href="/Service/Transfer" rel="prettyPhoto"><i class="fa fa-usd"></i></a>
+                            </div>
+                        </div>
+                    </div><!--/.portfolio-item-->
                 </div>
-            </article>
-            <article class="block col-lg-4 col-md-4 col-xs-12">
-                <img src="https://azpay.vn/templates/images/v2/2.jpg" alt="" />
-                <div class="icon"><img src="https://azpay.vn/templates/images/v2/icon2.png" alt="" /></div>
-                <div class="box">
-                    <h4>MUA HÀNG AN TOÀN, TIỆN LỢI</h4>
-                    <ul>
-                        <li><i class="fa fa-check blue"></i> Giá chiết khấu cao, lên đến 8% mỗi giao dịch</li>
-                        <li><i class="fa fa-check blue"></i> Thanh toán tạm giữ an toàn</li>
-                        <li><i class="fa fa-check blue"></i> Đảm bảo hoàn tiền 100% khi phát sinh khiếu nại</li>
-                        <li><i class="fa fa-check blue"></i> Chứng nhận bảo mật online bởi GlobalSign</li>
-                        <li><i class="fa fa-check blue"></i> Bảo vệ chủ thẻ bởi Verified by Visa và 3D-Secure</li>
-                    </ul>
+            </div>
 
-                </div>
-            </article>
-            <article class="block col-lg-4 col-md-4 col-xs-12">
-                <img src="https://azpay.vn/templates/images/v2/3.jpg" alt="" />
-                <div class="icon"><img src="https://azpay.vn/templates/images/v2/icon3.png" alt="" /></div>
-                <div class="box">
-                    <h4>NHIỀU ƯU ĐÃI, nhiều TIỆN ÍCH</h4>
-                    <ul>
-                        <li><i class="fa fa-check blue"></i> Tích điểm để tiếp tục tiêu dùng </li>
-                        <li><i class="fa fa-check blue"></i> Liên tục các chương trình khuyến mại</li>
-                        <li><i class="fa fa-check blue"></i> Thanh toán hóa đơn điện thoại, điện nước dễ dàng</li>
-                        <li><i class="fa fa-check blue"></i> Tích hợp nhiều phương thức thanh toán trên website</li>
-                        <li><i class="fa fa-check blue"></i> Giao dịch đa nền tảng PC, Mobile mọi lúc mọi nơi</li>
-                    </ul>
-
-                </div>
-            </article>
         </div> <!--end row-->
     </div> <!--end container-->
 </section>
 
-<section id="azpay-signup">
+@*<section id="azpay-signup">
     <div class="container">
         <div class="row">
             <h3>Cuộc sống dễ dàng hơn với ví điện tử BigPay</h3>
@@ -78,9 +247,9 @@
                 <a href="/Account/Login" class="signup">Đăng ký ngay</a>
 
             </article>
-        </div> <!--end row-->
-    </div> <!--end container-->
-</section>
+        </div> 
+    </div>
+</section>*@
 
 <section id="azpay-news">
     <div class="container">
@@ -90,15 +259,20 @@
                     <h3>Tin tức</h3>
                 </div>
                 <ul>
-                    @*<li><a href="/news/22/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA MOBIFONE NGÀY 22 - 23/05/2014</a></li>
+                    <li><a href="/news/22/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA MOBIFONE NGÀY 22 - 23/05/2014</a></li>
                         <li><a href="/news/21/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA VINAPHONE NGÀY 21 - 22/05/2014</a></li>
                         <li><a href="/news/20/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA VIETTEL NGÀY 09/05 - 10/05/2014</a></li>
                         <li><a href="/news/19/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA VINAPHONE NGÀY 09/05/2014</a></li>
-                        <li><a href="/news/18/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA MOBIFONE NGÀY 08/05 - 09/05/2014</a></li>*@
+                        <li><a href="/news/18/.html"><i class="fa fa-angle-right"></i> THÔNG BÁO CHƯƠNG TRÌNH KHUYẾN MÃI MỚI CỦA MOBIFONE NGÀY 08/05 - 09/05/2014</a></li>
                 </ul>
             </article>
-
-            <section class="cus col-lg-6 col-md-6 col-xs-12">
+            <article class="news col-lg-6 col-md-6 col-xs-12" style="margin-bottom:170px">
+                <div class="heading">
+                    <h3>BigPay là gì</h3>
+                </div>
+                <p>BigPay là cổng thanh toán trực tuyến được xây dựng theo mô hình hệ thống thanh toán Paypal, phục vụ thanh toán trực tuyến tại Việt Nam. BigPay đóng vai trò là cầu nối giữa người mua và người bán hỗ trợ Thanh toán và Chuyển tiền trực tuyến giữa hai bên.</p>
+            </article>
+            <section class="cus col-lg-6 col-md-6 col-xs-12" style="margin-top:30px">
                 <article class="group">
                     <div class="heading">
                         <h3>Hỗ trợ thanh toán</h3>
@@ -174,8 +348,9 @@
                             </div>
                         </div>
                     </div>
-                </article>
-
+                </article>               
+            </section>
+            <article class="news col-lg-6 col-md-6 col-xs-12" style="margin-top:30px;margin-bottom:70px">
                 <article>
                     <div class="heading">
                         <h3>Đối tác BigPay</h3>
@@ -185,11 +360,13 @@
                         <a class="next"><i class="fa fa-angle-double-right"></i></a>
                     </div>
                     <div id="doitac" class="owl-carousel">
-                        <div class="item"><a href="http://evnhanoi.vn" target="_blank_" title=""><img src="data:image/jpeg;base64,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" alt="" /></a></div>
                         <div class="item"><a href="http://bigapps.vn/" target="_blank_" title=""><img src="http://store.bigapps.vn//cloud-storage/images/20150316152645082_bigappsx78.jpg" alt="" /></a></div>
-                    </div>
+                        <div class="item"><a href="http://nhaviet24.vn/" target="_blank_" title=""><img src="~/images/slider/nhaviet24.png" alt="" /></a></div>
+                        <div class="item"><a href="http://evnhanoi.vn" target="_blank_" title=""><img src="data:image/jpeg;base64,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" alt="" /></a></div>
+                     </div>
                 </article>
-            </section>
-        </div> <!--end row-->
+            </article>
+                
+</div> <!--end row-->
     </div> <!--end container-->
 </section>

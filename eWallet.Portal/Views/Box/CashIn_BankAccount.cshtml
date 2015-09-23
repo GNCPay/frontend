@@ -10,7 +10,8 @@
     <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
         <div class="form-group">
             <label class="sr-only" for="amount">Số tiền*</label>
-            <input type="text" class="form-control" id="amount" placeholder="Số tiền nạp" required>
+            <input type="number" id="display" hidden>
+            <input type="text" class="form-control" id="amount" onkeypress="validate()" placeholder="Số tiền nạp" required>
         </div>
         <div class="form-group">
             <label class="sr-only" for="account_bank">Từ ngân hàng*</label>
@@ -18,7 +19,7 @@
         </div>
         <div class="form-group">
             <label for="account_number" class="sr-only">Số tài khoản*</label>
-            <input type="text" name="account_number" id="account_number" class="form-control" placeholder="Số tài khoản">
+            <input type="text" name="account_number" id="account_number" onkeypress="validate()" class="form-control" placeholder="Số tài khoản">
         </div>
         <div class="form-group">
             <label for="trans_date" class="">Ngày chuyển</label>
@@ -104,4 +105,28 @@
                alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
            });
     });
+</script>
+
+@*kiểm tra kiểu số khi nhập*@
+<script language="javascript">
+    function validate(evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+        var regex = /[0-9]|\./;
+        if (!regex.test(key)) {
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+
+    //format money input
+    //document.getElementById("amount").onblur = function () {
+    //    this.value = parseFloat(this.value.replace(/,/g, ""))
+    //                    .toFixed()
+    //                    .toString()
+    //                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    //    document.getElementById("display").value = this.value.replace(/,/g, "")
+
+    //}
 </script>

@@ -257,6 +257,7 @@
     <Content Include="css\reset.css" />
     <Content Include="css\responsive.css" />
     <Content Include="favicon.ico" />
+    <Content Include="images\biglogo.png" />
     <Content Include="images\portfolio\01.jpg" />
     <Content Include="images\portfolio\02.jpg" />
     <Content Include="images\portfolio\03.jpg" />
@@ -267,6 +268,12 @@
     <Content Include="images\portfolio\08.jpg" />
     <Content Include="images\portfolio\bg.jpg" />
     <Content Include="images\portfolio\logo.png" />
+    <Content Include="images\seprator.png" />
+    <Content Include="images\slider\1.png" />
+    <Content Include="images\slider\2.jpg" />
+    <Content Include="images\slider\3.jpg" />
+    <Content Include="images\slider\4.jpg" />
+    <Content Include="images\slider\nhaviet24.png" />
     <Content Include="Views\favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
