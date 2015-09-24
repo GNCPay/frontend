@@ -115,9 +115,9 @@ namespace eWallet.Portal.Controllers
         #endregion "CASHIN PROCESS"
 
         #region "CASHOUT PROCESS"
-        public JsonResult CashIn_Bank(string trans_date, string account_bank, string account_number, long amount, string note)
+        public JsonResult CashIn_Bank(string trans_date, string account_bank, string account_number, string amount, string note)
         {
-            string kaka = amount.ToString().Replace(",", "");
+            string kaka = amount.Replace(",","");
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:'"
                + User.Identity.Name + "',service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + kaka +
          ", note: '" + note +

@@ -108,7 +108,7 @@
                         <li><a href="#" class="nav_link" data-href='@Url.Action("PaymentCommerce", "Service", null, null)'>Thanh toán hóa đơn thương mại điện tử</a></li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li><a href="#" class="nav_link" data-href='@Url.Action("List","Transaction",null,null)'>Tra soát giao dịch Thanh toán</a></li>
+                            <li><a href="#" class="nav_link" data-href='@Url.Action("Cashout","Transaction",null,null)'>Tra soát giao dịch Thanh toán</a></li>
                         }
                     </ul>
                 </article>
