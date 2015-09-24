@@ -32,7 +32,7 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Mobile, new { @class = "sr-only" })
 
-                @Html.TextBoxFor(m => m.Mobile, new { placeholder = "Số điện thoại", @class = "form-control", onkeypress = "validate()" })
+                @Html.TextBoxFor(m => m.Mobile, new { placeholder = "Số điện thoại", @class = "form-control", onkeypress = "return kaka(event, this)" })
                 @Html.ValidationMessageFor(m => m.Mobile)
             </div>
             <div class="form-group">
@@ -57,15 +57,20 @@
 }
 @*kiểm tra kiểu số khi nhập*@
 <script language="javascript">
-    function validate(evt) {
-        var theEvent = evt || window.event;
-        var key = theEvent.keyCode || theEvent.which;
-        key = String.fromCharCode(key);
-        var regex = /[0-9]|\./;
-        if (!regex.test(key)) {
-            theEvent.returnValue = false;
-            if (theEvent.preventDefault) theEvent.preventDefault();
+    function kaka(e, kakatexto) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
         }
     }
+    //function validate(evt) {
+    //    var theEvent = evt || window.event;
+    //    var key = theEvent.keyCode || theEvent.which;
+    //    key = String.fromCharCode(key);
+    //    var regex = /[0-9]|\./;
+    //    if (!regex.test(key)) {
+    //        theEvent.returnValue = false;
+    //        if (theEvent.preventDefault) theEvent.preventDefault();
+    //    }
+    //}
 </script>
 

@@ -44,7 +44,7 @@
         </div>
         <div class="form-group">
             <label class="sr-only" for="txt_bill_pay_amount">Số tiền thanh toán</label>
-            <input class="form-control" id="txt_bill_pay_amount" type="text" placeholder="Số tiền thanh toán" />
+            <input class="form-control" id="txt_bill_pay_amount" onkeypress="return kaka(event, this)" type="text" placeholder="Số tiền thanh toán" />
         </div>
         <div class="form-group" id="payment_method">
             <a class="btn btn-primary" data-toggle="modal" href="#bankModal"><i class="glyphicon glyphicon-credit-card"></i> Thẻ ATM</a>
@@ -170,4 +170,13 @@
                });
         });
     });
+</script>
+
+@*kiểm tra kiểu số khi nhập*@
+<script>
+    function kaka(e, kakatexto) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    }
 </script>

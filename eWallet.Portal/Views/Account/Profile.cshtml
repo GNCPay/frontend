@@ -39,7 +39,7 @@
         <div class="form" role="form">
             <div class="form-group">
                 <label class="sr-only" for="birthday">Ngày sinh</label>
-                <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" id="birthday" placeholder="Ngày sinh" value="@ViewBag.profile.birthday" required>
+                <input type="text" class="form-control" id="birthday" placeholder="Ngày sinh" value="@ViewBag.profile.birthday" required>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="address">Địa chỉ</label>
@@ -47,11 +47,11 @@
             </div>
             <div class="form-group">
                 <label class="sr-only" for="personal_id">Số CMND</label>
-                <input type="text" class="form-control" id="personal_id" onkeypress='validate(event)' placeholder="Số CMND" value="@ViewBag.profile.personal_id" required>
+                <input type="text" class="form-control" id="personal_id" onkeypress='return kaka(event, this)' placeholder="Số CMND" value="@ViewBag.profile.personal_id" required>
             </div>
             <div class="form-group float-label-control">
                 <label class="sr-only" for="personal_id_issued_date">Ngày cấp</label>
-                <input type="date" class="form-control" id="personal_id_issued_date" placeholder="Ngày cấp" value="@ViewBag.profile.personal_id_issued_date" required>
+                <input type="text" class="form-control" id="personal_id_issued_date" placeholder="Ngày cấp" value="@ViewBag.profile.personal_id_issued_date" required>
             </div>
             <div class="form-group ">
                 <label class="sr-only" for="personal_id_issued_by">Nơi cấp</label>
@@ -102,17 +102,46 @@
     });
 </script>
 
+@*nhập ngày tháng cho firefox*@
+<script>
+$(function () {
+    $("#personal_id_issued_date").datepicker({
+        dateFormat: "dd/mm/yy",
+        startDate: new Date(),
+        todayBtn: "linked",
+        language: "en",
+        autoclose: true
+    });
+});
+</script>
+
+<script>
+    $(function () {
+        $("#birthday").datepicker({
+            dateFormat: "dd/mm/yy",
+            startDate: new Date(),
+            todayBtn: "linked",
+            language: "en",
+            autoclose: true
+        });
+    });
+</script>
 @*kiểm tra kiểu số khi nhập*@
 <script>
-function validate(evt) {
-    var theEvent = evt || window.event;
-    var key = theEvent.keyCode || theEvent.which;
-    key = String.fromCharCode(key);
-    var regex = /[0-9]|\./;
-    if (!regex.test(key)) {
-        theEvent.returnValue = false;
-        if (theEvent.preventDefault) theEvent.preventDefault();
+    function kaka(e, kakatexto) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
     }
-}
+//function validate(evt) {
+//    var theEvent = evt || window.event;
+//    var key = theEvent.keyCode || theEvent.which;
+//    key = String.fromCharCode(key);
+//    var regex = /[0-9]|\./;
+//    if (!regex.test(key)) {
+//        theEvent.returnValue = false;
+//        if (theEvent.preventDefault) theEvent.preventDefault();
+//    }
+//}
 </script>
 

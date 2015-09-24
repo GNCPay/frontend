@@ -25,7 +25,7 @@
         <div class="form-group">
             <label class="sr-only" for="amount">Số tiền</label>
             <input type="number" id="display" hidden>
-            <input class="form-control" id="amount" onkeypress="validate()" type="text" placeholder="Số tiền muốn chuyển" />
+            <input class="form-control" id="amount" onkeypress="return kaka(event, this)" type="text" placeholder="Số tiền muốn chuyển" />
         </div>
         <div class="form-group">
             <label class="sr-only" for="note">Số tiền</label>
@@ -97,16 +97,21 @@
 
 @*kiểm tra kiểu số khi nhập*@
 <script language="javascript">
-    function validate(evt) {
-        var theEvent = evt || window.event;
-        var key = theEvent.keyCode || theEvent.which;
-        key = String.fromCharCode(key);
-        var regex = /[0-9]|\./;
-        if (!regex.test(key)) {
-            theEvent.returnValue = false;
-            if (theEvent.preventDefault) theEvent.preventDefault();
+    function kaka(e, kakatexto) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
         }
     }
+    //function validate(evt) {
+    //    var theEvent = evt || window.event;
+    //    var key = theEvent.keyCode || theEvent.which;
+    //    key = String.fromCharCode(key);
+    //    var regex = /[0-9]|\./;
+    //    if (!regex.test(key)) {
+    //        theEvent.returnValue = false;
+    //        if (theEvent.preventDefault) theEvent.preventDefault();
+    //    }
+    //}
 
     //format money input
     document.getElementById("amount").onblur = function () {

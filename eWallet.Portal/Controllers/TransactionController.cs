@@ -32,7 +32,7 @@ namespace eWallet.Portal.Controllers
                     );
             //Nếu id = empty -> lay all giao dich cua user
             //Neu id <> empty -> lay giao dich cua user ma co transaction_type = id
-            dynamic[] list_profile = Helper.DataHelper.List("transactions",query, SortBy.Descending("system_created_time"));
+            dynamic[] list_profile = Helper.DataHelper.List("transactions",query, SortBy.Ascending("system_created_time"));
                 ViewBag.Type = id;
                 ViewBag.List = list_profile;
             return View();

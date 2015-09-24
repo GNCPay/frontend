@@ -60,7 +60,7 @@
                     </div>
                     <div class="form-group">
                         <label for="account_number" class="sr-only">Số tài khoản*</label>
-                        <input type="text" name="account_number" id="account_number" onkeypress="validate()" class="form-control" placeholder="Số tài khoản">
+                        <input type="text" name="account_number" id="account_number" onkeypress="return kaka(event, this)" class="form-control" placeholder="Số tài khoản">
                     </div>
 
                     <div class="form-group">
@@ -164,14 +164,19 @@
 
 @*kiểm tra kiểu số khi nhập*@
 <script language="javascript">
-    function validate(evt) {
-        var theEvent = evt || window.event;
-        var key = theEvent.keyCode || theEvent.which;
-        key = String.fromCharCode(key);
-        var regex = /[0-9]|\./;
-        if (!regex.test(key)) {
-            theEvent.returnValue = false;
-            if (theEvent.preventDefault) theEvent.preventDefault();
+    function kaka(e, kakatexto) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
         }
     }
+    //function validate(evt) {
+    //    var theEvent = evt || window.event;
+    //    var key = theEvent.keyCode || theEvent.which;
+    //    key = String.fromCharCode(key);
+    //    var regex = /[0-9]|\./;
+    //    if (!regex.test(key)) {
+    //        theEvent.returnValue = false;
+    //        if (theEvent.preventDefault) theEvent.preventDefault();
+    //    }
+    //}
 </script>

@@ -27,7 +27,7 @@ namespace eWallet.Portal.Controllers
             {
                 if (sex.Length <= 4)
                 {
-                    if (string.Compare(sex.ToLower(), a, true) == 0 || string.Compare(sex.ToLower(), b, true) == 0 || string.Compare(sex.ToLower(), c, true) == 0)
+                    if (string.Compare(sex, a, true) == 0 || string.Compare(sex, b, true) == 0 || string.Compare(sex, c, true) == 0)
                     {
 
                         profile.sex = sex;

@@ -248,6 +248,7 @@
     <Content Include="Content\slider.css" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\buttons.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\main.css" />

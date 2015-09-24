@@ -20,6 +20,8 @@ using Microsoft.Owin.Host.SystemWeb;
 using System.Net;
 using System.Dynamic;
 using System.Text.RegularExpressions;
+using MongoDB.Driver;
+
 namespace eWallet.Portal.Controllers
 {
     public class AccountController : Controller
@@ -251,30 +253,37 @@ namespace eWallet.Portal.Controllers
             {
                 if (IsValidEmail(model.Email) == true)
                 {
-                    if (CheckPhoneSupport(model.Mobile) == true)
+                    if(CheckIphone(model.Mobile)==true)
                     {
-                        var user = new ApplicationUser() { UserName = model.Email };
-                        var result = await UserManager.CreateAsync(user, model.Password);
-                        if (result.Succeeded)
+                        if (CheckPhoneSupport(model.Mobile) == true)
                         {
-                            //Goi ham dang ky tren server de tao finance_account
-                            PostRegister(model.Fullname, model.Email, model.Mobile);
-                            await SignInAsync(user, isPersistent: false);
-                            return RedirectToAction("Index", "Home");
+                            var user = new ApplicationUser() { UserName = model.Email };
+                            var result = await UserManager.CreateAsync(user, model.Password);
+                            if (result.Succeeded)
+                            {
+                                //Goi ham dang ky tren server de tao finance_account
+                                PostRegister(model.Fullname, model.Email, model.Mobile);
+                                await SignInAsync(user, isPersistent: false);
+                                return RedirectToAction("Index", "Home");
+                            }
+                            else
+                            {
+                                AddErrors(result);
+                            }
                         }
                         else
                         {
-                            AddErrors(result);
+                            ModelState.AddModelError("", "Số điện thoại không chính xác !");
                         }
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Invalid mobile !");
+                        ModelState.AddModelError("", "Số điện thoại đã tồn tại!");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid email !");
+                    ModelState.AddModelError("", " Email không chính xác !");
                 }
 
             }
@@ -282,6 +291,17 @@ namespace eWallet.Portal.Controllers
             return View(model);
         }
 
+        public static bool CheckIphone(string iphone)
+        {
+            string a = iphone.Insert(0, "84");
+            a = a.Remove(2, 1);
+            dynamic profile = Helper.DataHelper.Get("profile", Query.EQ("mobile", a));
+            if (profile != null)
+            {
+                return false;
+            }
+            return true;
+        }
         public static bool CheckPhoneSupport(string phone_number)
         {
             const int RegionConuntryCode = 84;
@@ -297,11 +317,11 @@ namespace eWallet.Portal.Controllers
                 {
                     phone_number = phone_number.Replace("0" + RegionConuntryCode, "0");
                 }
+                    string[] networkSupport_2 = { "096", "097", "098", "090", "093", "091", "094", "092", "099" };
+                    const int networkLength = 3;
+                    var startphone_number = phone_number.Substring(0, networkLength);
+                    return networkSupport_2.Any(startphone_number.Equals);
 
-                string[] networkSupport_2 = { "096", "097", "098", "090", "093", "091", "094", "092", "099" };
-                const int networkLength = 3;
-                var startphone_number = phone_number.Substring(0, networkLength);
-                return networkSupport_2.Any(startphone_number.Equals);
             }
             if (phone_number.Length == 11)
             {
@@ -314,14 +334,15 @@ namespace eWallet.Portal.Controllers
                 {
                     phone_number = phone_number.Replace("0" + RegionConuntryCode, "0");
                 }
-                string[] networkSupport_1 = {"0162", "0163", "0164", "0165", "0166", "0167", "0168", "0169",
+               
+                    string[] networkSupport_1 = {"0162", "0163", "0164", "0165", "0166", "0167", "0168", "0169",
             "0120", "0121", "0122","0126","0128",
             "0123","0124","0125","0127","0129",
             "0188", "0186",
             "0199"};
-                const int networkLength_2 = 4;
-                var startphone_number_2 = phone_number.Substring(0, networkLength_2);
-                return networkSupport_1.Any(startphone_number_2.Equals);
+                    const int networkLength_2 = 4;
+                    var startphone_number_2 = phone_number.Substring(0, networkLength_2);
+                    return networkSupport_1.Any(startphone_number_2.Equals);  
             }
             return false;
         }

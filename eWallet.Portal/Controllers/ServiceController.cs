@@ -83,11 +83,12 @@ namespace eWallet.Portal.Controllers
         [Authorize]
         public JsonResult CashIn_ATM(string amount, string bank)
         {
+            string kaka = amount.Replace(",", "");
             bank = ProxyController.GetBankCode(bank);
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:'"
                  + User.Identity.Name
-                + "',service:'GNCP', provider:'BANKNET', payment_provider:'BANKNET', amount: " + amount +
-            ", note: '" + "CASH IN ACCOUNT " + User.Identity.Name + ", AMOUNT " + amount +
+                + "',service:'GNCP', provider:'BANKNET', payment_provider:'BANKNET', amount: " + kaka +
+            ", note: '" + "CASH IN ACCOUNT " + User.Identity.Name + ", AMOUNT " + kaka +
             "', bank:'" + bank +
             "'}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
@@ -96,10 +97,11 @@ namespace eWallet.Portal.Controllers
 
         public JsonResult CashOut_Bank(string account_id, string amount, string note)
         {
+            string kaka = amount.Replace(",", "");
             dynamic account = Helper.DataHelper.Get("cashout_bank_account",
                 Query.EQ("_id", account_id));
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHOUT',request:{channel:'WEB', profile:'"
-               + User.Identity.Name + "',service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + amount +
+               + User.Identity.Name + "',service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + kaka +
          ", note: '" + note +
          "', receiver:{account_bank:'" + account.bank +
          "', account_branch:'" + account.branch + "',account_number:'" + account.number +
@@ -115,8 +117,9 @@ namespace eWallet.Portal.Controllers
         #region "CASHOUT PROCESS"
         public JsonResult CashIn_Bank(string trans_date, string account_bank, string account_number, long amount, string note)
         {
-         string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:'"
-               + User.Identity.Name + "',service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + amount +
+            string kaka = amount.ToString().Replace(",", "");
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:'"
+               + User.Identity.Name + "',service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + kaka +
          ", note: '" + note +
          "', sender:{account_bank:'" + account_bank +
          "', account_number:'" + account_number +
@@ -145,12 +148,13 @@ namespace eWallet.Portal.Controllers
 
         public JsonResult Payment_PayBill(string service, string provider, string bill_code, long amount, string payment_provider, string bank)
         {
+            string kaka = amount.ToString().Replace(",", "");
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'payment',request:{channel:'web', profile:'"
                 + User.Identity.Name
                + "', product_code: '" + bill_code
                + "', service: '" + service
                + "', provider: '" + provider
-               + "', amount: " + amount
+               + "', amount: " + kaka
                + ", payment_provider: '" + payment_provider
                + "', bank: '" + bank +
            "'}}";
@@ -219,9 +223,10 @@ namespace eWallet.Portal.Controllers
 
         public JsonResult TransferWallet_MakeTransaction(string account, string account_id, string account_name,string amount, string note)
         {
+            string kaka = amount.Replace(",", "");
             string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'transfer',request:{channel:'WEB', profile:'" + User.Identity.Name
                    + "',service:'GNCP',provider:'GNCE'"
-                   + ", amount: " + amount
+                   + ", amount: " + kaka
                    + ", note: '" + note
                    + "', payment_provider:'GNCE"
                    + "', receiver:{user_name:'" + account
