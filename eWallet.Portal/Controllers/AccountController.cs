@@ -222,8 +222,15 @@ namespace eWallet.Portal.Controllers
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    if(user.Status== "LOCKED")
+                    {
+                        ModelState.AddModelError("", "Tài khoản của bạn đang bị tạm khoá liên hệ với Admin hệ thống để mở khoá !");
+                    }
+                    else
+                    {
+                        await SignInAsync(user, model.RememberMe);
+                        return RedirectToLocal(returnUrl);
+                    }                   
                 }
                 else
                 {
