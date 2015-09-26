@@ -231,7 +231,7 @@ footer{
 
 /*NEWSLETTER*/
 .newsletter{
-	border-top:1px solid #00a7b8; padding-top:15px}
+	border-top:0.4px solid #005760; padding-top:15px}
 .newsletter [type=email]{
 	float:left; border:none; padding:6px 5px !important}
 .newsletter [type=submit]{

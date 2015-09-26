@@ -51,224 +51,139 @@
     <script type="text/javascript" src="https://azpay.vn/templates/javascript/jquery-ui.js"></script>
     -->
     <style>
-            div#page {
-                max-width: 900px;
-                margin-left: auto;
-                margin-right: auto;
-                padding: 20px;
+        div#page {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
+
+        .back-to-top {
+            display: block;
+            width: 31px;
+            height: 31px;
+            position: fixed;
+            background-color: rgba(135, 135, 135, 0.50);
+            bottom: 15px;
+            right: 15px;
+            display: none;
+        }
+
+            .back-to-top:before {
+                content: "";
+                position: Absolute;
+                width: 0;
+                height: 0;
+                border: 11px solid transparent;
+                border-bottom: 11px solid white;
+                left: 5px;
+                top: -8px;
             }
 
-            .back-to-top {
-                display: block;
-                width: 31px;
-                height: 31px;
-                position: fixed;
-                background-color:  rgba(135, 135, 135, 0.50);
-                bottom: 15px;
-                right: 15px;
-                display: none;
+
+            .back-to-top:after {
+                content: "";
+                position: Absolute;
+                width: 10px;
+                height: 17px;
+                background-color: white;
+                left: 11px;
+                top: 14px;
             }
 
-                .back-to-top:before {
-                    content: "";
-                    position: Absolute;
-                    width: 0;
-                    height: 0;
-                    border: 11px solid transparent;
-                    border-bottom: 11px solid white;
-                    left: 5px;
-                    top: -8px;
-                }
-
-
-                .back-to-top:after {
-                    content: "";
-                    position: Absolute;
-                    width: 10px;
-                    height: 17px;
-                    background-color: white;
-                    left: 11px;
-                    top: 14px;
-                }
-
-                .back-to-top:hover {
-                    background-color:#007944;
-                    text-decoration: none;
-                }
-
-            .footer-bottom {
-            }
-
-                .footer-bottom .logo {
-                    float: left;
-                }
-
-                .footer-bottom .grid_1020 {
-                    max-width: 1020px;
-                    margin: 0px auto;
-                }
-
-                .footer-bottom .copyright {
-                    float: left;
-                    margin-top: 0;
-                    margin-left: 40px;
-                    margin-right:150px;
-                    font-size: 13px;
-                    color: white;
-                    line-height: 1.5;
-                    text-align: left;
-                }
-
-            a {
-                color: #000;
-                outline: none;
-            }
-
-            a {
-                font-size: 100%;
-                vertical-align: baseline;
-                background: transparent;
+            .back-to-top:hover {
+                background-color: #007944;
                 text-decoration: none;
-                margin: 0;
-                padding: 0;
             }
 
-            .social-list {
-                overflow: hidden;
-            }
+        .footer-bottom {
+        }
 
-            .social-block h5 {
-                color: #fff;
-                font-weight: bold;
-                text-transform: uppercase;
-                font-size: 16px;
-                padding-bottom: 10px;
-                margin: 0px;
-                font-family: Arial, Helvetica, sans-serif;
-            }
-
-            .social-list a {
-                display: block;
-                width: 35px;
-                height: 35px;
-                border: 1px solid #fff;
-                background: #fff;
-                font-size: 18px;
-                line-height: 36px;
-                text-align: center;
-                border-radius: 3px;
-                -o-border-radius: 3px;
-                -moz-border-radius: 3px;
-                -webkit-border-radius: 3px;
-                -webkit-transition: background .25s ease-in-out;
-                -moz-transition: background .25s ease-in-out;
-                -ms-transition: background .25s ease-in-out;
-                -o-transition: background .25s ease-in-out;
-                transition: background .25s ease-in-out;
-            }
-
-            .social-list ul {
-                display: block;
-                list-style-type: disc;
-                -webkit-margin-before: 1em;
-                -webkit-margin-after: 1em;
-                -webkit-margin-start: 0px;
-                -webkit-margin-end: 0px;
-                -webkit-padding-start: 40px;
-            }
-
-            .social-list li {
-                margin-left: 5px;
+            .footer-bottom .logo {
                 float: left;
             }
 
-            #GNC{
-                min-width:670px;
-                height:180px;
-                margin-top:18px;
-            }
-            #GNC ul {
-                list-style: none;
-                font-family: Arial, san-serif;
-                font-size: 14px;
-                padding: 0;
-                height:100px;
-                margin:auto;
+            .footer-bottom .grid_1020 {
+                max-width: 1020px;
+                margin: 0px auto;
             }
 
-                #GNC ul li {
-                    float:left;
-                    position: relative;
-                    width:220px;
-                }
-
-                #GNC ul a {
-                    text-decoration: none;
-                    text-align:left;
-                    color: #fff;
-                    display: block;
-                    font-weight: bold;
-                    padding: 10px 30px;
-                    background: #007944;
-                }
-
-                    #GNC ul a:hover {
-                        background: #007933;
-                    }
-
-             #GNC li ul a {
-                background: #007944;
+            .footer-bottom .copyright {
+                float: left;
+                margin-top: 0;
+                margin-left: 40px;
+                margin-right: 150px;
+                margin-bottom:10px;
+                font-size: 13px;
+                color: white;
+                line-height: 1.5;
+                text-align: left;
             }
 
-            #GNC li ul {
-                position: absolute;
-                display: none;
-                width: 200px;
-            }
+        a {
+            color: #000;
+            outline: none;
+        }
 
-            #GNC li:hover ul {
-                display: block;
-            }
+        a {
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+        }
 
-            #GNC ul {
-                list-style: none;
-                font-family: Arial, san-serif;
-                font-size: 12px;
-                padding: 0;
-            }
+        .social-list {
+            overflow: hidden;
+        }
 
-                #GNC ul li {
-                    float: left;
-                    position: relative;
-                }
+        .social-block h5 {
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 16px;
+            padding-bottom: 10px;
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-                #GNC ul a {
-                    text-decoration: none;
-                    color: #fff;
-                    display: block;
-                    font-weight: bold;
-                    padding: 10px 30px;
-                    background: #007944;
-                }
+        .social-list a {
+            display: block;
+            width: 35px;
+            height: 35px;
+            border: 1px solid #fff;
+            background: #fff;
+            font-size: 18px;
+            line-height: 36px;
+            text-align: center;
+            border-radius: 3px;
+            -o-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            -webkit-transition: background .25s ease-in-out;
+            -moz-transition: background .25s ease-in-out;
+            -ms-transition: background .25s ease-in-out;
+            -o-transition: background .25s ease-in-out;
+            transition: background .25s ease-in-out;
+        }
 
-                    #GNC ul a:hover {
-                        background: #007920;
-                    }
+        .social-list ul {
+            display: block;
+            list-style-type: disc;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            -webkit-padding-start: 40px;
+        }
 
-            #GNC li ul a {
-                background: #007944;
-            }
-
-            #GNC li ul {
-                position: absolute;
-                display: none;
-                width: 200px;
-            }
-
-            #GNC li:hover ul {
-                display: block;
-            }
+        .social-list li {
+            margin-left: 5px;
+            float: left;
+        }
     </style>
+    <link href="~/Content/dropdow.css" rel="stylesheet" />
     <!-- content to be placed inside <body>…</body> -->
     <link href='http://fonts.googleapis.com/css?family=Cutive' rel='stylesheet' type='text/css'>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -427,31 +342,38 @@
         </div>
     </section>
     @RenderBody()
-    <footer style="background-color:#007944">
+    <footer style="background-color:#007944; margin-top:30px">
         <div class="container">
             <div class="row">
                 <article class="footer">
                     <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <h5>Hỗ trợ</h5>
+                        <ul class="Bigd">
+                            <h5>Hỗ trợ</h5>
+                            <li class="n1"><a href=""><i class="fa fa-angle-right"></i> Chính sách quyền riêng tư</a></li>
+                            <li class="n2"><a href=""><i class="fa fa-angle-right"></i> Thỏa thuận người dùng</a></li>
+                            <li class="n3"><a href=""><i class="fa fa-angle-right"></i> Hướng dẫn</a></li>
+                        </ul>       
+                                 
+                        @*<h5>Hỗ trợ</h5>
                         <ul>
                             <li><a href=""><i class="fa fa-angle-right"></i> Chính sách quyền riêng tư</a></li>
                             <li><a href=""><i class="fa fa-angle-right"></i> Thỏa thuận người dùng</a></li>
                             <li><a href=""><i class="fa fa-angle-right"></i> Hướng dẫn</a></li>
-                        </ul>
+                        </ul>*@
                     </article>
                     <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <h5>Hợp tác</h5>
-                        <ul>
-                            <li><a href=""><i class="fa fa-angle-right"></i> Liên hệ hợp tác</a></li>
-                            <li><a href=""><i class="fa fa-angle-right"></i> Dành cho đối tác</a></li>
-                        </ul>
+                        <ul class="Bigd">
+                            <h5>Hợp tác</h5>
+                            <li class="n1"><a href=""><i class="fa fa-angle-right"></i> Liên hệ hợp tác</a></li>
+                            <li class="n2"><a href=""><i class="fa fa-angle-right"></i> Dành cho đối tác</a></li>
+                        </ul>       
                     </article>
                     <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <h5>Về BigPay</h5>
-                        <ul>
-                            <li><a href=""><i class="fa fa-angle-right"></i> Tuyển dụng</a></li>
-                            <li><a href=""><i class="fa fa-angle-right"></i> Liên hệ</a></li>
-                        </ul>
+                        <ul class="Bigd">
+                            <h5>Về BigPay</h5>
+                            <li class="n1"><a href=""><i class="fa fa-angle-right"></i> Tuyển dụng</a></li>
+                            <li class="n2"><a href=""><i class="fa fa-angle-right"></i> Liên hệ</a></li>
+                        </ul>       
                     </article>
                     <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12" style="float:right">
                         <h5>Nhận bản tin</h5>
@@ -460,7 +382,7 @@
                 </article>
                 <section class="footer-bottom" style="border:none">
                     <div class="grid_1020">
-                        <a href="/" class="logo" title=""><img alt="" src="~/images/biglogo.png"></a>
+                        <a href="/" class="logo" title="" style="margin-bottom:10px"><img alt="" src="~/images/biglogo.png"></a>
                         <div class="copyright">
                             <p>Công ty cổ phần giải pháp thanh toán GNC</p>
                             <p>Hà Nội: F512, CharmVit Tower,117 Trần Duy Hưng </p>
@@ -469,7 +391,7 @@
                         </div>
                    </div>
                 </section>
-                <section class="grid_496">
+                <section class="grid_496" style="float:left">
                     <section class="social-block">
                         <h5>Social Network</h5>
                         <div class="content">
