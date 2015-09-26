@@ -35,7 +35,6 @@
     <link href="~/Content/slider.css" rel="stylesheet" />
     @*<script type="text/javascript" src="https://azpay.vn/templates/javascript/v2/jquery-2.0.0.js"></script>*@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-
     @*<script type="text/javascript" src="https://azpay.vn/templates/javascript/azpay_scripts.js"></script>*@
     @*<script type="text/javascript" src="https://azpay.vn/public/js/js_global.js"></script>*@
     @*<script type="text/javascript" src="https://azpay.vn/public/js/js_php.js"></script>*@
@@ -52,137 +51,227 @@
     <script type="text/javascript" src="https://azpay.vn/templates/javascript/jquery-ui.js"></script>
     -->
     <style>
-        div#page {
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 20px;
-        }
-
-        .back-to-top {
-            display: block;
-            width: 31px;
-            height: 31px;
-            position: fixed;
-            background-color: black;
-            bottom: 15px;
-            right: 15px;
-            display: none;
-        }
-
-            .back-to-top:before {
-                content: "";
-                position: Absolute;
-                width: 0;
-                height: 0;
-                border: 11px solid transparent;
-                border-bottom: 11px solid white;
-                left: 5px;
-                top: -8px;
+            div#page {
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 20px;
             }
 
-
-            .back-to-top:after {
-                content: "";
-                position: Absolute;
-                width: 10px;
-                height: 17px;
-                background-color: white;
-                left: 11px;
-                top: 14px;
+            .back-to-top {
+                display: block;
+                width: 31px;
+                height: 31px;
+                position: fixed;
+                background-color:  rgba(135, 135, 135, 0.50);
+                bottom: 15px;
+                right: 15px;
+                display: none;
             }
 
-            .back-to-top:hover {
-                background-color: rgba(135, 135, 135, 0.50);
+                .back-to-top:before {
+                    content: "";
+                    position: Absolute;
+                    width: 0;
+                    height: 0;
+                    border: 11px solid transparent;
+                    border-bottom: 11px solid white;
+                    left: 5px;
+                    top: -8px;
+                }
+
+
+                .back-to-top:after {
+                    content: "";
+                    position: Absolute;
+                    width: 10px;
+                    height: 17px;
+                    background-color: white;
+                    left: 11px;
+                    top: 14px;
+                }
+
+                .back-to-top:hover {
+                    background-color:#007944;
+                    text-decoration: none;
+                }
+
+            .footer-bottom {
+            }
+
+                .footer-bottom .logo {
+                    float: left;
+                }
+
+                .footer-bottom .grid_1020 {
+                    width: 1020px;
+                    margin: 0px auto;
+                }
+
+                .footer-bottom .copyright {
+                    float: left;
+                    margin-top: 0;
+                    margin-left: 40px;
+                    margin-right:150px;
+                    font-size: 13px;
+                    color: white;
+                    line-height: 1.5;
+                    text-align: left;
+                }
+
+            a {
+                color: #000;
+                outline: none;
+            }
+
+            a {
+                font-size: 100%;
+                vertical-align: baseline;
+                background: transparent;
                 text-decoration: none;
+                margin: 0;
+                padding: 0;
             }
-        
-        .footer-bottom {
-        }
 
-            .footer-bottom .logo {
+            .social-list {
+                overflow: hidden;
+            }
+
+            .social-block h5 {
+                color: #fff;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 16px;
+                padding-bottom: 10px;
+                margin: 0px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .social-list a {
+                display: block;
+                width: 35px;
+                height: 35px;
+                border: 1px solid #fff;
+                background: #fff;
+                font-size: 18px;
+                line-height: 36px;
+                text-align: center;
+                border-radius: 3px;
+                -o-border-radius: 3px;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                -webkit-transition: background .25s ease-in-out;
+                -moz-transition: background .25s ease-in-out;
+                -ms-transition: background .25s ease-in-out;
+                -o-transition: background .25s ease-in-out;
+                transition: background .25s ease-in-out;
+            }
+
+            .social-list ul {
+                display: block;
+                list-style-type: disc;
+                -webkit-margin-before: 1em;
+                -webkit-margin-after: 1em;
+                -webkit-margin-start: 0px;
+                -webkit-margin-end: 0px;
+                -webkit-padding-start: 40px;
+            }
+
+            .social-list li {
+                margin-left: 5px;
                 float: left;
             }
 
-            .footer-bottom .grid_1020 {
-                width: 1020px;
-                margin: 0px auto;
+            #GNC{
+                min-width:670px;
+                height:180px;
+                margin-top:18px;
+            }
+            #GNC ul {
+                list-style: none;
+                font-family: Arial, san-serif;
+                font-size: 14px;
+                padding: 0;
+                height:100px;
+                margin:auto;
             }
 
-            .footer-bottom .copyright {
-                float: left;
-                margin-top: 8px;
-                margin-left: 30px;
-                margin-right:30px;
+                #GNC ul li {
+                    float:left;
+                    position: relative;
+                    width:220px;
+                }
+
+                #GNC ul a {
+                    text-decoration: none;
+                    text-align:left;
+                    color: #fff;
+                    display: block;
+                    font-weight: bold;
+                    padding: 10px 30px;
+                    background: #007944;
+                }
+
+                    #GNC ul a:hover {
+                        background: #007933;
+                    }
+
+             #GNC li ul a {
+                background: #007944;
+            }
+
+            #GNC li ul {
+                position: absolute;
+                display: none;
+                width: 200px;
+            }
+
+            #GNC li:hover ul {
+                display: block;
+            }
+
+            #GNC ul {
+                list-style: none;
+                font-family: Arial, san-serif;
                 font-size: 12px;
-                color: #999;
-                line-height: 1.9;
-                text-align: left;
+                padding: 0;
             }
 
-        a {
-            color: #000;
-            outline: none;
-        }
+                #GNC ul li {
+                    float: left;
+                    position: relative;
+                }
 
-        a {
-            font-size: 100%;
-            vertical-align: baseline;
-            background: transparent;
-            text-decoration: none;
-            margin: 0;
-            padding: 0;
-        }
+                #GNC ul a {
+                    text-decoration: none;
+                    color: #fff;
+                    display: block;
+                    font-weight: bold;
+                    padding: 10px 30px;
+                    background: #007944;
+                }
 
-        .social-list {
-            overflow: hidden;
-        }
+                    #GNC ul a:hover {
+                        background: #007920;
+                    }
 
-        .social-block h5 {
-            color: #fff;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 16px;
-            padding-bottom: 10px;
-            margin: 0px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+            #GNC li ul a {
+                background: #007944;
+            }
 
-        .social-list a {
-            display: block;
-            width: 35px;
-            height: 35px;
-            border: 1px solid #fff;
-            background: #fff;
-            font-size: 18px;
-            line-height: 36px;
-            text-align: center;
-            border-radius: 3px;
-            -o-border-radius: 3px;
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            -webkit-transition: background .25s ease-in-out;
-            -moz-transition: background .25s ease-in-out;
-            -ms-transition: background .25s ease-in-out;
-            -o-transition: background .25s ease-in-out;
-            transition: background .25s ease-in-out;
-        }
+            #GNC li ul {
+                position: absolute;
+                display: none;
+                width: 200px;
+            }
 
-        .social-list ul {
-            display: block;
-            list-style-type: disc;
-            -webkit-margin-before: 1em;
-            -webkit-margin-after: 1em;
-            -webkit-margin-start: 0px;
-            -webkit-margin-end: 0px;
-            -webkit-padding-start: 40px;
-        }
-
-        .social-list li {
-            margin-left: 5px;
-            float: left;
-        }
+            #GNC li:hover ul {
+                display: block;
+            }
     </style>
+    <!-- content to be placed inside <body>…</body> -->
+    <link href='http://fonts.googleapis.com/css?family=Cutive' rel='stylesheet' type='text/css'>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 </head>
@@ -253,147 +342,129 @@
                     <a icon="fa fa-user" href="#" class="hidden-xs">&nbsp;Về BigPay</a>
                     <ul>
                         <li>
-                            <a icon="fa fa-angle-double-right" href="#">&nbsp;Giới thiệu BigPay</a>
+                            <a icon="fa fa-angle-double-right" href="#">&nbsp;Về chúng tôi</a>
                         </li>
-                        <!--
                         <li>
-                            <a icon="fa fa-angle-double-right" href="">&nbsp;Thông cáo báo chí</a>
+                            <a icon="fa fa-angle-double-right" href="#">&nbsp;Tầm Nhìn</a>
                         </li>
-                        -->
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="#">&nbsp;Triết Lý Kinh Doanh</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
-                    <a icon="fa fa-user" href="/account/personal">&nbsp;Ví Điện Tử</a>
+                    <a icon="fa fa-user" href="/">&nbsp;Ví Điện Tử</a>
+                    <ul>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/account/personal">&nbsp;Thông Tin Tài Khoản</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/account/cashin">&nbsp;Nạp Tiền Vào Tài Khoản</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/account/cashout">&nbsp;Rút Tiền Từ Tài Khoản</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li>
                     <a icon="fa fa-random" href="#">&nbsp;Dịch Vụ</a>
                     <ul>
                         <li>
-                            <a icon="fa fa-angle-double-right" href="/Account/CashIn">&nbsp;Nạp tiền tài khoản BigPay</a>
+                            <a icon="fa fa-angle-double-right" href="/service/payment">&nbsp;Thanh Toán Hoá Đơn</a>
                         </li>
                         <li>
-                            <a icon="fa fa-angle-double-right" href="/Service/Payment">&nbsp;Thanh toán dịch vụ</a>
+                            <a icon="fa fa-angle-double-right" href="/service/topup">&nbsp;Nạp Tiền Điện Tử</a>
                         </li>
                         <li>
-                            <a icon="fa fa-angle-double-right" href="/Service/Transfer">&nbsp;Chuyển tiền</a>
+                            <a icon="fa fa-angle-double-right" href="/">&nbsp;Mua Vé Trực Tuyến</a>
                         </li>
                         <li>
-                            <a icon="fa fa-angle-double-right" href="/Account/CashOut">&nbsp;Rút tiền</a>
+                            <a icon="fa fa-angle-double-right" href="/">&nbsp;Mua Sắm Online</a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a icon="fa fa-male" href="#">&nbsp;Cá nhân</a>
+               <li>
+                    <a icon="fa fa-building-o" href="">&nbsp;Doanh nghiệp</a>
                     <ul>
                         <li>
-                            <a icon="fa fa-angle-double-right" href="/Service/Topup">&nbsp;Nạp tiền điện tử</a>
+                            <a icon="fa fa-angle-double-right" href="/">&nbsp;Giới Thiệu</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/">&nbsp;Tích Hợp Cổng Thanh Toán BigPay</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/">&nbsp;Trở Thành Nhà Cung Cấp</a>
+                        </li>
+                        <li>
+                            <a icon="fa fa-angle-double-right" href="/">&nbsp;Trở Thành Đại Lý</a>
+                        </li>
+                         <li>
+                            <a icon="fa fa-angle-double-right" href="/">&nbsp;Kết Nối Hệ Thống / Kỹ Thuật</a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a icon="fa fa-building-o" href="/integrate.html">&nbsp;Doanh nghiệp</a>
-                    <ul>
-                        <!--
-                        <li>
-                            <a icon="fa fa-angle-double-right" href="">&nbsp;Hợp tác cùng BigPay</a>
-                        </li>
-                        <li>
-                            <a icon="fa fa-angle-double-right" href="">&nbsp;Doanh nghiệp đã tích hợp BigPay</a>
-                        </li>
-                        -->
-                        <li>
-                            <a icon="fa fa-angle-double-right" href="/integrate.html">&nbsp;Tích hợp thanh toán</a>
-                        </li>
-                    </ul>
+                 <li>
+                    <a icon="fa fa-bullhorn" class="hidden-xs" href="/">&nbsp;Tin tức</a>
                 </li>
-                <!--
                 <li>
-                    <a icon="fa fa-map-marker" href="/merchant.html">&nbsp;Điểm giao dịch</a>
-                    <ul>
-                        <li>
-                            <a icon="fa fa-angle-double-right" href="">&nbsp;Các điểm giao dịch</a>
-                        </li>
-                        <li>
-                            <a icon="fa fa-angle-double-right" href="">&nbsp;Đăng ký trở thành điểm giao dịch</a>
-                        </li>
-                    </ul>
-                </li>
-                -->
-                <li>
-                    <a icon="fa fa-bullhorn" class="hidden-xs" href="/news.html">&nbsp;Tin tức</a>
+                    <a icon="fa fa-life-bouy" class="hidden-xs" href="/">&nbsp;Hỗ trợ</a>
+                    
                     <ul>
                         <li>
-                            <a icon="fa fa-angle-double-right" href="/news/category/khuyen-mai-nha-mang-di-dong.html">&nbsp;Tin khuyến mãi</a>
-                        </li>
-                        <!--
-                        <li>
-                            <a icon="fa fa-angle-double-right" href="">&nbsp;Tin từ Nhân Hòa</a>
-                        </li>
-                        -->
-                    </ul>
-                </li>
-                <li>
-                    <a icon="fa fa-life-bouy" class="hidden-xs" href="/faq.html">&nbsp;Hỗ trợ</a>
-                    <!--
-                    <ul>
-                        <li>
-                            <a icon="fa fa-angle-double-right" href="">&nbsp;Các thuật ngữ sử dụng</a>
+                            <a icon="fa fa-angle-double-right" href="/">&nbsp;Hướng Dẫn Sử Dụng Dịch Vụ</a>
                         </li>
                         <li>
-                            <a icon="fa fa-angle-double-right" href="">&nbsp;Thông tin trợ giúp</a>
+                            <a icon="fa fa-angle-double-right" href="/">&nbsp;Hướng Dẫn Thanh Toán</a>
                         </li>
                         <li>
-                            <a icon="fa fa-angle-double-right" href="">&nbsp;Khiếu nại</a>
+                            <a icon="fa fa-angle-double-right" href="/">&nbsp;Quy Định - Chính Sách</a>
                         </li>
                     </ul>
-                    -->
-                </li>
-                <li>
-                    <a icon="fa fa-lìe-bouy" href="#">&nbsp;Liên Hệ</a>
+                    
                 </li>
              </ul>
         </div>
     </section>
     @RenderBody()
-    <footer style="background-color:#0F0F0F">
+    <footer style="background-color:#007944">
         <div class="container">
             <div class="row">
                 <article class="footer">
                     <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <h5>Hỗ trợ</h5>
                         <ul>
-                            <li><a href="../privacy-policy.html"><i class="fa fa-angle-right"></i> Chính sách quyền riêng tư</a></li>
-                            <li><a href="../user-agreements.html"><i class="fa fa-angle-right"></i> Thỏa thuận người dùng</a></li>
-                            <li><a href="../guide.html"><i class="fa fa-angle-right"></i> Hướng dẫn</a></li>
+                            <li><a href=""><i class="fa fa-angle-right"></i> Chính sách quyền riêng tư</a></li>
+                            <li><a href=""><i class="fa fa-angle-right"></i> Thỏa thuận người dùng</a></li>
+                            <li><a href=""><i class="fa fa-angle-right"></i> Hướng dẫn</a></li>
                         </ul>
                     </article>
                     <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <h5>Hợp tác</h5>
                         <ul>
-                            <li><a href="../contact-cooperation.html"><i class="fa fa-angle-right"></i> Liên hệ hợp tác</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i> Dành cho đối tác</a></li>
+                            <li><a href=""><i class="fa fa-angle-right"></i> Liên hệ hợp tác</a></li>
+                            <li><a href=""><i class="fa fa-angle-right"></i> Dành cho đối tác</a></li>
                         </ul>
                     </article>
                     <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <h5>Về BigPay</h5>
                         <ul>
-                            <li><a href="../recruitment.html"><i class="fa fa-angle-right"></i> Tuyển dụng</a></li>
-                            <li><a href="../contact.html"><i class="fa fa-angle-right"></i> Liên hệ</a></li>
+                            <li><a href=""><i class="fa fa-angle-right"></i> Tuyển dụng</a></li>
+                            <li><a href=""><i class="fa fa-angle-right"></i> Liên hệ</a></li>
                         </ul>
                     </article>
-                    <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12" style="float:right">
                         <h5>Nhận bản tin</h5>
-                        <div class="newsletter"><input id="reemail" placeholder="Nhập Email của bạn" type="email" /> <input id="submit_register_email" value="Đăng ký" type="submit" /></div>
+                        <div class="newsletter"><input id="reemail" placeholder="Nhập Email của bạn" type="email" /> <input id="submit_register_email" value="Đăng ký" type="submit"  style="background-color:#007944"/></div>
                     </article>
                 </article>
                 <section class="footer-bottom" style="border:none">
                     <div class="grid_1020">
                         <a href="/" class="logo" title=""><img alt="" src="~/images/biglogo.png"></a>
                         <div class="copyright">
-                            <p>Công ty cổ phần giải pháp thanh toán GNC  Hà Nội: F512, CharmVit Tower,117 Trần Duy Hưng  </p>
+                            <p>Công ty cổ phần giải pháp thanh toán GNC</p>
+                            <p>Hà Nội: F512, CharmVit Tower,117 Trần Duy Hưng </p>
                             <p>Email: contact@gnc.vn</p>
-                            <p>Giấy phép số  </p>
                             <p>Copyrights © 2015 BigPay.vn .  All Rights Reserved</p>
                         </div>
                    </div>

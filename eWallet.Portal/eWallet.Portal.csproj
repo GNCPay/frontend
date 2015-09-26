@@ -259,6 +259,7 @@
     <Content Include="css\responsive.css" />
     <Content Include="favicon.ico" />
     <Content Include="images\biglogo.png" />
+    <Content Include="images\logo_tappay.png" />
     <Content Include="images\portfolio\01.jpg" />
     <Content Include="images\portfolio\02.jpg" />
     <Content Include="images\portfolio\03.jpg" />
@@ -274,6 +275,8 @@
     <Content Include="images\slider\2.jpg" />
     <Content Include="images\slider\3.jpg" />
     <Content Include="images\slider\4.jpg" />
+    <Content Include="images\slider\bigapps.jpg" />
+    <Content Include="images\slider\EVNHANOI.jpg" />
     <Content Include="images\slider\nhaviet24.png" />
     <Content Include="Views\favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
