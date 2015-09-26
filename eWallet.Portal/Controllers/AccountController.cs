@@ -21,6 +21,7 @@ using System.Net;
 using System.Dynamic;
 using System.Text.RegularExpressions;
 using MongoDB.Driver;
+using System.Text;
 
 namespace eWallet.Portal.Controllers
 {
@@ -226,7 +227,7 @@ namespace eWallet.Portal.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không chính xác !");
                 }
             }
 
@@ -264,6 +265,8 @@ namespace eWallet.Portal.Controllers
                                 //Goi ham dang ky tren server de tao finance_account
                                 PostRegister(model.Fullname, model.Email, model.Mobile);
                                 await SignInAsync(user, isPersistent: false);
+                                string alert = "Chuc mung ban dang ky thanh cong tai khoan BigPay !";                               
+                                TempData["alertMessage"] = alert;
                                 return RedirectToAction("Index", "Home");
                             }
                             else
@@ -412,7 +415,9 @@ namespace eWallet.Portal.Controllers
                     IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+                        //return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+                        TempData["alertMessage"] = "Mat khau thay doi thanh cong !";
+                        return RedirectToAction("Manage");
                     }
                     else
                     {
@@ -442,7 +447,6 @@ namespace eWallet.Portal.Controllers
                     }
                 }
             }
-
             // If we got this far, something failed, redisplay form
             return View(model);
         }

@@ -370,3 +370,10 @@
 </div> <!--end row-->
     </div> <!--end container-->
 </section>
+
+@if (null != TempData["alertMessage"])
+{
+    <script type="text/javascript" charset="utf-8">
+               alert('@TempData["alertMessage"]');
+    </script>
+}
