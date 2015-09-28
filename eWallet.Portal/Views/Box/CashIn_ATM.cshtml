@@ -110,6 +110,11 @@
         }
     }
 
+    //jQuery(function ($) {
+    //    $('#amount').autoNumeric('init');
+    //});
+
+
     //function validate(evt) {
     //    var theEvent = evt || window.event;
     //    var key = theEvent.keyCode || theEvent.which;
@@ -122,11 +127,14 @@
     //}
   
     //format money input
-        document.getElementById("amount").onblur = function () {
+    document.getElementById("amount").onblur = function () {
+        if(document.getElementById("amount").value!=0)
+        {
             this.value = parseFloat(this.value.replace(/,/g, ""))
                             .toFixed()
                             .toString()
                             .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            document.getElementById("display").value = this.value.replace(/,/g, "")
-    } 
+        }
+            
+    }     
 </script>

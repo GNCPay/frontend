@@ -121,11 +121,12 @@ $(function () {
 
     ////format money input
     document.getElementById("txt_bill_amount").onblur = function () {
-        this.value = parseFloat(this.value.replace(/,/g, ""))
-                        .toFixed()
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        document.getElementById("display").value = this.value.replace(/,/g, "")
+        if (document.getElementById("txt_bill_amount").value != 0) {
+            this.value = parseFloat(this.value.replace(/,/g, ""))
+                            .toFixed()
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
 
     }
 </script>
