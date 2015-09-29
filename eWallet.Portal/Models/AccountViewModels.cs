@@ -92,5 +92,7 @@ namespace eWallet.Portal.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "Mật khẩu nhập lại không khớp với mật khẩu !")]
         public string ConfirmPassword { get; set; }
+        public string Roles { get; set; }
+
     }
 }

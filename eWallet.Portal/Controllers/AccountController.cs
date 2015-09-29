@@ -27,8 +27,6 @@ namespace eWallet.Portal.Controllers
 {
     public class AccountController : Controller
     {
-
-
         //
         // GET: /Account/
         [Authorize]
@@ -211,9 +209,8 @@ namespace eWallet.Portal.Controllers
         }
 
         //
-        // POST: /Account/Login
+        // POST: /Account/Login        
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
@@ -222,15 +219,20 @@ namespace eWallet.Portal.Controllers
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
-                    if(user.Status== "LOCKED")
-                    {
-                        ModelState.AddModelError("", "Tài khoản của bạn đang bị tạm khoá liên hệ với Admin hệ thống để mở khoá !");
-                    }
-                    else
-                    {
-                        await SignInAsync(user, model.RememberMe);
-                        return RedirectToLocal(returnUrl);
-                    }                   
+                        if (user.Roles[0] == "CUSTOMER")
+                        {
+                            if (user.Status == "LOCKED")
+                            {
+                                ModelState.AddModelError("", "Tài khoản của bạn đang bị tạm khoá liên hệ với Admin hệ thống để mở khoá !");
+                            }
+                            else
+                            {
+                                await SignInAsync(user, model.RememberMe);
+                                return RedirectToLocal(returnUrl);
+                            }
+                        }
+                        else
+                            ModelState.AddModelError("", "Bạn chỉ có thể đăng nhập bằng tài khoản người dùng !");                  
                 }
                 else
                 {
@@ -264,11 +266,14 @@ namespace eWallet.Portal.Controllers
                     if(CheckIphone(model.Mobile)==true)
                     {
                         if (CheckPhoneSupport(model.Mobile) == true)
-                        {
-                            var user = new ApplicationUser() { UserName = model.Email };
+                        {                         
+                            var user = new ApplicationUser() { UserName = model.Email};
                             var result = await UserManager.CreateAsync(user, model.Password);
                             if (result.Succeeded)
                             {
+                                //add Roles to User
+                                string[] roles = new string[] { "CUSTOMER" };
+                                var roleResult = await UserManager.AddToRoleAsync(user.Id, roles[0]);
                                 //Goi ham dang ky tren server de tao finance_account
                                 PostRegister(model.Fullname, model.Email, model.Mobile);
                                 await SignInAsync(user, isPersistent: false);
@@ -670,7 +675,7 @@ namespace eWallet.Portal.Controllers
             RemoveLoginSuccess,
             Error
         }
-
+       
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
