@@ -258,6 +258,10 @@
     <Content Include="css\prettyPhoto.css" />
     <Content Include="css\reset.css" />
     <Content Include="css\responsive.css" />
+    <Content Include="css\test\bootstrap.min.js" />
+    <Content Include="css\test\jquery.bdt.css" />
+    <Content Include="css\test\jquery.bdt.min.js" />
+    <Content Include="css\test\jquery.dt.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="images\biglogo.png" />
     <Content Include="images\logo_tappay.png" />
@@ -279,6 +283,7 @@
     <Content Include="images\slider\bigapps.jpg" />
     <Content Include="images\slider\EVNHANOI.jpg" />
     <Content Include="images\slider\nhaviet24.png" />
+    <Content Include="theme\scripts\DataTables\media\js\jquery.dataTables.min.js" />
     <Content Include="Views\favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -423,7 +428,6 @@
     <Content Include="theme\images\lang\pl.png" />
     <Content Include="theme\images\lang\ro.png" />
     <Content Include="theme\scripts\DataTables\media\js\DT_bootstrap.js" />
-    <Content Include="theme\scripts\DataTables\media\js\jquery.dataTables.min.js" />
     <Content Include="theme\scripts\excanvas\excanvas.js" />
     <Content Include="theme\scripts\farbtastic\farbtastic.css" />
     <Content Include="theme\scripts\farbtastic\farbtastic.js" />
@@ -617,6 +621,9 @@
     <Content Include="Views\Account\FacebookFriend.cshtml" />
     <Content Include="Views\Transaction\Cashin.cshtml" />
     <Content Include="Views\Transaction\Cashout.cshtml" />
+    <Content Include="Views\Transaction\PayMent.cshtml" />
+    <Content Include="Views\Transaction\TopUp.cshtml" />
+    <Content Include="Views\Transaction\TransFer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

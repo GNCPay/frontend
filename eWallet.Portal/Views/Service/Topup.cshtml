@@ -106,7 +106,7 @@
                         <li><a href="#" class="nav_link" data-href='@Url.Action("TopupOnline", "Service", null, null)'>Nạp tiền tài khoản game, học trực tuyến</a></li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li><a href="#" class="nav_link" data-href='@Url.Action("List","Transaction",null,null)'>Tra soát giao dịch Nạp tiền</a></li>
+                            <li><a href="#" class="nav_link" data-href='@Url.Action("TopUp","Transaction",null,null)'>Tra soát giao dịch Nạp tiền</a></li>
                         }
                     </ul>
                 </article>

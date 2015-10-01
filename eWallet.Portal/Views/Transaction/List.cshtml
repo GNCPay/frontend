@@ -2,8 +2,9 @@
     ViewBag.Title = "List Transactions";
     Layout = null;
 }
+
 @if (ViewBag.List != null)
-{
+    {
         <div id="no-more-tables" class="widget-body" style="padding: 10px 0 0;">
             <table id="myDataTable" class="col-md-12 table-bordered table-striped table-condensed cf">
                 <thead class="cf">
@@ -20,13 +21,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 0; i < ViewBag.List.Length;i++ )
+                    @for (int i = 0; i < ViewBag.List.Length; i++)
                     {
                         var p = ViewBag.List[i];
                         <tr>
-                            <td data-title="ID"><a href="#" data-id="@p._id" title="@p.note">@p._id.Split('-')[0]</a> </td>
-                            <td data-title="CreatedTime">@DateTime.ParseExact(p.system_created_time, "yyyyMMddHHmmss", null).ToString("dd/MM/yyyy HH:mm:ss") </td>
-                            @*<td data-title="Customer">@p.created_by</td>*@
+                            <td data-title="ID"><a data-id="@p._id" title="@p.note">@p._id.Split('-')[0]</a> </td>
+                            <td data-title="CreatedTime">@DateTime.ParseExact(p.system_created_time, "yyyyMMddHHmmss", null).ToString("dd/MM/yyyy HH:mm:ss")</td>
                             <td data-title="Type">@p.transaction_type</td>
                             <td data-title="Service">@p.service</td>
                             <td data-title="Provider">@p.provider</td>
@@ -36,13 +36,27 @@
                         </tr>
                     }
                 </tbody>
-            </table>
+            </table>              
         </div>
 }
 else
 {
     <h3>No data entry found!</h3>
 }
+
+
+@*<script src="~/css/test/bootstrap.min.js"></script>
+<script src="~/css/test/jquery.bdt.min.js"></script>
+<link href="~/css/test/jquery.bdt.css" rel="stylesheet" />
+
+<script>
+    $(document).ready( function () {
+        $('#myDataTable').bdt();
+    });
+</script>*@
+
+
+
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {
         $('#myDataTable').dataTable();
