@@ -46,7 +46,6 @@ namespace eWallet.Portal.Controllers
             if (result.error_code == "00")
             {
                 ViewBag.Result = "hủy thành công";
-
             }
             return View("Result");
         }
@@ -64,8 +63,7 @@ namespace eWallet.Portal.Controllers
             ViewBag.Result = "không thành công";
             
             if (result.ToLower() == "ok")
-                ViewBag.Result = "thành công";
-            
+                ViewBag.Result = "thành công";            
             return View();
         }
         public JsonResult ConfirmWithOTP(string transaction_type, string trans_id, long amount, string otp)

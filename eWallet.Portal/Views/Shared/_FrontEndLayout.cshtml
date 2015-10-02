@@ -113,10 +113,10 @@
                 margin-top: 0;
                 margin-left: 40px;
                 margin-right: 150px;
-                margin-bottom:10px;
-                font-size: 13px;
+                margin-bottom:5px;
+                font-size: 12px;
                 color: white;
-                line-height: 1.5;
+                line-height:14px;
                 text-align: left;
             }
 
@@ -348,7 +348,7 @@
     <footer style="background-color:#007944; margin-top:30px">
         <div class="container">
             <div class="row">
-                <article class="footer">
+                <article class="footer" style="margin-top:-15px;">
                     <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <ul class="Bigd">
                             <h5>Hỗ trợ</h5>
@@ -380,12 +380,12 @@
                     </article>
                     <article class="footer-box col-lg-3 col-md-3 col-sm-6 col-xs-12" style="float:right">
                         <h5>Nhận bản tin</h5>
-                        <div class="newsletter"><input id="reemail" placeholder="Nhập Email của bạn" type="email" /> <input id="submit_register_email" value="Đăng ký" type="submit"  style="background-color:#007944"/></div>
+                        <div class="newsletter"><input id="reemail" placeholder="Nhập Email của bạn" type="email" /> <input id="submit_register_email" onclick="sendMail" value="Đăng ký" type="submit"  style="background-color:#007944"/></div>
                     </article>
                 </article>
                 <section class="footer-bottom" style="border:none">
                     <div class="grid_1020">
-                        <a href="/" class="logo" title="" style="margin-bottom:10px"><img alt="" src="~/images/biglogo.png"></a>
+                        <a class="logo" title="" style="margin-bottom:10px"><img alt="" src="~/images/biglogo.png"></a>
                         <div class="copyright">
                             <p>Công ty cổ phần giải pháp thanh toán GNC</p>
                             <p>Hà Nội: F512, CharmVit Tower,117 Trần Duy Hưng </p>
@@ -399,11 +399,11 @@
                         <h5>Social Network</h5>
                         <div class="content">
                             <ul class="social-list">
-                                <li><a href="#" class="facebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="google_plus" title="google plus"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#" class="twitter" title="twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="youtube" title="youtube"><i class="fa fa-youtube"></i></a></li>
-                                <li><a href="#" class="zing">z</a></li>
+                                <li><a  class="facebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a  class="google_plus" title="google plus"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a  class="twitter" title="twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a  class="youtube" title="youtube"><i class="fa fa-youtube"></i></a></li>
+                                <li><a  class="zing">z</a></li>
                             </ul>
                         </div>
                     </section>
@@ -412,6 +412,13 @@
             </div> <!--end row-->
         </div> <!--end container-->
     </footer>
+
+    @*Auto send email subscribe*@
+    <script>
+       
+    </script>
+
+
     <script src="https://azpay.vn/templates/javascript/v2/owl.carousel.js"></script>
     <script>
         $(document).ready(function () {
