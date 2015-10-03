@@ -10,7 +10,7 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <ul class="breadcrumb">
-    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li><a href='@Url.Content("/Home/eWallet")'><img src="~/images/logo_tappay.png" /></a></li>
     <li>Nạp tiền vào từ thẻ ATM Online</li>
 </ul>
 <div class="separator"></div>
@@ -18,8 +18,10 @@
     <div class="form"  id="login-nav">
         <div class="form-group">
             <label class="sr-only" for="amount">Số tiền</label>
-            <input type="text" class="form-control" id="amount" placeholder="Số tiền nạp" required>
+            <input type="number" id="display" hidden/>
+            <input type="text" class="form-control" id="amount" onkeypress="return kaka(event, this)" placeholder="Số tiền nạp" required>
         </div>
+
         <div class="form-group">
             <label class="sr-only" for="bank">Ngân hàng</label>
             <input type="text" id="bank" name="bank" class="form-control" placeholder="Ngân hàng phát hành thẻ" required>
@@ -29,7 +31,7 @@
         </div>
     </div>
 </div>
-<div id="login-dp" class="content-dp col-md-5">
+<div id="login-dp" class="col-md-5">
     Hướng dẫn dịch vụ
 </div>
 
@@ -97,4 +99,42 @@
                alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
            });
     });
+</script>
+
+@*kiểm tra kiểu số khi nhập*@
+<script language="javascript">
+
+    function kaka(e, kakatexto) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    }
+
+    //jQuery(function ($) {
+    //    $('#amount').autoNumeric('init');
+    //});
+
+
+    //function validate(evt) {
+    //    var theEvent = evt || window.event;
+    //    var key = theEvent.keyCode || theEvent.which;
+    //    key = String.fromCharCode(key);
+    //    var regex = /[0-9]|\./;
+    //    if (!regex.test(key)) {
+    //        theEvent.returnValue = false;
+    //        if (theEvent.preventDefault) theEvent.preventDefault();
+    //    }
+    //}
+  
+    //format money input
+    document.getElementById("amount").onblur = function () {
+        if(document.getElementById("amount").value!=0)
+        {
+            this.value = parseFloat(this.value.replace(/,/g, ""))
+                            .toFixed()
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+            
+    }     
 </script>

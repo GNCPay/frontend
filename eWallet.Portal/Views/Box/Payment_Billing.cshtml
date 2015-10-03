@@ -5,7 +5,7 @@
 
 
 <ul class="breadcrumb">
-    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li><a href='@Url.Content("/Home/eWallet")'><img src="~/images/logo_tappay.png" /></a></li>
     <li>Thanh toán hóa đơn</li>
 </ul>
 <div class="separator"></div>
@@ -22,10 +22,10 @@
         <div class="form-group">
             <label class="sr-only" for="cb_providers">Nhà cung cấp</label>
             <select class="form-control" id="cb_providers">
-                <option value="ESSE_EVNHN" data-service="ESSE">Hóa đơn điện - Tp Hà Nội</option>
-                <option value="ESSE_EVNHCM" data-service="ESSE">Hóa đơn điện - Tp Hồ Chí Minh</option>
-                <option value="TELCO_VTCC" data-service="TELCO">Truyền hình cable - VTC Cab</option>
-                <option value="TELCO_VNPT" data-service="TELCO">Internet ADSL - VNPT</option>
+                <option value="EVNHN" data-service="ESSE">Hóa đơn điện - Tp Hà Nội</option>
+                <option value="EVNHCM" data-service="ESSE">Hóa đơn điện - Tp Hồ Chí Minh</option>
+                <option value="VTCC" data-service="TELCO">Truyền hình cable - VTC Cab</option>
+                <option value="VNPT" data-service="TELCO">Internet ADSL - VNPT</option>
             </select>
         </div>
         <div class="form-group">
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group">
             <label class="sr-only" for="txt_bill_amount">Số tiền</label>
-            <input class="form-control" id="txt_bill_amount" type="text" placeholder="Số tiền" readonly />
+            <input class="form-control" id="txt_bill_amount" type="text"  placeholder="Số tiền" readonly />
         </div>
         <div class="form-group">
             <label class="sr-only" for="txt_bill_customer">Họ tên Khách hàng</label>
@@ -125,6 +125,14 @@
                .success(function (result) {
                    NProgress.done();
                    if (result.error_code == "00") {
+                       if (result.response.status == "INVALID") {
+                           alert("Mã hóa đơn không hợp lệ. Vui lòng kiểm tra và thử lại");
+                           return;
+                       }
+                       if (result.response.status != "NEW" || result.response.amount == 0) {
+                           alert("Mã hóa đơn đã được thanh toán!");
+                           return;
+                       }
                        //var resp = result.response;
                        $('#txt_bill_amount').val(result.response.amount);
                        $('#txt_bill_customer').val(result.response.customer_name);

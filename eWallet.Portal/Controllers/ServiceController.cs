@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver.Builders;
+﻿using eWallet.Portal.Models;
+using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -35,7 +37,7 @@ namespace eWallet.Portal.Controllers
         {
             return View();
         }
-        #region "Service Box"
+        #region "SERVICE BOX"
         public ActionResult PaymentBilling()
         {
             return View(Url.Content("/Views/Box/Payment_Billing.cshtml"));
@@ -60,7 +62,7 @@ namespace eWallet.Portal.Controllers
 
         public ActionResult TransferWallet()
         {
-            return View(Url.Content("/Views/Box/Transfer_Wallet.cshtml"));
+           return View(Url.Content("/Views/Box/Transfer_Wallet.cshtml"));
         }
         public ActionResult TransferBank()
         {
@@ -75,31 +77,31 @@ namespace eWallet.Portal.Controllers
         {
             return View(Url.Content("/Views/Box/Collection_Requests.cshtml"));
         }
-        #endregion
+        #endregion "SERVICE BOX"
 
         #region "CASHIN PROCESS"
         [Authorize]
         public JsonResult CashIn_ATM(string amount, string bank)
         {
+            string kaka = amount.Replace(",", "");
             bank = ProxyController.GetBankCode(bank);
-            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:"
-                 + ((dynamic)Session["user_profile"])._id
-                + ",service:'GNCP', provider:'BANKNET', payment_provider:'BANKNET', amount: " + amount +
-            ", note: '" + "CASH IN ACCOUNT " + ((dynamic)Session["user_profile"])._id + ", AMOUNT " + amount +
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:'"
+                 + User.Identity.Name
+                + "',service:'GNCP', provider:'BANKNET', payment_provider:'BANKNET', amount: " + kaka +
+            ", note: '" + "CASH IN ACCOUNT " + User.Identity.Name + ", AMOUNT " + kaka +
             "', bank:'" + bank +
             "'}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
             return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect }, JsonRequestBehavior.AllowGet);
         }
-        #endregion "CASHIN PROCESS"
 
-        #region "CASHOUT PROCESS"
         public JsonResult CashOut_Bank(string account_id, string amount, string note)
         {
+            string kaka = amount.Replace(",", "");
             dynamic account = Helper.DataHelper.Get("cashout_bank_account",
                 Query.EQ("_id", account_id));
-            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHOUT',request:{channel:'WEB', profile:"
-               + ((dynamic)Session["user_profile"])._id + ",service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + amount +
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHOUT',request:{channel:'WEB', profile:'"
+               + User.Identity.Name + "',service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + kaka +
          ", note: '" + note +
          "', receiver:{account_bank:'" + account.bank +
          "', account_branch:'" + account.branch + "',account_number:'" + account.number +
@@ -108,7 +110,25 @@ namespace eWallet.Portal.Controllers
             if (response.error_code == "00")
                 return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
             else
-                return Json(new { error_code = response.error_code, error_message = response.error_message}, JsonRequestBehavior.AllowGet);
+                return Json(new { error_code = response.error_code, error_message = response.error_message }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion "CASHIN PROCESS"
+
+        #region "CASHOUT PROCESS"
+        public JsonResult CashIn_Bank(string trans_date, string account_bank, string account_number, string amount, string note)
+        {
+            string kaka = amount.Replace(",","");
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'CASHIN',request:{channel:'WEB', profile:'"
+               + User.Identity.Name + "',service:'GNCP', provider:'BANK',payment_provider:'GNCA',amount: " + kaka +
+         ", note: '" + note +
+         "', sender:{account_bank:'" + account_bank +
+         "', account_number:'" + account_number +
+         "',transfer_date:'" + trans_date + "'}}}";
+            dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
+            if (response.error_code == "00")
+                return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { error_code = response.error_code, error_message = response.error_message }, JsonRequestBehavior.AllowGet);
         }
         #endregion "CASHOUT PROCESS"
 
@@ -128,26 +148,31 @@ namespace eWallet.Portal.Controllers
 
         public JsonResult Payment_PayBill(string service, string provider, string bill_code, long amount, string payment_provider, string bank)
         {
-            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'payment',request:{channel:'web', profile:"
-                + ((dynamic)Session["user_profile"])._id
-               + ", product_code: '" + bill_code
+            string kaka = amount.ToString().Replace(",", "");
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'payment',request:{channel:'web', profile:'"
+                + User.Identity.Name
+               + "', product_code: '" + bill_code
                + "', service: '" + service
                + "', provider: '" + provider
-               + "', amount: " + amount
+               + "', amount: " + kaka
                + ", payment_provider: '" + payment_provider
                + "', bank: '" + bank +
            "'}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
-            return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            if (response.error_code == "00")
+                return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { error_code = response.error_code, error_message = response.error_message }, JsonRequestBehavior.AllowGet);
+
         }
         #endregion
 
         #region "TOPUP PROCESS"
-        public JsonResult Topup_Mobile(string mobile,string service, string provider, string price, string payment_provider, string bank)
+        public JsonResult Topup_Mobile(string mobile, string service, string provider, string price, string payment_provider, string bank)
         {
-            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'TOPUP',request:{channel:'WEB', profile:"
-                + ((dynamic)Session["user_profile"])._id
-               + ", service:'" + service
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'TOPUP',request:{channel:'WEB', profile:'"
+                + User.Identity.Name
+               + "', service:'" + service
                + "', provider:'" + provider
                + "', ref_id: '" + mobile
                + "', amount: " + price
@@ -156,14 +181,18 @@ namespace eWallet.Portal.Controllers
                + "', bank: '" + bank +
            "'}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
-            return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            if (response.error_code == "00")
+                return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { error_code = response.error_code, error_message = response.error_message }, JsonRequestBehavior.AllowGet);
+            //return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Topup_Online(string accoount_id, string service, string provider, string price, string payment_provider, string bank)
         {
-            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'TOPUP',request:{channel:'WEB', profile:"
-                + ((dynamic)Session["user_profile"])._id
-               + ", service:'" + service
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'TOPUP',request:{channel:'WEB', profile:'"
+                + User.Identity.Name
+               + "', service:'" + service
                + "', provider:'" + provider
                + "', ref_id: '" + accoount_id
                + "', amount: " + price
@@ -172,8 +201,42 @@ namespace eWallet.Portal.Controllers
                + "', bank: '" + bank +
            "'}}";
             dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
-            return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            if (response.error_code == "00")
+                return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { error_code = response.error_code, error_message = response.error_message }, JsonRequestBehavior.AllowGet);
         }
         #endregion "TOPUP PROCESS"
+
+
+        #region "TRANSFER PROCESS"
+        public JsonResult TransferWallet_CheckUser(string user_name)
+        {
+            dynamic profile = Helper.DataHelper.Get("profile", Query.EQ("user_name", user_name));
+            if(profile == null)
+            {
+                return Json(new { error_code = "96", error_message = "Thông tin không hợp lệ. Vui lòng kiểm tra và thử lại" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Json(new { error_code = "00", error_message = "Thông tin hợp lệ.", full_name = profile.full_name.ToString(), id=profile._id }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult TransferWallet_MakeTransaction(string account, string account_id, string account_name,string amount, string note)
+        {
+            string kaka = amount.Replace(",", "");
+            string request = @"{system:'web_frontend', module:'transaction',type:'two_way', function:'transfer',request:{channel:'WEB', profile:'" + User.Identity.Name
+                   + "',service:'GNCP',provider:'GNCE'"
+                   + ", amount: " + kaka
+                   + ", note: '" + note
+                   + "', payment_provider:'GNCE"
+                   + "', receiver:{user_name:'" + account
+                       + "', id:" + account_id
+                       + ",full_name:'" + account_name +
+                   "'}}}";
+            dynamic response = new eWallet.Data.DynamicObj(Helper.RequestToServer(request));
+            return Json(new { error_code = response.error_code, error_message = response.error_message, url_redirect = response.response.url_redirect, trans_id = response.response.trans_id, amount = response.response.amount }, JsonRequestBehavior.AllowGet);
+
+        }
+        #endregion "TRANSFER PROCESS"
     }
 }

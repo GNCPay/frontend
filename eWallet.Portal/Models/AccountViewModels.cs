@@ -1,14 +1,37 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace eWallet.Portal.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Full name")]
         public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "User name")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Mobile")]
+        public string Mobile { get; set; }
     }
 
+    public class Wallet
+    {
+        public string full_name { get; set; }
+    }
+    public class FacebookFriendsModel
+    {
+        public List<FacebookFriend> friendsListing { get; set; }
+    }
+
+    public class FacebookFriend
+    {
+        public string name { get; set; }
+        public string id { get; set; }
+    }
     public class ManageUserViewModel
     {
         [Required]
@@ -17,14 +40,14 @@ namespace eWallet.Portal.Models
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Mật khẩu mới phải có ít nhất 6 ký tự !", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Compare("NewPassword", ErrorMessage = "Mật khẩu nhập lại không khớp với mật khẩu !")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -41,23 +64,35 @@ namespace eWallet.Portal.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+       
     }
 
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Display(Name = "Full name")]
+        public string Fullname { get; set; }
+
+        [Required]
+        [Display(Name = "Mobile")]
+        public string Mobile { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "Mật khẩu mới phải có ít nhất 6 ký tự !", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Mật khẩu nhập lại không khớp với mật khẩu !")]
         public string ConfirmPassword { get; set; }
+        public string Roles { get; set; }
+
     }
 }

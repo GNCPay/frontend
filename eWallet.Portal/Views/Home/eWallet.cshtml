@@ -165,86 +165,75 @@
     <div class="portfolio-items">
         @if (User.Identity.IsAuthenticated)
         {
-            <div class="portfolio-item  col-sm-3 creative">
+            <div class="portfolio-item col-md-3  col-sm-4 col-xs-6 creative">
                 <div class="portfolio-item-inner">
-                    <img class="img-responsive" src="/images/portfolio/01.jpg" alt="">
+                    <img class="img-responsive" src="~/images/portfolio/01.jpg" alt="">
                     <div class="portfolio-info">
-                        <h3>Tài khoản ví</h3>
-                        Thông tin tài khoản ví
+                        <h3>Tài khoản</h3>
                         <a class="preview" href="@Url.Action("Personal","Account",null,null)" rel="prettyPhoto"><i class="fa fa-user"></i></a>
                     </div>
                 </div>
             </div><!--/.portfolio-item-->
-            <div class="portfolio-item col-sm-3  corporate portfolio">
+            <div class="portfolio-item col-md-3  col-sm-4 col-xs-6 corporate portfolio">
                 <div class="portfolio-item-inner">
-                    <img class="img-responsive" src="/images/portfolio/02.jpg" alt="">
+                    <img class="img-responsive" src="~/images/portfolio/02.jpg" alt="">
                     <div class="portfolio-info">
-                        <h3>Nạp tiền vào ví</h3>
-                        Nạp tiền từ thẻ, tài khoản ngân hàng
+                        <h3>Nạp tiền</h3>
                         <a class="preview" href="@Url.Action("CashIn","Account",null,null)" rel="prettyPhoto"><i class="fa fa-sign-in"></i></a>
                     </div>
                 </div>
             </div><!--/.portfolio-item-->
-            <div class="portfolio-item  col-sm-3 creative">
+            <div class="portfolio-item col-md-3  col-sm-4 col-xs-6 creative">
                 <div class="portfolio-item-inner">
-                    <img class="img-responsive" src="/images/portfolio/03.jpg" alt="">
+                    <img class="img-responsive" src="~/images/portfolio/03.jpg" alt="">
                     <div class="portfolio-info">
-                        <h3>Rút tiền từ ví</h3>
-                        Rút tiền từ ví ra tài khoản ngân hàng
+                        <h3>Rút tiền</h3>
                         <a class="preview" href="@Url.Action("CashOut","Account",null,null)" rel="prettyPhoto"><i class="fa fa-sign-out"></i></a>
                     </div>
                 </div>
             </div><!--/.portfolio-item-->
-        }
-        <div class="portfolio-item corporate col-sm-3 ">
+        <div class="portfolio-item corporate col-md-3  col-sm-4 col-xs-6">
             <div class="portfolio-item-inner">
-                <img class="img-responsive" src="/images/portfolio/04.jpg" alt="">
+                <img class="img-responsive" src="~/images/portfolio/04.jpg" alt="">
                 <div class="portfolio-info">
-                    <h3>Thanh toán điện tử</h3>
-                    Thanh toán hóa đơn, bảo hiểm, trả góp...
-                    <a class="preview" href="@Url.Action("Payment","Service",null,null)" rel="prettyPhoto"><i class="fa fa-money"></i></a>
+                    <h3>Thanh toán</h3>
+                    <a class="preview no_service" href="@Url.Action("Payment","Service",null,null)" rel="prettyPhoto"><i class="fa fa-money"></i></a>
                 </div>
             </div>
         </div><!--/.portfolio-item-->
-        <div class="portfolio-item creative portfolio col-sm-3 ">
+        <div class="portfolio-item creative portfolio col-md-3  col-sm-4 col-xs-6">
             <div class="portfolio-item-inner">
-                <img class="img-responsive" src="/images/portfolio/05.jpg" alt="">
+                <img class="img-responsive" src="~/images/portfolio/05.jpg" alt="">
                 <div class="portfolio-info">
-                    <h3>Đặt vé trực tuyến</h3>
-                    Đặt vé máy bay, xem phim,...
-                    <a class="preview" href="/images/portfolio/full.jpg" rel="prettyPhoto"><i class="fa fa-plane"></i></a>
+                    <h3>Đặt vé</h3>
+                    <a class="preview no_service" href="@Url.Action("Booking","Service",null,null)" rel="prettyPhoto"><i class="fa fa-plane"></i></a>
                 </div>
             </div>
         </div><!--/.portfolio-item-->
-        <div class="portfolio-item corporate col-sm-3 ">
+        <div class="portfolio-item corporate col-md-3  col-sm-4 col-xs-6">
             <div class="portfolio-item-inner">
-                <img class="img-responsive" src="/images/portfolio/06.jpg" alt="">
+                <img class="img-responsive" src="~/images/portfolio/06.jpg" alt="">
                 <div class="portfolio-info">
-                    <h3>Nạp tiền điện tử</h3>
-                    Nạp tiền điện thoại, tài khoản game...
-                    <a class="preview" href="@Url.Action("Topup","Service",null,null)" rel="prettyPhoto"><i class="fa fa-mobile"></i></a>
+                    <h3>Topup</h3>
+                    <a class="preview no_service" href="@Url.Action("Topup","Service",null,null)" rel="prettyPhoto"><i class="fa fa-mobile"></i></a>
                 </div>
             </div>
         </div><!--/.portfolio-item-->
-        <div class="portfolio-item creative portfolio col-sm-3 ">
+        <div class="portfolio-item creative portfolio col-md-3  col-sm-4 col-xs-6">
             <div class="portfolio-item-inner">
-                <img class="img-responsive" src="/images/portfolio/07.jpg" alt="">
+                <img class="img-responsive" src="~/images/portfolio/07.jpg" alt="">
                 <div class="portfolio-info">
                     <h3>Chuyển khoản</h3>
-                    Chuyển khoản tới tài khoản ví, ngân hàng...
-                    <a class="preview" href="@Url.Action("Transfer","Service",null,null)" rel="prettyPhoto"><i class="fa fa-usd"></i></a>
+                    <a class="preview no_service" href="@Url.Action("Transfer","Service",null,null)" rel="prettyPhoto"><i class="fa fa-usd"></i></a>
                 </div>
             </div>
         </div><!--/.portfolio-item-->
-        @if (User.Identity.IsAuthenticated)
-        {
-            <div class="portfolio-item corporate col-sm-3 ">
+            <div class="portfolio-item corporate col-md-3  col-sm-4 col-xs-6 ">
                 <div class="portfolio-item-inner">
-                    <img class="img-responsive" src="/images/portfolio/08.jpg" alt="">
+                    <img class="img-responsive" src="~/images/portfolio/08.jpg" alt="">
                     <div class="portfolio-info">
-                        <h3>Dịch vụ Doanh nghiệp</h3>
-                        Dịch vụ Thu, chi hộ dành cho doanh nghiệp
-                        <a class="preview" href="@Url.Action("Collection","Service",null,null)" rel="prettyPhoto"><i class="fa fa-building-o"></i></a>
+                        <h3>Doanh nghiệp</h3>
+                        <a c    lass="preview no_service" href="@Url.Action("Collection","Service",null,null)" rel="prettyPhoto"><i class="fa fa-building-o"></i></a>
                     </div>
                 </div>
             </div><!--/.portfolio-item-->
@@ -252,3 +241,16 @@
     </div>
     @*</div>*@
 </div>
+
+
+@if (!Helper.IsModeTest)
+{
+    <script>
+        $('.no_service').attr("href", '#');
+
+        $('.no_service').click(function () {
+            alert("Dịch vụ đang được bảo trì. Vui lòng quay lại sau!");
+        })
+    </script>
+}
+

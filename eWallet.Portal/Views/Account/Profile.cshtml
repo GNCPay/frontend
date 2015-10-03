@@ -1,58 +1,71 @@
-﻿@{
+﻿@using eWallet.Portal.Models
+@model dynamic
+@{
     ViewBag.Title = "Thông tin cá nhân";
     Layout = null;
 }
-<ul class="breadcrumb">
-    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
-    <li>Thông tin cá nhân</li>
-</ul>
-<div class="separator"></div>
 <div id="login-dp" class="content-dp">
     <div class="col-md-6">
         <div class="form" role="form">
             <div class="form-group">
                 <label class="sr-only" for="full_name">Họ và tên</label>
-                <input type="text" class="form-control" id="full_name" value="@(((dynamic)Session["user_profile"]).full_name)" placeholder="Họ và tên" readonly>
+                <input type="text" class="form-control" id="full_name" value="@ViewBag.profile.full_name" placeholder="Họ và tên" readonly>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="email">Địa chỉ email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email address" value="@(((dynamic)Session["user_profile"]).user_name)" readonly>
+                <input type="email" class="form-control" id="email" placeholder="Email address" value="@ViewBag.profile.user_name" readonly>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="mobile">Số điện thoại di động</label>
-                <input type="text" class="form-control" id="mobile" placeholder="Số điện thoại di động" value="@(((dynamic)Session["user_profile"]).mobile)" readonly>
+                <input type="text" class="form-control" id="mobile" placeholder="Số điện thoại di động" value="@ViewBag.profile.mobile" readonly>
             </div>
             <div class="form-group">
-                <label class="sr-only" for="password">Mật khẩu truy cập</label>
-                <input type="password" class="form-control" id="password" placeholder="Mật khẩu truy cập. Nhập để đổi mật khẩu">
+                <label class="sr-only" for="sex">Giới tính</label>
+                <input type="text" class="form-control" id="sex" placeholder="Giới tính (nam hoặc nữ)" value="@ViewBag.profile.sex"  required>
             </div>
-            <div class="form-group">
-            </div>
+            @*<div class="form-group">
+                <label class="sr-only" for="sex">Giới tính</label>
+                <div class="form-control">
+                    <select id="confirm-type" class="form-control">
+                        <option value="@ViewBag.profile.sex">Nam</option>
+                        <option value="@ViewBag.profile.sex">Nữ</option>
+                    </select>
+                </div>               
+            </div>*@
         </div>
     </div>
+    @*onfocus="(this.type='date')" onblur="(this.type='text')"*@
     <div class="col-md-6">
         <div class="form" role="form">
             <div class="form-group">
+                <label class="sr-only" for="birthday">Ngày sinh</label>
+                <input type="text" class="form-control" id="birthday" placeholder="Ngày sinh" value="@ViewBag.profile.birthday" required>
+            </div>
+            <div class="form-group">
                 <label class="sr-only" for="address">Địa chỉ</label>
-                <input type="text" class="form-control" id="address" placeholder="Địa chỉ" value="@(((dynamic)Session["user_profile"]).address)" required>
+                <input type="text" class="form-control" id="address" placeholder="Địa chỉ" value="@ViewBag.profile.address" required>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="personal_id">Số CMND</label>
-                <input type="email" class="form-control" id="personal_id" placeholder="Số CMND" value="@(((dynamic)Session["user_profile"]).personal_id)" required>
+                <input type="text" class="form-control" id="personal_id" onkeypress='return kaka(event, this)' placeholder="Số CMND" value="@ViewBag.profile.personal_id" required>
             </div>
-            <div class="form-group">
+            <div class="form-group float-label-control">
                 <label class="sr-only" for="personal_id_issued_date">Ngày cấp</label>
-                <input type="date" class="form-control" id="personal_id_issued_date" placeholder="Ngày cấp" value="@(((dynamic)Session["user_profile"]).personal_id_issued_date)" required>
+                <input type="text" class="form-control" id="personal_id_issued_date" placeholder="Ngày cấp" value="@ViewBag.profile.personal_id_issued_date" required>
             </div>
-            <div class="form-group">
+            <div class="form-group ">
                 <label class="sr-only" for="personal_id_issued_by">Nơi cấp</label>
-                <input type="text" class="form-control" id="personal_id_issued_by" placeholder="Nơi cấp" value="@(((dynamic)Session["user_profile"]).personal_id_issued_by)" required>
-            </div>
-            <div class="form-group">
-                <button type="button" id="btn-update" class="btn btn-primary btn-block">Cập nhật</button>
-            </div>
+                <input type="text" class="form-control" id="personal_id_issued_by" placeholder="Nơi cấp" value="@ViewBag.profile.personal_id_issued_by" required>
+            </div>           
+</div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <a  id="btn-update" class="btn btn-primary">Cập nhật</a>
+            <a href='@Url.Action("Manage","Account",null,null)' class="btn btn-primary">Thiết lập mật khẩu</a>
         </div>
     </div>
+
 </div>
 <script>
     $('#btn-update').click(function () {
@@ -62,22 +75,24 @@
         $personalid = $('#personal_id').val();
         $personalid_issueddate = $('#personal_id_issued_date').val();
         $personalid_issuedby = $('#personal_id_issued_by').val();
-
+        $Birthday = $('#birthday').val();
+        $Sex = $('#sex').val();
         $.ajax({
             url: '/Update/profile',
             contentType: 'application/json',
             type: 'GET',
             dataType: 'json',
-            data: { password: $password, address: $Address, personalid: $personalid, personalid_issueddate: $personalid_issueddate, personalid_issuedby: $personalid_issuedby }
+            data: { password: $password, birthday: $Birthday,sex:$Sex, address: $Address, personalid: $personalid, personalid_issueddate: $personalid_issueddate, personalid_issuedby: $personalid_issuedby }
         })
                            .success(function (result) {
                                alert(result.error_message);
                                if (result.error_code == "00") {
-                                   window.location = "eWallet";
+                                   window.location = "Personal#profile";
                                    return;
                                }
                                else {
                                    alert(result.error_message);
+                                   window.location = "Personal#profile";
                                    return;
                                }
                            })
@@ -86,3 +101,47 @@
                            });
     });
 </script>
+
+@*nhập ngày tháng cho firefox*@
+<script>
+$(function () {
+    $("#personal_id_issued_date").datepicker({
+        dateFormat: "dd/mm/yy",
+        startDate: new Date(),
+        todayBtn: "linked",
+        language: "en",
+        autoclose: true
+    });
+});
+</script>
+
+<script>
+    $(function () {
+        $("#birthday").datepicker({
+            dateFormat: "dd/mm/yy",
+            startDate: new Date(),
+            todayBtn: "linked",
+            language: "en",
+            autoclose: true
+        });
+    });
+</script>
+@*kiểm tra kiểu số khi nhập*@
+<script>
+    function kaka(e, kakatexto) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    }
+//function validate(evt) {
+//    var theEvent = evt || window.event;
+//    var key = theEvent.keyCode || theEvent.which;
+//    key = String.fromCharCode(key);
+//    var regex = /[0-9]|\./;
+//    if (!regex.test(key)) {
+//        theEvent.returnValue = false;
+//        if (theEvent.preventDefault) theEvent.preventDefault();
+//    }
+//}
+</script>
+

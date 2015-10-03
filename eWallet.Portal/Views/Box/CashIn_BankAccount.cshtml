@@ -2,34 +2,39 @@
     Layout = null;
 }
 <ul class="breadcrumb">
-    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li><a href='@Url.Content("/Home/eWallet")'><img src="~/images/logo_tappay.png" /></a></li>
     <li>Nạp tiền từ Chuyển khoản Ngân hàng</li>
 </ul>
 <div class="separator"></div>
 <div id="login-dp" class="content-dp col-md-6">
     <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
         <div class="form-group">
-            <label class="sr-only" for="login_email">Số tiền</label>
-            <input type="text" class="form-control" id="login_email" placeholder="Số tiền nạp" required>
+            <label class="sr-only" for="amount">Số tiền*</label>
+            <input type="number" id="display" hidden>
+            <input type="text" class="form-control" id="amount" onkeypress="return kaka(event, this)" placeholder="Số tiền nạp" required>
         </div>
         <div class="form-group">
-            <label class="sr-only" for="account_bank">Từ ngân hàng</label>
+            <label class="sr-only" for="account_bank">Từ ngân hàng*</label>
             <input type="text" id="account_bank" name="account_bank" class="form-control" placeholder="Từ Ngân hàng">
         </div>
         <div class="form-group">
             <label for="account_number" class="sr-only">Số tài khoản*</label>
-            <input type="text" name="account_number" id="account_number" class="form-control" placeholder="Số tài khoản">
+            <input type="text" name="account_number" id="account_number" onkeypress="return kaka(event, this)" class="form-control" placeholder="Số tài khoản">
         </div>
         <div class="form-group">
             <label for="trans_date" class="">Ngày chuyển</label>
-            <input type="date" name="account_number" id="trans_date" class="form-control" placeholder="Ngày chuyển tiền">
+            <input type="text" name="trans_date" id="trans_date" class="form-control" placeholder="Ngày chuyển tiền">
         </div>
         <div class="form-group">
-            <a class="btn btn-primary btn-block make_topup" data-toggle="modal" href="#bankModal"><i class="glyphicon glyphicon-credit-card"></i> Xác nhận</a>
+            <label for="trans_note" class="">Nội dung</label>
+            <textarea name="trans_note" id="trans_note" class="form-control" placeholder="Nội dung"/>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-primary btn-block" id="make_topup"><i class="glyphicon glyphicon-credit-card"></i> Xác nhận</a>
         </div>
     </form>
 </div>
-<div id="login-dp" class="content-dp col-md-6">
+<div class="col-md-6">
     <p>
         Chúng tôi sẽ tiếp nhận thông tin của bạn và kiểm tra với bộ phận kế toán. Ngay khi lệnh chuyển tiền của bạn được xác nhận, tiền sẽ được chuyển tới tài khoản Ví điện tử của bạn.
     </p>
@@ -70,4 +75,77 @@
             $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
         }
     });
+
+    $('#make_topup').click(function () {
+        NProgress.start();
+        var $amount = $('#amount').val();
+        var $account_bank = $('#account_bank').val();
+        var $account_number = $('#account_number').val();
+        var $trans_date = $('#trans_date').val();
+        var $trans_note = $('#trans_note').val();
+        $.ajax({
+            url: '@Url.Action("CashIn_Bank", "Service")',
+            contentType: 'application/json; charset=utf-8',
+            type: 'GET',
+            dataType: 'json',
+            data: {trans_date:$trans_date, account_bank: $account_bank, account_number: $account_number, amount: $amount, note: $trans_note }
+        })
+           .success(function (result) {
+               NProgress.done();
+               if (result.error_code == "00") {
+                   window.location = window.location.protocol + "//" + window.location.host + "/" + result.url_redirect;
+                   return;
+               }
+               else {
+                   alert(result.error_message);
+               }
+           })
+           .error(function (xhr, status) {
+               NProgress.done();
+               alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
+           });
+    });
+</script>
+
+@*nhập ngày tháng cho firefox*@
+<script>
+$(function () {
+    $("#trans_date").datepicker({
+        dateFormat: "dd/mm/yy",
+        startDate: new Date(),
+        todayBtn: "linked",
+        language: "en",
+        autoclose: true
+    });
+});
+</script>
+
+@*kiểm tra kiểu số khi nhập*@
+<script language="javascript">
+    function kaka(e, kakatexto) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    }
+    //function validate(evt) {
+    //    var theEvent = evt || window.event;
+    //    var key = theEvent.keyCode || theEvent.which;
+    //    key = String.fromCharCode(key);
+    //    var regex = /[0-9]|\./;
+    //    if (!regex.test(key)) {
+    //        theEvent.returnValue = false;
+    //        if (theEvent.preventDefault) theEvent.preventDefault();
+    //    }
+    //}
+
+    //format money input
+    document.getElementById("amount").onblur = function () {
+        if (document.getElementById("amount").value != 0) {
+            this.value = parseFloat(this.value.replace(/,/g, ""))
+                            .toFixed()
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+    }
 </script>

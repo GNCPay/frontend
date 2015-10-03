@@ -1,0 +1,65 @@
+﻿@model eWallet.Portal.Models.ExternalLoginConfirmationViewModel
+@{
+    ViewBag.Title = "Register";
+}
+@*<h2>@ViewBag.Title.</h2>
+    <h3>Associate your @ViewBag.LoginProvider account.</h3>*@
+<div class="row">
+    <div id="login-dp" class="col-md-6 col-md-offset-3">
+        @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <h4>Hoàn tất đăng ký</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            <p class="text-info">
+                Bạn đã xác thực thành công với tài khoản <strong>@ViewBag.LoginProvider</strong>.
+                Vui lòng bổ sung thông tin, chọn "Register" để hoàn tất việc đăng ký tài khoản.
+            </p>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "sr-only" })
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "User name viết liền không dấu ( kaka123, anhdeptrai123 ...)" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { @class = "sr-only" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Tên của bạn" })
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Mobile, new { @class = "sr-only" })
+                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control",@onkeypress= "return kaka(event, this)", placeholder = "Nhập số điện thoại của bạn" })
+                @Html.ValidationMessageFor(m => m.Mobile)
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-default " value="Register" />
+            </div>
+            <div class="alert alert-warning" role="alert">Bằng việc chọn Register đồng nghĩa với việc bạn chấp nhận các <a href="#">Điều khoản sử dụng</a> và <a href="#">Chính sách bảo mật</a> của BigPay</div>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+@*kiểm tra kiểu số khi nhập*@
+<script>
+    function kaka(e, kakatexto) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    }
+
+//function validate(evt) {
+//    var theEvent = evt || window.event;
+//    var key = theEvent.keyCode || theEvent.which;
+//    key = String.fromCharCode(key);
+//    var regex = /[0-9]|\./;
+//    if (!regex.test(key)) {
+//        theEvent.returnValue = false;
+//        if (theEvent.preventDefault) theEvent.preventDefault();
+//    }
+//}
+</script>
+}

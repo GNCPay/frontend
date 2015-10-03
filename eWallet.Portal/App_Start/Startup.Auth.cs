@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
 using Owin;
+using System.Configuration;
+using System.Threading.Tasks;
 
 namespace eWallet.Portal
 {
@@ -28,11 +31,31 @@ namespace eWallet.Portal
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            var options = new FacebookAuthenticationOptions
+            {
+                AppId = ConfigurationSettings.AppSettings["Facebook_AppId"],
+                AppSecret = ConfigurationSettings.AppSettings["Facebook_AppSecret"],
+                Provider = new FacebookAuthenticationProvider
+                {
+                    OnAuthenticated = async context =>
+                    {
+                        string accessToken = context.AccessToken;
+                        string facebookUserName = context.UserName;
+                        string facebookName = context.Name;
+                        var serializedUser = context.User; 
+                        context.Identity.AddClaim(new System.Security.Claims.Claim("FacebookAccessToken", context.AccessToken));
+                    }
+                }
+            };
+            options.SignInAsAuthenticationType = DefaultAuthenticationTypes.ExternalCookie;
+            app.UseFacebookAuthentication(options);
 
-            //app.UseGoogleAuthentication();
+            Microsoft.Owin.Security.Google.GoogleOAuth2AuthenticationOptions option = new Microsoft.Owin.Security.Google.GoogleOAuth2AuthenticationOptions();
+            option.CallbackPath = new PathString("/signin-google");
+            option.ClientId = ConfigurationSettings.AppSettings["Google_ClientId"];
+            option.ClientSecret = ConfigurationSettings.AppSettings["Google_ClientSecret"];
+
+            app.UseGoogleAuthentication(option);
         }
     }
 }

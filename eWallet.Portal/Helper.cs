@@ -8,9 +8,11 @@ namespace eWallet.Portal
 {
     public class Helper
     {
+        public static bool IsModeTest = true;
         public static eWallet.Data.MongoHelper DataHelper;
         public static void Init()
         {
+            IsModeTest = ConfigurationManager.AppSettings["Mode"] == "Test";
             DataHelper = new Data.MongoHelper(
                 ConfigurationManager.AppSettings["FrontEndDb_Server"],
                 ConfigurationManager.AppSettings["FrontEndDb_Database"]

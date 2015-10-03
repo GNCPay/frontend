@@ -1,9 +1,10 @@
-﻿@{
-    ViewBag.Title = "Chuyển khoản tới Tài khoản ví";
+﻿@model eWallet.Portal.Models.Wallet
+@{
+    ViewBag.Title = "Chuyển Tiền tới Tài khoản ví";
     Layout = null;
 }
 <ul class="breadcrumb">
-    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li><a href='@Url.Content("/Home/eWallet")'><img src="~/images/logo_tappay.png" /></a></li>
     <li>@ViewBag.Title</li>
 </ul>
 <div class="separator"></div>
@@ -13,24 +14,113 @@
             <label class="sr-only" for="receiver_gnc_account">Tài khoản nhận tiền</label>
             <div class="input-group">
                 <input type="text" class="form-control" id="receiver_gnc_account" name="receiver_gnc_account" placeholder="Tên đăng nhập của tài khoản ví">
-                <div class="input-group-addon btn" id="btn_check_bill">Check</div>
+                <div class="input-group-addon btn" id="btn_check_receiver">Check</div>
             </div>
         </div>
         <div class="form-group">
             <label class="sr-only" for="receiver_gnc_name">Tên khoản nhận tiền</label>
-            <input type="text" class="form-control" id="receiver_gnc_name" name="receiver_gnc_name" placeholder="Họ và tên Người nhận tiền" readonly>
+            <input type="hidden" id="receiver_gnc_id" />
+            <input type="text" class="form-control" id="receiver_gnc_name" name="receiver_gnc_name" placeholder="" readonly>
         </div>
         <div class="form-group">
-            <label class="sr-only" for="txt_bill_amount">Số tiền</label>
-            <input class="form-control" id="txt_bill_amount" type="text" placeholder="Số tiền muốn chuyển" />
+            <label class="sr-only" for="amount">Số tiền</label>
+            <input type="number" id="display" hidden>
+            <input class="form-control" id="amount" onkeypress="return kaka(event, this)" type="text" placeholder="Số tiền muốn chuyển" />
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="note">Số tiền</label>
+            <textarea class="form-control" id="note" placeholder="Ghi chú" />
         </div>
         <div class="form-group" id="payment_method">
-            <a class="btn btn-primary" data-toggle="modal" href="#myModal"><i class="glyphicon glyphicon-credit-card"></i> Thẻ ATM</a>
-            <a class="btn btn-primary" data-toggle="modal" href="#paybyeWalletModal"><i class="glyphicon glyphicon-piggy-bank"></i> Ví GNC</a>
+            @*<a class="btn btn-primary" data-toggle="modal" href="#bankModal"><i class="glyphicon glyphicon-credit-card"></i> Thẻ ATM</a>*@
+            <a class="btn btn-primary make_transaction"><i class="glyphicon glyphicon-piggy-bank"></i> Xác nhận</a>
         </div>
     </div>
 </div>
 <script>
-    $(document).ready(function () {
+    $('#btn_check_receiver').click(function () {
+        $('#receiver_gnc_name').val('');
+        $('#receiver_gnc_id').val('');
+        //NProgress.start();
+        $user_name = $('#receiver_gnc_account').val();
+        $.ajax({
+            url: '/Service/TransferWallet_CheckUser',
+            contentType: 'application/json',
+            type: 'GET',
+            dataType: 'json',
+            data: { user_name: $user_name }
+        })
+
+                           .success(function (result) {
+                               if (result.error_code == "00") {
+                                   $('#receiver_gnc_name').val(result.full_name);
+                                   $('#receiver_gnc_id').val(result.id);
+                                   return;
+                               }
+                               else {
+                                   alert(result.error_message);
+                                   return;
+                               }
+                           })
+                           .error(function (jqXHR, textStatus, errorThrown) {
+                               return;
+                           });
     });
+
+    $('.make_transaction').click(function () {
+        var $account = $('#receiver_gnc_account').val();
+        var $account_id = $('#receiver_gnc_id').val();
+        var $account_name = $('#receiver_gnc_name').val();
+        var $amount = $('#amount').val();
+        var $note = $('#note').val();
+        $.ajax({
+            url: '@Url.Action("TransferWallet_MakeTransaction", "Service")',
+            contentType: 'application/json; charset=utf-8',
+            type: 'GET',
+            dataType: 'json',
+            data: { account: $account, account_id:$account_id, account_name: $account_name, amount: $amount, note: $note }
+        })
+           .success(function (result) {
+               if (result.error_code == "00") {
+                   var redirect_url = "http://" + window.location.host + "/" + result.url_redirect;
+                   window.location = redirect_url;
+               }
+               else {
+                   alert(result.error_message);
+               }
+           })
+           .error(function (xhr, status) {
+               //alert("Không thể load dữ liệu. Vui lòng thử lại sau!");
+           });
+    });
+</script>
+
+@*kiểm tra kiểu số khi nhập*@
+<script language="javascript">
+    function kaka(e, kakatexto) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    }
+    //function validate(evt) {
+    //    var theEvent = evt || window.event;
+    //    var key = theEvent.keyCode || theEvent.which;
+    //    key = String.fromCharCode(key);
+    //    var regex = /[0-9]|\./;
+    //    if (!regex.test(key)) {
+    //        theEvent.returnValue = false;
+    //        if (theEvent.preventDefault) theEvent.preventDefault();
+    //    }
+    //}
+
+    //format money input
+    document.getElementById("amount").onblur = function () {
+        if (document.getElementById("amount").value != 0) {
+            this.value = parseFloat(this.value.replace(/,/g, ""))
+                            .toFixed()
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+    }
 </script>

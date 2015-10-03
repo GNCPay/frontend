@@ -1,21 +1,278 @@
 ﻿@{
-    ViewBag.Title = "Chuyển khoản";
+    ViewBag.Title = "Chuyển tiền";
 }
-<div class="row">
-    <div class="col-md-3 ">
-        <ul class="bg nav nav-pills nav-stacked nav-pills-stacked-example">
-            <li class="active"><a href="#" class="nav_link nav_wallet" data-href='@Url.Action("TransferWallet", "Service", null, null)'>Tới Tài khoản ví</a></li>
-            <li><a href="#" class="nav_link nav_bank" data-href='@Url.Action("TransferBank", "Service", null, null)'>Tới Tài khoản ngân hàng</a></li>
-            <li><a href="#" class="nav_link nav_mobile" data-href='@Url.Action("TransferMobile", "Service", null, null)'>Tới Người nhận qua Số di động</a></li>
-@if(User.Identity.IsAuthenticated){
-            <li><a href="#" class="nav_link nav_trans" data-href='@Url.Action("List", "Transaction", null, null)'>Tra soát giao dịch Chuyển khoản</a></li>
-}
-        </ul>
+<style>
+    .sml-bank {
+        border: 1px solid #ffffff;
+        padding: 5px;
+        /*margin: 10px 0px 10px 0px;*/
+    }
+
+    #group-main {
+        margin: auto;
+    }
+
+    #group-bank {
+        position: relative;
+        width: 120px;
+        height: 62px;
+        padding: 3px;
+        margin: 5px 0px 0px 5px;
+        display: inline-block;
+    }
+
+        #group-bank label {
+            z-index: 2;
+            cursor: pointer;
+            border: 1pt solid rgba(32, 31, 29, 0.33);
+            width: 120px;
+            height: 62px;
+            position: absolute;
+            background-color: antiquewhite;
+            -webkit-transition-property: opacity;
+            -moz-transition-property: opacity;
+            -webkit-transition-duration: 800ms;
+            -moz-transition-duration: 800ms;
+        }
+
+        #group-bank div {
+            overflow: hidden;
+            cursor: pointer;
+            position: absolute;
+            padding: 5px;
+            font-family: tahoma;
+            font-size: 11px;
+            color: #ffffff;
+            word-wrap: break-word;
+            padding-top: 5px;
+            text-align: center;
+            width: 112px;
+            height: 54px;
+            background-color: #1EB453 !important;
+            display: inline-block;
+            opacity: 0;
+            -webkit-transition-property: opacity,width,margin-left;
+            -moz-transition-property: opacity,width,margin-left;
+            -webkit-transition-duration: 800ms;
+            -moz-transition-duration: 800ms;
+        }
+
+    .group-active {
+        z-index: 9;
+    }
+
+        .group-active div {
+            opacity: 1 !important;
+            z-index: 1;
+            width: 270px !important;
+        }
+
+        .group-active .transition-left {
+            margin-left: -149px;
+        }
+
+        .group-active label {
+            opacity: 0 !important;
+        }
+
+    .bk-selected {
+        border-color: #1EB453 !important;
+        opacity: 1 !important;
+    }
+
+    .desaturate {
+        /*opacity: 0.5;*/
+    }
+</style>
+<section id="azpay-breacum">
+    <div class="container">
+        <div class="row">
+            <article class="col-lg-12">
+                <a href="/">Trang chủ</a><span><i class="fa fa-angle-right"></i></span><span>@ViewBag.Title</span>
+            </article>
+        </div>
     </div>
-    <div class="col-md-9 bg" id="main_content">
-        @*@Html.Action("List", "Transaction", null);*@
+</section> <!--end breacum-->
+<section id="azpay-main">
+    <div class="container">
+        <div class="row">
+            <aside class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <article class="utility-module">
+                    <div class="heading">
+                        <h3>@ViewBag.Title</h3>
+                    </div>
+                    <ul>
+                        <li class="active"><a href="#" class="nav_link nav_wallet" data-href='@Url.Action("TransferWallet", "Service", null, null)'>Tới Tài khoản ví</a></li>
+                        <li><a href="#" class="nav_link nav_bank" data-href='@Url.Action("TransferBank", "Service", null, null)'>Tới Tài khoản ngân hàng</a></li>
+                        <li><a href="#" class="nav_link nav_mobile" data-href='@Url.Action("TransferMobile", "Service", null, null)'>Tới Người nhận qua Số di động</a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a href="#" class="nav_link nav_trans" data-href='@Url.Action("TransFer", "Transaction", null, null)'>Tra soát giao dịch Chuyển khoản</a></li>
+                        }
+                    </ul>
+                </article>
+                <script src="https://azpay.vn/templates/javascript/v2/owl.carousel.js"></script>
+            </aside>
+            <section class="col-lg-9 col-md-9 col-sm-12 col-xs-12" id="main_content"></section>
+        </div>
     </div>
-    <div id="error"></div>
+</section>
+<div id="error"></div>
+
+<div id="bankModal" class="modal fade">
+    <div id="bank-overlay" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thanh toán bằng thẻ ATM</h4>
+            </div>
+            <div class="modal-body bank_content">
+                <div class="sml-bank-boder sml-bank">
+                    <div id="group-main" class="boder-img-bank">
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="970436">
+                                <label tabindex="85" for="atmOnline15" class="desaturate bank-img " id="atmOnline15" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/vietcombank.jpg');">
+
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="970407">
+                                <label tabindex="87" for="atmOnline60" class="desaturate bank-img " id="atmOnline60" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/techcombank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="970422">
+                                <label tabindex="89" for="atmOnline61" class="desaturate bank-img " id="atmOnline61" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/mbbank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="970441">
+                                <label tabindex="91" for="atmOnline62" class="desaturate bank-img " id="atmOnline62" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/vibbank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="970489">
+                                <label tabindex="88" for="atmOnline91" class="desaturate bank-img " id="atmOnline91" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/vietinbank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="970441">
+                                <label tabindex="96" for="atmOnline105" class="desaturate bank-img " id="atmOnline105" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/maritimebank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="970432">
+                                <label tabindex="97" for="atmOnline113" class="desaturate bank-img " id="atmOnline113" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/vpbank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+
+
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="970428">
+                                <label tabindex="107" for="atmOnline96" class="desaturate bank-img " id="atmOnline96" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/namabank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="161087">
+                                <label tabindex="108" for="atmOnline97" class="desaturate bank-img " id="atmOnline97" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/saigonbank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+
+                        <div id="group-bank">
+                            <a class="PayBillWithATM" data-bank="970430">
+                                <label tabindex="103" for="atmOnline102" class="desaturate bank-img " id="atmOnline102" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/pgbank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+
+                        <div id="group-bank">
+                            <a class="PayBillWithATM" data-bank="970499">
+                                <label tabindex="104" for="atmOnline112" class="desaturate bank-img " id="atmOnline112" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/agribank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="970427">
+                                <label tabindex="110" for="atmOnline114" class="desaturate bank-img " id="atmOnline114" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/vietabank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+
+                        <div id="group-bank">
+                            <a class="PayBillWithATM" data-bank="970414">
+                                <label tabindex="129" for="atmOnline124" class="desaturate bank-img " id="atmOnline124" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/Oceanbank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank">
+                            <a class="PayBillWithATM" data-bank="970459">
+                                <label tabindex="132" for="atmOnline127" class="desaturate bank-img " id="atmOnline127" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/abbank.jpg');">
+
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank">
+                            <a class="PayBillWithATM" data-bank="970423">
+                                <label tabindex="95" for="atmOnline130" class="desaturate bank-img " id="atmOnline130" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/tienphongbank.png');">
+
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="970488">
+                                <label tabindex="93" for="atmOnline131" class="desaturate bank-img " id="atmOnline131" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/bidvbank.gif ');">
+
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank" class="">
+                            <a class="PayBillWithATM" data-bank="970443">
+                                <label tabindex="90" for="atmOnline148" class="desaturate bank-img " id="atmOnline148" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/shbbank.gif');">
+
+                                </label>
+                            </a>
+                        </div>
+
+
+                        <div id="group-bank">
+                            <a class="PayBillWithATM" data-bank="970468">
+                                <label tabindex="92" for="atmOnline153" class="desaturate bank-img " id="atmOnline153" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/seabank.gif');">
+                                </label>
+                            </a>
+                        </div>
+                        <div id="group-bank">
+                            <a class="PayBillWithATM" data-bank="970409">
+                                <label tabindex="134" for="atmOnline129" class="desaturate bank-img " id="atmOnline129" style="background:url('https://www.baokim.vn/thanh-toan/images/logo_bank/giao-dich/baca.jpg');">
+                                </label>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
     var $func = window.location.hash.substr(1);

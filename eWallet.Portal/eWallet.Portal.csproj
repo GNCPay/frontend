@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +52,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\eWallet.SMS.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -68,14 +77,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Bson.dll</HintPath>
+    <Reference Include="MongoDB.AspNet.Identity, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\MongoDB.AspNet.Identity.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Driver.dll</HintPath>
+    <Reference Include="MongoDB.Bson, Version=1.10.0.62, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="MongoDB.Driver, Version=1.10.0.62, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -154,20 +170,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -235,18 +239,51 @@
     <Content Include="bootstrap\img\glyphicons-halflings-white.png" />
     <Content Include="bootstrap\img\glyphicons-halflings.png" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\azstyle.css" />
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dropdow.css" />
+    <Content Include="Content\menu.css" />
     <Content Include="Content\nprogress.css" />
+    <Content Include="Content\slider.css" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\buttons.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\main.css" />
     <Content Include="css\owl.carousel.css" />
     <Content Include="css\owl.transitions.css" />
     <Content Include="css\prettyPhoto.css" />
+    <Content Include="css\reset.css" />
     <Content Include="css\responsive.css" />
+    <Content Include="css\test\bootstrap.min.js" />
+    <Content Include="css\test\jquery.bdt.css" />
+    <Content Include="css\test\jquery.bdt.min.js" />
+    <Content Include="css\test\jquery.dt.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="images\biglogo.png" />
+    <Content Include="images\logo_tappay.png" />
+    <Content Include="images\portfolio\01.jpg" />
+    <Content Include="images\portfolio\02.jpg" />
+    <Content Include="images\portfolio\03.jpg" />
+    <Content Include="images\portfolio\04.jpg" />
+    <Content Include="images\portfolio\05.jpg" />
+    <Content Include="images\portfolio\06.jpg" />
+    <Content Include="images\portfolio\07.jpg" />
+    <Content Include="images\portfolio\08.jpg" />
+    <Content Include="images\portfolio\bg.jpg" />
+    <Content Include="images\portfolio\logo.png" />
+    <Content Include="images\seprator.png" />
+    <Content Include="images\slider\1.png" />
+    <Content Include="images\slider\2.jpg" />
+    <Content Include="images\slider\3.jpg" />
+    <Content Include="images\slider\4.jpg" />
+    <Content Include="images\slider\bigapps.jpg" />
+    <Content Include="images\slider\EVNHANOI.jpg" />
+    <Content Include="images\slider\nhaviet24.png" />
+    <Content Include="theme\scripts\DataTables\media\js\jquery.dataTables.min.js" />
     <Content Include="Views\favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -265,14 +302,6 @@
     <Content Include="images\ico\favicon.ico" />
     <Content Include="images\logo.png" />
     <Content Include="images\main-feature.png" />
-    <Content Include="images\portfolio\01.jpg" />
-    <Content Include="images\portfolio\02.jpg" />
-    <Content Include="images\portfolio\03.jpg" />
-    <Content Include="images\portfolio\04.jpg" />
-    <Content Include="images\portfolio\05.jpg" />
-    <Content Include="images\portfolio\06.jpg" />
-    <Content Include="images\portfolio\07.jpg" />
-    <Content Include="images\portfolio\08.jpg" />
     <Content Include="images\portfolio\full.jpg" />
     <Content Include="images\portfolio\partner_banknet.jpg" />
     <Content Include="images\portfolio\partner_evn.jpg" />
@@ -354,7 +383,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
-    <None Include="Properties\PublishProfiles\Admin.pubxml" />
+    <None Include="Properties\PublishProfiles\FronteEnd.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -399,7 +428,6 @@
     <Content Include="theme\images\lang\pl.png" />
     <Content Include="theme\images\lang\ro.png" />
     <Content Include="theme\scripts\DataTables\media\js\DT_bootstrap.js" />
-    <Content Include="theme\scripts\DataTables\media\js\jquery.dataTables.min.js" />
     <Content Include="theme\scripts\excanvas\excanvas.js" />
     <Content Include="theme\scripts\farbtastic\farbtastic.css" />
     <Content Include="theme\scripts\farbtastic\farbtastic.js" />
@@ -513,7 +541,9 @@
     <Content Include="theme\scripts\plupload\js\plupload.silverlight.xap" />
     <Content Include="theme\scripts\plupload\license.txt" />
     <Content Include="theme\scripts\themer.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -579,6 +609,21 @@
     <Content Include="Views\Home\eWallet.cshtml" />
     <Content Include="Views\Payment\Result.cshtml" />
     <Content Include="Views\Payment\Confirm.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\FacebookFriend.cshtml" />
+    <Content Include="Views\Transaction\Cashin.cshtml" />
+    <Content Include="Views\Transaction\Cashout.cshtml" />
+    <Content Include="Views\Transaction\PayMent.cshtml" />
+    <Content Include="Views\Transaction\TopUp.cshtml" />
+    <Content Include="Views\Transaction\TransFer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

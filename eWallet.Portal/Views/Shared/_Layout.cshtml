@@ -62,9 +62,13 @@
     <style>
         body {
             /*background: url('http://www.wallpaperup.com/uploads/wallpapers/2012/10/21/20181/cad2441dd3252cf53f12154412286ba0.jpg');*/
-            background: url('http://thongcaobaochi.com.vn/public/media/media/picture/Ha%20Noi%20mua%20thu.jpg');
-            background-size: 100%;
-            padding: 10px;
+            background: url("../../images/portfolio/bg.jpg") no-repeat center fixed;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            /*background-size: auto;*/
+            /*padding: 10px;*/
         }
 
         .bg {
@@ -106,24 +110,26 @@
                 margin-bottom: 10px;
             }
 
-        .btn-fb {
+        .btn-facebook {
             color: #fff;
             background-color: #3b5998;
+            width: 49%;
         }
 
-            .btn-fb:hover {
+            .btn-facebook:hover {
                 color: #fff;
                 background-color: #496ebc;
             }
 
-        .btn-tw {
+        .btn-google {
             color: #fff;
-            background-color: #55acee;
+            background-color: #c32f10;
+            width: 49%;
         }
 
-            .btn-tw:hover {
+            .btn-google:hover {
                 color: #fff;
-                background-color: #59b5fa;
+                background-color: #c32f10;
             }
 
         .mega-dropdown {
@@ -174,12 +180,12 @@
                 NProgress.done();
                 if (status == "error") {
                     var msg = "Sorry but there was an error: ";
-                    $("#error").html(msg + xhr.status + " " + xhr.statusText);
+                    $("#error").html('');
                 }
             });
         }
     </script>
-    
+
 </head>
 <body>
     <nav class="navbar navbar-default" role="navigation">
@@ -192,118 +198,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href='@Url.Action("eWallet","Home",null,null)'>
-                    <span>BigPay</span>
-                </a>
+                <a class="navbar-brand" href='@Url.Action("eWallet","Home",null,null)'><img alt="logo" src="~/images/portfolio/logo.png" /></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                @*<ul class="nav navbar-nav">
-                        <li class="dropdown mega-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Khách hàng cá nhân <span class="caret"></span></a>
-                            <ul class="dropdown-menu mega-dropdown-menu row" id="dropdown1">
-                                <li class="col-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Tài khoản ví</li>
-                                        <li><a href='@Url.Action("Personal","Account",null,null)'>Thông tin tài khoản</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href='@Url.Action("CashIn","Account",null,null)'>Nạp tiền vào ví</a></li>
-                                        <li><a href="@Url.Action("CashOut","Account",null,null)">Rút tiền từ ví</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href='@Url.Action("Personal","Account",null,null)#transactions'>Tra cứu giao dịch</a></li>
-                                    </ul>
-                                </li>
-                                <li class="col-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Thanh toán điện tử</li>
-                                        <li><a href="@Url.Action("Payment","Service",null,null)">Thanh toán hóa đơn</a></li>
-                                        <li><a href="@Url.Action("Payment","Service",null,null)#loan">Thanh toán phí bảo hiểm, trả góp</a></li>
-                                        <li><a href="@Url.Action("Payment","Service",null,null)#commerce">Thanh toán đơn hàng thương mại điện tử</a></li>
-                                        <li class="divider"></li>
-                                        <li class="dropdown-header">Đặt vé trực tuyến</li>
-                                        <li><a href="#">Đặt vé máy bay</a></li>
-                                        <li><a href="#">Đặt vé xe khách</a></li>
-                                        <li><a href="#">Đặt vé xem film, ca nhạc</a></li>
-                                    </ul>
-                                </li>
-                                <li class="col-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Nạp tiền điện tử</li>
-                                        <li><a href="@Url.Action("Topup","Service",null,null)">Nạp tiền điện thoại</a></li>
-                                        <li><a href="@Url.Action("Topup","Service",null,null)#online">Nạp tiền tài khoản game, học trực tuyến</a></li>
-                                        <li class="divider"></li>
-                                        <li class="dropdown-header">Chuyển khoản</li>
-                                        <li><a href="@Url.Action("Transfer","Service",null,null)">Tới Tài khoản ví</a></li>
-                                        <li><a href="@Url.Action("Transfer", "Service", null, null)#bank">Tới Tài khoản ngân hàng</a></li>
-                                        <li><a href="@Url.Action("Transfer", "Service", null, null)#mobile">Tới Người nhận qua Di động</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown mega-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Khách hàng Doanh nghiệp <span class="caret"></span></a>
-                            <ul class="dropdown-menu mega-dropdown-menu row">
-                                <li class="col-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Tài khoản ví</li>
-                                        <li><a href='@Url.Action("Business","Account",null,null)'>Thông tin tài khoản</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href='@Url.Action("CashIn","Account",null,null)'>Nạp tiền vào ví</a></li>
-                                        <li><a href="@Url.Action("CashOut","Account",null,null)">Rút tiền từ ví</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href='@Url.Action("Personal","Account",null,null)#transactions'>Tra cứu giao dịch</a></li>
-                                    </ul>
-                                </li>
-                                <li class="col-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Thanh toán điện tử</li>
-                                        <li><a href="@Url.Action("Payment","Service",null,null)">Thanh toán hóa đơn</a></li>
-                                        <li><a href="@Url.Action("Payment","Service",null,null)#loan">Thanh toán phí bảo hiểm, trả góp</a></li>
-                                        <li><a href="@Url.Action("Payment","Service",null,null)#commerce">Thanh toán đơn hàng thương mại điện tử</a></li>
-                                        <li class="divider"></li>
-                                        <li class="dropdown-header">Đặt vé trực tuyến</li>
-                                        <li><a href="#">Đặt vé máy bay</a></li>
-                                        <li><a href="#">Đặt vé xe khách</a></li>
-                                        <li><a href="#">Đặt vé xem film, ca nhạc</a></li>
-                                    </ul>
-                                </li>
-                                <li class="col-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Nạp tiền điện tử</li>
-                                        <li><a href="@Url.Action("Topup","Service",null,null)">Nạp tiền điện thoại</a></li>
-                                        <li><a href="@Url.Action("Topup","Service",null,null)#online">Nạp tiền tài khoản game, học trực tuyến</a></li>
-                                        <li class="divider"></li>
-                                        <li class="dropdown-header">Chuyển khoản</li>
-                                        <li><a href="@Url.Action("Transfer","Service",null,null)">Tới Tài khoản ví</a></li>
-                                        <li><a href="@Url.Action("Transfer", "Service", null, null)#bank">Tới Tài khoản ngân hàng</a></li>
-                                        <li><a href="@Url.Action("Transfer", "Service", null, null)#mobile">Tới Người nhận qua Di động</a></li>
-                                    </ul>
-                                </li>
-                                <li class="col-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Dịch vụ thu hộ</li>
-                                        <li><a href="@Url.Action("Collection", "Service", null, null)#request">Danh sách thu hộ</a></li>
-                                        <li><a href="@Url.Action("Collection", "Service", null, null)#transaction">Tra cứu giao dịch Thu hộ</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>*@
-                <ul class="nav navbar-nav navbar-right">
-@if (User.Identity.IsAuthenticated) { 
-    <li><a href="@Url.Action("Personal","Account",null,null)">@User.Identity.Name</a></li>
-                 <li><a href="@Url.Action("SignOut","Home",null,null)">Thoát</a></li>
-}
-else { 
-    
-    <li><a href="@Url.Action("Login","Home",null,null)">Đăng nhập</a></li>
-       <li><a href="@Url.Action("Register","Home",null,null)">Đăng ký</a></li>
-}
-                    
-                </ul>
+                @Html.Partial("_LoginPartial")
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
@@ -313,7 +213,7 @@ else {
             @RenderBody()
         </div>
     </div>
-
+    @RenderSection("scripts", required: false)
     <!-- JQueryUI v1.9.2 -->
     <script src="/theme/scripts/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
 

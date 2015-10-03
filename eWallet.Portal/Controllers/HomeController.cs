@@ -13,7 +13,7 @@ namespace eWallet.Portal.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult eWallet()
         {
             return View();

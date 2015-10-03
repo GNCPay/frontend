@@ -2,7 +2,7 @@
     Layout = null;
 }
 <ul class="breadcrumb">
-    <li><a href='@Url.Content("/Home/Index")' class="glyphicons home"><i></i> eWallet</a></li>
+    <li><a href='@Url.Content("/Home/eWallet")'><img src="~/images/logo_tappay.png" /></a></li>
     <li>Danh sách tài khoản nhận tiền</li>
 </ul>
 <div class="separator"></div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="form-group">
                         <label for="account_number" class="sr-only">Số tài khoản*</label>
-                        <input type="text" name="account_number" id="account_number" class="form-control" placeholder="Số tài khoản">
+                        <input type="text" name="account_number" id="account_number" onkeypress="return kaka(event, this)" class="form-control" placeholder="Số tài khoản">
                     </div>
 
                     <div class="form-group">
@@ -160,4 +160,23 @@
             }
         });
     })
+</script>
+
+@*kiểm tra kiểu số khi nhập*@
+<script language="javascript">
+    function kaka(e, kakatexto) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    }
+    //function validate(evt) {
+    //    var theEvent = evt || window.event;
+    //    var key = theEvent.keyCode || theEvent.which;
+    //    key = String.fromCharCode(key);
+    //    var regex = /[0-9]|\./;
+    //    if (!regex.test(key)) {
+    //        theEvent.returnValue = false;
+    //        if (theEvent.preventDefault) theEvent.preventDefault();
+    //    }
+    //}
 </script>
