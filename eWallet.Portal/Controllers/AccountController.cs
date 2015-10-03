@@ -569,26 +569,40 @@ namespace eWallet.Portal.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.UserName };
-                var result = await UserManager.CreateAsync(user);
-                if (result.Succeeded)
+                if (CheckIphone(model.Mobile) == true)
                 {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
-                    if (result.Succeeded)
+                    if (CheckPhoneSupport(model.Mobile) == true)
                     {
-                        var claimsIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
-                        foreach (var claim in claimsIdentity.Claims)
-                            if (claim.Type == "FacebookAccessToken")
+                        var user = new ApplicationUser() { UserName = model.UserName };
+                        var result = await UserManager.CreateAsync(user);
+                        if (result.Succeeded)
+                        {
+                            result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                            if (result.Succeeded)
                             {
-                                UserManager.AddClaim(user.Id, claim);
+                                var claimsIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+                                foreach (var claim in claimsIdentity.Claims)
+                                    if (claim.Type == "FacebookAccessToken")
+                                    {
+                                        UserManager.AddClaim(user.Id, claim);
+                                    }
+                                //Goi sang server de tao tai khoan
+                                PostRegister(model.Name, model.UserName, model.Mobile);
+                                await SignInAsync(user, isPersistent: false);
+                                return RedirectToLocal(returnUrl);
                             }
-                        //Goi sang server de tao tai khoan
-                        PostRegister(model.Name, model.UserName, model.Mobile);
-                        await SignInAsync(user, isPersistent: false);
-                        return RedirectToLocal(returnUrl);
+                        }
+                        AddErrors(result);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Số điện thoại không chính xác !");
                     }
                 }
-                AddErrors(result);
+                else
+                {
+                    ModelState.AddModelError("", "Số điện thoại đã tồn tại!");
+                }
             }
 
             ViewBag.ReturnUrl = returnUrl;
